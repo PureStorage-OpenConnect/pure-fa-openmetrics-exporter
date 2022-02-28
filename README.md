@@ -1,4 +1,4 @@
-![Current version](https://img.shields.io/badge/current%20version-0.0.1-blue) ![Dependencies](https://img.shields.io/badge/dependecies-python3--prometheus--client%20-orange)
+![Current version](https://img.shields.io/github/v/tag/PureStorage-OpenConnect/pure-fa-openmetrics-exporter?label=current%20version)
 
 # Pure Storage OpenMetrics exporter for FlashArray
 OpenMetrics exporter for Pure Storage FlashArray.
