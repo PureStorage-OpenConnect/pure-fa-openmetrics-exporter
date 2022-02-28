@@ -1,10 +1,10 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: pure-fb-om-exporter
+  name: pure-fa-om-exporter
   namespace: monitoring
   labels:
-    app: pure-fb-exporter
+    app: pure-fa-exporter
 spec:
   replicas: 1
   strategy:
@@ -14,20 +14,17 @@ spec:
     type: RollingUpdate
   selector:
     matchLabels:
-      app: pure-fb-exporter
+      app: pure-fa-exporter
   template:
     metadata:
       labels:
-        app: pure-fb-exporter
+        app: pure-fa-exporter
     spec:
       containers:
-      - name: pure-fb-om-exporter
-        image: quay.io/purestorage/pure-fb-ome
+      - name: pure-fa-om-exporter
+        image: quay.io/purestorage/pure-fa-ome
         args:
-          - '--workers=16'
-          - '--access-logfile=-'
-          - '--error-logfile=-'
-          - 'pure_fb_exporter:create_app(disable_ssl_warn=True)'
+          - '--workers=2'
         ports:
         - name: web
           containerPort: 9491
