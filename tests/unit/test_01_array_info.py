@@ -1,6 +1,5 @@
 from pure_fa_openmetrics_exporter.flasharray_collector.flasharray_metrics import array_info_metrics
 
-
 def test_array_info(fa_client):
     array_info = array_info_metrics.ArrayInfoMetrics(fa_client)
     m =  next(array_info.get_metrics())

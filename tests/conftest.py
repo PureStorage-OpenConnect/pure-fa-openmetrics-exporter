@@ -2,7 +2,6 @@ import pytest
 from pypureclient import PureError
 from pure_fa_openmetrics_exporter.flasharray_client import client
 
-
 @pytest.fixture()
 def fa_client(scope="session"):
     try:

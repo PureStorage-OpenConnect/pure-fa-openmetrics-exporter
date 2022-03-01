@@ -16,14 +16,19 @@ class FlasharrayClient():
         self._arrays = None
         self._arrays_performance = None
         self._arrays_space = None
+        self._alerts = None
+        self._volumes = None
         self._volumes_performance = None
         self._volumes_space = None
         self._vgroups = None
+        self._pods = None
         self._pods_performance = None
         self._pods_space = None
+        self._hosts = None
         self._hosts_performance = None
         self._hosts_space = None
         self._host_connections = None
+        self._directories = None
         self._directories_performance = None
         self._directories_space = None
         self._network_interfaces_performance = None
@@ -74,6 +79,19 @@ class FlasharrayClient():
         self._arrays_space = array_space
         return self._arrays_space
 
+    def alerts(self):
+        if self._alerts:
+            return self._alerts
+        alerts = {}
+        try:
+            res = self.client.get_alerts()
+            if isinstance(res, flasharray.ValidResponse):
+                alerts = list(res.items)
+        except:
+            pass
+        self._alerts = alerts
+        return self._alerts
+
     def volumes_performance(self):
         if self._volumes_performance:
             return self._volumes_performance
@@ -87,6 +105,19 @@ class FlasharrayClient():
         self._volumes_performance = vols_perf
         return self._volumes_performance
 
+    def volumes(self):
+        if self._volumes:
+            return self._volumes
+        vols = []
+        try:
+            res = self.client.get_volumes()
+            if isinstance(res, flasharray.ValidResponse):
+                vols = list(res.items)
+        except:
+            pass
+        self._volumes = vols
+        return self._volumes
+
     def volumes_space(self):
         if self._volumes_space:
             return self._volumes_space
@@ -99,6 +130,19 @@ class FlasharrayClient():
             pass
         self._volumes_space = vols_space
         return self._volumes_space
+
+    def pods(self):
+        if self._pods:
+            return self._pods
+        pods = []
+        try:
+            res = self.client.get_pods()
+            if isinstance(res, flasharray.ValidResponse):
+                pods = list(res.items)
+        except:
+            pass
+        self._pods = pods
+        return self._pods
 
     def pods_performance(self):
         if self._pods_performance:
@@ -126,6 +170,19 @@ class FlasharrayClient():
         self._pods_space = pods_space
         return self._pods_space
 
+    def hosts(self):
+        if self._hosts:
+            return self._hosts
+        hosts = []
+        try:
+            res = self.client.get_hosts()
+            if isinstance(res, flasharray.ValidResponse):
+                hosts = list(res.items)
+        except:
+            pass
+        self._hosts = hosts
+        return self._hosts
+
     def hosts_performance(self):
         if self._hosts_performance:
             return self._hosts_performance
@@ -151,6 +208,19 @@ class FlasharrayClient():
             pass
         self._hosts_space = hosts_space
         return self._hosts_space
+
+    def directories(self):
+        if self._directories:
+            return self._directories
+        dirs = []
+        try:
+            res = self.client.get_directories()
+            if isinstance(res, flasharray.ValidResponse):
+                dirs = list(res.items)
+        except:
+            pass
+        self._directories = dirs
+        return self._directories
 
     def directories_performance(self):
         if self._directories_performance:
