@@ -21,7 +21,7 @@ class HostPerformanceMetrics():
                                       'FlashArray host IOPS',
                                       labels=['name', 'dimension'])
 
-    def _latency(self) -> None:
+    def _latency(self):
         """
         Create hosts latency metrics of gauge type.
         """
@@ -43,7 +43,7 @@ class HostPerformanceMetrics():
                 val = val if val is not None else 0
                 self.latency.add_metric([h['name'], k], val)
 
-    def _bandwidth(self) -> None:
+    def _bandwidth(self):
         """
         Create hosts bandwidth metrics of gauge type.
         """
@@ -55,7 +55,7 @@ class HostPerformanceMetrics():
                 val = val if val is not None else 0
                 self.bandwidth.add_metric([h['name'], k], val)
 
-    def _iops(self) -> None:
+    def _iops(self):
         """
         Create hosts IOPS metrics of gauge type.
         """
@@ -67,10 +67,8 @@ class HostPerformanceMetrics():
                 val = val if val is not None else 0
                 self.iops.add_metric([h['name'], k], val)
 
-    def get_metrics(self) -> None:
-        self._latency()
-        self._bandwidth()
-        self._iops()
+    def get_metrics(self):
+        self._performance()
         yield self.latency
         yield self.bandwidth
         yield self.iops

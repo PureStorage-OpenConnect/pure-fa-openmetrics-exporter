@@ -30,7 +30,6 @@ def test_array_performance_labels(fa_client):
                                                  'san_usec_per_mirrored_write_op',
                                                  'service_usec_per_mirrored_write_op',
                                                  'service_usec_per_read_op',
-                                                 'service_usec_per_read_op_cache_reduction',
                                                  'service_usec_per_write_op',
                                                  'usec_per_read_op',
                                                  'usec_per_write_op',

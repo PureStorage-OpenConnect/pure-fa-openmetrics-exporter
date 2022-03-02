@@ -1,15 +1,22 @@
 from prometheus_client.core import GaugeMetricFamily
 
-
 class DirectorySpaceMetrics():
     """
     Base class for FlashArray Prometheus directory space metrics
     """
 
-    def __init__(self, fa):
-        self.fa = fa
+    def __init__(self, fa_client):
+        self.data_reduction = None
+        self.size = None
+        self.used = None
+        self.directories = fa_client.directories()
+        
+    def _space(self):
+        """
+        Create metrics of gauge type for directories space indicators.
+        """
         self.data_reduction = GaugeMetricFamily(
-                                  'purefa_directory_space_datareduction_ratio',
+                                  'purefa_directory_space_data_reduction_ratio',
                                   'FlashArray directories data reduction ratio',
                                   labels=['name', 'filesystem', 'path'],
                                   unit='ratio')
@@ -25,55 +32,30 @@ class DirectorySpaceMetrics():
                                   labels=['name', 'filesystem', 'path',
                                           'space'])
 
-    def _data_reduction(self) -> None:
-        """
-        Create metrics of gauge type for directory data reduction
-        Metrics values can be iterated over.
-        """
-        for dir in self.fa.get_directories():
-            val = dir['space']['data_reduction']
-            val = val if val is not None else 0
-            self.data_reduction.add_metric([dir['directory_name'],
-                                            dir['file_system']['name'],
-                                            dir['path']], val)
+        for dir in self.directories:
+            d = dir['directory']
+            self.data_reduction.add_metric([d.directory_name,
+                                            d.file_system.name,
+                                            d.path], d.space.data_reduction or 0)
 
-    def _size(self) -> None:
-        """
-        Create metrics of gauge type for directory size
-        Metrics values can be iterated over.
-        """
-        for dir in self.fa.get_directories():
-            val = dir['space']['virtual']
-            val = val if val is not None else 0
-            self.size.add_metric([dir['directory_name'],
-                                  dir['file_system']['name'],
-                                  dir['path']], val)
+            self.size.add_metric([d.directory_name,
+                                  d.file_system.name,
+                                  d.path], d.space.virtual or 0)
+            self.used.add_metric([d.directory_name,
+                                  d.file_system.name,
+                                  d.path,
+                                  'snapshots'], d.space.snapshots or 0)
+            self.used.add_metric([d.directory_name,
+                                  d.file_system.name,
+                                  d.path,
+                                  'total_physical'], d.space.total_physical or 0)
+            self.used.add_metric([d.directory_name,
+                                  d.file_system.name,
+                                  d.path,
+                                  'unique'], d.space.unique or 0)
 
-    def _used(self) -> None:
-        """
-        Create metrics of gauge type for directory used space
-        Metrics values can be iterated over.
-        """
-        for dir in self.fa.get_directories():
-            for s in ['shared',
-                      'snapshots',
-                      'system',
-                      'thin_provisioning',
-                      'total_physical',
-                      'total_provisioned',
-                      'total_reduction',
-                      'unique']:
-                val = dir['space'][s]
-                val = val if val is not None else 0
-                self.used.add_metric([dir['directory_name'],
-                                           dir['file_system']['name'],
-                                           dir['path'],
-                                           s], val)
-
-    def get_metrics(self) -> None:
-        self._data_reduction()
-        self._size()
-        self._used()
+    def get_metrics(self):
+        self._space()
         yield self.data_reduction
         yield self.size
         yield self.used

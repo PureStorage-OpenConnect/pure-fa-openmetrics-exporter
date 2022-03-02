@@ -30,17 +30,18 @@ class ArraySpaceMetrics():
                                   'FlashArray overall used space',
                                   labels=['space'])
 
-        self.data_reduction.add_metric([], self.array.space.data_reduction or 0)
-        self.capacity.add_metric([], self.array.capacity or 0)
+        arr = self.array['array']
+        self.data_reduction.add_metric([], arr.space.data_reduction or 0)
+        self.capacity.add_metric([], arr.capacity or 0)
 
-        self.used.add_metric(['shared'], self.array.space.shared or 0)
-        self.used.add_metric(['snapshots'], self.array.space.snapshots or 0)
-        self.used.add_metric(['system'], self.array.space.system or 0)
-        self.used.add_metric(['total_physical'], self.array.space.total_physical or 0)
-        self.used.add_metric(['unique'], self.array.space.unique or 0)
-        self.used.add_metric(['virtual'], self.array.space.virtual or 0)
+        self.used.add_metric(['shared'], arr.space.shared or 0)
+        self.used.add_metric(['snapshots'], arr.space.snapshots or 0)
+        self.used.add_metric(['system'], arr.space.system or 0)
+        self.used.add_metric(['total_physical'], arr.space.total_physical or 0)
+        self.used.add_metric(['unique'], arr.space.unique or 0)
+        self.used.add_metric(['virtual'], arr.space.virtual or 0)
 
-    def get_metrics(self) -> None:
+    def get_metrics(self):
         self._space()
         yield self.data_reduction
         yield self.capacity

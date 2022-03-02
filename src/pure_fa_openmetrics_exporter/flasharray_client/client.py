@@ -14,8 +14,6 @@ class FlasharrayClient():
     def __init__(self, target, api_token, disable_ssl_warn=False):
         self._disable_ssl_warn = disable_ssl_warn
         self._arrays = None
-        self._arrays_performance = None
-        self._arrays_space = None
         self._alerts = None
         self._volumes = None
         self._volumes_performance = None
@@ -29,8 +27,6 @@ class FlasharrayClient():
         self._hosts_space = None
         self._host_connections = None
         self._directories = None
-        self._directories_performance = None
-        self._directories_space = None
         self._network_interfaces_performance = None
         if self._disable_ssl_warn:
             urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
@@ -38,46 +34,6 @@ class FlasharrayClient():
                                         api_token=api_token,
                                         user_agent='Pure_FA_OpenMetrics_exporter/0.8')
 
-    def arrays(self):
-        if self._arrays:
-            return self._arrays
-        self._arrays = []
-        try:
-            res = self.client.get_arrays()
-            if isinstance(res, flasharray.ValidResponse):
-                self._arrays = list(res.items)
-        except:
-            pass
-        return self._arrays
-
-    def arrays_performance(self):
-        if self._arrays_performance:
-            return self._arrays_performance
-        array_perf = {}
-        try:
-            for p in ['all', 'nfs', 'smb']:
-                array_perf[p] = None
-                res = self.client.get_arrays_performance(protocol=p)
-                if not isinstance(res, flasharray.ValidResponse):
-                    continue
-                array_perf[p] = next(res.items)
-        except:
-            pass
-        self._arrays_performance = array_perf
-        return self._arrays_performance
-
-    def arrays_space(self):
-        if self._arrays_space:
-            return self._arrays_space
-        array_space = {}
-        try:
-            res = self.client.get_arrays_space()
-            if isinstance(res, flasharray.ValidResponse):
-                array_space = next(res.items)
-        except:
-            pass
-        self._arrays_space = array_space
-        return self._arrays_space
 
     def alerts(self):
         if self._alerts:
@@ -91,6 +47,28 @@ class FlasharrayClient():
             pass
         self._alerts = alerts
         return self._alerts
+
+    def arrays(self):
+        if self._arrays:
+            return list(self._arrays.values())
+        try:
+            res = self.client.get_arrays()
+            adict = {}
+            if isinstance(res, flasharray.ValidResponse):
+                for a in res.items:
+                    arr = {}
+                    arr['array'] = a
+                    arr['performance'] = {}
+                    adict[a.id] = arr
+            for p in ['all', 'nfs', 'smb']:
+                res = self.client.get_arrays_performance()
+                if isinstance(res, flasharray.ValidResponse):
+                    for a in res.items:
+                        adict[a.id]['performance'][p] = a
+            self._arrays = adict
+        except:
+            pass
+        return list(self._arrays.values())
 
     def volumes_performance(self):
         if self._volumes_performance:
@@ -211,39 +189,21 @@ class FlasharrayClient():
 
     def directories(self):
         if self._directories:
-            return self._directories
-        dirs = []
+            return list(self._directories.values())
         try:
             res = self.client.get_directories()
+            ddict = {}
             if isinstance(res, flasharray.ValidResponse):
-                dirs = list(res.items)
-        except:
-            pass
-        self._directories = dirs
-        return self._directories
-
-    def directories_performance(self):
-        if self._directories_performance:
-            return self._directories_performance
-        dir_perf = []
-        try:
+                for d in res.items:
+                    dir = {}
+                    dir['directory'] = d
+                    dir['performance'] = {}
+                    ddict[d.id] = dir
             res = self.client.get_directories_performance()
             if isinstance(res, flasharray.ValidResponse):
-                dir_perf = list(res.items)
+                for d in res.items:
+                    ddict[d.id]['performance'] = d
+            self._directories = ddict
         except:
-            pass
-        self._directories_performance = dir_perf
-        return self._directories_performance
-
-    def directories_space(self):
-        if self._directories_space:
-            return self._directories_space
-        dir_space = []
-        try:
-            res = self.client.get_directories_space()
-            if isinstance(res, flasharray.ValidResponse):
-                dir_space = list(res.items)
-        except:
-            pass
-        self._directories_space = dir_space
-        return self._directories_space
+             pass
+        return list(self._directories.values())
