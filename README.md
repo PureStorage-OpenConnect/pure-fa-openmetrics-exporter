@@ -98,5 +98,5 @@ Depending on the target array, scraping for the whole set of metrics could resul
   
 ### Prometheus configuration examples
 
-The [exemples](examples) directory provides an example of deployment of a Prometheus Grafana stack on k8s that can be used as the starting point to build your own solution.
+The [examples](examples) directory provides an example of deployment of a Prometheus Grafana stack on k8s that can be used as the starting point to build your own solution.
 
