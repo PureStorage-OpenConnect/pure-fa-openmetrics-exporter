@@ -129,4 +129,3 @@ if __name__ == "__main__":
     app.ctx.disable_cert_warn = args.disable_cert_warning
     app.run(host=args.host, port=args.port, workers=args.workers,
             access_log=args.log, debug=args.debug)
-

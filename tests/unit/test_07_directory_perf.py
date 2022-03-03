@@ -1,4 +1,3 @@
-import pytest
 from pure_fa_openmetrics_exporter.flasharray_collector.flasharray_metrics import directory_performance_metrics
 
 def test_directory_perf_name(fa_client):

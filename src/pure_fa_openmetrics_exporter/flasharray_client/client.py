@@ -15,17 +15,12 @@ class FlasharrayClient():
         self._disable_ssl_warn = disable_ssl_warn
         self._arrays = None
         self._alerts = None
+        self._hardware = None
         self._volumes = None
-        self._volumes_performance = None
-        self._volumes_space = None
         self._vgroups = None
         self._pods = None
-        self._pods_performance = None
-        self._pods_space = None
         self._hosts = None
-        self._hosts_performance = None
-        self._hosts_space = None
-        self._host_connections = None
+        self._connections = None
         self._directories = None
         self._network_interfaces_performance = None
         if self._disable_ssl_warn:
@@ -52,8 +47,8 @@ class FlasharrayClient():
         if self._arrays:
             return list(self._arrays.values())
         try:
-            res = self.client.get_arrays()
             adict = {}
+            res = self.client.get_arrays()
             if isinstance(res, flasharray.ValidResponse):
                 for a in res.items:
                     arr = {}
@@ -70,129 +65,75 @@ class FlasharrayClient():
             pass
         return list(self._arrays.values())
 
-    def volumes_performance(self):
-        if self._volumes_performance:
-            return self._volumes_performance
-        vols_perf = []
-        try:
-            res = self.client.get_volumes_performance()
-            if isinstance(res, flasharray.ValidResponse):
-                vols_perf = list(res.items)
-        except:
-            pass
-        self._volumes_performance = vols_perf
-        return self._volumes_performance
-
     def volumes(self):
         if self._volumes:
-            return self._volumes
-        vols = []
+            return list(self._volumes.values())
         try:
+            vdict = {}
             res = self.client.get_volumes()
             if isinstance(res, flasharray.ValidResponse):
-                vols = list(res.items)
-        except:
-            pass
-        self._volumes = vols
-        return self._volumes
-
-    def volumes_space(self):
-        if self._volumes_space:
-            return self._volumes_space
-        vols_space = []
-        try:
-            res = self.client.get_volumes_space()
+                for v in res.items:
+                    vol = {}
+                    vol['volume'] = v
+                    vol['performance'] = {}
+                    vdict[v.id] = vol
+            res = self.client.get_volumes_performance()
             if isinstance(res, flasharray.ValidResponse):
-                vols_space = list(res.items)
+                for v in res.items:
+                    vdict[v.id]['performance'] = v
+            self._volumes = vdict
         except:
             pass
-        self._volumes_space = vols_space
-        return self._volumes_space
+        return list(self._volumes.values())
 
     def pods(self):
         if self._pods:
-            return self._pods
-        pods = []
+            return list(self._pods.values())
         try:
+            pdict = {}
             res = self.client.get_pods()
             if isinstance(res, flasharray.ValidResponse):
-                pods = list(res.items)
-        except:
-            pass
-        self._pods = pods
-        return self._pods
-
-    def pods_performance(self):
-        if self._pods_performance:
-            return self._pods_performance
-        pods_perf = []
-        try:
+                for p in res.items:
+                    pod = {}
+                    pod['pod'] = p
+                    pod['performance'] = {}
+                    pdict[p.id] = pod
             res = self.client.get_pods_performance()
             if isinstance(res, flasharray.ValidResponse):
-                pods_perf = list(res.items)
+                for p in res.items:
+                    pdict[p.id]['performance'] = p
+            self._pods = pdict
         except:
             pass
-        self._pods_performance = pods_perf
-        return self._pods_performance
-
-    def pods_space(self):
-        if self._pods_space:
-            return self._pods_space
-        pods_space = []
-        try:
-            res = self.client.get_pods_space()
-            if isinstance(res, flasharray.ValidResponse):
-                pods_space = list(res.items)
-        except:
-            pass
-        self._pods_space = pods_space
-        return self._pods_space
+        return list(self._pods.values())
 
     def hosts(self):
         if self._hosts:
-            return self._hosts
-        hosts = []
+            return list(self._hosts.values())
         try:
+            hdict = {}
             res = self.client.get_hosts()
             if isinstance(res, flasharray.ValidResponse):
-                hosts = list(res.items)
-        except:
-            pass
-        self._hosts = hosts
-        return self._hosts
-
-    def hosts_performance(self):
-        if self._hosts_performance:
-            return self._hosts_performance
-        hosts_perf = []
-        try:
+                for h in res.items:
+                    host = {}
+                    host['host'] = h
+                    host['performance'] = {}
+                    hdict[h.name] = host
             res = self.client.get_hosts_performance()
             if isinstance(res, flasharray.ValidResponse):
-                hosts_perf = list(res.items)
+                for h in res.items:
+                    hdict[h.name]['performance'] = h
+            self._hosts = hdict
         except:
             pass
-        self._hosts_performance = hosts_perf
-        return self._hosts_performance
-
-    def hosts_space(self):
-        if self._hosts_space:
-            return self._hosts_space
-        hosts_space = []
-        try:
-            res = self.client.get_hosts_space()
-            if isinstance(res, flasharray.ValidResponse):
-                hosts_space = list(res.items)
-        except:
-            pass
-        self._hosts_space = hosts_space
-        return self._hosts_space
+        return list(self._hosts.values())
 
     def directories(self):
         if self._directories:
             return list(self._directories.values())
         try:
-            res = self.client.get_directories()
             ddict = {}
+            res = self.client.get_directories()
             if isinstance(res, flasharray.ValidResponse):
                 for d in res.items:
                     dir = {}
@@ -207,3 +148,44 @@ class FlasharrayClient():
         except:
              pass
         return list(self._directories.values())
+
+    def connections(self):
+        if self._connections is not None:
+            return list(self._connections)
+        try:
+            self._connections = []
+            res = self.client.get_connections()
+            if isinstance(res, flasharray.ValidResponse):
+                self.volumes()
+                for hc in res.items:
+                    hcdict = {}
+                    hcdict['host'] = hc.host.name
+                    hcdict['volume_serial'] = self._volumes[hc.volume.id]['volume'].serial
+                    self._connections.append(hcdict)
+        except Exception:
+            pass
+        return list(self._connections)
+
+    def network_interfaces_performance(self):
+        if self._network_interfaces_performance is not None:
+            return self._network_interfaces_performance
+        try:
+            res = self.client.get_network_interfaces_performance()
+            if isinstance(res, flasharray.ValidResponse):
+                self._network_interfaces_performance = list(res.items)
+        except Exception as e:
+            self._network_interfaces = []
+            pass
+        return self._network_interfaces_performance
+
+    def hardware(self):
+        if self._hardware is not None:
+            return self._hardware
+        try:
+            res = self.client.get_hardware()
+            if isinstance(res, flasharray.ValidResponse):
+                self._hardware = list(res.items)
+        except Exception as e:
+            self._hardware = []
+            pass
+        return self._hardware

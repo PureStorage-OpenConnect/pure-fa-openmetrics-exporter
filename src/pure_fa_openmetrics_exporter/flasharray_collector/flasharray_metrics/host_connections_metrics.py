@@ -1,5 +1,7 @@
 from prometheus_client.core import GaugeMetricFamily
 
+PURE_NAA = 'naa.624a9370'
+
 class HostConnectionsMetrics():
     """
     Base class for mapping FlashArray hosts to connected volumes
@@ -7,19 +9,20 @@ class HostConnectionsMetrics():
     volumes in Prometheus queries.
     """
 
-    def __init__(self, fa):
-        self.fa = fa
-        self.map_host_vol = GaugeMetricFamily(
-                                'purefa_host_connections_info',
-                                'FlashArray host volumes connections',
-                                labels=['name', 'naaid'])
+    def __init__(self, fa_client):
+        self.host_connections = None
+        self.connections = fa_client.connections()
 
     def _map_host_vol(self):
-        for hc in self.fa.get_host_connections():
-            self.map_host_vol.add_metric([hc['host']['name'],
-                                          hc['volume']['naaid']], 1)
+        self.host_connections = GaugeMetricFamily(
+                                'purefa_host_connections_info',
+                                'FlashArray host volumes connections',
+                                labels=['hostname', 'naaid'])
+        for hc in self.connections:
+            naaid = PURE_NAA + hc['volume_serial']
+            self.host_connections.add_metric([hc['host'], naaid], 1)
 
 
     def get_metrics(self):
         self._map_host_vol()
-        yield self.map_host_vol
+        yield self.host_connections

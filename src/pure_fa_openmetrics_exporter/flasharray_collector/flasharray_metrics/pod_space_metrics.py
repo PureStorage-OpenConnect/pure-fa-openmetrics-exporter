@@ -1,16 +1,19 @@
 from prometheus_client.core import GaugeMetricFamily
 
-
 class PodSpaceMetrics():
     """
     Base class for FlashArray Prometheus pod space metrics
     """
 
-    def __init__(self, fa):
-        self.fa = fa
+    def __init__(self, fa_client):
+        self.data_reduction = None
+        self.size = None
+        self.used = None
+        self.pods = fa_client.pods()
 
+    def _space(self):
         self.data_reduction = GaugeMetricFamily(
-                                  'purefa_pod_space_datareduction_ratio',
+                                  'purefa_pod_space_data_reduction_ratio',
                                   'FlashArray pod data reduction ratio',
                                   labels=['name'],
                                   unit='ratio')
@@ -25,45 +28,27 @@ class PodSpaceMetrics():
                                   'FlashArray pod used space',
                                   labels=['name', 'space'])
 
-    def _data_reduction(self) -> None:
-        """
-        Create metrics of gauge type for pod data reduction
-        """
-        for p in self.fa.get_pods():
-            val = p['space']['data_reduction']
-            val = val if val is not None else 0
-            self.data_reduction.add_metric([p['name']], val)
+        for p in self.pods:
+            pod = p['pod']
+            self.data_reduction.add_metric([pod.name], 
+                      pod.space.data_reduction or 0)
+            self.size.add_metric([pod.name], 
+                      pod.space.virtual or 0)
+            self.used.add_metric([pod.name, 'replication'],
+                      pod.space.replication or 0)
+            self.used.add_metric([pod.name, 'shared'],
+                      pod.space.shared or 0)
+            self.used.add_metric([pod.name, 'snapshots'],
+                      pod.space.snapshots or 0)
+            self.used.add_metric([pod.name, 'total_physical'],
+                      pod.space.total_physical or 0)
+            self.used.add_metric([pod.name, 'total_provisioned'],
+                      pod.space.total_provisioned or 0)
+            self.used.add_metric([pod.name, 'unique'],
+                      pod.space.unique or 0)
 
-
-    def _size(self) -> None:
-        """
-        Create metrics of gauge type for pod size.
-        """
-        for p in self.fa.get_pods():
-            val = p['space']['virtual']
-            val = val if val is not None else 0
-            self.size.add_metric([p['name']], val)
-
-    def _used(self) -> None:
-        for p in self.fa.get_pods():
-            for s in ['replication',
-                      'shared',
-                      'snapshots',
-                      'system',
-                      'thin_provisioning',
-                      'total_physical',
-                      'total_provisioned',
-                      'total_reduction',
-                      'unique']:
-                val = p['space'][s]
-                val = val if val is not None else 0
-                self.used.add_metric([p['name'], s], val)
-
-
-    def get_metrics(self) -> None:
-        self._data_reduction()
-        self._size()
-        self._used()
+    def get_metrics(self):
+        self._space()
         yield self.data_reduction
         yield self.size
         yield self.used

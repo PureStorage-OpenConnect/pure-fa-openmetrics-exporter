@@ -1,14 +1,19 @@
 from prometheus_client.core import GaugeMetricFamily
 
+PURE_NAA = 'naa.624a9370'
 
 class VolumePerformanceMetrics():
     """
     Base class for FlashArray Prometheus volume performance metrics
     """
+    def __init__(self, fa_client):
+        self.latency = None
+        self.bandwidth = None
+        self.iops = None
+        self.avg_bsz = None
+        self.volumes = fa_client.volumes()
 
-    def __init__(self, fa):
-        self.fa = fa
-
+    def _performance(self):
         self.latency = GaugeMetricFamily(
                            'purefa_volume_performance_latency_usec',
                            'FlashArray volume IO latency',
@@ -45,91 +50,87 @@ class VolumePerformanceMetrics():
                                      'vgroup',
                                      'dimension'])
 
-    def _latency(self) -> None:
-        """
-        Create volumes latency metrics of gauge type.
-        """
-        for v in self.fa.get_volumes():
-            for k in ['queue_usec_per_mirrored_write_op',
-                      'queue_usec_per_read_op',
-                      'queue_usec_per_write_op',
-                      'san_usec_per_mirrored_write_op',
-                      'san_usec_per_read_op',
-                      'san_usec_per_write_op',
-                      'service_usec_per_mirrored_write_op',
-                      'service_usec_per_read_op',
-                      'service_usec_per_read_op_cache_reduction',
-                      'service_usec_per_write_op',
-                      'usec_per_mirrored_write_op',
-                      'usec_per_read_op',
-                      'usec_per_write_op']:
-                pod = v['pod']['name']
-                pod = pod  if pod is not None else ''
-                vg = v['volume_group']['name']
-                vg = vg if vg is not None else ''
-                val = v['performance'][k]
-                val = val if val is not None else 0
-                self.latency.add_metric([v['name'], v['naaid'], pod, vg, k],
-                                        val)
+        for v in self.volumes:
+            vol = v['volume']
+            pod = ''
+            vg = ''
+            if hasattr(vol.pod, 'name'):
+                pod = vol.pod.name
+            if hasattr(vol.volume_group, 'name'):
+                vg = vol.volume_group.name
+            naaid = PURE_NAA + vol.serial
+            perf = v['performance']
+            self.latency.add_metric([vol.name, naaid, pod, vg,
+                                    'queue_usec_per_mirrored_write_op'],
+                                    perf.queue_usec_per_mirrored_write_op or 0)
+            self.latency.add_metric([vol.name, naaid, pod, vg,
+                                    'queue_usec_per_read_op'],
+                                    perf.queue_usec_per_read_op or 0)
+            self.latency.add_metric([vol.name, naaid, pod, vg,
+                                    'queue_usec_per_write_op'],
+                                    perf.queue_usec_per_write_op or 0)
+            self.latency.add_metric([vol.name, naaid, pod, vg,
+                                    'san_usec_per_mirrored_write_op'],
+                                    perf.san_usec_per_mirrored_write_op or 0)
+            self.latency.add_metric([vol.name, naaid, pod, vg,
+                                    'san_usec_per_read_op'],
+                                    perf.san_usec_per_read_op or 0)
+            self.latency.add_metric([vol.name, naaid, pod, vg,
+                                    'san_usec_per_write_op'],
+                                    perf.san_usec_per_write_op or 0)
+            self.latency.add_metric([vol.name, naaid, pod, vg,
+                                    'service_usec_per_mirrored_write_op'],
+                                    perf.service_usec_per_mirrored_write_op or 0)
+            self.latency.add_metric([vol.name, naaid, pod, vg,
+                                    'service_usec_per_read_op'],
+                                    perf.service_usec_per_read_op or 0)
+            self.latency.add_metric([vol.name, naaid, pod, vg,
+                                    'service_usec_per_write_op'],
+                                    perf.service_usec_per_write_op or 0)
+            self.latency.add_metric([vol.name, naaid, pod, vg,
+                                    'usec_per_mirrored_write_op'],
+                                    perf.usec_per_mirrored_write_op or 0)
+            self.latency.add_metric([vol.name, naaid, pod, vg,
+                                    'usec_per_read_op'],
+                                    perf.usec_per_read_op or 0)
+            self.latency.add_metric([vol.name, naaid, pod, vg,
+                                    'usec_per_write_op'],
+                                    perf.usec_per_write_op or 0)
 
+            self.bandwidth.add_metric([vol.name, naaid, pod, vg,
+                                      'read_bytes_per_sec'],
+                                      perf.read_bytes_per_sec or 0)
+            self.bandwidth.add_metric([vol.name, naaid, pod, vg,
+                                      'write_bytes_per_sec'],
+                                      perf.write_bytes_per_sec or 0)
+            self.bandwidth.add_metric([vol.name, naaid, pod, vg,
+                                      'mirrored_write_bytes_per_sec'],
+                                      perf.mirrored_write_bytes_per_sec or 0)
 
-    def _bandwidth(self) -> None:
-        """
-        Create volumes bandwidth metrics of gauge type.
-        """
-        for v in self.fa.get_volumes():
-            for k in ['read_bytes_per_sec',
-                      'write_bytes_per_sec',
-                      'mirrored_write_bytes_per_sec']:
-                pod = v['pod']['name']
-                pod = pod  if pod is not None else ''
-                vg = v['volume_group']['name']
-                vg = vg if vg is not None else ''
-                val = v['performance'][k]
-                val = val if val is not None else 0
-                self.bandwidth.add_metric([v['name'], v['naaid'], pod, vg, k],
-                                          val)
+            self.iops.add_metric([vol.name, naaid, pod, vg,
+                                 'reads_per_sec'],
+                                 perf.reads_per_sec or 0)
+            self.iops.add_metric([vol.name, naaid, pod, vg,
+                                 'writes_per_sec'],
+                                 perf.writes_per_sec or 0)
+            self.iops.add_metric([vol.name, naaid, pod, vg,
+                                 'mirrored_writes_per_sec'],
+                                 perf.mirrored_writes_per_sec or 0)
+            self.avg_bsz.add_metric([vol.name, naaid, pod, vg,
+                                    'bytes_per_read'],
+                                    perf.bytes_per_read or 0)
+            self.avg_bsz.add_metric([vol.name, naaid, pod, vg,
+                                    'bytes_per_write'],
+                                    perf.bytes_per_write or 0)
+            self.avg_bsz.add_metric([vol.name, naaid, pod, vg,
+                                    'bytes_per_op'],
+                                    perf.bytes_per_op or 0)
+            self.avg_bsz.add_metric([vol.name, naaid, pod, vg,
+                                    'bytes_per_mirrored_write'],
+                                    perf.bytes_per_mirrored_write or 0)
 
-    def _iops(self) -> None:
-        """
-        Create volumes IOPS bandwidth metrics of gauge type.
-        """
-        for v in self.fa.get_volumes():
-            for k in ['reads_per_sec',
-                      'writes_per_sec',
-                      'mirrored_writes_per_sec']:
-                pod = v['pod']['name']
-                pod = pod  if pod is not None else ''
-                vg = v['volume_group']['name']
-                vg = vg if vg is not None else ''
-                val = v['performance'][k]
-                val = val if val is not None else 0
-                self.iops.add_metric([v['name'], v['naaid'], pod, vg, k], val)
-
-    def _avg_block_size(self) -> None:
-        """
-        Create volumes average block size performance metrics of gauge type.
-        Metrics values can be iterated over.
-        """
-        for v in self.fa.get_volumes():
-            for k in ['bytes_per_read',
-                      'bytes_per_write',
-                      'bytes_per_op',
-                      'bytes_per_mirrored_write']:
-                pod = v['pod']['name']
-                pod = pod  if pod is not None else ''
-                vg = v['volume_group']['name']
-                vg = vg if vg is not None else ''
-                val = v['performance'][k]
-                val = val if val is not None else 0
-                self.avg_bsz.add_metric([v['name'], v['naaid'], pod, vg, k],
-                                        val)
-
-    def get_metrics(self) -> None:
-        self._latency()
-        self._bandwidth()
-        self._iops()
-        self._avg_block_size()
+    def get_metrics(self):
+        self._performance()
         yield self.latency
         yield self.bandwidth
         yield self.iops
