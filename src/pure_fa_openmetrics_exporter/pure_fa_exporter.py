@@ -1,4 +1,4 @@
-!/usr/bin/env python
+#!/usr/bin/env python
 
 from functools import wraps
 
@@ -97,15 +97,15 @@ async def index_handler(request):
 '''
     return html(msg)
 
-@app.get('/metrics/<tag:all|array|volumes|hosts|pods|directories>/")
+@app.get(r"/metrics/<tag:all|array|volumes|hosts|pods|directories>/")
 @authorized
-def flasharray_handler():
+async def flasharray_handler(request, tag):
     """Produce FlashArray metrics."""
     registry = CollectorRegistry()
     collector = FlasharrayCollector
     endpoint = request.args.get('endpoint', None)
     fa_client = FlasharrayClient(endpoint, request.token, app.ctx.disable_cert_warn)
-    registry.register(collector(fb_client, request=tag))
+    registry.register(collector(fa_client, request=tag))
     resp = generate_latest(registry)
     del fa_client, collector, registry
     return raw(resp)
