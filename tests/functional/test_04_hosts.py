@@ -1,19 +1,17 @@
 import pytest
+from httpx import Headers
 
+def test_hosts(app_client, endpoint, api_token):
+    h = Headers({'Authorization': "Bearer " + api_token})
+    _, res = app_client.get('/metrics/hosts?endpoint=' + endpoint, headers = h)
 
-def test_hosts(client):
-    rv = client.get("/metrics/hosts")
-    for e in ['purefa_host_space_datareduction_ratio',
+    for e in ['purefa_host_space_data_reduction_ratio',
               'purefa_host_space_size_bytes',
-              'purefa_host_space_bytes'
-              'shared',
+              'purefa_host_space_used_bytes',
               'snapshots',
-              'system',
-              'thin_provisioning',
               'total_physical',
               'total_provisioned',
-              'total_reduction',
-              'unique'
+              'unique',
               'purefa_host_performance_latency_usec',
               'purefa_host_performance_bandwidth_bytes',
               'purefa_host_performance_iops',
@@ -25,7 +23,6 @@ def test_hosts(client):
               'san_usec_per_mirrored_write_op',
               'service_usec_per_mirrored_write_op',
               'service_usec_per_read_op',
-              'service_usec_per_read_op_cache_reduction',
               'service_usec_per_write_op',
               'usec_per_read_op',
               'usec_per_write_op',
@@ -36,4 +33,4 @@ def test_hosts(client):
               'read_bytes_per_sec',
               'write_bytes_per_sec',
               'mirrored_write_bytes_per_sec']:
-        assert b"e" in rv.data
+        assert e in res.text

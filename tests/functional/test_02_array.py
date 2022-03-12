@@ -1,6 +1,7 @@
 import pytest
-from flask import request
+from httpx import Headers
 
-def test_array(client):
-    rv = client.get('/metrics/array')
-    assert b'purefa_info{array_name=' in rv.data
+def test_array(app_client, endpoint, api_token):
+    h = Headers({'Authorization': "Bearer " + api_token})
+    _, res = app_client.get('/metrics/array?endpoint=' + endpoint, headers = h)
+    assert 'purefa_info{array_name=' in res.text

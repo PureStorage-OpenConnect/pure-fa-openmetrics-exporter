@@ -1,19 +1,17 @@
 import pytest
+from httpx import Headers
 
-def test_volumes(client):
-    rv = client.get("/metrics/volumes")
-    for e in ['purefa_volume_space_datareduction_ratio',
+def test_volumes(app_client, endpoint, api_token):
+    h = Headers({'Authorization': "Bearer " + api_token})
+    _, res = app_client.get('/metrics/volumes?endpoint=' + endpoint, headers = h)
+    for e in ['purefa_volume_space_data_reduction_ratio',
               'purefa_volume_space_size_bytes',
-              'purefa_volume_space_bytes',
-              'shared',
+              'purefa_volume_space_used_bytes',
               'snapshots',
               'snapshots_effective',
-              'system',
-              'thin_provisioning',
               'total_effective',
               'total_physical',
               'total_provisioned',
-              'total_reduction',
               'unique',
               'virtual',
               'purefa_volume_performance_latency_usec',
@@ -28,7 +26,6 @@ def test_volumes(client):
               'san_usec_per_write_op',
               'service_usec_per_mirrored_write_op',
               'service_usec_per_read_op',
-              'service_usec_per_read_op_cache_reduction',
               'service_usec_per_write_op',
               'usec_per_mirrored_write_op',
               'usec_per_read_op',
@@ -43,4 +40,4 @@ def test_volumes(client):
               'bytes_per_write',
               'bytes_per_op',
               'bytes_per_mirrored_write']:
-        assert b"e" in rv.data
+        assert e in res.text

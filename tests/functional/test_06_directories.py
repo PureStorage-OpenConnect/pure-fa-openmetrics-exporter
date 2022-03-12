@@ -1,27 +1,23 @@
 import pytest
+from httpx import Headers
 
-
-def test_directories(client):
-    rv = client.get("/metrics/directories")
-    for e in ['purefa_directory_space_datareduction_ratio',
+def test_directories(app_client, endpoint, api_token):
+    h = Headers({'Authorization': "Bearer " + api_token})
+    _, res = app_client.get('/metrics/directories?endpoint=' + endpoint, headers = h)
+    for e in ['purefa_directory_space_data_reduction_ratio',
               'purefa_directory_space_size_bytes',
-              'purefa_directory_space_bytes',
+              'purefa_directory_space_used_bytes',
               'name',
               'filesystem',
               'path',
               'space',
-              'shared',
               'snapshots',
-              'system',
-              'thin_provisioning',
               'total_physical',
-              'total_provisioned',
-              'total_reduction',
               'unique',
               'purefa_directory_performance_latency_usec',
               'purefa_directory_performance_bandwidth_bytes',
               'purefa_directory_performance_iops',
-              'purefa_directory_performance_avg_block_bytes'
+              'purefa_directory_performance_avg_block_bytes',
               'usec_per_read_op',
               'usec_per_write_op',
               'usec_per_other_op',
@@ -33,5 +29,5 @@ def test_directories(client):
               'bytes_per_op',
               'bytes_per_read',
               'bytes_per_write']:
-        assert b"e" in rv.data
+        assert e in res.text
 

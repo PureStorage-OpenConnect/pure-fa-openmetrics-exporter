@@ -4,7 +4,7 @@ from functools import wraps
 
 from sanic import Sanic
 from sanic.log import logger
-from sanic.response import text, html, raw
+from sanic.response import text, html, raw, empty
 from sanic.exceptions import SanicException
 from sanic.handlers import ErrorHandler
 from prometheus_client import generate_latest, CollectorRegistry
@@ -104,6 +104,10 @@ async def flasharray_handler(request, tag):
     registry = CollectorRegistry()
     collector = FlasharrayCollector
     endpoint = request.args.get('endpoint', None)
+    if not endpoint:
+        return empty(status=400)
+    if (len(request.args.keys()) > 1):
+        return empty(status=400)
     fa_client = FlasharrayClient(endpoint, request.token, app.ctx.disable_cert_warn)
     registry.register(collector(fa_client, request=tag))
     resp = generate_latest(registry)
