@@ -111,7 +111,6 @@ async def flasharray_handler(request, tag):
     fa_client = FlasharrayClient(endpoint, request.token, app.ctx.disable_cert_warn)
     registry.register(collector(fa_client, request=tag))
     resp = generate_latest(registry)
-    del fa_client, collector, registry
     return raw(resp)
 
 
