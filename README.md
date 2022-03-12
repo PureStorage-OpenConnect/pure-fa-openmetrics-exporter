@@ -22,8 +22,6 @@ To monitor your Pure Storage appliances, you will need to create a new dedicated
 
 The exporter is full Python application based on [Sanic](https://sanic.dev/) framework. It is preferably built and launched via Docker. You can also scale the exporter deployment to multiple containers on Kubernetes thanks to the stateless nature of the application.
 
-**Note** If you want to deploy the exporter as a Python module, please use this version of the [py-pure-client](https://github.com/genegr/py-pure-client) Python SDK, as the official release does not properly handle the disposal of the internal API client
-
 ---
 
 #### The official docker images are available at Quay.io
