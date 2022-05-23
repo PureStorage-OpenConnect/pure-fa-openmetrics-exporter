@@ -4,7 +4,6 @@ def test_pod_perf_name(fa_client):
     pod_perf = pod_performance_metrics.PodPerformanceMetrics(fa_client)
     for m in pod_perf.get_metrics():
         for s in m.samples:
-            print(s)
             assert s.name in ['purefa_pod_performance_latency_usec',
                               'purefa_pod_performance_bandwidth_bytes',
                               'purefa_pod_performance_iops',

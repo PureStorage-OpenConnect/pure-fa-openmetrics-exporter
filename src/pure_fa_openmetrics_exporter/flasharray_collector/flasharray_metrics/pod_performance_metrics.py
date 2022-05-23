@@ -1,111 +1,94 @@
 from prometheus_client.core import GaugeMetricFamily
 
+performance_latency_kpis = ['queue_usec_per_mirrored_write_op',
+                            'queue_usec_per_read_op',
+                            'queue_usec_per_write_op',
+                            'san_usec_per_mirrored_write_op',
+                            'san_usec_per_read_op',
+                            'san_usec_per_write_op',
+                            'service_usec_per_mirrored_write_op',
+                            'service_usec_per_read_op',
+                            'service_usec_per_write_op',
+                            'usec_per_mirrored_write_op', 
+                            'usec_per_read_op',
+                            'usec_per_write_op']
+
+performance_bandwidth_kpis = ['read_bytes_per_sec',
+                              'write_bytes_per_sec',
+                              'mirrored_write_bytes_per_sec']
+
+performance_iops_kpis = ['reads_per_sec',
+                         'writes_per_sec',
+                         'mirrored_writes_per_sec']
+
+performance_avg_size_kpis = ['bytes_per_read',
+                             'bytes_per_write',
+                             'bytes_per_op']
+
 class PodPerformanceMetrics():
     """
     Base class for FlashArray Prometheus pod performance metrics
     """
 
     def __init__(self, fa_client):
-        self.latency = None
-        self.bandwidth = None
-        self.iops = None
-        self.avg_bsz = None
         self.pods = fa_client.pods()
-
-    def _performance(self):
-        self.latency = GaugeMetricFamily('purefa_pod_performance_latency_usec',
+        self.latency = GaugeMetricFamily('purefa_pod_performance_latency',
                                          'FlashArray pod IO latency',
-                                         labels=['name', 'dimension'])
-
-        self.bandwidth = GaugeMetricFamily('purefa_pod_performance_bandwidth_bytes',
+                                         labels=['name', 'dimension'],
+                                         unit='usec')
+        self.bandwidth = GaugeMetricFamily('purefa_pod_performance_bandwidth',
                                            'FlashArray pod bandwidth',
-                                           labels=['name', 'dimension'])
-
+                                           labels=['name', 'dimension'],
+                                           unit='bytes')
         self.iops = GaugeMetricFamily('purefa_pod_performance_iops',
                                       'FlashArray pod IOPS',
                                       labels=['name', 'dimension'])
+        self.avg_size = GaugeMetricFamily('purefa_pod_performance_avg_block',
+                                          'FlashArray avg block size',
+                                          labels=['name', 'dimension'],
+                                          unit='bytes')
 
-        self.avg_bsz = GaugeMetricFamily(
-                           'purefa_pod_performance_avg_block_bytes',
-                           'FlashArray avg block size',
-                           labels=['name', 'dimension'])
-
+    def _build_metrics(self):
+        cnt_l = cnt_b = cnt_i = cnt_a = 0
         for p in self.pods:
             pod = p['pod']
             perf = p['performance']
-            self.latency.add_metric([pod.name,
-                                    'queue_usec_per_mirrored_write_op'],
-                                    perf.queue_usec_per_mirrored_write_op or 0)
-            self.latency.add_metric([pod.name,
-                                    'queue_usec_per_read_op'],
-                                    perf.queue_usec_per_read_op or 0)
-            self.latency.add_metric([pod.name,
-                                    'queue_usec_per_write_op'],
-                                    perf.queue_usec_per_write_op or 0)
-            self.latency.add_metric([pod.name,
-                                    'san_usec_per_mirrored_write_op'],
-                                    perf.san_usec_per_mirrored_write_op or 0)
-            self.latency.add_metric([pod.name,
-                                    'san_usec_per_read_op'],
-                                    perf.san_usec_per_read_op or 0)
-            self.latency.add_metric([pod.name,
-                                    'san_usec_per_write_op'],
-                                    perf.san_usec_per_write_op or 0)
-            self.latency.add_metric([pod.name,
-                                    'service_usec_per_mirrored_write_op'],
-                                    perf.service_usec_per_mirrored_write_op or 0) 
-            self.latency.add_metric([pod.name,
-                                    'service_usec_per_read_op'],
-                                    perf.service_usec_per_read_op or 0) 
-            self.latency.add_metric([pod.name,
-                                    'service_usec_per_write_op'],
-                                    perf.service_usec_per_write_op or 0) 
-            self.latency.add_metric([pod.name,
-                                    'usec_per_mirrored_write_op'], 
-                                    perf.usec_per_mirrored_write_op or 0) 
-            self.latency.add_metric([pod.name,
-                                    'usec_per_read_op'],
-                                    perf.usec_per_read_op or 0) 
-            self.latency.add_metric([pod.name,
-                                    'usec_per_write_op'],
-                                    perf.usec_per_write_op or 0)
-
-            self.bandwidth.add_metric([pod.name,
-                                      'read_bytes_per_sec'],
-                                      perf.read_bytes_per_sec or 0)
-            self.bandwidth.add_metric([pod.name,
-                                      'write_bytes_per_sec'],
-                                      perf.write_bytes_per_sec or 0)
-            self.bandwidth.add_metric([pod.name,
-                                      'mirrored_write_bytes_per_sec'],
-                                      perf.mirrored_write_bytes_per_sec or 0)
-
-            self.iops.add_metric([pod.name,
-                                 'reads_per_sec'],
-                                 perf.reads_per_sec or 0)
-            self.iops.add_metric([pod.name,
-                                 'writes_per_sec'],
-                                 perf.writes_per_sec or 0)
-            self.iops.add_metric([pod.name,
-                                 'mirrored_writes_per_sec'],
-                                 perf.mirrored_writes_per_sec or 0)
-
-            self.avg_bsz.add_metric([pod.name,
-                                    'bytes_per_read'],
-                                    perf.bytes_per_read or 0)
-            self.avg_bsz.add_metric([pod.name,
-                                    'bytes_per_write'],
-                                    perf.bytes_per_write or 0)
-            self.avg_bsz.add_metric([pod.name,
-                                    'bytes_per_op'],
-                                    perf.bytes_per_op or 0)
-            self.avg_bsz.add_metric([pod.name,
-                                    'bytes_per_mirrored_write'],
-                                    perf.bytes_per_mirrored_write or 0)
+            for k in performance_latency_kpis:
+                v = getattr(perf, k)
+                if v is None:
+                    continue
+                cnt_l += 1
+                self.latency.add_metric([pod.name, k], v)
+            for k in performance_bandwidth_kpis:
+                v = getattr(perf, k)
+                if v is None:
+                    continue
+                cnt_b += 1
+                self.bandwidth.add_metric([pod.name, k], v)
+            for k in performance_iops_kpis:
+                v = getattr(perf, k)
+                if v is None:
+                    continue
+                cnt_i += 1
+                self.iops.add_metric([pod.name, k], v)
+            for k in performance_avg_size_kpis:
+                v = getattr(perf, k)
+                if v is None:
+                    continue
+                cnt_a += 1
+                self.avg_size.add_metric([pod.name, k], v)
+        if cnt_l == 0 :
+            self.latency = None
+        if cnt_b == 0 :
+            self.bandwidth = None
+        if cnt_i == 0 :
+            self.iops = None
+        if cnt_a == 0:
+            self.avg_size
 
     def get_metrics(self):
-        self._performance()
+        self._build_metrics()
         yield self.latency
         yield self.bandwidth
         yield self.iops
-        yield self.avg_bsz
+        yield self.avg_size

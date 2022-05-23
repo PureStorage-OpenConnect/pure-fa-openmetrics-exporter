@@ -1,54 +1,63 @@
 from prometheus_client.core import GaugeMetricFamily
 
+space_used_kpis = ['replication',
+                   'shared',
+                   'snapshots',
+                   'total_physical',
+                   'total_provisioned',
+                   'unique']
+
 class PodSpaceMetrics():
     """
     Base class for FlashArray Prometheus pod space metrics
     """
 
     def __init__(self, fa_client):
-        self.data_reduction = None
-        self.size = None
-        self.used = None
         self.pods = fa_client.pods()
-
-    def _space(self):
         self.data_reduction = GaugeMetricFamily(
-                                  'purefa_pod_space_data_reduction_ratio',
+                                  'purefa_pod_space_data_reduction',
                                   'FlashArray pod data reduction ratio',
                                   labels=['name'],
                                   unit='ratio')
-
         self.size = GaugeMetricFamily(
-                                  'purefa_pod_space_size_bytes',
+                                  'purefa_pod_space_size',
                                   'FlashArray pod size',
-                                  labels=['name'])
-
+                                  labels=['name'],
+                                  unit='bytes')
         self.used = GaugeMetricFamily(
-                                  'purefa_pod_space_used_bytes',
+                                  'purefa_pod_space_used',
                                   'FlashArray pod used space',
-                                  labels=['name', 'space'])
+                                  labels=['name', 'space'],
+                                  unit='bytes')
 
+    def _build_metrics(self):
+        cnt_dr = 0
+        cnt_sz = 0
+        cnt_u = 0
         for p in self.pods:
             pod = p['pod']
-            self.data_reduction.add_metric([pod.name], 
-                      pod.space.data_reduction or 0)
-            self.size.add_metric([pod.name], 
-                      pod.space.virtual or 0)
-            self.used.add_metric([pod.name, 'replication'],
-                      pod.space.replication or 0)
-            self.used.add_metric([pod.name, 'shared'],
-                      pod.space.shared or 0)
-            self.used.add_metric([pod.name, 'snapshots'],
-                      pod.space.snapshots or 0)
-            self.used.add_metric([pod.name, 'total_physical'],
-                      pod.space.total_physical or 0)
-            self.used.add_metric([pod.name, 'total_provisioned'],
-                      pod.space.total_provisioned or 0)
-            self.used.add_metric([pod.name, 'unique'],
-                      pod.space.unique or 0)
+            dr = getattr(pod.space, 'data_reduction')
+            if dr is not None:
+                cnt_dr += 1
+                self.data_reduction.add_metric([pod.name], dr)
+            sz = getattr(pod.space, 'virtual')
+            if sz is not None:
+                cnt_sz += 1
+                self.size.add_metric([pod.name], sz)
+            for k in space_used_kpis:
+                u = getattr(pod.space, k)
+                if u is not None:
+                    cnt_u += 1
+                    self.used.add_metric([pod.name, k], u)
+        if cnt_dr == 0:
+            self.data_reduction = None
+        if cnt_sz == 0:
+            self.size = None
+        if cnt_u == 0:
+            self.used = None
 
     def get_metrics(self):
-        self._space()
+        self._build_metrics()
         yield self.data_reduction
         yield self.size
         yield self.used

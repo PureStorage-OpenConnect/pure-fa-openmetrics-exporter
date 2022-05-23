@@ -47,6 +47,10 @@ source ./pure-fa-ome-build/bin/activate
 python -m pip install --upgrade pip
 pip install build
 
+# optionally install pytest and sanic_testing if you want to run tests
+pip install pytest
+pip install sanic_testing
+
 # clone the repository
 git clone git@github.com:PureStorage-OpenConnect/pure-fa-openmetrics-exporter.git
 
@@ -73,15 +77,11 @@ docker build --build-arg exporter_version=$VERSION -t pure-fa-ome:$VERSION .
 
 ### Scraping endpoints
 
-The exporter uses a RESTful API schema to provide Prometheus scraping endpoints.
+The exporter uses a RESTful schema to provide scraping endpoints to OpenMetrics clients.
 
 **Authentication**
 
-Authentication is used by the exporter as the mechanism to cross authenticate to the scraped appliance, therefore for each array it is required to provide the REST API token for an account that has a 'readonly' role. The api-token must be provided in the http request using the HTTP Authorization header of type 'Bearer'. This is achieved by specifying the api-token value as the authorization parameter of the specific job in the Prometheus configuration file.
-
-### Scraping endpoints
-
-The exporter uses a RESTful API schema to provide Prometheus scraping endpoints.
+Authentication is used by the exporter as the mechanism to cross authenticate to the scraped appliance, therefore for each array it is required to provide the REST API token for an account that has a 'readonly' role. The api-token must be provided in the http request using the HTTP Authorization header of type 'Bearer'. In case Prometheus is used, this is achieved by specifying the api-token value as the authorization parameter of the specific job in the Prometheus configuration file.
 
 
 URL | Description
@@ -99,4 +99,3 @@ Depending on the target array, scraping for the whole set of metrics could resul
 ### Prometheus configuration examples
 
 The [examples](examples) directory provides an example of deployment of a Prometheus Grafana stack on k8s that can be used as the starting point to build your own solution.
-

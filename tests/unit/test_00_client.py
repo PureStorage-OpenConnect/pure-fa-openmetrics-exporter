@@ -3,7 +3,7 @@ import time
 '''
 These tests are meant to verify the fa_client actually caches the results of each query. 
 The 2 seconds sleep between two calls to the same method should be enough to guarantee
-that if those were two differen calls to the FA endpoint the sampled metrics are different.
+that if those were two different calls to the FA endpoint the sampled metrics are different.
 '''
 
 def test_alerts(fa_client):

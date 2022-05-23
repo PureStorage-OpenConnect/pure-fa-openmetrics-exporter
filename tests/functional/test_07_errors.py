@@ -7,15 +7,15 @@ def test_not_existing_endpoint(app_client, api_token):
     assert res.status_code == 404
 
 @pytest.mark.parametrize("test_input,expected",
-                         [('/metrics/array/', 404),
+                         [('/metrics/array/', 400),
                           ('/metrics/array/not-an-array', 404),
-                          ('/metrics/volumes/', 404),
+                          ('/metrics/volumes/', 400),
                           ('/metrics/volumes/not-a-volume', 404),
-                          ('/metrics/hosts/', 404),
+                          ('/metrics/hosts/', 400),
                           ('/metrics/hosts/not-a-host', 404),
-                          ('/metrics/directories/', 404),
+                          ('/metrics/directories/', 400),
                           ('/metrics/directories/not-a-dir', 404),
-                          ('/metrics/pods/', 404),
+                          ('/metrics/pods/', 400),
                           ('/metrics/pods/not-a-pod', 404)])
 def test_wrong_endpoint(app_client, api_token, test_input, expected):
     h = Headers({'Authorization': "Bearer " + api_token})
