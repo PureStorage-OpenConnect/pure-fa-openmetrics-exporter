@@ -1,0 +1,2914 @@
+{
+  "continuation_token": null,
+  "items": [
+    {
+      "host": {
+        "name": "z-c220-5-nvme"
+      },
+      "lun": 254,
+      "volume": {
+        "name": "z-cisco-x70-a-datastore-VSI-FC-NVMe",
+        "id": "6a86bdc2-2160-a6ec-b13f-073293aecc77"
+      },
+      "host_group": {
+        "name": "z-cisco-nvme-fc"
+      },
+      "protocol_endpoint": {
+        "name": null,
+        "id": null
+      }
+    },
+    {
+      "host": {
+        "name": "z-c220-6-nvme"
+      },
+      "lun": 254,
+      "volume": {
+        "name": "z-cisco-x70-a-datastore-VSI-FC-NVMe",
+        "id": "6a86bdc2-2160-a6ec-b13f-073293aecc77"
+      },
+      "host_group": {
+        "name": "z-cisco-nvme-fc"
+      },
+      "protocol_endpoint": {
+        "name": null,
+        "id": null
+      }
+    },
+    {
+      "host": {
+        "name": "z-c220-8-nvme"
+      },
+      "lun": 254,
+      "volume": {
+        "name": "z-cisco-x70-a-datastore-VSI-FC-NVMe",
+        "id": "6a86bdc2-2160-a6ec-b13f-073293aecc77"
+      },
+      "host_group": {
+        "name": "z-cisco-nvme-fc"
+      },
+      "protocol_endpoint": {
+        "name": null,
+        "id": null
+      }
+    },
+    {
+      "host": {
+        "name": "z-c220-7-nvme"
+      },
+      "lun": 254,
+      "volume": {
+        "name": "z-cisco-x70-a-datastore-VSI-FC-NVMe",
+        "id": "6a86bdc2-2160-a6ec-b13f-073293aecc77"
+      },
+      "host_group": {
+        "name": "z-cisco-nvme-fc"
+      },
+      "protocol_endpoint": {
+        "name": null,
+        "id": null
+      }
+    },
+    {
+      "host": {
+        "name": "z-c220-6-nvme"
+      },
+      "lun": 252,
+      "volume": {
+        "name": "z-cisco-x70-a-datastore-ISO-FC-NVMe",
+        "id": "a0a5cb86-9f20-1623-8a55-fd2daf596c14"
+      },
+      "host_group": {
+        "name": "z-cisco-nvme-fc"
+      },
+      "protocol_endpoint": {
+        "name": null,
+        "id": null
+      }
+    },
+    {
+      "host": {
+        "name": "z-c220-8-nvme"
+      },
+      "lun": 252,
+      "volume": {
+        "name": "z-cisco-x70-a-datastore-ISO-FC-NVMe",
+        "id": "a0a5cb86-9f20-1623-8a55-fd2daf596c14"
+      },
+      "host_group": {
+        "name": "z-cisco-nvme-fc"
+      },
+      "protocol_endpoint": {
+        "name": null,
+        "id": null
+      }
+    },
+    {
+      "host": {
+        "name": "z-c220-7-nvme"
+      },
+      "lun": 252,
+      "volume": {
+        "name": "z-cisco-x70-a-datastore-ISO-FC-NVMe",
+        "id": "a0a5cb86-9f20-1623-8a55-fd2daf596c14"
+      },
+      "host_group": {
+        "name": "z-cisco-nvme-fc"
+      },
+      "protocol_endpoint": {
+        "name": null,
+        "id": null
+      }
+    },
+    {
+      "host": {
+        "name": "z-c220-5-nvme"
+      },
+      "lun": 252,
+      "volume": {
+        "name": "z-cisco-x70-a-datastore-ISO-FC-NVMe",
+        "id": "a0a5cb86-9f20-1623-8a55-fd2daf596c14"
+      },
+      "host_group": {
+        "name": "z-cisco-nvme-fc"
+      },
+      "protocol_endpoint": {
+        "name": null,
+        "id": null
+      }
+    },
+    {
+      "host": {
+        "name": "z-c220-1-fc"
+      },
+      "lun": 251,
+      "volume": {
+        "name": "z-sql-dvops-prd-data",
+        "id": "c271a8bb-e011-b2eb-3c6a-edd1e4a5cb5f"
+      },
+      "host_group": {
+        "name": "z-cisco-fc"
+      },
+      "protocol_endpoint": {
+        "name": null,
+        "id": null
+      }
+    },
+    {
+      "host": {
+        "name": "z-c220-3-fc"
+      },
+      "lun": 251,
+      "volume": {
+        "name": "z-sql-dvops-prd-data",
+        "id": "c271a8bb-e011-b2eb-3c6a-edd1e4a5cb5f"
+      },
+      "host_group": {
+        "name": "z-cisco-fc"
+      },
+      "protocol_endpoint": {
+        "name": null,
+        "id": null
+      }
+    },
+    {
+      "host": {
+        "name": "z-c220-2-fc"
+      },
+      "lun": 251,
+      "volume": {
+        "name": "z-sql-dvops-prd-data",
+        "id": "c271a8bb-e011-b2eb-3c6a-edd1e4a5cb5f"
+      },
+      "host_group": {
+        "name": "z-cisco-fc"
+      },
+      "protocol_endpoint": {
+        "name": null,
+        "id": null
+      }
+    },
+    {
+      "host": {
+        "name": "z-c220-4-fc"
+      },
+      "lun": 251,
+      "volume": {
+        "name": "z-sql-dvops-prd-data",
+        "id": "c271a8bb-e011-b2eb-3c6a-edd1e4a5cb5f"
+      },
+      "host_group": {
+        "name": "z-cisco-fc"
+      },
+      "protocol_endpoint": {
+        "name": null,
+        "id": null
+      }
+    },
+    {
+      "host": {
+        "name": "z-c220-3-fc"
+      },
+      "lun": 250,
+      "volume": {
+        "name": "z-sql-dvops-prd-log",
+        "id": "70a631c4-7085-7865-17ae-252551ecb32c"
+      },
+      "host_group": {
+        "name": "z-cisco-fc"
+      },
+      "protocol_endpoint": {
+        "name": null,
+        "id": null
+      }
+    },
+    {
+      "host": {
+        "name": "z-c220-2-fc"
+      },
+      "lun": 250,
+      "volume": {
+        "name": "z-sql-dvops-prd-log",
+        "id": "70a631c4-7085-7865-17ae-252551ecb32c"
+      },
+      "host_group": {
+        "name": "z-cisco-fc"
+      },
+      "protocol_endpoint": {
+        "name": null,
+        "id": null
+      }
+    },
+    {
+      "host": {
+        "name": "z-c220-4-fc"
+      },
+      "lun": 250,
+      "volume": {
+        "name": "z-sql-dvops-prd-log",
+        "id": "70a631c4-7085-7865-17ae-252551ecb32c"
+      },
+      "host_group": {
+        "name": "z-cisco-fc"
+      },
+      "protocol_endpoint": {
+        "name": null,
+        "id": null
+      }
+    },
+    {
+      "host": {
+        "name": "z-c220-1-fc"
+      },
+      "lun": 250,
+      "volume": {
+        "name": "z-sql-dvops-prd-log",
+        "id": "70a631c4-7085-7865-17ae-252551ecb32c"
+      },
+      "host_group": {
+        "name": "z-cisco-fc"
+      },
+      "protocol_endpoint": {
+        "name": null,
+        "id": null
+      }
+    },
+    {
+      "host": {
+        "name": "z-c220-3-fc"
+      },
+      "lun": 246,
+      "volume": {
+        "name": "z-x70-a-datastore-iometer-FC",
+        "id": "0b94e2cd-95d1-ce5f-ec65-500207407f27"
+      },
+      "host_group": {
+        "name": "z-cisco-fc"
+      },
+      "protocol_endpoint": {
+        "name": null,
+        "id": null
+      }
+    },
+    {
+      "host": {
+        "name": "z-c220-2-fc"
+      },
+      "lun": 246,
+      "volume": {
+        "name": "z-x70-a-datastore-iometer-FC",
+        "id": "0b94e2cd-95d1-ce5f-ec65-500207407f27"
+      },
+      "host_group": {
+        "name": "z-cisco-fc"
+      },
+      "protocol_endpoint": {
+        "name": null,
+        "id": null
+      }
+    },
+    {
+      "host": {
+        "name": "z-c220-4-fc"
+      },
+      "lun": 246,
+      "volume": {
+        "name": "z-x70-a-datastore-iometer-FC",
+        "id": "0b94e2cd-95d1-ce5f-ec65-500207407f27"
+      },
+      "host_group": {
+        "name": "z-cisco-fc"
+      },
+      "protocol_endpoint": {
+        "name": null,
+        "id": null
+      }
+    },
+    {
+      "host": {
+        "name": "z-c220-1-fc"
+      },
+      "lun": 246,
+      "volume": {
+        "name": "z-x70-a-datastore-iometer-FC",
+        "id": "0b94e2cd-95d1-ce5f-ec65-500207407f27"
+      },
+      "host_group": {
+        "name": "z-cisco-fc"
+      },
+      "protocol_endpoint": {
+        "name": null,
+        "id": null
+      }
+    },
+    {
+      "host": {
+        "name": "z-c220-4-fc"
+      },
+      "lun": 244,
+      "volume": {
+        "name": "z-sql-tpch-bak",
+        "id": "fe300c5b-6efb-bce1-222c-99085b556457"
+      },
+      "host_group": {
+        "name": "z-cisco-fc"
+      },
+      "protocol_endpoint": {
+        "name": null,
+        "id": null
+      }
+    },
+    {
+      "host": {
+        "name": "z-c220-1-fc"
+      },
+      "lun": 244,
+      "volume": {
+        "name": "z-sql-tpch-bak",
+        "id": "fe300c5b-6efb-bce1-222c-99085b556457"
+      },
+      "host_group": {
+        "name": "z-cisco-fc"
+      },
+      "protocol_endpoint": {
+        "name": null,
+        "id": null
+      }
+    },
+    {
+      "host": {
+        "name": "z-c220-3-fc"
+      },
+      "lun": 244,
+      "volume": {
+        "name": "z-sql-tpch-bak",
+        "id": "fe300c5b-6efb-bce1-222c-99085b556457"
+      },
+      "host_group": {
+        "name": "z-cisco-fc"
+      },
+      "protocol_endpoint": {
+        "name": null,
+        "id": null
+      }
+    },
+    {
+      "host": {
+        "name": "z-c220-2-fc"
+      },
+      "lun": 244,
+      "volume": {
+        "name": "z-sql-tpch-bak",
+        "id": "fe300c5b-6efb-bce1-222c-99085b556457"
+      },
+      "host_group": {
+        "name": "z-cisco-fc"
+      },
+      "protocol_endpoint": {
+        "name": null,
+        "id": null
+      }
+    },
+    {
+      "host": {
+        "name": "z-c220-3-fc"
+      },
+      "lun": 247,
+      "volume": {
+        "name": "z-sql-rdm-copy-mount",
+        "id": "da256d61-af41-fb92-95c2-c1494dc300bb"
+      },
+      "host_group": {
+        "name": "z-cisco-fc"
+      },
+      "protocol_endpoint": {
+        "name": null,
+        "id": null
+      }
+    },
+    {
+      "host": {
+        "name": "z-c220-2-fc"
+      },
+      "lun": 247,
+      "volume": {
+        "name": "z-sql-rdm-copy-mount",
+        "id": "da256d61-af41-fb92-95c2-c1494dc300bb"
+      },
+      "host_group": {
+        "name": "z-cisco-fc"
+      },
+      "protocol_endpoint": {
+        "name": null,
+        "id": null
+      }
+    },
+    {
+      "host": {
+        "name": "z-c220-4-fc"
+      },
+      "lun": 247,
+      "volume": {
+        "name": "z-sql-rdm-copy-mount",
+        "id": "da256d61-af41-fb92-95c2-c1494dc300bb"
+      },
+      "host_group": {
+        "name": "z-cisco-fc"
+      },
+      "protocol_endpoint": {
+        "name": null,
+        "id": null
+      }
+    },
+    {
+      "host": {
+        "name": "z-c220-1-fc"
+      },
+      "lun": 247,
+      "volume": {
+        "name": "z-sql-rdm-copy-mount",
+        "id": "da256d61-af41-fb92-95c2-c1494dc300bb"
+      },
+      "host_group": {
+        "name": "z-cisco-fc"
+      },
+      "protocol_endpoint": {
+        "name": null,
+        "id": null
+      }
+    },
+    {
+      "host": {
+        "name": "z-c220-3-fc"
+      },
+      "lun": 245,
+      "volume": {
+        "name": "RDM-z-sql-dvops-dv1-z-sql-rdm-copy-mount-77630",
+        "id": "d5d77451-d824-bb25-fe9f-d2de409e8c0d"
+      },
+      "host_group": {
+        "name": "z-cisco-fc"
+      },
+      "protocol_endpoint": {
+        "name": null,
+        "id": null
+      }
+    },
+    {
+      "host": {
+        "name": "z-c220-2-fc"
+      },
+      "lun": 245,
+      "volume": {
+        "name": "RDM-z-sql-dvops-dv1-z-sql-rdm-copy-mount-77630",
+        "id": "d5d77451-d824-bb25-fe9f-d2de409e8c0d"
+      },
+      "host_group": {
+        "name": "z-cisco-fc"
+      },
+      "protocol_endpoint": {
+        "name": null,
+        "id": null
+      }
+    },
+    {
+      "host": {
+        "name": "z-c220-4-fc"
+      },
+      "lun": 245,
+      "volume": {
+        "name": "RDM-z-sql-dvops-dv1-z-sql-rdm-copy-mount-77630",
+        "id": "d5d77451-d824-bb25-fe9f-d2de409e8c0d"
+      },
+      "host_group": {
+        "name": "z-cisco-fc"
+      },
+      "protocol_endpoint": {
+        "name": null,
+        "id": null
+      }
+    },
+    {
+      "host": {
+        "name": "z-c220-1-fc"
+      },
+      "lun": 245,
+      "volume": {
+        "name": "RDM-z-sql-dvops-dv1-z-sql-rdm-copy-mount-77630",
+        "id": "d5d77451-d824-bb25-fe9f-d2de409e8c0d"
+      },
+      "host_group": {
+        "name": "z-cisco-fc"
+      },
+      "protocol_endpoint": {
+        "name": null,
+        "id": null
+      }
+    },
+    {
+      "host": {
+        "name": "z-c220-4-fc"
+      },
+      "lun": 243,
+      "volume": {
+        "name": "RDM-z-sql-dvops-dv1-z-sql-rdm-copy-mount-62584",
+        "id": "8dc5a290-d525-9f86-1bdb-c160f93b4f1b"
+      },
+      "host_group": {
+        "name": "z-cisco-fc"
+      },
+      "protocol_endpoint": {
+        "name": null,
+        "id": null
+      }
+    },
+    {
+      "host": {
+        "name": "z-c220-1-fc"
+      },
+      "lun": 243,
+      "volume": {
+        "name": "RDM-z-sql-dvops-dv1-z-sql-rdm-copy-mount-62584",
+        "id": "8dc5a290-d525-9f86-1bdb-c160f93b4f1b"
+      },
+      "host_group": {
+        "name": "z-cisco-fc"
+      },
+      "protocol_endpoint": {
+        "name": null,
+        "id": null
+      }
+    },
+    {
+      "host": {
+        "name": "z-c220-3-fc"
+      },
+      "lun": 243,
+      "volume": {
+        "name": "RDM-z-sql-dvops-dv1-z-sql-rdm-copy-mount-62584",
+        "id": "8dc5a290-d525-9f86-1bdb-c160f93b4f1b"
+      },
+      "host_group": {
+        "name": "z-cisco-fc"
+      },
+      "protocol_endpoint": {
+        "name": null,
+        "id": null
+      }
+    },
+    {
+      "host": {
+        "name": "z-c220-2-fc"
+      },
+      "lun": 243,
+      "volume": {
+        "name": "RDM-z-sql-dvops-dv1-z-sql-rdm-copy-mount-62584",
+        "id": "8dc5a290-d525-9f86-1bdb-c160f93b4f1b"
+      },
+      "host_group": {
+        "name": "z-cisco-fc"
+      },
+      "protocol_endpoint": {
+        "name": null,
+        "id": null
+      }
+    },
+    {
+      "host": {
+        "name": "z-c220-3-fc"
+      },
+      "lun": 242,
+      "volume": {
+        "name": "RDM-z-sql-dvops-dv1-z-sql-rdm-copy-mount-38542",
+        "id": "c412392e-0968-5434-21eb-4ec02e39a123"
+      },
+      "host_group": {
+        "name": "z-cisco-fc"
+      },
+      "protocol_endpoint": {
+        "name": null,
+        "id": null
+      }
+    },
+    {
+      "host": {
+        "name": "z-c220-2-fc"
+      },
+      "lun": 242,
+      "volume": {
+        "name": "RDM-z-sql-dvops-dv1-z-sql-rdm-copy-mount-38542",
+        "id": "c412392e-0968-5434-21eb-4ec02e39a123"
+      },
+      "host_group": {
+        "name": "z-cisco-fc"
+      },
+      "protocol_endpoint": {
+        "name": null,
+        "id": null
+      }
+    },
+    {
+      "host": {
+        "name": "z-c220-4-fc"
+      },
+      "lun": 242,
+      "volume": {
+        "name": "RDM-z-sql-dvops-dv1-z-sql-rdm-copy-mount-38542",
+        "id": "c412392e-0968-5434-21eb-4ec02e39a123"
+      },
+      "host_group": {
+        "name": "z-cisco-fc"
+      },
+      "protocol_endpoint": {
+        "name": null,
+        "id": null
+      }
+    },
+    {
+      "host": {
+        "name": "z-c220-1-fc"
+      },
+      "lun": 242,
+      "volume": {
+        "name": "RDM-z-sql-dvops-dv1-z-sql-rdm-copy-mount-38542",
+        "id": "c412392e-0968-5434-21eb-4ec02e39a123"
+      },
+      "host_group": {
+        "name": "z-cisco-fc"
+      },
+      "protocol_endpoint": {
+        "name": null,
+        "id": null
+      }
+    },
+    {
+      "host": {
+        "name": "z-c220-3-fc"
+      },
+      "lun": 241,
+      "volume": {
+        "name": "RDM-z-sql-dvops-dv1-z-sql-rdm-copy-mount-56633",
+        "id": "e66f2a30-f483-da57-24de-84f4a25ab55d"
+      },
+      "host_group": {
+        "name": "z-cisco-fc"
+      },
+      "protocol_endpoint": {
+        "name": null,
+        "id": null
+      }
+    },
+    {
+      "host": {
+        "name": "z-c220-2-fc"
+      },
+      "lun": 241,
+      "volume": {
+        "name": "RDM-z-sql-dvops-dv1-z-sql-rdm-copy-mount-56633",
+        "id": "e66f2a30-f483-da57-24de-84f4a25ab55d"
+      },
+      "host_group": {
+        "name": "z-cisco-fc"
+      },
+      "protocol_endpoint": {
+        "name": null,
+        "id": null
+      }
+    },
+    {
+      "host": {
+        "name": "z-c220-4-fc"
+      },
+      "lun": 241,
+      "volume": {
+        "name": "RDM-z-sql-dvops-dv1-z-sql-rdm-copy-mount-56633",
+        "id": "e66f2a30-f483-da57-24de-84f4a25ab55d"
+      },
+      "host_group": {
+        "name": "z-cisco-fc"
+      },
+      "protocol_endpoint": {
+        "name": null,
+        "id": null
+      }
+    },
+    {
+      "host": {
+        "name": "z-c220-1-fc"
+      },
+      "lun": 241,
+      "volume": {
+        "name": "RDM-z-sql-dvops-dv1-z-sql-rdm-copy-mount-56633",
+        "id": "e66f2a30-f483-da57-24de-84f4a25ab55d"
+      },
+      "host_group": {
+        "name": "z-cisco-fc"
+      },
+      "protocol_endpoint": {
+        "name": null,
+        "id": null
+      }
+    },
+    {
+      "host": {
+        "name": "z-c220-2-fc"
+      },
+      "lun": 240,
+      "volume": {
+        "name": "RDM-z-sql-dvops-dv1-z-sql-rdm-copy-mount-61184",
+        "id": "b1a3b372-0c7c-109d-1862-9c5ba152d98b"
+      },
+      "host_group": {
+        "name": "z-cisco-fc"
+      },
+      "protocol_endpoint": {
+        "name": null,
+        "id": null
+      }
+    },
+    {
+      "host": {
+        "name": "z-c220-4-fc"
+      },
+      "lun": 240,
+      "volume": {
+        "name": "RDM-z-sql-dvops-dv1-z-sql-rdm-copy-mount-61184",
+        "id": "b1a3b372-0c7c-109d-1862-9c5ba152d98b"
+      },
+      "host_group": {
+        "name": "z-cisco-fc"
+      },
+      "protocol_endpoint": {
+        "name": null,
+        "id": null
+      }
+    },
+    {
+      "host": {
+        "name": "z-c220-1-fc"
+      },
+      "lun": 240,
+      "volume": {
+        "name": "RDM-z-sql-dvops-dv1-z-sql-rdm-copy-mount-61184",
+        "id": "b1a3b372-0c7c-109d-1862-9c5ba152d98b"
+      },
+      "host_group": {
+        "name": "z-cisco-fc"
+      },
+      "protocol_endpoint": {
+        "name": null,
+        "id": null
+      }
+    },
+    {
+      "host": {
+        "name": "z-c220-3-fc"
+      },
+      "lun": 240,
+      "volume": {
+        "name": "RDM-z-sql-dvops-dv1-z-sql-rdm-copy-mount-61184",
+        "id": "b1a3b372-0c7c-109d-1862-9c5ba152d98b"
+      },
+      "host_group": {
+        "name": "z-cisco-fc"
+      },
+      "protocol_endpoint": {
+        "name": null,
+        "id": null
+      }
+    },
+    {
+      "host": {
+        "name": "z-c220-3-fc"
+      },
+      "lun": 249,
+      "volume": {
+        "name": "z-sql-dvops-dv1-ndf",
+        "id": "c10b1fee-28e9-14db-6c66-a11e44014cbe"
+      },
+      "host_group": {
+        "name": "z-cisco-fc"
+      },
+      "protocol_endpoint": {
+        "name": null,
+        "id": null
+      }
+    },
+    {
+      "host": {
+        "name": "z-c220-2-fc"
+      },
+      "lun": 249,
+      "volume": {
+        "name": "z-sql-dvops-dv1-ndf",
+        "id": "c10b1fee-28e9-14db-6c66-a11e44014cbe"
+      },
+      "host_group": {
+        "name": "z-cisco-fc"
+      },
+      "protocol_endpoint": {
+        "name": null,
+        "id": null
+      }
+    },
+    {
+      "host": {
+        "name": "z-c220-4-fc"
+      },
+      "lun": 249,
+      "volume": {
+        "name": "z-sql-dvops-dv1-ndf",
+        "id": "c10b1fee-28e9-14db-6c66-a11e44014cbe"
+      },
+      "host_group": {
+        "name": "z-cisco-fc"
+      },
+      "protocol_endpoint": {
+        "name": null,
+        "id": null
+      }
+    },
+    {
+      "host": {
+        "name": "z-c220-1-fc"
+      },
+      "lun": 249,
+      "volume": {
+        "name": "z-sql-dvops-dv1-ndf",
+        "id": "c10b1fee-28e9-14db-6c66-a11e44014cbe"
+      },
+      "host_group": {
+        "name": "z-cisco-fc"
+      },
+      "protocol_endpoint": {
+        "name": null,
+        "id": null
+      }
+    },
+    {
+      "host": {
+        "name": "z-c220-3-fc"
+      },
+      "lun": 248,
+      "volume": {
+        "name": "z-sql-dvops-dv1-trn",
+        "id": "5a52dbcd-e1b6-75ed-6d62-b838ad943321"
+      },
+      "host_group": {
+        "name": "z-cisco-fc"
+      },
+      "protocol_endpoint": {
+        "name": null,
+        "id": null
+      }
+    },
+    {
+      "host": {
+        "name": "z-c220-2-fc"
+      },
+      "lun": 248,
+      "volume": {
+        "name": "z-sql-dvops-dv1-trn",
+        "id": "5a52dbcd-e1b6-75ed-6d62-b838ad943321"
+      },
+      "host_group": {
+        "name": "z-cisco-fc"
+      },
+      "protocol_endpoint": {
+        "name": null,
+        "id": null
+      }
+    },
+    {
+      "host": {
+        "name": "z-c220-4-fc"
+      },
+      "lun": 248,
+      "volume": {
+        "name": "z-sql-dvops-dv1-trn",
+        "id": "5a52dbcd-e1b6-75ed-6d62-b838ad943321"
+      },
+      "host_group": {
+        "name": "z-cisco-fc"
+      },
+      "protocol_endpoint": {
+        "name": null,
+        "id": null
+      }
+    },
+    {
+      "host": {
+        "name": "z-c220-1-fc"
+      },
+      "lun": 248,
+      "volume": {
+        "name": "z-sql-dvops-dv1-trn",
+        "id": "5a52dbcd-e1b6-75ed-6d62-b838ad943321"
+      },
+      "host_group": {
+        "name": "z-cisco-fc"
+      },
+      "protocol_endpoint": {
+        "name": null,
+        "id": null
+      }
+    },
+    {
+      "host": {
+        "name": "z-c220-2-fc"
+      },
+      "lun": 239,
+      "volume": {
+        "name": "z-cisco-FC-x70-a-VSI-datastore",
+        "id": "2d781ab1-add0-2a64-7415-151d7a77993f"
+      },
+      "host_group": {
+        "name": "z-cisco-fc"
+      },
+      "protocol_endpoint": {
+        "name": null,
+        "id": null
+      }
+    },
+    {
+      "host": {
+        "name": "z-c220-4-fc"
+      },
+      "lun": 239,
+      "volume": {
+        "name": "z-cisco-FC-x70-a-VSI-datastore",
+        "id": "2d781ab1-add0-2a64-7415-151d7a77993f"
+      },
+      "host_group": {
+        "name": "z-cisco-fc"
+      },
+      "protocol_endpoint": {
+        "name": null,
+        "id": null
+      }
+    },
+    {
+      "host": {
+        "name": "z-c220-1-fc"
+      },
+      "lun": 239,
+      "volume": {
+        "name": "z-cisco-FC-x70-a-VSI-datastore",
+        "id": "2d781ab1-add0-2a64-7415-151d7a77993f"
+      },
+      "host_group": {
+        "name": "z-cisco-fc"
+      },
+      "protocol_endpoint": {
+        "name": null,
+        "id": null
+      }
+    },
+    {
+      "host": {
+        "name": "z-c220-3-fc"
+      },
+      "lun": 239,
+      "volume": {
+        "name": "z-cisco-FC-x70-a-VSI-datastore",
+        "id": "2d781ab1-add0-2a64-7415-151d7a77993f"
+      },
+      "host_group": {
+        "name": "z-cisco-fc"
+      },
+      "protocol_endpoint": {
+        "name": null,
+        "id": null
+      }
+    },
+    {
+      "host": {
+        "name": "z-c220-1-fc"
+      },
+      "lun": 238,
+      "volume": {
+        "name": "eg-px-tkg01",
+        "id": "a750b090-663d-b45d-d28f-2af359129c53"
+      },
+      "host_group": {
+        "name": "z-cisco-fc"
+      },
+      "protocol_endpoint": {
+        "name": null,
+        "id": null
+      }
+    },
+    {
+      "host": {
+        "name": "z-c220-3-fc"
+      },
+      "lun": 238,
+      "volume": {
+        "name": "eg-px-tkg01",
+        "id": "a750b090-663d-b45d-d28f-2af359129c53"
+      },
+      "host_group": {
+        "name": "z-cisco-fc"
+      },
+      "protocol_endpoint": {
+        "name": null,
+        "id": null
+      }
+    },
+    {
+      "host": {
+        "name": "z-c220-2-fc"
+      },
+      "lun": 238,
+      "volume": {
+        "name": "eg-px-tkg01",
+        "id": "a750b090-663d-b45d-d28f-2af359129c53"
+      },
+      "host_group": {
+        "name": "z-cisco-fc"
+      },
+      "protocol_endpoint": {
+        "name": null,
+        "id": null
+      }
+    },
+    {
+      "host": {
+        "name": "z-c220-4-fc"
+      },
+      "lun": 238,
+      "volume": {
+        "name": "eg-px-tkg01",
+        "id": "a750b090-663d-b45d-d28f-2af359129c53"
+      },
+      "host_group": {
+        "name": "z-cisco-fc"
+      },
+      "protocol_endpoint": {
+        "name": null,
+        "id": null
+      }
+    },
+    {
+      "host": {
+        "name": "z-c220-3-fc"
+      },
+      "lun": 237,
+      "volume": {
+        "name": "eg-px-ocp-1",
+        "id": "f94d4a2f-7b39-dd8e-88a3-9324da75109f"
+      },
+      "host_group": {
+        "name": "z-cisco-fc"
+      },
+      "protocol_endpoint": {
+        "name": null,
+        "id": null
+      }
+    },
+    {
+      "host": {
+        "name": "z-c220-2-fc"
+      },
+      "lun": 237,
+      "volume": {
+        "name": "eg-px-ocp-1",
+        "id": "f94d4a2f-7b39-dd8e-88a3-9324da75109f"
+      },
+      "host_group": {
+        "name": "z-cisco-fc"
+      },
+      "protocol_endpoint": {
+        "name": null,
+        "id": null
+      }
+    },
+    {
+      "host": {
+        "name": "z-c220-4-fc"
+      },
+      "lun": 237,
+      "volume": {
+        "name": "eg-px-ocp-1",
+        "id": "f94d4a2f-7b39-dd8e-88a3-9324da75109f"
+      },
+      "host_group": {
+        "name": "z-cisco-fc"
+      },
+      "protocol_endpoint": {
+        "name": null,
+        "id": null
+      }
+    },
+    {
+      "host": {
+        "name": "z-c220-1-fc"
+      },
+      "lun": 237,
+      "volume": {
+        "name": "eg-px-ocp-1",
+        "id": "f94d4a2f-7b39-dd8e-88a3-9324da75109f"
+      },
+      "host_group": {
+        "name": "z-cisco-fc"
+      },
+      "protocol_endpoint": {
+        "name": null,
+        "id": null
+      }
+    },
+    {
+      "host": {
+        "name": "z-c220-3-fc"
+      },
+      "lun": 236,
+      "volume": {
+        "name": "z-sql-tpcc-data",
+        "id": "4bb72a26-c2cc-d222-20d2-e6beb5dded74"
+      },
+      "host_group": {
+        "name": "z-cisco-fc"
+      },
+      "protocol_endpoint": {
+        "name": null,
+        "id": null
+      }
+    },
+    {
+      "host": {
+        "name": "z-c220-2-fc"
+      },
+      "lun": 236,
+      "volume": {
+        "name": "z-sql-tpcc-data",
+        "id": "4bb72a26-c2cc-d222-20d2-e6beb5dded74"
+      },
+      "host_group": {
+        "name": "z-cisco-fc"
+      },
+      "protocol_endpoint": {
+        "name": null,
+        "id": null
+      }
+    },
+    {
+      "host": {
+        "name": "z-c220-4-fc"
+      },
+      "lun": 236,
+      "volume": {
+        "name": "z-sql-tpcc-data",
+        "id": "4bb72a26-c2cc-d222-20d2-e6beb5dded74"
+      },
+      "host_group": {
+        "name": "z-cisco-fc"
+      },
+      "protocol_endpoint": {
+        "name": null,
+        "id": null
+      }
+    },
+    {
+      "host": {
+        "name": "z-c220-1-fc"
+      },
+      "lun": 236,
+      "volume": {
+        "name": "z-sql-tpcc-data",
+        "id": "4bb72a26-c2cc-d222-20d2-e6beb5dded74"
+      },
+      "host_group": {
+        "name": "z-cisco-fc"
+      },
+      "protocol_endpoint": {
+        "name": null,
+        "id": null
+      }
+    },
+    {
+      "host": {
+        "name": "z-c220-1-fc"
+      },
+      "lun": 235,
+      "volume": {
+        "name": "z-sql-tpcc-log",
+        "id": "1b6122c6-f5d4-1206-18f2-cb63bfd5cc71"
+      },
+      "host_group": {
+        "name": "z-cisco-fc"
+      },
+      "protocol_endpoint": {
+        "name": null,
+        "id": null
+      }
+    },
+    {
+      "host": {
+        "name": "z-c220-3-fc"
+      },
+      "lun": 235,
+      "volume": {
+        "name": "z-sql-tpcc-log",
+        "id": "1b6122c6-f5d4-1206-18f2-cb63bfd5cc71"
+      },
+      "host_group": {
+        "name": "z-cisco-fc"
+      },
+      "protocol_endpoint": {
+        "name": null,
+        "id": null
+      }
+    },
+    {
+      "host": {
+        "name": "z-c220-2-fc"
+      },
+      "lun": 235,
+      "volume": {
+        "name": "z-sql-tpcc-log",
+        "id": "1b6122c6-f5d4-1206-18f2-cb63bfd5cc71"
+      },
+      "host_group": {
+        "name": "z-cisco-fc"
+      },
+      "protocol_endpoint": {
+        "name": null,
+        "id": null
+      }
+    },
+    {
+      "host": {
+        "name": "z-c220-4-fc"
+      },
+      "lun": 235,
+      "volume": {
+        "name": "z-sql-tpcc-log",
+        "id": "1b6122c6-f5d4-1206-18f2-cb63bfd5cc71"
+      },
+      "host_group": {
+        "name": "z-cisco-fc"
+      },
+      "protocol_endpoint": {
+        "name": null,
+        "id": null
+      }
+    },
+    {
+      "host": {
+        "name": "z-c220-3-fc"
+      },
+      "lun": 234,
+      "volume": {
+        "name": "z-sql-tpcc-sys",
+        "id": "eca89790-ba0d-4392-f19c-ee20f58aecc9"
+      },
+      "host_group": {
+        "name": "z-cisco-fc"
+      },
+      "protocol_endpoint": {
+        "name": null,
+        "id": null
+      }
+    },
+    {
+      "host": {
+        "name": "z-c220-2-fc"
+      },
+      "lun": 234,
+      "volume": {
+        "name": "z-sql-tpcc-sys",
+        "id": "eca89790-ba0d-4392-f19c-ee20f58aecc9"
+      },
+      "host_group": {
+        "name": "z-cisco-fc"
+      },
+      "protocol_endpoint": {
+        "name": null,
+        "id": null
+      }
+    },
+    {
+      "host": {
+        "name": "z-c220-4-fc"
+      },
+      "lun": 234,
+      "volume": {
+        "name": "z-sql-tpcc-sys",
+        "id": "eca89790-ba0d-4392-f19c-ee20f58aecc9"
+      },
+      "host_group": {
+        "name": "z-cisco-fc"
+      },
+      "protocol_endpoint": {
+        "name": null,
+        "id": null
+      }
+    },
+    {
+      "host": {
+        "name": "z-c220-1-fc"
+      },
+      "lun": 234,
+      "volume": {
+        "name": "z-sql-tpcc-sys",
+        "id": "eca89790-ba0d-4392-f19c-ee20f58aecc9"
+      },
+      "host_group": {
+        "name": "z-cisco-fc"
+      },
+      "protocol_endpoint": {
+        "name": null,
+        "id": null
+      }
+    },
+    {
+      "host": {
+        "name": "z-c220-3-fc"
+      },
+      "lun": 233,
+      "volume": {
+        "name": "z-sql-tpcc",
+        "id": "b7b7bf01-98a8-b87f-faf0-81f392141bf9"
+      },
+      "host_group": {
+        "name": "z-cisco-fc"
+      },
+      "protocol_endpoint": {
+        "name": null,
+        "id": null
+      }
+    },
+    {
+      "host": {
+        "name": "z-c220-2-fc"
+      },
+      "lun": 233,
+      "volume": {
+        "name": "z-sql-tpcc",
+        "id": "b7b7bf01-98a8-b87f-faf0-81f392141bf9"
+      },
+      "host_group": {
+        "name": "z-cisco-fc"
+      },
+      "protocol_endpoint": {
+        "name": null,
+        "id": null
+      }
+    },
+    {
+      "host": {
+        "name": "z-c220-4-fc"
+      },
+      "lun": 233,
+      "volume": {
+        "name": "z-sql-tpcc",
+        "id": "b7b7bf01-98a8-b87f-faf0-81f392141bf9"
+      },
+      "host_group": {
+        "name": "z-cisco-fc"
+      },
+      "protocol_endpoint": {
+        "name": null,
+        "id": null
+      }
+    },
+    {
+      "host": {
+        "name": "z-c220-1-fc"
+      },
+      "lun": 233,
+      "volume": {
+        "name": "z-sql-tpcc",
+        "id": "b7b7bf01-98a8-b87f-faf0-81f392141bf9"
+      },
+      "host_group": {
+        "name": "z-cisco-fc"
+      },
+      "protocol_endpoint": {
+        "name": null,
+        "id": null
+      }
+    },
+    {
+      "host": {
+        "name": "z-win2019-poc"
+      },
+      "lun": 1,
+      "volume": {
+        "name": "z-win2019-poc-lun1",
+        "id": "57985f7b-2ba2-4ec9-9a6f-0c1b55a5172a"
+      },
+      "host_group": {
+        "name": null
+      },
+      "protocol_endpoint": {
+        "name": null,
+        "id": null
+      }
+    },
+    {
+      "host": {
+        "name": "cohesity-8855728842019683"
+      },
+      "lun": 1,
+      "volume": {
+        "name": "z-sql-tpcc",
+        "id": "b7b7bf01-98a8-b87f-faf0-81f392141bf9"
+      },
+      "host_group": {
+        "name": null
+      },
+      "protocol_endpoint": {
+        "name": null,
+        "id": null
+      }
+    },
+    {
+      "host": {
+        "name": "z-c220-4-fc"
+      },
+      "lun": 232,
+      "volume": {
+        "name": "pure-protocol-endpoint",
+        "id": "5dcbd6bd-bd60-2987-9895-f33c08cae36d"
+      },
+      "host_group": {
+        "name": "z-cisco-fc"
+      },
+      "protocol_endpoint": {
+        "name": null,
+        "id": null
+      }
+    },
+    {
+      "host": {
+        "name": "z-c220-1-fc"
+      },
+      "lun": 232,
+      "volume": {
+        "name": "pure-protocol-endpoint",
+        "id": "5dcbd6bd-bd60-2987-9895-f33c08cae36d"
+      },
+      "host_group": {
+        "name": "z-cisco-fc"
+      },
+      "protocol_endpoint": {
+        "name": null,
+        "id": null
+      }
+    },
+    {
+      "host": {
+        "name": "z-c220-3-fc"
+      },
+      "lun": 232,
+      "volume": {
+        "name": "pure-protocol-endpoint",
+        "id": "5dcbd6bd-bd60-2987-9895-f33c08cae36d"
+      },
+      "host_group": {
+        "name": "z-cisco-fc"
+      },
+      "protocol_endpoint": {
+        "name": null,
+        "id": null
+      }
+    },
+    {
+      "host": {
+        "name": "z-c220-2-fc"
+      },
+      "lun": 232,
+      "volume": {
+        "name": "pure-protocol-endpoint",
+        "id": "5dcbd6bd-bd60-2987-9895-f33c08cae36d"
+      },
+      "host_group": {
+        "name": "z-cisco-fc"
+      },
+      "protocol_endpoint": {
+        "name": null,
+        "id": null
+      }
+    },
+    {
+      "host": {
+        "name": "z-c220-3-fc"
+      },
+      "lun": 231,
+      "volume": {
+        "name": "z-eg-test001",
+        "id": "8afe5988-b7a9-20cc-13db-68670d124c15"
+      },
+      "host_group": {
+        "name": "z-cisco-fc"
+      },
+      "protocol_endpoint": {
+        "name": null,
+        "id": null
+      }
+    },
+    {
+      "host": {
+        "name": "z-c220-2-fc"
+      },
+      "lun": 231,
+      "volume": {
+        "name": "z-eg-test001",
+        "id": "8afe5988-b7a9-20cc-13db-68670d124c15"
+      },
+      "host_group": {
+        "name": "z-cisco-fc"
+      },
+      "protocol_endpoint": {
+        "name": null,
+        "id": null
+      }
+    },
+    {
+      "host": {
+        "name": "z-c220-4-fc"
+      },
+      "lun": 231,
+      "volume": {
+        "name": "z-eg-test001",
+        "id": "8afe5988-b7a9-20cc-13db-68670d124c15"
+      },
+      "host_group": {
+        "name": "z-cisco-fc"
+      },
+      "protocol_endpoint": {
+        "name": null,
+        "id": null
+      }
+    },
+    {
+      "host": {
+        "name": "z-c220-1-fc"
+      },
+      "lun": 231,
+      "volume": {
+        "name": "z-eg-test001",
+        "id": "8afe5988-b7a9-20cc-13db-68670d124c15"
+      },
+      "host_group": {
+        "name": "z-cisco-fc"
+      },
+      "protocol_endpoint": {
+        "name": null,
+        "id": null
+      }
+    },
+    {
+      "host": {
+        "name": "z-c220-3-fc"
+      },
+      "lun": 230,
+      "volume": {
+        "name": "z-eg-test002",
+        "id": "3659a05a-28bd-0a28-7bd4-91bc7317045b"
+      },
+      "host_group": {
+        "name": "z-cisco-fc"
+      },
+      "protocol_endpoint": {
+        "name": null,
+        "id": null
+      }
+    },
+    {
+      "host": {
+        "name": "z-c220-2-fc"
+      },
+      "lun": 230,
+      "volume": {
+        "name": "z-eg-test002",
+        "id": "3659a05a-28bd-0a28-7bd4-91bc7317045b"
+      },
+      "host_group": {
+        "name": "z-cisco-fc"
+      },
+      "protocol_endpoint": {
+        "name": null,
+        "id": null
+      }
+    },
+    {
+      "host": {
+        "name": "z-c220-4-fc"
+      },
+      "lun": 230,
+      "volume": {
+        "name": "z-eg-test002",
+        "id": "3659a05a-28bd-0a28-7bd4-91bc7317045b"
+      },
+      "host_group": {
+        "name": "z-cisco-fc"
+      },
+      "protocol_endpoint": {
+        "name": null,
+        "id": null
+      }
+    },
+    {
+      "host": {
+        "name": "z-c220-1-fc"
+      },
+      "lun": 230,
+      "volume": {
+        "name": "z-eg-test002",
+        "id": "3659a05a-28bd-0a28-7bd4-91bc7317045b"
+      },
+      "host_group": {
+        "name": "z-cisco-fc"
+      },
+      "protocol_endpoint": {
+        "name": null,
+        "id": null
+      }
+    },
+    {
+      "host": {
+        "name": "z-eg-esxi02"
+      },
+      "lun": 254,
+      "volume": {
+        "name": "z-eg-cluster01-ds01",
+        "id": "1d75fc50-0839-9524-1c31-c21cb95f54fa"
+      },
+      "host_group": {
+        "name": "Cluster01"
+      },
+      "protocol_endpoint": {
+        "name": null,
+        "id": null
+      }
+    },
+    {
+      "host": {
+        "name": "z-eg-esxi01"
+      },
+      "lun": 254,
+      "volume": {
+        "name": "z-eg-cluster01-ds01",
+        "id": "1d75fc50-0839-9524-1c31-c21cb95f54fa"
+      },
+      "host_group": {
+        "name": "Cluster01"
+      },
+      "protocol_endpoint": {
+        "name": null,
+        "id": null
+      }
+    },
+    {
+      "host": {
+        "name": "z-eg-esxi03"
+      },
+      "lun": 254,
+      "volume": {
+        "name": "z-eg-cluster01-ds01",
+        "id": "1d75fc50-0839-9524-1c31-c21cb95f54fa"
+      },
+      "host_group": {
+        "name": "Cluster01"
+      },
+      "protocol_endpoint": {
+        "name": null,
+        "id": null
+      }
+    },
+    {
+      "host": {
+        "name": "z-eg-esxi01"
+      },
+      "lun": 253,
+      "volume": {
+        "name": "z-eg-cluster01-ds02",
+        "id": "e0cad244-9059-679b-2eb8-399a1a687734"
+      },
+      "host_group": {
+        "name": "Cluster01"
+      },
+      "protocol_endpoint": {
+        "name": null,
+        "id": null
+      }
+    },
+    {
+      "host": {
+        "name": "z-eg-esxi03"
+      },
+      "lun": 253,
+      "volume": {
+        "name": "z-eg-cluster01-ds02",
+        "id": "e0cad244-9059-679b-2eb8-399a1a687734"
+      },
+      "host_group": {
+        "name": "Cluster01"
+      },
+      "protocol_endpoint": {
+        "name": null,
+        "id": null
+      }
+    },
+    {
+      "host": {
+        "name": "z-eg-esxi02"
+      },
+      "lun": 253,
+      "volume": {
+        "name": "z-eg-cluster01-ds02",
+        "id": "e0cad244-9059-679b-2eb8-399a1a687734"
+      },
+      "host_group": {
+        "name": "Cluster01"
+      },
+      "protocol_endpoint": {
+        "name": null,
+        "id": null
+      }
+    },
+    {
+      "host": {
+        "name": "z-c220-4-fc"
+      },
+      "lun": 229,
+      "volume": {
+        "name": "eg-ocp-px01",
+        "id": "6db4ff4d-2401-50a4-a870-037bdc18915d"
+      },
+      "host_group": {
+        "name": "z-cisco-fc"
+      },
+      "protocol_endpoint": {
+        "name": null,
+        "id": null
+      }
+    },
+    {
+      "host": {
+        "name": "z-c220-1-fc"
+      },
+      "lun": 229,
+      "volume": {
+        "name": "eg-ocp-px01",
+        "id": "6db4ff4d-2401-50a4-a870-037bdc18915d"
+      },
+      "host_group": {
+        "name": "z-cisco-fc"
+      },
+      "protocol_endpoint": {
+        "name": null,
+        "id": null
+      }
+    },
+    {
+      "host": {
+        "name": "z-c220-3-fc"
+      },
+      "lun": 229,
+      "volume": {
+        "name": "eg-ocp-px01",
+        "id": "6db4ff4d-2401-50a4-a870-037bdc18915d"
+      },
+      "host_group": {
+        "name": "z-cisco-fc"
+      },
+      "protocol_endpoint": {
+        "name": null,
+        "id": null
+      }
+    },
+    {
+      "host": {
+        "name": "z-c220-2-fc"
+      },
+      "lun": 229,
+      "volume": {
+        "name": "eg-ocp-px01",
+        "id": "6db4ff4d-2401-50a4-a870-037bdc18915d"
+      },
+      "host_group": {
+        "name": "z-cisco-fc"
+      },
+      "protocol_endpoint": {
+        "name": null,
+        "id": null
+      }
+    },
+    {
+      "host": {
+        "name": "z-win2019-poc"
+      },
+      "lun": 2,
+      "volume": {
+        "name": "z-win2019-poc-sqlbin",
+        "id": "ab88c810-ce8c-6be8-7cd7-8396d00a77b1"
+      },
+      "host_group": {
+        "name": null
+      },
+      "protocol_endpoint": {
+        "name": null,
+        "id": null
+      }
+    },
+    {
+      "host": {
+        "name": "z-win2019-poc"
+      },
+      "lun": 3,
+      "volume": {
+        "name": "z-win2019-poc-sqlsys",
+        "id": "1527c5ec-1890-d951-42e1-3c489f64334f"
+      },
+      "host_group": {
+        "name": null
+      },
+      "protocol_endpoint": {
+        "name": null,
+        "id": null
+      }
+    },
+    {
+      "host": {
+        "name": "z-win2019-poc"
+      },
+      "lun": 4,
+      "volume": {
+        "name": "z-win2019-poc-bak",
+        "id": "2853a7f6-2106-7f1d-78d6-c3b52c7687a2"
+      },
+      "host_group": {
+        "name": null
+      },
+      "protocol_endpoint": {
+        "name": null,
+        "id": null
+      }
+    },
+    {
+      "host": {
+        "name": "z-win2019-poc"
+      },
+      "lun": 5,
+      "volume": {
+        "name": "z-win2019-poc-userdb",
+        "id": "ebc132cc-dde3-e1ee-2b44-4056cdab2e2d"
+      },
+      "host_group": {
+        "name": null
+      },
+      "protocol_endpoint": {
+        "name": null,
+        "id": null
+      }
+    },
+    {
+      "host": {
+        "name": "z-win2019-poc"
+      },
+      "lun": 6,
+      "volume": {
+        "name": "z-win2019-poc-tlog",
+        "id": "41741740-ab40-5f64-550e-17cd2cfc8064"
+      },
+      "host_group": {
+        "name": null
+      },
+      "protocol_endpoint": {
+        "name": null,
+        "id": null
+      }
+    },
+    {
+      "host": {
+        "name": "node-1-1"
+      },
+      "lun": 1,
+      "volume": {
+        "name": "pxclouddrive-eeb5a2f418",
+        "id": "731c42af-4204-e3f9-53fe-42c3b7037962"
+      },
+      "host_group": {
+        "name": null
+      },
+      "protocol_endpoint": {
+        "name": null,
+        "id": null
+      }
+    },
+    {
+      "host": {
+        "name": "node-1-3"
+      },
+      "lun": 1,
+      "volume": {
+        "name": "pxclouddrive-3ea7c68406",
+        "id": "b68e9924-1663-2e32-e390-2f531e9bb34c"
+      },
+      "host_group": {
+        "name": null
+      },
+      "protocol_endpoint": {
+        "name": null,
+        "id": null
+      }
+    },
+    {
+      "host": {
+        "name": "node-1-2"
+      },
+      "lun": 1,
+      "volume": {
+        "name": "pxclouddrive-8aa7baef8c",
+        "id": "59557767-82d5-04cf-8af2-6b42e5ef3c08"
+      },
+      "host_group": {
+        "name": null
+      },
+      "protocol_endpoint": {
+        "name": null,
+        "id": null
+      }
+    },
+    {
+      "host": {
+        "name": "node-1-1"
+      },
+      "lun": 2,
+      "volume": {
+        "name": "pxclouddrive-be27d662c9",
+        "id": "655a5496-7644-d50a-0cb0-135a86a2f998"
+      },
+      "host_group": {
+        "name": null
+      },
+      "protocol_endpoint": {
+        "name": null,
+        "id": null
+      }
+    },
+    {
+      "host": {
+        "name": "node-1-2"
+      },
+      "lun": 2,
+      "volume": {
+        "name": "pxclouddrive-7e0f7ef4e1",
+        "id": "68d3ac56-1334-cb6d-64e3-7012791dd702"
+      },
+      "host_group": {
+        "name": null
+      },
+      "protocol_endpoint": {
+        "name": null,
+        "id": null
+      }
+    },
+    {
+      "host": {
+        "name": "node-1-3"
+      },
+      "lun": 2,
+      "volume": {
+        "name": "pxclouddrive-04250b2315",
+        "id": "4ac5a047-1734-dda2-a2df-bc970ce88722"
+      },
+      "host_group": {
+        "name": null
+      },
+      "protocol_endpoint": {
+        "name": null,
+        "id": null
+      }
+    },
+    {
+      "host": {
+        "name": "node-1-3"
+      },
+      "lun": 3,
+      "volume": {
+        "name": "px_30a50d01-pvc-1f2e4129-e352-4294-84ef-5311b6a81685",
+        "id": "da3bcf65-8dbd-e2f7-8410-6d445ebaed54"
+      },
+      "host_group": {
+        "name": null
+      },
+      "protocol_endpoint": {
+        "name": null,
+        "id": null
+      }
+    },
+    {
+      "host": {
+        "name": "z-eg-esxi03"
+      },
+      "lun": 248,
+      "volume": {
+        "name": "pure-protocol-endpoint",
+        "id": "5dcbd6bd-bd60-2987-9895-f33c08cae36d"
+      },
+      "host_group": {
+        "name": "Cluster01"
+      },
+      "protocol_endpoint": {
+        "name": null,
+        "id": null
+      }
+    },
+    {
+      "host": {
+        "name": "z-eg-esxi02"
+      },
+      "lun": 248,
+      "volume": {
+        "name": "pure-protocol-endpoint",
+        "id": "5dcbd6bd-bd60-2987-9895-f33c08cae36d"
+      },
+      "host_group": {
+        "name": "Cluster01"
+      },
+      "protocol_endpoint": {
+        "name": null,
+        "id": null
+      }
+    },
+    {
+      "host": {
+        "name": "z-eg-esxi01"
+      },
+      "lun": 248,
+      "volume": {
+        "name": "pure-protocol-endpoint",
+        "id": "5dcbd6bd-bd60-2987-9895-f33c08cae36d"
+      },
+      "host_group": {
+        "name": "Cluster01"
+      },
+      "protocol_endpoint": {
+        "name": null,
+        "id": null
+      }
+    },
+    {
+      "host": {
+        "name": "z-eg-esxi03"
+      },
+      "lun": 8589934840,
+      "volume": {
+        "name": "vvol-vCLS-b0e9e645-a-d8e5b185-62bfd858-vg/Config-57610730",
+        "id": "7203d998-6e8e-69b0-1a66-c1ca702f6665"
+      },
+      "host_group": {
+        "name": null
+      },
+      "protocol_endpoint": {
+        "name": "pure-protocol-endpoint",
+        "id": "5dcbd6bd-bd60-2987-9895-f33c08cae36d"
+      }
+    },
+    {
+      "host": {
+        "name": "z-eg-esxi03"
+      },
+      "lun": 12884902136,
+      "volume": {
+        "name": "vvol-vCLS-b0e9e645-a-d8e5b185-62bfd858-vg/Data-d412d5fa",
+        "id": "e426ecc3-04d5-458c-28cb-49747ac3a36c"
+      },
+      "host_group": {
+        "name": null
+      },
+      "protocol_endpoint": {
+        "name": "pure-protocol-endpoint",
+        "id": "5dcbd6bd-bd60-2987-9895-f33c08cae36d"
+      }
+    },
+    {
+      "host": {
+        "name": "z-eg-esxi03"
+      },
+      "lun": 17179869432,
+      "volume": {
+        "name": "vvol-vCLS-b0e9e645-a-d8e5b185-62bfd858-vg/Swap-be1e87de",
+        "id": "9106ca5e-edd1-b418-3570-f620b8aa2dba"
+      },
+      "host_group": {
+        "name": null
+      },
+      "protocol_endpoint": {
+        "name": "pure-protocol-endpoint",
+        "id": "5dcbd6bd-bd60-2987-9895-f33c08cae36d"
+      }
+    },
+    {
+      "host": {
+        "name": "z-eg-esxi01"
+      },
+      "lun": 8589934840,
+      "volume": {
+        "name": "vvol-vCLS-03b30228-d-8e858fa3-127fcf15-vg/Config-5f54b2c2",
+        "id": "00a99ba1-2d9e-53ef-cd97-85ffe88a6991"
+      },
+      "host_group": {
+        "name": null
+      },
+      "protocol_endpoint": {
+        "name": "pure-protocol-endpoint",
+        "id": "5dcbd6bd-bd60-2987-9895-f33c08cae36d"
+      }
+    },
+    {
+      "host": {
+        "name": "z-eg-esxi01"
+      },
+      "lun": 12884902136,
+      "volume": {
+        "name": "vvol--vSphere-HA-a93acac7-vg/Config-7a8f8c63",
+        "id": "1448facc-ecee-b396-1953-de669e2e850e"
+      },
+      "host_group": {
+        "name": null
+      },
+      "protocol_endpoint": {
+        "name": "pure-protocol-endpoint",
+        "id": "5dcbd6bd-bd60-2987-9895-f33c08cae36d"
+      }
+    },
+    {
+      "host": {
+        "name": "z-eg-esxi01"
+      },
+      "lun": 17179869432,
+      "volume": {
+        "name": "vvol-vCLS-03b30228-d-8e858fa3-127fcf15-vg/Data-2be1c69d",
+        "id": "877c87d5-2d9e-4c1a-61f3-0d59de4fabf1"
+      },
+      "host_group": {
+        "name": null
+      },
+      "protocol_endpoint": {
+        "name": "pure-protocol-endpoint",
+        "id": "5dcbd6bd-bd60-2987-9895-f33c08cae36d"
+      }
+    },
+    {
+      "host": {
+        "name": "z-eg-esxi01"
+      },
+      "lun": 21474836728,
+      "volume": {
+        "name": "vvol-vCLS-03b30228-d-8e858fa3-127fcf15-vg/Swap-92696efc",
+        "id": "55ff1b50-be3f-fb0e-8dc0-d5f4d6280eef"
+      },
+      "host_group": {
+        "name": null
+      },
+      "protocol_endpoint": {
+        "name": "pure-protocol-endpoint",
+        "id": "5dcbd6bd-bd60-2987-9895-f33c08cae36d"
+      }
+    },
+    {
+      "host": {
+        "name": "z-eg-esxi02"
+      },
+      "lun": 8589934840,
+      "volume": {
+        "name": "vvol-vCLS-9e03804c-e-d9ffee54-46b6cbe2-vg/Config-ccd9b203",
+        "id": "12cfd3d6-100e-13c7-fd20-399ea9c60821"
+      },
+      "host_group": {
+        "name": null
+      },
+      "protocol_endpoint": {
+        "name": "pure-protocol-endpoint",
+        "id": "5dcbd6bd-bd60-2987-9895-f33c08cae36d"
+      }
+    },
+    {
+      "host": {
+        "name": "z-eg-esxi02"
+      },
+      "lun": 12884902136,
+      "volume": {
+        "name": "vvol-vCLS-9e03804c-e-d9ffee54-46b6cbe2-vg/Data-808c80b0",
+        "id": "283aba01-9db5-7738-e3aa-d52dbb04e286"
+      },
+      "host_group": {
+        "name": null
+      },
+      "protocol_endpoint": {
+        "name": "pure-protocol-endpoint",
+        "id": "5dcbd6bd-bd60-2987-9895-f33c08cae36d"
+      }
+    },
+    {
+      "host": {
+        "name": "z-eg-esxi02"
+      },
+      "lun": 17179869432,
+      "volume": {
+        "name": "vvol-vCLS-9e03804c-e-d9ffee54-46b6cbe2-vg/Swap-f6961b08",
+        "id": "c09aa989-0f64-0232-a771-649c56029e23"
+      },
+      "host_group": {
+        "name": null
+      },
+      "protocol_endpoint": {
+        "name": "pure-protocol-endpoint",
+        "id": "5dcbd6bd-bd60-2987-9895-f33c08cae36d"
+      }
+    },
+    {
+      "host": {
+        "name": "z-eg-esxi02"
+      },
+      "lun": 4294967544,
+      "volume": {
+        "name": "vvol-catalog-856c9122-vg/Config-4d2057ba",
+        "id": "6f726e3a-2d9f-80c8-2ee7-14d265fb8b8f"
+      },
+      "host_group": {
+        "name": null
+      },
+      "protocol_endpoint": {
+        "name": "pure-protocol-endpoint",
+        "id": "5dcbd6bd-bd60-2987-9895-f33c08cae36d"
+      }
+    },
+    {
+      "host": {
+        "name": "z-eg-esxi01"
+      },
+      "lun": 4294967544,
+      "volume": {
+        "name": "vvol-catalog-856c9122-vg/Config-4d2057ba",
+        "id": "6f726e3a-2d9f-80c8-2ee7-14d265fb8b8f"
+      },
+      "host_group": {
+        "name": null
+      },
+      "protocol_endpoint": {
+        "name": "pure-protocol-endpoint",
+        "id": "5dcbd6bd-bd60-2987-9895-f33c08cae36d"
+      }
+    },
+    {
+      "host": {
+        "name": "z-c220-2-fc"
+      },
+      "lun": 4294967528,
+      "volume": {
+        "name": "vvol-catalog-856c9122-vg/Config-4d2057ba",
+        "id": "6f726e3a-2d9f-80c8-2ee7-14d265fb8b8f"
+      },
+      "host_group": {
+        "name": null
+      },
+      "protocol_endpoint": {
+        "name": "pure-protocol-endpoint",
+        "id": "5dcbd6bd-bd60-2987-9895-f33c08cae36d"
+      }
+    },
+    {
+      "host": {
+        "name": "z-c220-1-fc"
+      },
+      "lun": 4294967528,
+      "volume": {
+        "name": "vvol-catalog-856c9122-vg/Config-4d2057ba",
+        "id": "6f726e3a-2d9f-80c8-2ee7-14d265fb8b8f"
+      },
+      "host_group": {
+        "name": null
+      },
+      "protocol_endpoint": {
+        "name": "pure-protocol-endpoint",
+        "id": "5dcbd6bd-bd60-2987-9895-f33c08cae36d"
+      }
+    },
+    {
+      "host": {
+        "name": "z-c220-1-fc"
+      },
+      "lun": 254,
+      "volume": {
+        "name": "z-ProdPod::z-cisco-AC-datastore-VSI-FC",
+        "id": "2d9e916e-2ab5-081f-7ea3-055af0430172"
+      },
+      "host_group": {
+        "name": "z-cisco-fc"
+      },
+      "protocol_endpoint": {
+        "name": null,
+        "id": null
+      }
+    },
+    {
+      "host": {
+        "name": "z-c220-3-fc"
+      },
+      "lun": 254,
+      "volume": {
+        "name": "z-ProdPod::z-cisco-AC-datastore-VSI-FC",
+        "id": "2d9e916e-2ab5-081f-7ea3-055af0430172"
+      },
+      "host_group": {
+        "name": "z-cisco-fc"
+      },
+      "protocol_endpoint": {
+        "name": null,
+        "id": null
+      }
+    },
+    {
+      "host": {
+        "name": "z-c220-2-fc"
+      },
+      "lun": 254,
+      "volume": {
+        "name": "z-ProdPod::z-cisco-AC-datastore-VSI-FC",
+        "id": "2d9e916e-2ab5-081f-7ea3-055af0430172"
+      },
+      "host_group": {
+        "name": "z-cisco-fc"
+      },
+      "protocol_endpoint": {
+        "name": null,
+        "id": null
+      }
+    },
+    {
+      "host": {
+        "name": "z-c220-4-fc"
+      },
+      "lun": 254,
+      "volume": {
+        "name": "z-ProdPod::z-cisco-AC-datastore-VSI-FC",
+        "id": "2d9e916e-2ab5-081f-7ea3-055af0430172"
+      },
+      "host_group": {
+        "name": "z-cisco-fc"
+      },
+      "protocol_endpoint": {
+        "name": null,
+        "id": null
+      }
+    },
+    {
+      "host": {
+        "name": "z-c220-3-fc"
+      },
+      "lun": 253,
+      "volume": {
+        "name": "z-ProdPod::z-cisco-AC-datastore-ISO-FC",
+        "id": "0254c264-cafd-67d8-9ae3-eb6edd1a1791"
+      },
+      "host_group": {
+        "name": "z-cisco-fc"
+      },
+      "protocol_endpoint": {
+        "name": null,
+        "id": null
+      }
+    },
+    {
+      "host": {
+        "name": "z-c220-2-fc"
+      },
+      "lun": 253,
+      "volume": {
+        "name": "z-ProdPod::z-cisco-AC-datastore-ISO-FC",
+        "id": "0254c264-cafd-67d8-9ae3-eb6edd1a1791"
+      },
+      "host_group": {
+        "name": "z-cisco-fc"
+      },
+      "protocol_endpoint": {
+        "name": null,
+        "id": null
+      }
+    },
+    {
+      "host": {
+        "name": "z-c220-4-fc"
+      },
+      "lun": 253,
+      "volume": {
+        "name": "z-ProdPod::z-cisco-AC-datastore-ISO-FC",
+        "id": "0254c264-cafd-67d8-9ae3-eb6edd1a1791"
+      },
+      "host_group": {
+        "name": "z-cisco-fc"
+      },
+      "protocol_endpoint": {
+        "name": null,
+        "id": null
+      }
+    },
+    {
+      "host": {
+        "name": "z-c220-1-fc"
+      },
+      "lun": 253,
+      "volume": {
+        "name": "z-ProdPod::z-cisco-AC-datastore-ISO-FC",
+        "id": "0254c264-cafd-67d8-9ae3-eb6edd1a1791"
+      },
+      "host_group": {
+        "name": "z-cisco-fc"
+      },
+      "protocol_endpoint": {
+        "name": null,
+        "id": null
+      }
+    },
+    {
+      "host": {
+        "name": "z-m70-a:z-c220-1-fc"
+      },
+      "lun": 254,
+      "volume": {
+        "name": "z-ProdPod::z-cisco-AC-datastore-VSI-FC",
+        "id": "2d9e916e-2ab5-081f-7ea3-055af0430172"
+      },
+      "host_group": {
+        "name": "z-m70-a:z-cisco-FC"
+      },
+      "protocol_endpoint": {
+        "name": null,
+        "id": null
+      }
+    },
+    {
+      "host": {
+        "name": "z-m70-a:z-c220-2-fc"
+      },
+      "lun": 254,
+      "volume": {
+        "name": "z-ProdPod::z-cisco-AC-datastore-VSI-FC",
+        "id": "2d9e916e-2ab5-081f-7ea3-055af0430172"
+      },
+      "host_group": {
+        "name": "z-m70-a:z-cisco-FC"
+      },
+      "protocol_endpoint": {
+        "name": null,
+        "id": null
+      }
+    },
+    {
+      "host": {
+        "name": "z-m70-a:z-c220-3-fc"
+      },
+      "lun": 254,
+      "volume": {
+        "name": "z-ProdPod::z-cisco-AC-datastore-VSI-FC",
+        "id": "2d9e916e-2ab5-081f-7ea3-055af0430172"
+      },
+      "host_group": {
+        "name": "z-m70-a:z-cisco-FC"
+      },
+      "protocol_endpoint": {
+        "name": null,
+        "id": null
+      }
+    },
+    {
+      "host": {
+        "name": "z-m70-a:z-c220-4-fc"
+      },
+      "lun": 254,
+      "volume": {
+        "name": "z-ProdPod::z-cisco-AC-datastore-VSI-FC",
+        "id": "2d9e916e-2ab5-081f-7ea3-055af0430172"
+      },
+      "host_group": {
+        "name": "z-m70-a:z-cisco-FC"
+      },
+      "protocol_endpoint": {
+        "name": null,
+        "id": null
+      }
+    },
+    {
+      "host": {
+        "name": "z-m70-a:z-c220-1-fc"
+      },
+      "lun": 253,
+      "volume": {
+        "name": "z-ProdPod::z-cisco-AC-datastore-ISO-FC",
+        "id": "0254c264-cafd-67d8-9ae3-eb6edd1a1791"
+      },
+      "host_group": {
+        "name": "z-m70-a:z-cisco-FC"
+      },
+      "protocol_endpoint": {
+        "name": null,
+        "id": null
+      }
+    },
+    {
+      "host": {
+        "name": "z-m70-a:z-c220-2-fc"
+      },
+      "lun": 253,
+      "volume": {
+        "name": "z-ProdPod::z-cisco-AC-datastore-ISO-FC",
+        "id": "0254c264-cafd-67d8-9ae3-eb6edd1a1791"
+      },
+      "host_group": {
+        "name": "z-m70-a:z-cisco-FC"
+      },
+      "protocol_endpoint": {
+        "name": null,
+        "id": null
+      }
+    },
+    {
+      "host": {
+        "name": "z-m70-a:z-c220-3-fc"
+      },
+      "lun": 253,
+      "volume": {
+        "name": "z-ProdPod::z-cisco-AC-datastore-ISO-FC",
+        "id": "0254c264-cafd-67d8-9ae3-eb6edd1a1791"
+      },
+      "host_group": {
+        "name": "z-m70-a:z-cisco-FC"
+      },
+      "protocol_endpoint": {
+        "name": null,
+        "id": null
+      }
+    },
+    {
+      "host": {
+        "name": "z-m70-a:z-c220-4-fc"
+      },
+      "lun": 253,
+      "volume": {
+        "name": "z-ProdPod::z-cisco-AC-datastore-ISO-FC",
+        "id": "0254c264-cafd-67d8-9ae3-eb6edd1a1791"
+      },
+      "host_group": {
+        "name": "z-m70-a:z-cisco-FC"
+      },
+      "protocol_endpoint": {
+        "name": null,
+        "id": null
+      }
+    },
+    {
+      "host": {
+        "name": "z-m70-a:z-c220-1-fc"
+      },
+      "lun": 252,
+      "volume": {
+        "name": "z-ProdPod::z-cisco-AC-datastore-iometer-FC",
+        "id": "b02e0b32-a718-16ac-726c-f56d2c4814d3"
+      },
+      "host_group": {
+        "name": "z-m70-a:z-cisco-FC"
+      },
+      "protocol_endpoint": {
+        "name": null,
+        "id": null
+      }
+    },
+    {
+      "host": {
+        "name": "z-m70-a:z-c220-2-fc"
+      },
+      "lun": 252,
+      "volume": {
+        "name": "z-ProdPod::z-cisco-AC-datastore-iometer-FC",
+        "id": "b02e0b32-a718-16ac-726c-f56d2c4814d3"
+      },
+      "host_group": {
+        "name": "z-m70-a:z-cisco-FC"
+      },
+      "protocol_endpoint": {
+        "name": null,
+        "id": null
+      }
+    },
+    {
+      "host": {
+        "name": "z-m70-a:z-c220-3-fc"
+      },
+      "lun": 252,
+      "volume": {
+        "name": "z-ProdPod::z-cisco-AC-datastore-iometer-FC",
+        "id": "b02e0b32-a718-16ac-726c-f56d2c4814d3"
+      },
+      "host_group": {
+        "name": "z-m70-a:z-cisco-FC"
+      },
+      "protocol_endpoint": {
+        "name": null,
+        "id": null
+      }
+    },
+    {
+      "host": {
+        "name": "z-m70-a:z-c220-4-fc"
+      },
+      "lun": 252,
+      "volume": {
+        "name": "z-ProdPod::z-cisco-AC-datastore-iometer-FC",
+        "id": "b02e0b32-a718-16ac-726c-f56d2c4814d3"
+      },
+      "host_group": {
+        "name": "z-m70-a:z-cisco-FC"
+      },
+      "protocol_endpoint": {
+        "name": null,
+        "id": null
+      }
+    },
+    {
+      "host": {
+        "name": "z-c220-3-fc"
+      },
+      "lun": 252,
+      "volume": {
+        "name": "z-ProdPod::z-cisco-AC-datastore-iometer-FC",
+        "id": "b02e0b32-a718-16ac-726c-f56d2c4814d3"
+      },
+      "host_group": {
+        "name": "z-cisco-fc"
+      },
+      "protocol_endpoint": {
+        "name": null,
+        "id": null
+      }
+    },
+    {
+      "host": {
+        "name": "z-c220-2-fc"
+      },
+      "lun": 252,
+      "volume": {
+        "name": "z-ProdPod::z-cisco-AC-datastore-iometer-FC",
+        "id": "b02e0b32-a718-16ac-726c-f56d2c4814d3"
+      },
+      "host_group": {
+        "name": "z-cisco-fc"
+      },
+      "protocol_endpoint": {
+        "name": null,
+        "id": null
+      }
+    },
+    {
+      "host": {
+        "name": "z-c220-4-fc"
+      },
+      "lun": 252,
+      "volume": {
+        "name": "z-ProdPod::z-cisco-AC-datastore-iometer-FC",
+        "id": "b02e0b32-a718-16ac-726c-f56d2c4814d3"
+      },
+      "host_group": {
+        "name": "z-cisco-fc"
+      },
+      "protocol_endpoint": {
+        "name": null,
+        "id": null
+      }
+    },
+    {
+      "host": {
+        "name": "z-c220-1-fc"
+      },
+      "lun": 252,
+      "volume": {
+        "name": "z-ProdPod::z-cisco-AC-datastore-iometer-FC",
+        "id": "b02e0b32-a718-16ac-726c-f56d2c4814d3"
+      },
+      "host_group": {
+        "name": "z-cisco-fc"
+      },
+      "protocol_endpoint": {
+        "name": null,
+        "id": null
+      }
+    },
+    {
+      "host": {
+        "name": null
+      },
+      "lun": 254,
+      "volume": {
+        "name": "z-RoCEpod::z-cisco-x70-a-datastore-VSI-RoCE",
+        "id": "b8b5877c-7e2b-bc8d-c4f1-62f121fb3af0"
+      },
+      "host_group": {
+        "name": "z-cicso-nvme-roce"
+      },
+      "protocol_endpoint": {
+        "name": null,
+        "id": null
+      }
+    },
+    {
+      "host": {
+        "name": null
+      },
+      "lun": 253,
+      "volume": {
+        "name": "z-RoCEpod::z-cisco-x70-a-roce-datastore-ISO",
+        "id": "46ca18dc-10f8-a67f-5898-f5f5ca263472"
+      },
+      "host_group": {
+        "name": "z-cicso-nvme-roce"
+      },
+      "protocol_endpoint": {
+        "name": null,
+        "id": null
+      }
+    },
+    {
+      "host": {
+        "name": "z-c220-1-fc"
+      },
+      "lun": 1,
+      "volume": {
+        "name": "jsADRpod-prod::esxvol",
+        "id": "a9eab97e-2855-6c52-d45d-dc3913982e3b"
+      },
+      "host_group": {
+        "name": null
+      },
+      "protocol_endpoint": {
+        "name": null,
+        "id": null
+      }
+    },
+    {
+      "host": {
+        "name": "z-c220-1-fc"
+      },
+      "lun": 3,
+      "volume": {
+        "name": "jsADRpod-prod::rdm1",
+        "id": "f9e437c2-5205-18fa-778a-55dff32666db"
+      },
+      "host_group": {
+        "name": null
+      },
+      "protocol_endpoint": {
+        "name": null,
+        "id": null
+      }
+    },
+    {
+      "host": {
+        "name": "z-eg-esxi01"
+      },
+      "lun": 247,
+      "volume": {
+        "name": "eg-AC-main01::eg-ac-datastore01",
+        "id": "4ff7b18f-b263-8d21-2cad-4623e2aa518f"
+      },
+      "host_group": {
+        "name": "Cluster01"
+      },
+      "protocol_endpoint": {
+        "name": null,
+        "id": null
+      }
+    },
+    {
+      "host": {
+        "name": "z-eg-esxi03"
+      },
+      "lun": 247,
+      "volume": {
+        "name": "eg-AC-main01::eg-ac-datastore01",
+        "id": "4ff7b18f-b263-8d21-2cad-4623e2aa518f"
+      },
+      "host_group": {
+        "name": "Cluster01"
+      },
+      "protocol_endpoint": {
+        "name": null,
+        "id": null
+      }
+    },
+    {
+      "host": {
+        "name": "z-eg-esxi02"
+      },
+      "lun": 247,
+      "volume": {
+        "name": "eg-AC-main01::eg-ac-datastore01",
+        "id": "4ff7b18f-b263-8d21-2cad-4623e2aa518f"
+      },
+      "host_group": {
+        "name": "Cluster01"
+      },
+      "protocol_endpoint": {
+        "name": null,
+        "id": null
+      }
+    },
+    {
+      "host": {
+        "name": "z-eg-esxi03"
+      },
+      "lun": 246,
+      "volume": {
+        "name": "eg-AC-main01::eg-ac-rdm01",
+        "id": "c4c50269-b459-95ad-2c41-109598331b0b"
+      },
+      "host_group": {
+        "name": "Cluster01"
+      },
+      "protocol_endpoint": {
+        "name": null,
+        "id": null
+      }
+    },
+    {
+      "host": {
+        "name": "z-eg-esxi02"
+      },
+      "lun": 246,
+      "volume": {
+        "name": "eg-AC-main01::eg-ac-rdm01",
+        "id": "c4c50269-b459-95ad-2c41-109598331b0b"
+      },
+      "host_group": {
+        "name": "Cluster01"
+      },
+      "protocol_endpoint": {
+        "name": null,
+        "id": null
+      }
+    },
+    {
+      "host": {
+        "name": "z-eg-esxi01"
+      },
+      "lun": 246,
+      "volume": {
+        "name": "eg-AC-main01::eg-ac-rdm01",
+        "id": "c4c50269-b459-95ad-2c41-109598331b0b"
+      },
+      "host_group": {
+        "name": "Cluster01"
+      },
+      "protocol_endpoint": {
+        "name": null,
+        "id": null
+      }
+    }
+  ],
+  "more_items_remaining": false,
+  "total_item_count": null
+}

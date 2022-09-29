@@ -1,0 +1,447 @@
+{
+  "continuation_token": null,
+  "items": [
+    {
+      "name": "z-c220-1-fc",
+      "time": 1664351957000,
+      "target": {
+        "name": "CT0.FC2",
+        "wwn": "52:4A:93:79:12:4E:B3:02",
+        "nqn": null,
+        "iqn": null,
+        "portal": null,
+        "failover": null
+      },
+      "initiator": {
+        "wwn": "21:00:F4:C7:AA:00:27:06",
+        "nqn": null,
+        "iqn": null,
+        "portal": null
+      },
+      "op_count": 271,
+      "fraction_relative_to_max": 0.989051094890511
+    },
+    {
+      "name": "z-c220-1-fc",
+      "time": 1664351957000,
+      "target": {
+        "name": "CT0.FC3",
+        "wwn": "52:4A:93:79:12:4E:B3:03",
+        "nqn": null,
+        "iqn": null,
+        "portal": null,
+        "failover": null
+      },
+      "initiator": {
+        "wwn": "21:00:F4:C7:AA:00:27:06",
+        "nqn": null,
+        "iqn": null,
+        "portal": null
+      },
+      "op_count": 216,
+      "fraction_relative_to_max": 0.7883211678832117
+    },
+    {
+      "name": "z-c220-1-fc",
+      "time": 1664351957000,
+      "target": {
+        "name": "CT1.FC2",
+        "wwn": "52:4A:93:79:12:4E:B3:12",
+        "nqn": null,
+        "iqn": null,
+        "portal": null,
+        "failover": null
+      },
+      "initiator": {
+        "wwn": "21:00:F4:C7:AA:00:27:07",
+        "nqn": null,
+        "iqn": null,
+        "portal": null
+      },
+      "op_count": 165,
+      "fraction_relative_to_max": 0.6021897810218978
+    },
+    {
+      "name": "z-c220-1-fc",
+      "time": 1664351957000,
+      "target": {
+        "name": "CT1.FC3",
+        "wwn": "52:4A:93:79:12:4E:B3:13",
+        "nqn": null,
+        "iqn": null,
+        "portal": null,
+        "failover": null
+      },
+      "initiator": {
+        "wwn": "21:00:F4:C7:AA:00:27:07",
+        "nqn": null,
+        "iqn": null,
+        "portal": null
+      },
+      "op_count": 274,
+      "fraction_relative_to_max": 1
+    },
+    {
+      "name": "z-c220-4-fc",
+      "time": 1664351957000,
+      "target": {
+        "name": null,
+        "wwn": null,
+        "nqn": null,
+        "iqn": null,
+        "portal": null,
+        "failover": null
+      },
+      "initiator": {
+        "wwn": null,
+        "nqn": null,
+        "iqn": null,
+        "portal": null
+      },
+      "op_count": null,
+      "fraction_relative_to_max": null
+    },
+    {
+      "name": "z-c220-2-fc",
+      "time": 1664351957000,
+      "target": {
+        "name": "CT0.FC2",
+        "wwn": "52:4A:93:79:12:4E:B3:02",
+        "nqn": null,
+        "iqn": null,
+        "portal": null,
+        "failover": null
+      },
+      "initiator": {
+        "wwn": "21:00:F4:C7:AA:00:25:FC",
+        "nqn": null,
+        "iqn": null,
+        "portal": null
+      },
+      "op_count": 348,
+      "fraction_relative_to_max": 0.9109947643979057
+    },
+    {
+      "name": "z-c220-2-fc",
+      "time": 1664351957000,
+      "target": {
+        "name": "CT0.FC3",
+        "wwn": "52:4A:93:79:12:4E:B3:03",
+        "nqn": null,
+        "iqn": null,
+        "portal": null,
+        "failover": null
+      },
+      "initiator": {
+        "wwn": "21:00:F4:C7:AA:00:25:FC",
+        "nqn": null,
+        "iqn": null,
+        "portal": null
+      },
+      "op_count": 249,
+      "fraction_relative_to_max": 0.6518324607329843
+    },
+    {
+      "name": "z-c220-2-fc",
+      "time": 1664351957000,
+      "target": {
+        "name": "CT1.FC2",
+        "wwn": "52:4A:93:79:12:4E:B3:12",
+        "nqn": null,
+        "iqn": null,
+        "portal": null,
+        "failover": null
+      },
+      "initiator": {
+        "wwn": "21:00:F4:C7:AA:00:25:FD",
+        "nqn": null,
+        "iqn": null,
+        "portal": null
+      },
+      "op_count": 87,
+      "fraction_relative_to_max": 0.2277486910994764
+    },
+    {
+      "name": "z-c220-2-fc",
+      "time": 1664351957000,
+      "target": {
+        "name": "CT1.FC3",
+        "wwn": "52:4A:93:79:12:4E:B3:13",
+        "nqn": null,
+        "iqn": null,
+        "portal": null,
+        "failover": null
+      },
+      "initiator": {
+        "wwn": "21:00:F4:C7:AA:00:25:FD",
+        "nqn": null,
+        "iqn": null,
+        "portal": null
+      },
+      "op_count": 382,
+      "fraction_relative_to_max": 1
+    },
+    {
+      "name": "z-c220-6-nvme",
+      "time": 1664351957000,
+      "target": {
+        "name": null,
+        "wwn": null,
+        "nqn": null,
+        "iqn": null,
+        "portal": null,
+        "failover": null
+      },
+      "initiator": {
+        "wwn": null,
+        "nqn": null,
+        "iqn": null,
+        "portal": null
+      },
+      "op_count": null,
+      "fraction_relative_to_max": null
+    },
+    {
+      "name": "z-c220-7-nvme",
+      "time": 1664351957000,
+      "target": {
+        "name": null,
+        "wwn": null,
+        "nqn": null,
+        "iqn": null,
+        "portal": null,
+        "failover": null
+      },
+      "initiator": {
+        "wwn": null,
+        "nqn": null,
+        "iqn": null,
+        "portal": null
+      },
+      "op_count": null,
+      "fraction_relative_to_max": null
+    },
+    {
+      "name": "z-win2019-poc",
+      "time": 1664351957000,
+      "target": {
+        "name": null,
+        "wwn": null,
+        "nqn": null,
+        "iqn": null,
+        "portal": null,
+        "failover": null
+      },
+      "initiator": {
+        "wwn": null,
+        "nqn": null,
+        "iqn": null,
+        "portal": null
+      },
+      "op_count": null,
+      "fraction_relative_to_max": null
+    },
+    {
+      "name": "z-c220-3-fc",
+      "time": 1664351957000,
+      "target": {
+        "name": null,
+        "wwn": null,
+        "nqn": null,
+        "iqn": null,
+        "portal": null,
+        "failover": null
+      },
+      "initiator": {
+        "wwn": null,
+        "nqn": null,
+        "iqn": null,
+        "portal": null
+      },
+      "op_count": null,
+      "fraction_relative_to_max": null
+    },
+    {
+      "name": "z-c220-5-nvme",
+      "time": 1664351957000,
+      "target": {
+        "name": null,
+        "wwn": null,
+        "nqn": null,
+        "iqn": null,
+        "portal": null,
+        "failover": null
+      },
+      "initiator": {
+        "wwn": null,
+        "nqn": null,
+        "iqn": null,
+        "portal": null
+      },
+      "op_count": null,
+      "fraction_relative_to_max": null
+    },
+    {
+      "name": "z-c220-8-nvme",
+      "time": 1664351957000,
+      "target": {
+        "name": null,
+        "wwn": null,
+        "nqn": null,
+        "iqn": null,
+        "portal": null,
+        "failover": null
+      },
+      "initiator": {
+        "wwn": null,
+        "nqn": null,
+        "iqn": null,
+        "portal": null
+      },
+      "op_count": null,
+      "fraction_relative_to_max": null
+    },
+    {
+      "name": "cohesity-8855728842019683",
+      "time": 1664351957000,
+      "target": {
+        "name": null,
+        "wwn": null,
+        "nqn": null,
+        "iqn": null,
+        "portal": null,
+        "failover": null
+      },
+      "initiator": {
+        "wwn": null,
+        "nqn": null,
+        "iqn": null,
+        "portal": null
+      },
+      "op_count": null,
+      "fraction_relative_to_max": null
+    },
+    {
+      "name": "z-eg-esxi03",
+      "time": 1664351957000,
+      "target": {
+        "name": null,
+        "wwn": null,
+        "nqn": null,
+        "iqn": null,
+        "portal": null,
+        "failover": null
+      },
+      "initiator": {
+        "wwn": null,
+        "nqn": null,
+        "iqn": null,
+        "portal": null
+      },
+      "op_count": null,
+      "fraction_relative_to_max": null
+    },
+    {
+      "name": "z-eg-esxi02",
+      "time": 1664351957000,
+      "target": {
+        "name": null,
+        "wwn": null,
+        "nqn": null,
+        "iqn": null,
+        "portal": null,
+        "failover": null
+      },
+      "initiator": {
+        "wwn": null,
+        "nqn": null,
+        "iqn": null,
+        "portal": null
+      },
+      "op_count": null,
+      "fraction_relative_to_max": null
+    },
+    {
+      "name": "z-eg-esxi01",
+      "time": 1664351957000,
+      "target": {
+        "name": null,
+        "wwn": null,
+        "nqn": null,
+        "iqn": null,
+        "portal": null,
+        "failover": null
+      },
+      "initiator": {
+        "wwn": null,
+        "nqn": null,
+        "iqn": null,
+        "portal": null
+      },
+      "op_count": null,
+      "fraction_relative_to_max": null
+    },
+    {
+      "name": "node-1-1",
+      "time": 1664351957000,
+      "target": {
+        "name": null,
+        "wwn": null,
+        "nqn": null,
+        "iqn": null,
+        "portal": null,
+        "failover": null
+      },
+      "initiator": {
+        "wwn": null,
+        "nqn": null,
+        "iqn": null,
+        "portal": null
+      },
+      "op_count": null,
+      "fraction_relative_to_max": null
+    },
+    {
+      "name": "node-1-3",
+      "time": 1664351957000,
+      "target": {
+        "name": null,
+        "wwn": null,
+        "nqn": null,
+        "iqn": null,
+        "portal": null,
+        "failover": null
+      },
+      "initiator": {
+        "wwn": null,
+        "nqn": null,
+        "iqn": null,
+        "portal": null
+      },
+      "op_count": null,
+      "fraction_relative_to_max": null
+    },
+    {
+      "name": "node-1-2",
+      "time": 1664351957000,
+      "target": {
+        "name": null,
+        "wwn": null,
+        "nqn": null,
+        "iqn": null,
+        "portal": null,
+        "failover": null
+      },
+      "initiator": {
+        "wwn": null,
+        "nqn": null,
+        "iqn": null,
+        "portal": null
+      },
+      "op_count": null,
+      "fraction_relative_to_max": null
+    }
+  ],
+  "more_items_remaining": false,
+  "total_item_count": null
+}

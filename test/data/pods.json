@@ -1,0 +1,344 @@
+{
+  "continuation_token": null,
+  "items": [
+    {
+      "source": {
+        "name": null,
+        "id": null
+      },
+      "name": "z-ProdPod",
+      "id": "b990f03f-171e-34b1-3faa-673cb5ce96a5",
+      "space": {
+        "shared": 6618958931,
+        "data_reduction": 3.09727473227814,
+        "snapshots": 1007819393996,
+        "system": null,
+        "thin_provisioning": 0.9365959675610065,
+        "total_physical": 2048135395295,
+        "total_provisioned": 54975581388800,
+        "total_reduction": 48.84980675729573,
+        "unique": 1033697042368,
+        "virtual": 3485673545728,
+        "replication": 0
+      },
+      "destroyed": false,
+      "requested_promotion_state": "promoted",
+      "promotion_status": "promoted",
+      "mediator": "purestorage",
+      "failover_preferences": [
+        {
+          "name": "z-x70-a",
+          "id": "6c1b16ce-1c03-4d1c-b974-33405cf8d565"
+        }
+      ],
+      "arrays": [
+        {
+          "name": "z-m70-a",
+          "id": "704fa624-cf6e-4196-a6f5-314f0f1ad12f",
+          "status": "online",
+          "mediator_status": "online",
+          "pre_elected": false,
+          "frozen_at": null,
+          "progress": null
+        },
+        {
+          "name": "z-x70-a",
+          "id": "6c1b16ce-1c03-4d1c-b974-33405cf8d565",
+          "status": "online",
+          "mediator_status": "online",
+          "pre_elected": false,
+          "frozen_at": null,
+          "progress": null
+        }
+      ],
+      "mediator_version": null,
+      "time_remaining": null,
+      "array_count": 2,
+      "eradication_config": {
+        "manual_eradication": "all-enabled"
+      },
+      "link_source_count": 0,
+      "link_target_count": 0,
+      "footprint": 2223169046848
+    },
+    {
+      "source": {
+        "name": null,
+        "id": null
+      },
+      "name": "z-RoCEpod",
+      "id": "7307625b-c907-eed6-6791-9586ec7b2ec1",
+      "space": {
+        "shared": 108294,
+        "data_reduction": 6.201710388907095,
+        "snapshots": 0,
+        "system": null,
+        "thin_provisioning": 0.9829241510014981,
+        "total_physical": 28745805742,
+        "total_provisioned": 15393162788864,
+        "total_reduction": 363.18606409855147,
+        "unique": 28745697448,
+        "virtual": 262851323392,
+        "replication": 0
+      },
+      "destroyed": false,
+      "requested_promotion_state": "promoted",
+      "promotion_status": "promoted",
+      "mediator": "purestorage",
+      "failover_preferences": [],
+      "arrays": [
+        {
+          "name": "z-m70-a",
+          "id": "704fa624-cf6e-4196-a6f5-314f0f1ad12f",
+          "status": "online",
+          "mediator_status": "online",
+          "pre_elected": false,
+          "frozen_at": null,
+          "progress": null
+        },
+        {
+          "name": "z-x70-a",
+          "id": "6c1b16ce-1c03-4d1c-b974-33405cf8d565",
+          "status": "online",
+          "mediator_status": "online",
+          "pre_elected": false,
+          "frozen_at": null,
+          "progress": null
+        }
+      ],
+      "mediator_version": null,
+      "time_remaining": null,
+      "array_count": 2,
+      "eradication_config": {
+        "manual_eradication": "all-enabled"
+      },
+      "link_source_count": 0,
+      "link_target_count": 0,
+      "footprint": 36648636535
+    },
+    {
+      "source": {
+        "name": null,
+        "id": null
+      },
+      "name": "jsADRpod-prod",
+      "id": "03ec0d4a-4538-4b91-f5e7-c25a6769538c",
+      "space": {
+        "shared": 0,
+        "data_reduction": 2.182434623052835,
+        "snapshots": 39675,
+        "system": null,
+        "thin_provisioning": 0.9999523952901013,
+        "total_physical": 38739147,
+        "total_provisioned": 1827508584448,
+        "total_reduction": 45844.93063181569,
+        "unique": 38699472,
+        "virtual": 86998016,
+        "replication": 0
+      },
+      "destroyed": false,
+      "requested_promotion_state": "promoted",
+      "promotion_status": "promoted",
+      "mediator": "purestorage",
+      "failover_preferences": [],
+      "arrays": [
+        {
+          "name": "z-x70-a",
+          "id": "6c1b16ce-1c03-4d1c-b974-33405cf8d565",
+          "status": "online",
+          "mediator_status": "online",
+          "pre_elected": false,
+          "frozen_at": null,
+          "progress": null
+        }
+      ],
+      "mediator_version": null,
+      "time_remaining": null,
+      "array_count": 1,
+      "eradication_config": {
+        "manual_eradication": "all-enabled"
+      },
+      "link_source_count": 0,
+      "link_target_count": 1,
+      "footprint": 46135855
+    },
+    {
+      "source": {
+        "name": null,
+        "id": null
+      },
+      "name": "eg-ADR-main01",
+      "id": "33c2d598-cc99-f888-4f86-ea6c8ab3a614",
+      "space": {
+        "shared": 105879,
+        "data_reduction": 6.100177898582835,
+        "snapshots": 0,
+        "system": null,
+        "thin_provisioning": 0.9861013473565043,
+        "total_physical": 2138063518,
+        "total_provisioned": 1206885810176,
+        "total_reduction": 438.9042632443686,
+        "unique": 2137957639,
+        "virtual": 16774086656,
+        "replication": 0
+      },
+      "destroyed": false,
+      "requested_promotion_state": "demoted",
+      "promotion_status": "demoted",
+      "mediator": "purestorage",
+      "failover_preferences": [],
+      "arrays": [
+        {
+          "name": "z-x70-a",
+          "id": "6c1b16ce-1c03-4d1c-b974-33405cf8d565",
+          "status": "online",
+          "mediator_status": "online",
+          "pre_elected": false,
+          "frozen_at": 1661275854189,
+          "progress": null
+        }
+      ],
+      "mediator_version": null,
+      "time_remaining": null,
+      "array_count": 1,
+      "eradication_config": {
+        "manual_eradication": "all-enabled"
+      },
+      "link_source_count": 1,
+      "link_target_count": 0,
+      "footprint": 4112032413
+    },
+    {
+      "source": {
+        "name": null,
+        "id": null
+      },
+      "name": "eg-ADR-main02",
+      "id": "554cd78e-902c-7a22-250f-d6b5add898aa",
+      "space": {
+        "shared": 2081596,
+        "data_reduction": 9.971363760295548,
+        "snapshots": 0,
+        "system": null,
+        "thin_provisioning": 0.9981398332161411,
+        "total_physical": 102651705,
+        "total_provisioned": 1206885810176,
+        "total_reduction": 5360.467591841515,
+        "unique": 99324775,
+        "virtual": 2245008896,
+        "replication": 1245334
+      },
+      "destroyed": false,
+      "requested_promotion_state": "demoted",
+      "promotion_status": "demoted",
+      "mediator": "purestorage",
+      "failover_preferences": [],
+      "arrays": [
+        {
+          "name": "z-x70-a",
+          "id": "6c1b16ce-1c03-4d1c-b974-33405cf8d565",
+          "status": "online",
+          "mediator_status": "online",
+          "pre_elected": false,
+          "frozen_at": 1661275853687,
+          "progress": null
+        }
+      ],
+      "mediator_version": null,
+      "time_remaining": null,
+      "array_count": 1,
+      "eradication_config": {
+        "manual_eradication": "all-enabled"
+      },
+      "link_source_count": 1,
+      "link_target_count": 0,
+      "footprint": 741349214
+    },
+    {
+      "source": {
+        "name": null,
+        "id": null
+      },
+      "name": "eg-AC-main01",
+      "id": "4e48b9a0-78a4-ed67-fa66-d8ec4b96b54c",
+      "space": {
+        "shared": 0,
+        "data_reduction": 3.6026472348226877,
+        "snapshots": 11020,
+        "system": null,
+        "thin_provisioning": 0.9968284351545721,
+        "total_physical": 1042517240,
+        "total_provisioned": 1206885810176,
+        "total_reduction": 1135.9210391098277,
+        "unique": 1042506220,
+        "virtual": 3827716608,
+        "replication": 0
+      },
+      "destroyed": false,
+      "requested_promotion_state": "promoted",
+      "promotion_status": "promoted",
+      "mediator": "purestorage",
+      "failover_preferences": [],
+      "arrays": [
+        {
+          "name": "z-x70-a",
+          "id": "6c1b16ce-1c03-4d1c-b974-33405cf8d565",
+          "status": "online",
+          "mediator_status": "online",
+          "pre_elected": false,
+          "frozen_at": null,
+          "progress": null
+        }
+      ],
+      "mediator_version": null,
+      "time_remaining": null,
+      "array_count": 1,
+      "eradication_config": {
+        "manual_eradication": "all-enabled"
+      },
+      "link_source_count": 0,
+      "link_target_count": 0,
+      "footprint": 1145057155
+    }
+  ],
+  "more_items_remaining": false,
+  "total": [
+    {
+      "source": {
+        "name": null,
+        "id": null
+      },
+      "name": null,
+      "id": null,
+      "space": {
+        "shared": 6621254700,
+        "data_reduction": 3.2183495371181965,
+        "snapshots": 1007819444691,
+        "system": null,
+        "thin_provisioning": 0.9502557058878651,
+        "total_physical": 2080203172647,
+        "total_provisioned": 75816910192640,
+        "total_reduction": 64.69786323358635,
+        "unique": 1065761227922,
+        "virtual": 3771458679296,
+        "replication": 1245334
+      },
+      "destroyed": null,
+      "requested_promotion_state": null,
+      "promotion_status": null,
+      "mediator": null,
+      "failover_preferences": [],
+      "arrays": [],
+      "mediator_version": null,
+      "time_remaining": null,
+      "array_count": null,
+      "eradication_config": {
+        "manual_eradication": null
+      },
+      "link_source_count": null,
+      "link_target_count": null,
+      "footprint": 2265862258020
+    }
+  ],
+  "total_item_count": null
+}

@@ -1,0 +1,42 @@
+{
+  "continuation_token": null,
+  "items": [
+    {
+      "usec_per_other_op": 0,
+      "others_per_sec": 0,
+      "queue_depth": null,
+      "local_queue_usec_per_op": 0,
+      "mirrored_write_bytes_per_sec": 1220460,
+      "mirrored_writes_per_sec": 213,
+      "usec_per_mirrored_write_op": 596,
+      "san_usec_per_mirrored_write_op": 33,
+      "queue_usec_per_mirrored_write_op": 3,
+      "qos_rate_limit_usec_per_mirrored_write_op": 0,
+      "service_usec_per_mirrored_write_op": 596,
+      "bytes_per_mirrored_write": 5730,
+      "time": 1664312775929,
+      "name": "z-x70-a",
+      "id": "6c1b16ce-1c03-4d1c-b974-33405cf8d565",
+      "read_bytes_per_sec": 2914975,
+      "write_bytes_per_sec": 2252527,
+      "usec_per_read_op": 78,
+      "usec_per_write_op": 153,
+      "reads_per_sec": 96,
+      "writes_per_sec": 35,
+      "queue_usec_per_read_op": 1,
+      "queue_usec_per_write_op": 2,
+      "qos_rate_limit_usec_per_read_op": 0,
+      "qos_rate_limit_usec_per_write_op": 0,
+      "san_usec_per_read_op": 35,
+      "san_usec_per_write_op": 78,
+      "service_usec_per_read_op": 78,
+      "service_usec_per_write_op": 153,
+      "bytes_per_read": 30368,
+      "bytes_per_write": 64366,
+      "bytes_per_op": 18571,
+      "service_usec_per_read_op_cache_reduction": null
+    }
+  ],
+  "more_items_remaining": false,
+  "total_item_count": null
+}

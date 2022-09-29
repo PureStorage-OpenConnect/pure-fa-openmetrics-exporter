@@ -1,59 +1,21 @@
-# Temporary and binary files
-*~
-*.py[cod]
+# Binaries for programs and plugins
+*.exe
+*.exe~
+*.dll
 *.so
-*.cfg
-!.isort.cfg
-!setup.cfg
-*.orig
-*.log
-*.pot
-__pycache__/*
-.cache/*
-.*.swp
-*/.ipynb_checkpoints/*
-.DS_Store
+*.dylib
 
-# Project files
-.ropeproject
-.project
-.pydevproject
-.settings
-.idea
-.vscode
-tags
+# Test binary, built with `go test -c`
+*.test
 
-# Package files
-*.egg
-*.eggs/
-.installed.cfg
-*.egg-info
+# Output of the go coverage tool, specifically when used with LiteIDE
+*.out
 
-# Unittest and coverage
-htmlcov/*
-.coverage
-.coverage.*
-.tox
-junit*.xml
-coverage.xml
-.pytest_cache/
+# Dependency directories (remove the comment below to include it)
+vendor/
 
-# Build and docs folder/files
-build/*
-dist/*
-sdist/*
-docs/api/*
-docs/_rst/*
-docs/_build/*
-cover/*
-MANIFEST
-.pybuild
-debian/purity-fa-prometheus-exporter
-debian/.debhelper
-debian/debhelper-build-stamp
-debian/*debhelper
-debian/*substvars
+# Go workspace file
+go.work
 
-# Per-project virtualenvs
-.venv*/
-.conda*/
+# Build directory
+out/

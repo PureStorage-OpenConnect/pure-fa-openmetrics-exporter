@@ -1,0 +1,4109 @@
+{
+  "continuation_token": null,
+  "items": [
+    {
+      "space": {
+        "data_reduction": 1,
+        "shared": null,
+        "snapshots": 0,
+        "system": null,
+        "thin_provisioning": 0,
+        "total_physical": 0,
+        "total_provisioned": 0,
+        "total_reduction": 1,
+        "unique": 0,
+        "virtual": 0,
+        "unique_effective": 0,
+        "snapshots_effective": 0,
+        "total_effective": 0
+      },
+      "connection_count": 2,
+      "provisioned": 0,
+      "source": {
+        "name": null,
+        "id": null
+      },
+      "created": 1607506209153,
+      "name": "pure-protocol-endpoint",
+      "priority": 0,
+      "id": "5dcbd6bd-bd60-2987-9895-f33c08cae36d",
+      "destroyed": false,
+      "subtype": "protocol_endpoint",
+      "serial": "6C1B16CE1C034D1C00013918",
+      "host_encryption_key_status": "none",
+      "requested_promotion_state": "promoted",
+      "promotion_status": "promoted",
+      "pod": {
+        "name": null,
+        "id": null
+      },
+      "time_remaining": null,
+      "qos": {
+        "bandwidth_limit": null,
+        "iops_limit": null
+      },
+      "priority_adjustment": {
+        "priority_adjustment_operator": "+",
+        "priority_adjustment_value": 0
+      },
+      "volume_group": {
+        "name": null,
+        "id": null
+      }
+    },
+    {
+      "space": {
+        "data_reduction": 15.125510890183797,
+        "shared": null,
+        "snapshots": 0,
+        "system": null,
+        "thin_provisioning": 0.9434307981282473,
+        "total_physical": 0,
+        "total_provisioned": 4398046511104,
+        "total_reduction": 267.3806663292623,
+        "unique": 0,
+        "virtual": 248793980928,
+        "unique_effective": 0,
+        "snapshots_effective": 0,
+        "total_effective": 0
+      },
+      "connection_count": 0,
+      "provisioned": 4398046511104,
+      "source": {
+        "name": null,
+        "id": null
+      },
+      "created": 1622302154807,
+      "name": "z-fsa-esxi01-x70a-datastore01",
+      "priority": 0,
+      "id": "07d9f7ef-f4ab-87d1-3202-ce08ffb1247b",
+      "destroyed": false,
+      "subtype": "regular",
+      "serial": "6C1B16CE1C034D1C00024C6F",
+      "host_encryption_key_status": "none",
+      "requested_promotion_state": "promoted",
+      "promotion_status": "promoted",
+      "pod": {
+        "name": null,
+        "id": null
+      },
+      "time_remaining": null,
+      "qos": {
+        "bandwidth_limit": null,
+        "iops_limit": null
+      },
+      "priority_adjustment": {
+        "priority_adjustment_operator": "+",
+        "priority_adjustment_value": 0
+      },
+      "volume_group": {
+        "name": null,
+        "id": null
+      }
+    },
+    {
+      "space": {
+        "data_reduction": 2.936537225596408,
+        "shared": null,
+        "snapshots": 1008486590232,
+        "system": null,
+        "thin_provisioning": 0.8698670877376571,
+        "total_physical": 1916969338423,
+        "total_provisioned": 21990232555520,
+        "total_reduction": 22.56567669581131,
+        "unique": 908482748191,
+        "virtual": 2861653003776,
+        "unique_effective": 2790059897856,
+        "snapshots_effective": 5989870970368,
+        "total_effective": 8779930868224
+      },
+      "connection_count": 2,
+      "provisioned": 21990232555520,
+      "source": {
+        "name": null,
+        "id": null
+      },
+      "created": 1632487951945,
+      "name": "z-ProdPod::z-cisco-AC-datastore-VSI-FC",
+      "priority": 0,
+      "id": "2d9e916e-2ab5-081f-7ea3-055af0430172",
+      "destroyed": false,
+      "subtype": "regular",
+      "serial": "6C1B16CE1C034D1C00051838",
+      "host_encryption_key_status": "none",
+      "requested_promotion_state": "promoted",
+      "promotion_status": "promoted",
+      "pod": {
+        "name": "z-ProdPod",
+        "id": "b990f03f-171e-34b1-3faa-673cb5ce96a5"
+      },
+      "time_remaining": null,
+      "qos": {
+        "bandwidth_limit": null,
+        "iops_limit": null
+      },
+      "priority_adjustment": {
+        "priority_adjustment_operator": "+",
+        "priority_adjustment_value": 0
+      },
+      "volume_group": {
+        "name": null,
+        "id": null
+      }
+    },
+    {
+      "space": {
+        "data_reduction": 3.995782657433788,
+        "shared": null,
+        "snapshots": 3179087,
+        "system": null,
+        "thin_provisioning": 0.9481497376225889,
+        "total_physical": 119440141459,
+        "total_provisioned": 10995116277760,
+        "total_reduction": 77.06388500696525,
+        "unique": 119436962372,
+        "virtual": 570099663872,
+        "unique_effective": 570099663872,
+        "snapshots_effective": 7184465408,
+        "total_effective": 577284129280
+      },
+      "connection_count": 2,
+      "provisioned": 10995116277760,
+      "source": {
+        "name": null,
+        "id": null
+      },
+      "created": 1632817489432,
+      "name": "z-ProdPod::z-cisco-AC-datastore-ISO-FC",
+      "priority": 0,
+      "id": "0254c264-cafd-67d8-9ae3-eb6edd1a1791",
+      "destroyed": false,
+      "subtype": "regular",
+      "serial": "6C1B16CE1C034D1C0005431E",
+      "host_encryption_key_status": "none",
+      "requested_promotion_state": "promoted",
+      "promotion_status": "promoted",
+      "pod": {
+        "name": "z-ProdPod",
+        "id": "b990f03f-171e-34b1-3faa-673cb5ce96a5"
+      },
+      "time_remaining": null,
+      "qos": {
+        "bandwidth_limit": null,
+        "iops_limit": null
+      },
+      "priority_adjustment": {
+        "priority_adjustment_operator": "+",
+        "priority_adjustment_value": 0
+      },
+      "volume_group": {
+        "name": null,
+        "id": null
+      }
+    },
+    {
+      "space": {
+        "data_reduction": 5.051998457034626,
+        "shared": null,
+        "snapshots": 0,
+        "system": null,
+        "thin_provisioning": 0.9986027530627325,
+        "total_physical": 4591895621,
+        "total_provisioned": 21990232555520,
+        "total_reduction": 3615.680465841305,
+        "unique": 4591895621,
+        "virtual": 30725785088,
+        "unique_effective": 30725875200,
+        "snapshots_effective": 0,
+        "total_effective": 30725875200
+      },
+      "connection_count": 1,
+      "provisioned": 21990232555520,
+      "source": {
+        "name": null,
+        "id": null
+      },
+      "created": 1635765855754,
+      "name": "z-cisco-x70-a-datastore-VSI-FC-NVMe",
+      "priority": 0,
+      "id": "6a86bdc2-2160-a6ec-b13f-073293aecc77",
+      "destroyed": false,
+      "subtype": "regular",
+      "serial": "6C1B16CE1C034D1C0007E832",
+      "host_encryption_key_status": "none",
+      "requested_promotion_state": "promoted",
+      "promotion_status": "promoted",
+      "pod": {
+        "name": null,
+        "id": null
+      },
+      "time_remaining": null,
+      "qos": {
+        "bandwidth_limit": null,
+        "iops_limit": null
+      },
+      "priority_adjustment": {
+        "priority_adjustment_operator": "+",
+        "priority_adjustment_value": 0
+      },
+      "volume_group": {
+        "name": null,
+        "id": null
+      }
+    },
+    {
+      "space": {
+        "data_reduction": 5.6068334122317225,
+        "shared": null,
+        "snapshots": 0,
+        "system": null,
+        "thin_provisioning": 0.9977062450256199,
+        "total_physical": 6497530828,
+        "total_provisioned": 21990232555520,
+        "total_reduction": 2444.3907369604344,
+        "unique": 6497530828,
+        "virtual": 50440205312,
+        "unique_effective": 50440205312,
+        "snapshots_effective": 0,
+        "total_effective": 50440205312
+      },
+      "connection_count": 2,
+      "provisioned": 21990232555520,
+      "source": {
+        "name": null,
+        "id": null
+      },
+      "created": 1635871207605,
+      "name": "z-ProdPod::z-cisco-AC-datastore-iometer-FC",
+      "priority": 0,
+      "id": "b02e0b32-a718-16ac-726c-f56d2c4814d3",
+      "destroyed": false,
+      "subtype": "regular",
+      "serial": "704FA624CF6E4196000217F9",
+      "host_encryption_key_status": "none",
+      "requested_promotion_state": "promoted",
+      "promotion_status": "promoted",
+      "pod": {
+        "name": "z-ProdPod",
+        "id": "b990f03f-171e-34b1-3faa-673cb5ce96a5"
+      },
+      "time_remaining": null,
+      "qos": {
+        "bandwidth_limit": null,
+        "iops_limit": null
+      },
+      "priority_adjustment": {
+        "priority_adjustment_operator": "+",
+        "priority_adjustment_value": 0
+      },
+      "volume_group": {
+        "name": null,
+        "id": null
+      }
+    },
+    {
+      "space": {
+        "data_reduction": 13.803897319872632,
+        "shared": null,
+        "snapshots": 0,
+        "system": null,
+        "thin_provisioning": 0.9815383106935769,
+        "total_physical": 1433560977,
+        "total_provisioned": 10995116277760,
+        "total_reduction": 747.7049955049387,
+        "unique": 1433560977,
+        "virtual": 202988420608,
+        "unique_effective": 202988420608,
+        "snapshots_effective": 0,
+        "total_effective": 202988420608
+      },
+      "connection_count": 1,
+      "provisioned": 10995116277760,
+      "source": {
+        "name": null,
+        "id": null
+      },
+      "created": 1635874418066,
+      "name": "z-cisco-x70-a-datastore-ISO-FC-NVMe",
+      "priority": 0,
+      "id": "a0a5cb86-9f20-1623-8a55-fd2daf596c14",
+      "destroyed": false,
+      "subtype": "regular",
+      "serial": "6C1B16CE1C034D1C0008503D",
+      "host_encryption_key_status": "none",
+      "requested_promotion_state": "promoted",
+      "promotion_status": "promoted",
+      "pod": {
+        "name": null,
+        "id": null
+      },
+      "time_remaining": null,
+      "qos": {
+        "bandwidth_limit": null,
+        "iops_limit": null
+      },
+      "priority_adjustment": {
+        "priority_adjustment_operator": "+",
+        "priority_adjustment_value": 0
+      },
+      "volume_group": {
+        "name": null,
+        "id": null
+      }
+    },
+    {
+      "space": {
+        "data_reduction": 3.1621590337873995,
+        "shared": null,
+        "snapshots": 0,
+        "system": null,
+        "thin_provisioning": 0.9999365671537817,
+        "total_physical": 21947014,
+        "total_provisioned": 1099511627776,
+        "total_reduction": 49850.49894975019,
+        "unique": 21947014,
+        "virtual": 69745152,
+        "unique_effective": 69745152,
+        "snapshots_effective": 0,
+        "total_effective": 69745152
+      },
+      "connection_count": 1,
+      "provisioned": 1099511627776,
+      "source": {
+        "name": null,
+        "id": null
+      },
+      "created": 1636559250205,
+      "name": "z-win2019-poc-lun1",
+      "priority": 0,
+      "id": "57985f7b-2ba2-4ec9-9a6f-0c1b55a5172a",
+      "destroyed": false,
+      "subtype": "regular",
+      "serial": "6C1B16CE1C034D1C000AAB1A",
+      "host_encryption_key_status": "none",
+      "requested_promotion_state": "promoted",
+      "promotion_status": "promoted",
+      "pod": {
+        "name": null,
+        "id": null
+      },
+      "time_remaining": null,
+      "qos": {
+        "bandwidth_limit": null,
+        "iops_limit": null
+      },
+      "priority_adjustment": {
+        "priority_adjustment_operator": "+",
+        "priority_adjustment_value": 0
+      },
+      "volume_group": {
+        "name": null,
+        "id": null
+      }
+    },
+    {
+      "space": {
+        "data_reduction": 8.371589442751748,
+        "shared": null,
+        "snapshots": 0,
+        "system": null,
+        "thin_provisioning": 0.9999824188804874,
+        "total_physical": 13697321,
+        "total_provisioned": 13194139533312,
+        "total_reduction": 476169.30405318865,
+        "unique": 13697321,
+        "virtual": 231967744,
+        "unique_effective": 231967744,
+        "snapshots_effective": 0,
+        "total_effective": 231967744
+      },
+      "connection_count": 1,
+      "provisioned": 13194139533312,
+      "source": {
+        "name": null,
+        "id": null
+      },
+      "created": 1638884067247,
+      "name": "z-RoCEpod::z-cisco-x70-a-datastore-VSI-RoCE",
+      "priority": 0,
+      "id": "b8b5877c-7e2b-bc8d-c4f1-62f121fb3af0",
+      "destroyed": false,
+      "subtype": "regular",
+      "serial": "6C1B16CE1C034D1C000B5EE8",
+      "host_encryption_key_status": "none",
+      "requested_promotion_state": "promoted",
+      "promotion_status": "promoted",
+      "pod": {
+        "name": "z-RoCEpod",
+        "id": "7307625b-c907-eed6-6791-9586ec7b2ec1"
+      },
+      "time_remaining": null,
+      "qos": {
+        "bandwidth_limit": null,
+        "iops_limit": null
+      },
+      "priority_adjustment": {
+        "priority_adjustment_operator": "+",
+        "priority_adjustment_value": 0
+      },
+      "volume_group": {
+        "name": null,
+        "id": null
+      }
+    },
+    {
+      "space": {
+        "data_reduction": 6.196609126182501,
+        "shared": null,
+        "snapshots": 0,
+        "system": null,
+        "thin_provisioning": 0.8805744380224496,
+        "total_physical": 28722184530,
+        "total_provisioned": 2199023255552,
+        "total_reduction": 51.886790596366126,
+        "unique": 28722184530,
+        "virtual": 262619588096,
+        "unique_effective": 262619588096,
+        "snapshots_effective": 0,
+        "total_effective": 262619588096
+      },
+      "connection_count": 1,
+      "provisioned": 2199023255552,
+      "source": {
+        "name": null,
+        "id": null
+      },
+      "created": 1638884258438,
+      "name": "z-RoCEpod::z-cisco-x70-a-roce-datastore-ISO",
+      "priority": 0,
+      "id": "46ca18dc-10f8-a67f-5898-f5f5ca263472",
+      "destroyed": false,
+      "subtype": "regular",
+      "serial": "6C1B16CE1C034D1C000B5EEA",
+      "host_encryption_key_status": "none",
+      "requested_promotion_state": "promoted",
+      "promotion_status": "promoted",
+      "pod": {
+        "name": "z-RoCEpod",
+        "id": "7307625b-c907-eed6-6791-9586ec7b2ec1"
+      },
+      "time_remaining": null,
+      "qos": {
+        "bandwidth_limit": null,
+        "iops_limit": null
+      },
+      "priority_adjustment": {
+        "priority_adjustment_operator": "+",
+        "priority_adjustment_value": 0
+      },
+      "volume_group": {
+        "name": null,
+        "id": null
+      }
+    },
+    {
+      "space": {
+        "data_reduction": 1.5604978218380494,
+        "shared": null,
+        "snapshots": 0,
+        "system": null,
+        "thin_provisioning": 0.5993148267269135,
+        "total_physical": 22046799478,
+        "total_provisioned": 85899345920,
+        "total_reduction": 3.8945734105676375,
+        "unique": 22046799478,
+        "virtual": 34418594304,
+        "unique_effective": 34418594304,
+        "snapshots_effective": 0,
+        "total_effective": 34418594304
+      },
+      "connection_count": 1,
+      "provisioned": 85899345920,
+      "source": {
+        "name": null,
+        "id": null
+      },
+      "created": 1638966695755,
+      "name": "z-sql-dvops-prd-log",
+      "priority": 0,
+      "id": "70a631c4-7085-7865-17ae-252551ecb32c",
+      "destroyed": false,
+      "subtype": "regular",
+      "serial": "6C1B16CE1C034D1C000B6665",
+      "host_encryption_key_status": "none",
+      "requested_promotion_state": "promoted",
+      "promotion_status": "promoted",
+      "pod": {
+        "name": null,
+        "id": null
+      },
+      "time_remaining": null,
+      "qos": {
+        "bandwidth_limit": null,
+        "iops_limit": null
+      },
+      "priority_adjustment": {
+        "priority_adjustment_operator": "+",
+        "priority_adjustment_value": 0
+      },
+      "volume_group": {
+        "name": null,
+        "id": null
+      }
+    },
+    {
+      "space": {
+        "data_reduction": 4.434365884469885,
+        "shared": null,
+        "snapshots": 0,
+        "system": null,
+        "thin_provisioning": 0.44967493216196697,
+        "total_physical": 12486133309,
+        "total_provisioned": 128849018880,
+        "total_reduction": 8.057721051832896,
+        "unique": 12486133309,
+        "virtual": 70908845056,
+        "unique_effective": 70908845056,
+        "snapshots_effective": 0,
+        "total_effective": 70908845056
+      },
+      "connection_count": 1,
+      "provisioned": 128849018880,
+      "source": {
+        "name": null,
+        "id": null
+      },
+      "created": 1638966716947,
+      "name": "z-sql-dvops-prd-data",
+      "priority": 0,
+      "id": "c271a8bb-e011-b2eb-3c6a-edd1e4a5cb5f",
+      "destroyed": false,
+      "subtype": "regular",
+      "serial": "6C1B16CE1C034D1C000B6666",
+      "host_encryption_key_status": "none",
+      "requested_promotion_state": "promoted",
+      "promotion_status": "promoted",
+      "pod": {
+        "name": null,
+        "id": null
+      },
+      "time_remaining": null,
+      "qos": {
+        "bandwidth_limit": null,
+        "iops_limit": null
+      },
+      "priority_adjustment": {
+        "priority_adjustment_operator": "+",
+        "priority_adjustment_value": 0
+      },
+      "volume_group": {
+        "name": null,
+        "id": null
+      }
+    },
+    {
+      "space": {
+        "data_reduction": 9.18239428897883,
+        "shared": null,
+        "snapshots": 0,
+        "system": null,
+        "thin_provisioning": 0.9999775317497551,
+        "total_physical": 5900436,
+        "total_provisioned": 5497558138880,
+        "total_reduction": 408683.105667347,
+        "unique": 5900436,
+        "virtual": 123520512,
+        "unique_effective": 123520512,
+        "snapshots_effective": 0,
+        "total_effective": 123520512
+      },
+      "connection_count": 1,
+      "provisioned": 5497558138880,
+      "source": {
+        "name": null,
+        "id": null
+      },
+      "created": 1639046311735,
+      "name": "z-x70-a-datastore-iometer-FC",
+      "priority": 0,
+      "id": "0b94e2cd-95d1-ce5f-ec65-500207407f27",
+      "destroyed": false,
+      "subtype": "regular",
+      "serial": "6C1B16CE1C034D1C000B6D10",
+      "host_encryption_key_status": "none",
+      "requested_promotion_state": "promoted",
+      "promotion_status": "promoted",
+      "pod": {
+        "name": null,
+        "id": null
+      },
+      "time_remaining": null,
+      "qos": {
+        "bandwidth_limit": null,
+        "iops_limit": null
+      },
+      "priority_adjustment": {
+        "priority_adjustment_operator": "+",
+        "priority_adjustment_value": 0
+      },
+      "volume_group": {
+        "name": null,
+        "id": null
+      }
+    },
+    {
+      "space": {
+        "data_reduction": 14.761425503987603,
+        "shared": null,
+        "snapshots": 0,
+        "system": null,
+        "thin_provisioning": 0.5067284536361695,
+        "total_physical": 95890813,
+        "total_provisioned": 107374182400,
+        "total_reduction": 29.92555644614411,
+        "unique": 95890813,
+        "virtual": 52964628992,
+        "unique_effective": 52964628992,
+        "snapshots_effective": 0,
+        "total_effective": 52964628992
+      },
+      "connection_count": 1,
+      "provisioned": 107374182400,
+      "source": {
+        "name": null,
+        "id": null
+      },
+      "created": 1639048820941,
+      "name": "z-sql-tpch-bak",
+      "priority": 0,
+      "id": "fe300c5b-6efb-bce1-222c-99085b556457",
+      "destroyed": false,
+      "subtype": "regular",
+      "serial": "6C1B16CE1C034D1C000B6D69",
+      "host_encryption_key_status": "none",
+      "requested_promotion_state": "promoted",
+      "promotion_status": "promoted",
+      "pod": {
+        "name": null,
+        "id": null
+      },
+      "time_remaining": null,
+      "qos": {
+        "bandwidth_limit": null,
+        "iops_limit": null
+      },
+      "priority_adjustment": {
+        "priority_adjustment_operator": "+",
+        "priority_adjustment_value": 0
+      },
+      "volume_group": {
+        "name": null,
+        "id": null
+      }
+    },
+    {
+      "space": {
+        "data_reduction": 7.345526734826731,
+        "shared": null,
+        "snapshots": 0,
+        "system": null,
+        "thin_provisioning": 0.9975969791412354,
+        "total_physical": 2442853,
+        "total_provisioned": 12884901888,
+        "total_reduction": 3056.788586763637,
+        "unique": 2442853,
+        "virtual": 30962688,
+        "unique_effective": 8952832,
+        "snapshots_effective": 0,
+        "total_effective": 8952832
+      },
+      "connection_count": 1,
+      "provisioned": 12884901888,
+      "source": {
+        "name": null,
+        "id": null
+      },
+      "created": 1639430959117,
+      "name": "z-sql-rdm-copy-mount",
+      "priority": 0,
+      "id": "da256d61-af41-fb92-95c2-c1494dc300bb",
+      "destroyed": false,
+      "subtype": "regular",
+      "serial": "6C1B16CE1C034D1C000B9EF6",
+      "host_encryption_key_status": "none",
+      "requested_promotion_state": "promoted",
+      "promotion_status": "promoted",
+      "pod": {
+        "name": null,
+        "id": null
+      },
+      "time_remaining": null,
+      "qos": {
+        "bandwidth_limit": null,
+        "iops_limit": null
+      },
+      "priority_adjustment": {
+        "priority_adjustment_operator": "+",
+        "priority_adjustment_value": 0
+      },
+      "volume_group": {
+        "name": null,
+        "id": null
+      }
+    },
+    {
+      "space": {
+        "data_reduction": 15.048670289542876,
+        "shared": null,
+        "snapshots": 0,
+        "system": null,
+        "thin_provisioning": 0.9976008733113607,
+        "total_physical": 11350,
+        "total_provisioned": 12884901888,
+        "total_reduction": 6272.561745406537,
+        "unique": 11350,
+        "virtual": 30912512,
+        "unique_effective": 2379264,
+        "snapshots_effective": 0,
+        "total_effective": 2379264
+      },
+      "connection_count": 1,
+      "provisioned": 12884901888,
+      "source": {
+        "name": "z-sql-rdm-copy-mount",
+        "id": "da256d61-af41-fb92-95c2-c1494dc300bb"
+      },
+      "created": 1639435886223,
+      "name": "RDM-z-sql-dvops-dv1-z-sql-rdm-copy-mount-77630",
+      "priority": 0,
+      "id": "d5d77451-d824-bb25-fe9f-d2de409e8c0d",
+      "destroyed": false,
+      "subtype": "regular",
+      "serial": "6C1B16CE1C034D1C000B9FAC",
+      "host_encryption_key_status": "none",
+      "requested_promotion_state": "promoted",
+      "promotion_status": "promoted",
+      "pod": {
+        "name": null,
+        "id": null
+      },
+      "time_remaining": null,
+      "qos": {
+        "bandwidth_limit": null,
+        "iops_limit": null
+      },
+      "priority_adjustment": {
+        "priority_adjustment_operator": "+",
+        "priority_adjustment_value": 0
+      },
+      "volume_group": {
+        "name": null,
+        "id": null
+      }
+    },
+    {
+      "space": {
+        "data_reduction": 15.03383529585701,
+        "shared": null,
+        "snapshots": 0,
+        "system": null,
+        "thin_provisioning": 0.9976008733113607,
+        "total_physical": 14087,
+        "total_provisioned": 12884901888,
+        "total_reduction": 6266.378247988032,
+        "unique": 14087,
+        "virtual": 30912512,
+        "unique_effective": 1330688,
+        "snapshots_effective": 0,
+        "total_effective": 1330688
+      },
+      "connection_count": 1,
+      "provisioned": 12884901888,
+      "source": {
+        "name": "z-sql-rdm-copy-mount",
+        "id": "da256d61-af41-fb92-95c2-c1494dc300bb"
+      },
+      "created": 1639437191495,
+      "name": "RDM-z-sql-dvops-dv1-z-sql-rdm-copy-mount-62584",
+      "priority": 0,
+      "id": "8dc5a290-d525-9f86-1bdb-c160f93b4f1b",
+      "destroyed": false,
+      "subtype": "regular",
+      "serial": "6C1B16CE1C034D1C000B9FD7",
+      "host_encryption_key_status": "none",
+      "requested_promotion_state": "promoted",
+      "promotion_status": "promoted",
+      "pod": {
+        "name": null,
+        "id": null
+      },
+      "time_remaining": null,
+      "qos": {
+        "bandwidth_limit": null,
+        "iops_limit": null
+      },
+      "priority_adjustment": {
+        "priority_adjustment_operator": "+",
+        "priority_adjustment_value": 0
+      },
+      "volume_group": {
+        "name": null,
+        "id": null
+      }
+    },
+    {
+      "space": {
+        "data_reduction": 15.079877341435122,
+        "shared": null,
+        "snapshots": 0,
+        "system": null,
+        "thin_provisioning": 0.9976008733113607,
+        "total_physical": 6997,
+        "total_provisioned": 12884901888,
+        "total_reduction": 6285.569416923018,
+        "unique": 6997,
+        "virtual": 30912512,
+        "unique_effective": 1330688,
+        "snapshots_effective": 0,
+        "total_effective": 1330688
+      },
+      "connection_count": 1,
+      "provisioned": 12884901888,
+      "source": {
+        "name": "z-sql-rdm-copy-mount",
+        "id": "da256d61-af41-fb92-95c2-c1494dc300bb"
+      },
+      "created": 1639437414783,
+      "name": "RDM-z-sql-dvops-dv1-z-sql-rdm-copy-mount-38542",
+      "priority": 0,
+      "id": "c412392e-0968-5434-21eb-4ec02e39a123",
+      "destroyed": false,
+      "subtype": "regular",
+      "serial": "6C1B16CE1C034D1C000B9FE2",
+      "host_encryption_key_status": "none",
+      "requested_promotion_state": "promoted",
+      "promotion_status": "promoted",
+      "pod": {
+        "name": null,
+        "id": null
+      },
+      "time_remaining": null,
+      "qos": {
+        "bandwidth_limit": null,
+        "iops_limit": null
+      },
+      "priority_adjustment": {
+        "priority_adjustment_operator": "+",
+        "priority_adjustment_value": 0
+      },
+      "volume_group": {
+        "name": null,
+        "id": null
+      }
+    },
+    {
+      "space": {
+        "data_reduction": 15.075089889684278,
+        "shared": null,
+        "snapshots": 0,
+        "system": null,
+        "thin_provisioning": 0.9976008733113607,
+        "total_physical": 7614,
+        "total_provisioned": 12884901888,
+        "total_reduction": 6283.573919239001,
+        "unique": 7614,
+        "virtual": 30912512,
+        "unique_effective": 2379264,
+        "snapshots_effective": 0,
+        "total_effective": 2379264
+      },
+      "connection_count": 1,
+      "provisioned": 12884901888,
+      "source": {
+        "name": "z-sql-rdm-copy-mount",
+        "id": "da256d61-af41-fb92-95c2-c1494dc300bb"
+      },
+      "created": 1639438049364,
+      "name": "RDM-z-sql-dvops-dv1-z-sql-rdm-copy-mount-56633",
+      "priority": 0,
+      "id": "e66f2a30-f483-da57-24de-84f4a25ab55d",
+      "destroyed": false,
+      "subtype": "regular",
+      "serial": "6C1B16CE1C034D1C000B9FFC",
+      "host_encryption_key_status": "none",
+      "requested_promotion_state": "promoted",
+      "promotion_status": "promoted",
+      "pod": {
+        "name": null,
+        "id": null
+      },
+      "time_remaining": null,
+      "qos": {
+        "bandwidth_limit": null,
+        "iops_limit": null
+      },
+      "priority_adjustment": {
+        "priority_adjustment_operator": "+",
+        "priority_adjustment_value": 0
+      },
+      "volume_group": {
+        "name": null,
+        "id": null
+      }
+    },
+    {
+      "space": {
+        "data_reduction": 14.644269003814095,
+        "shared": null,
+        "snapshots": 0,
+        "system": null,
+        "thin_provisioning": 0.998431404431661,
+        "total_physical": 48447,
+        "total_provisioned": 12884901888,
+        "total_reduction": 9335.9112440441,
+        "unique": 48447,
+        "virtual": 20211200,
+        "unique_effective": 2284544,
+        "snapshots_effective": 0,
+        "total_effective": 2284544
+      },
+      "connection_count": 1,
+      "provisioned": 12884901888,
+      "source": {
+        "name": "z-sql-rdm-copy-mount",
+        "id": "da256d61-af41-fb92-95c2-c1494dc300bb"
+      },
+      "created": 1639439069435,
+      "name": "RDM-z-sql-dvops-dv1-z-sql-rdm-copy-mount-61184",
+      "priority": 0,
+      "id": "b1a3b372-0c7c-109d-1862-9c5ba152d98b",
+      "destroyed": false,
+      "subtype": "regular",
+      "serial": "6C1B16CE1C034D1C000BA024",
+      "host_encryption_key_status": "none",
+      "requested_promotion_state": "promoted",
+      "promotion_status": "promoted",
+      "pod": {
+        "name": null,
+        "id": null
+      },
+      "time_remaining": null,
+      "qos": {
+        "bandwidth_limit": null,
+        "iops_limit": null
+      },
+      "priority_adjustment": {
+        "priority_adjustment_operator": "+",
+        "priority_adjustment_value": 0
+      },
+      "volume_group": {
+        "name": null,
+        "id": null
+      }
+    },
+    {
+      "space": {
+        "data_reduction": 15.105467355560412,
+        "shared": null,
+        "snapshots": 552947,
+        "system": null,
+        "thin_provisioning": 0.7328081210454305,
+        "total_physical": 4013528,
+        "total_provisioned": 128849018880,
+        "total_reduction": 56.534155958118724,
+        "unique": 3460581,
+        "virtual": 34427411456,
+        "unique_effective": 34427411456,
+        "snapshots_effective": 78554624,
+        "total_effective": 34505966080
+      },
+      "connection_count": 1,
+      "provisioned": 128849018880,
+      "source": {
+        "name": null,
+        "id": null
+      },
+      "created": 1641811203281,
+      "name": "z-sql-dvops-dv1-ndf",
+      "priority": 0,
+      "id": "c10b1fee-28e9-14db-6c66-a11e44014cbe",
+      "destroyed": false,
+      "subtype": "regular",
+      "serial": "6C1B16CE1C034D1C000D23AA",
+      "host_encryption_key_status": "none",
+      "requested_promotion_state": "promoted",
+      "promotion_status": "promoted",
+      "pod": {
+        "name": null,
+        "id": null
+      },
+      "time_remaining": null,
+      "qos": {
+        "bandwidth_limit": null,
+        "iops_limit": null
+      },
+      "priority_adjustment": {
+        "priority_adjustment_operator": "+",
+        "priority_adjustment_value": 0
+      },
+      "volume_group": {
+        "name": null,
+        "id": null
+      }
+    },
+    {
+      "space": {
+        "data_reduction": 15.102683167458434,
+        "shared": null,
+        "snapshots": 2437205,
+        "system": null,
+        "thin_provisioning": 0.3646048069000244,
+        "total_physical": 8777412,
+        "total_provisioned": 85899345920,
+        "total_reduction": 23.7689603753142,
+        "unique": 6340207,
+        "virtual": 54580031488,
+        "unique_effective": 54580031488,
+        "snapshots_effective": 366902784,
+        "total_effective": 54946934272
+      },
+      "connection_count": 1,
+      "provisioned": 85899345920,
+      "source": {
+        "name": null,
+        "id": null
+      },
+      "created": 1641811228246,
+      "name": "z-sql-dvops-dv1-trn",
+      "priority": 0,
+      "id": "5a52dbcd-e1b6-75ed-6d62-b838ad943321",
+      "destroyed": false,
+      "subtype": "regular",
+      "serial": "6C1B16CE1C034D1C000D23AB",
+      "host_encryption_key_status": "none",
+      "requested_promotion_state": "promoted",
+      "promotion_status": "promoted",
+      "pod": {
+        "name": null,
+        "id": null
+      },
+      "time_remaining": null,
+      "qos": {
+        "bandwidth_limit": null,
+        "iops_limit": null
+      },
+      "priority_adjustment": {
+        "priority_adjustment_operator": "+",
+        "priority_adjustment_value": 0
+      },
+      "volume_group": {
+        "name": null,
+        "id": null
+      }
+    },
+    {
+      "space": {
+        "data_reduction": 1,
+        "shared": null,
+        "snapshots": 0,
+        "system": null,
+        "thin_provisioning": 1,
+        "total_physical": 0,
+        "total_provisioned": 214748364800,
+        "total_reduction": 1,
+        "unique": 0,
+        "virtual": 0,
+        "unique_effective": 0,
+        "snapshots_effective": 0,
+        "total_effective": 0
+      },
+      "connection_count": 0,
+      "provisioned": 214748364800,
+      "source": {
+        "name": null,
+        "id": null
+      },
+      "created": 1641821596267,
+      "name": "MHTestRep",
+      "priority": 0,
+      "id": "4a00f9ec-bd4c-71ef-8049-e507bfb4dbf3",
+      "destroyed": false,
+      "subtype": "regular",
+      "serial": "6C1B16CE1C034D1C000D23DE",
+      "host_encryption_key_status": "none",
+      "requested_promotion_state": "promoted",
+      "promotion_status": "promoted",
+      "pod": {
+        "name": null,
+        "id": null
+      },
+      "time_remaining": null,
+      "qos": {
+        "bandwidth_limit": null,
+        "iops_limit": null
+      },
+      "priority_adjustment": {
+        "priority_adjustment_operator": "+",
+        "priority_adjustment_value": 0
+      },
+      "volume_group": {
+        "name": null,
+        "id": null
+      }
+    },
+    {
+      "space": {
+        "data_reduction": 15.125510890183797,
+        "shared": null,
+        "snapshots": 0,
+        "system": null,
+        "thin_provisioning": 0.9434307981282473,
+        "total_physical": 0,
+        "total_provisioned": 4398046511104,
+        "total_reduction": 267.3806663292623,
+        "unique": 0,
+        "virtual": 248793980928,
+        "unique_effective": 0,
+        "snapshots_effective": 0,
+        "total_effective": 0
+      },
+      "connection_count": 0,
+      "provisioned": 4398046511104,
+      "source": {
+        "name": "z-fsa-esxi01-x70a-datastore01",
+        "id": "07d9f7ef-f4ab-87d1-3202-ce08ffb1247b"
+      },
+      "created": 1641826984095,
+      "name": "FAT11",
+      "priority": 0,
+      "id": "0ff5b81f-8755-39f4-4167-0adbbc5f9243",
+      "destroyed": false,
+      "subtype": "regular",
+      "serial": "6C1B16CE1C034D1C000D2412",
+      "host_encryption_key_status": "none",
+      "requested_promotion_state": "promoted",
+      "promotion_status": "promoted",
+      "pod": {
+        "name": null,
+        "id": null
+      },
+      "time_remaining": null,
+      "qos": {
+        "bandwidth_limit": null,
+        "iops_limit": null
+      },
+      "priority_adjustment": {
+        "priority_adjustment_operator": "+",
+        "priority_adjustment_value": 0
+      },
+      "volume_group": {
+        "name": null,
+        "id": null
+      }
+    },
+    {
+      "space": {
+        "data_reduction": 9.510074931371108,
+        "shared": null,
+        "snapshots": 39675,
+        "system": null,
+        "thin_provisioning": 0.9999732514046638,
+        "total_physical": 936650,
+        "total_provisioned": 727996956672,
+        "total_reduction": 355535.48931606504,
+        "unique": 896975,
+        "virtual": 19472896,
+        "unique_effective": 19472896,
+        "snapshots_effective": 3230208,
+        "total_effective": 22703104
+      },
+      "connection_count": 1,
+      "provisioned": 727996956672,
+      "source": {
+        "name": null,
+        "id": null
+      },
+      "created": 1643276484588,
+      "name": "jsADRpod-prod::esxvol",
+      "priority": 0,
+      "id": "a9eab97e-2855-6c52-d45d-dc3913982e3b",
+      "destroyed": false,
+      "subtype": "regular",
+      "serial": "6C1B16CE1C034D1C000EAD31",
+      "host_encryption_key_status": "none",
+      "requested_promotion_state": "promoted",
+      "promotion_status": "promoted",
+      "pod": {
+        "name": "jsADRpod-prod",
+        "id": "03ec0d4a-4538-4b91-f5e7-c25a6769538c"
+      },
+      "time_remaining": null,
+      "qos": {
+        "bandwidth_limit": null,
+        "iops_limit": null
+      },
+      "priority_adjustment": {
+        "priority_adjustment_operator": "+",
+        "priority_adjustment_value": 0
+      },
+      "volume_group": {
+        "name": null,
+        "id": null
+      }
+    },
+    {
+      "space": {
+        "data_reduction": 1.7872694919423207,
+        "shared": null,
+        "snapshots": 0,
+        "system": null,
+        "thin_provisioning": 0.9999385862611234,
+        "total_physical": 37750224,
+        "total_provisioned": 1099511627776,
+        "total_reduction": 29102.11175278008,
+        "unique": 37750224,
+        "virtual": 67525120,
+        "unique_effective": 67525120,
+        "snapshots_effective": 0,
+        "total_effective": 67525120
+      },
+      "connection_count": 1,
+      "provisioned": 1099511627776,
+      "source": {
+        "name": null,
+        "id": null
+      },
+      "created": 1643296661772,
+      "name": "jsADRpod-prod::rdm1",
+      "priority": 0,
+      "id": "f9e437c2-5205-18fa-778a-55dff32666db",
+      "destroyed": false,
+      "subtype": "regular",
+      "serial": "6C1B16CE1C034D1C000EC757",
+      "host_encryption_key_status": "none",
+      "requested_promotion_state": "promoted",
+      "promotion_status": "promoted",
+      "pod": {
+        "name": "jsADRpod-prod",
+        "id": "03ec0d4a-4538-4b91-f5e7-c25a6769538c"
+      },
+      "time_remaining": null,
+      "qos": {
+        "bandwidth_limit": null,
+        "iops_limit": null
+      },
+      "priority_adjustment": {
+        "priority_adjustment_operator": "+",
+        "priority_adjustment_value": 0
+      },
+      "volume_group": {
+        "name": null,
+        "id": null
+      }
+    },
+    {
+      "space": {
+        "data_reduction": 5.432482074506995,
+        "shared": null,
+        "snapshots": 0,
+        "system": null,
+        "thin_provisioning": 0.7649530755355954,
+        "total_physical": 388080281770,
+        "total_provisioned": 10995116277760,
+        "total_reduction": 23.11232996086144,
+        "unique": 388080281770,
+        "virtual": 2584368265216,
+        "unique_effective": 2431459483136,
+        "snapshots_effective": 0,
+        "total_effective": 2431459483136
+      },
+      "connection_count": 1,
+      "provisioned": 10995116277760,
+      "source": {
+        "name": null,
+        "id": null
+      },
+      "created": 1643815436310,
+      "name": "z-cisco-FC-x70-a-VSI-datastore",
+      "priority": 0,
+      "id": "2d781ab1-add0-2a64-7415-151d7a77993f",
+      "destroyed": false,
+      "subtype": "regular",
+      "serial": "6C1B16CE1C034D1C0012C618",
+      "host_encryption_key_status": "none",
+      "requested_promotion_state": "promoted",
+      "promotion_status": "promoted",
+      "pod": {
+        "name": null,
+        "id": null
+      },
+      "time_remaining": null,
+      "qos": {
+        "bandwidth_limit": null,
+        "iops_limit": null
+      },
+      "priority_adjustment": {
+        "priority_adjustment_operator": "+",
+        "priority_adjustment_value": 0
+      },
+      "volume_group": {
+        "name": null,
+        "id": null
+      }
+    },
+    {
+      "space": {
+        "data_reduction": 9.771011331089586,
+        "shared": null,
+        "snapshots": 0,
+        "system": null,
+        "thin_provisioning": 0.9772828076966107,
+        "total_physical": 1151269014,
+        "total_provisioned": 1099511627776,
+        "total_reduction": 430.11527131509956,
+        "unique": 1151269014,
+        "virtual": 24977817088,
+        "unique_effective": 24980240896,
+        "snapshots_effective": 0,
+        "total_effective": 24980240896
+      },
+      "connection_count": 1,
+      "provisioned": 1099511627776,
+      "source": {
+        "name": null,
+        "id": null
+      },
+      "created": 1644689123276,
+      "name": "eg-px-tkg01",
+      "priority": 0,
+      "id": "a750b090-663d-b45d-d28f-2af359129c53",
+      "destroyed": false,
+      "subtype": "regular",
+      "serial": "6C1B16CE1C034D1C001F19BA",
+      "host_encryption_key_status": "none",
+      "requested_promotion_state": "promoted",
+      "promotion_status": "promoted",
+      "pod": {
+        "name": null,
+        "id": null
+      },
+      "time_remaining": null,
+      "qos": {
+        "bandwidth_limit": null,
+        "iops_limit": null
+      },
+      "priority_adjustment": {
+        "priority_adjustment_operator": "+",
+        "priority_adjustment_value": 0
+      },
+      "volume_group": {
+        "name": null,
+        "id": null
+      }
+    },
+    {
+      "space": {
+        "data_reduction": 5.180068413915497,
+        "shared": null,
+        "snapshots": 0,
+        "system": null,
+        "thin_provisioning": 0.8682407285086811,
+        "total_physical": 22931310525,
+        "total_provisioned": 1099511627776,
+        "total_reduction": 39.31464067222616,
+        "unique": 22931310525,
+        "virtual": 144870851072,
+        "unique_effective": 144896060416,
+        "snapshots_effective": 0,
+        "total_effective": 144896060416
+      },
+      "connection_count": 1,
+      "provisioned": 1099511627776,
+      "source": {
+        "name": null,
+        "id": null
+      },
+      "created": 1644878286795,
+      "name": "eg-px-ocp-1",
+      "priority": 0,
+      "id": "f94d4a2f-7b39-dd8e-88a3-9324da75109f",
+      "destroyed": false,
+      "subtype": "regular",
+      "serial": "6C1B16CE1C034D1C0022ACAC",
+      "host_encryption_key_status": "none",
+      "requested_promotion_state": "promoted",
+      "promotion_status": "promoted",
+      "pod": {
+        "name": null,
+        "id": null
+      },
+      "time_remaining": null,
+      "qos": {
+        "bandwidth_limit": null,
+        "iops_limit": null
+      },
+      "priority_adjustment": {
+        "priority_adjustment_operator": "+",
+        "priority_adjustment_value": 0
+      },
+      "volume_group": {
+        "name": null,
+        "id": null
+      }
+    },
+    {
+      "space": {
+        "data_reduction": 1.8866285210968974,
+        "shared": null,
+        "snapshots": 0,
+        "system": null,
+        "thin_provisioning": 0.9985756874084473,
+        "total_physical": 3172320,
+        "total_provisioned": 4294967296,
+        "total_reduction": 1324.5888102696354,
+        "unique": 3172320,
+        "virtual": 6117376,
+        "unique_effective": 6117376,
+        "snapshots_effective": 0,
+        "total_effective": 6117376
+      },
+      "connection_count": 0,
+      "provisioned": 4294967296,
+      "source": {
+        "name": null,
+        "id": null
+      },
+      "created": 1646936252607,
+      "name": "vvol-focal-server-cl-mg-amd64-7b5356b4-vg/Config-65b28d89",
+      "priority": 0,
+      "id": "3156260b-c6eb-7a8d-9329-dc56634dd795",
+      "destroyed": false,
+      "subtype": "regular",
+      "serial": "6C1B16CE1C034D1C0051C2A7",
+      "host_encryption_key_status": "none",
+      "requested_promotion_state": "promoted",
+      "promotion_status": "promoted",
+      "pod": {
+        "name": null,
+        "id": null
+      },
+      "time_remaining": null,
+      "qos": {
+        "bandwidth_limit": null,
+        "iops_limit": null
+      },
+      "priority_adjustment": {
+        "priority_adjustment_operator": "+",
+        "priority_adjustment_value": 0
+      },
+      "volume_group": {
+        "name": "vvol-focal-server-cl-mg-amd64-7b5356b4-vg",
+        "id": "378daab1-b1b1-331c-887e-a617ada61fdd"
+      }
+    },
+    {
+      "space": {
+        "data_reduction": 15.12551083097046,
+        "shared": null,
+        "snapshots": 0,
+        "system": null,
+        "thin_provisioning": 0.8637509346008301,
+        "total_physical": 0,
+        "total_provisioned": 10737418240,
+        "total_reduction": 111.01368502350556,
+        "unique": 0,
+        "virtual": 1462963200,
+        "unique_effective": 0,
+        "snapshots_effective": 0,
+        "total_effective": 0
+      },
+      "connection_count": 0,
+      "provisioned": 10737418240,
+      "source": {
+        "name": null,
+        "id": null
+      },
+      "created": 1646936253328,
+      "name": "vvol-focal-server-cl-mg-amd64-7b5356b4-vg/Data-10996ebb",
+      "priority": 0,
+      "id": "eb21b805-b3bc-1a4f-fa0c-6a500a2f7778",
+      "destroyed": false,
+      "subtype": "regular",
+      "serial": "6C1B16CE1C034D1C0051C2A8",
+      "host_encryption_key_status": "none",
+      "requested_promotion_state": "promoted",
+      "promotion_status": "promoted",
+      "pod": {
+        "name": null,
+        "id": null
+      },
+      "time_remaining": null,
+      "qos": {
+        "bandwidth_limit": null,
+        "iops_limit": null
+      },
+      "priority_adjustment": {
+        "priority_adjustment_operator": "+",
+        "priority_adjustment_value": 0
+      },
+      "volume_group": {
+        "name": "vvol-focal-server-cl-mg-amd64-7b5356b4-vg",
+        "id": "378daab1-b1b1-331c-887e-a617ada61fdd"
+      }
+    },
+    {
+      "space": {
+        "data_reduction": 2.2717796922100963,
+        "shared": null,
+        "snapshots": 0,
+        "system": null,
+        "thin_provisioning": 0.9986592531204224,
+        "total_physical": 2465693,
+        "total_provisioned": 4294967296,
+        "total_reduction": 1694.4135591989998,
+        "unique": 2465693,
+        "virtual": 5758464,
+        "unique_effective": 5758464,
+        "snapshots_effective": 0,
+        "total_effective": 5758464
+      },
+      "connection_count": 1,
+      "provisioned": 4294967296,
+      "source": {
+        "name": null,
+        "id": null
+      },
+      "created": 1646936423813,
+      "name": "vvol--vSphere-HA-a93acac7-vg/Config-7a8f8c63",
+      "priority": 0,
+      "id": "1448facc-ecee-b396-1953-de669e2e850e",
+      "destroyed": false,
+      "subtype": "regular",
+      "serial": "6C1B16CE1C034D1C0051C2AA",
+      "host_encryption_key_status": "none",
+      "requested_promotion_state": "promoted",
+      "promotion_status": "promoted",
+      "pod": {
+        "name": null,
+        "id": null
+      },
+      "time_remaining": null,
+      "qos": {
+        "bandwidth_limit": null,
+        "iops_limit": null
+      },
+      "priority_adjustment": {
+        "priority_adjustment_operator": "+",
+        "priority_adjustment_value": 0
+      },
+      "volume_group": {
+        "name": "vvol--vSphere-HA-a93acac7-vg",
+        "id": "d9c9e3d5-e6ce-e0e8-e053-495dc2469f11"
+      }
+    },
+    {
+      "space": {
+        "data_reduction": 2.3100154604031227,
+        "shared": null,
+        "snapshots": 0,
+        "system": null,
+        "thin_provisioning": 0.9985997676849365,
+        "total_physical": 2533525,
+        "total_provisioned": 4294967296,
+        "total_reduction": 1649.737286843293,
+        "unique": 2533525,
+        "virtual": 6013952,
+        "unique_effective": 6013952,
+        "snapshots_effective": 0,
+        "total_effective": 6013952
+      },
+      "connection_count": 0,
+      "provisioned": 4294967296,
+      "source": {
+        "name": null,
+        "id": null
+      },
+      "created": 1646938969006,
+      "name": "vvol-ubuntu01-1-1236baf3-vg/Config-3641d3a2",
+      "priority": 0,
+      "id": "69567f07-8865-07d1-05a5-5888a0afc5f7",
+      "destroyed": false,
+      "subtype": "regular",
+      "serial": "6C1B16CE1C034D1C0051D33D",
+      "host_encryption_key_status": "none",
+      "requested_promotion_state": "promoted",
+      "promotion_status": "promoted",
+      "pod": {
+        "name": null,
+        "id": null
+      },
+      "time_remaining": null,
+      "qos": {
+        "bandwidth_limit": null,
+        "iops_limit": null
+      },
+      "priority_adjustment": {
+        "priority_adjustment_operator": "+",
+        "priority_adjustment_value": 0
+      },
+      "volume_group": {
+        "name": "vvol-ubuntu01-1-1236baf3-vg",
+        "id": "fa49ea60-912c-aae9-efd0-44f0af403324"
+      }
+    },
+    {
+      "space": {
+        "data_reduction": 15.12551083097046,
+        "shared": null,
+        "snapshots": 0,
+        "system": null,
+        "thin_provisioning": 0.8637509346008301,
+        "total_physical": 0,
+        "total_provisioned": 10737418240,
+        "total_reduction": 111.01368502350556,
+        "unique": 0,
+        "virtual": 1462963200,
+        "unique_effective": 0,
+        "snapshots_effective": 0,
+        "total_effective": 0
+      },
+      "connection_count": 0,
+      "provisioned": 10737418240,
+      "source": {
+        "name": "vvol-focal-server-cl-mg-amd64-7b5356b4-vg/Data-10996ebb",
+        "id": "eb21b805-b3bc-1a4f-fa0c-6a500a2f7778"
+      },
+      "created": 1646938969681,
+      "name": "vvol-ubuntu01-1-1236baf3-vg/Data-e9872f2e",
+      "priority": 0,
+      "id": "b865f7d4-a107-85a2-e138-7b4dbd309a95",
+      "destroyed": false,
+      "subtype": "regular",
+      "serial": "6C1B16CE1C034D1C0051D33E",
+      "host_encryption_key_status": "none",
+      "requested_promotion_state": "promoted",
+      "promotion_status": "promoted",
+      "pod": {
+        "name": null,
+        "id": null
+      },
+      "time_remaining": null,
+      "qos": {
+        "bandwidth_limit": null,
+        "iops_limit": null
+      },
+      "priority_adjustment": {
+        "priority_adjustment_operator": "+",
+        "priority_adjustment_value": 0
+      },
+      "volume_group": {
+        "name": "vvol-ubuntu01-1-1236baf3-vg",
+        "id": "fa49ea60-912c-aae9-efd0-44f0af403324"
+      }
+    },
+    {
+      "space": {
+        "data_reduction": 10.579440158120555,
+        "shared": null,
+        "snapshots": 0,
+        "system": null,
+        "thin_provisioning": 0.6026012259535491,
+        "total_physical": 14004102348,
+        "total_provisioned": 1099511627776,
+        "total_reduction": 26.621723188516814,
+        "unique": 14004102348,
+        "virtual": 436944572928,
+        "unique_effective": 436944572928,
+        "snapshots_effective": 0,
+        "total_effective": 436944572928
+      },
+      "connection_count": 1,
+      "provisioned": 1099511627776,
+      "source": {
+        "name": null,
+        "id": null
+      },
+      "created": 1647341278234,
+      "name": "z-sql-tpcc-data",
+      "priority": 0,
+      "id": "4bb72a26-c2cc-d222-20d2-e6beb5dded74",
+      "destroyed": false,
+      "subtype": "regular",
+      "serial": "6C1B16CE1C034D1C005B3CC8",
+      "host_encryption_key_status": "none",
+      "requested_promotion_state": "promoted",
+      "promotion_status": "promoted",
+      "pod": {
+        "name": null,
+        "id": null
+      },
+      "time_remaining": null,
+      "qos": {
+        "bandwidth_limit": null,
+        "iops_limit": null
+      },
+      "priority_adjustment": {
+        "priority_adjustment_operator": "+",
+        "priority_adjustment_value": 0
+      },
+      "volume_group": {
+        "name": null,
+        "id": null
+      }
+    },
+    {
+      "space": {
+        "data_reduction": 1.568207341331656,
+        "shared": null,
+        "snapshots": 0,
+        "system": null,
+        "thin_provisioning": 0.7186847617849708,
+        "total_physical": 196364642402,
+        "total_provisioned": 1099511627776,
+        "total_reduction": 5.574555261499782,
+        "unique": 196364642402,
+        "virtual": 309309375488,
+        "unique_effective": 309309375488,
+        "snapshots_effective": 0,
+        "total_effective": 309309375488
+      },
+      "connection_count": 1,
+      "provisioned": 1099511627776,
+      "source": {
+        "name": null,
+        "id": null
+      },
+      "created": 1647345143318,
+      "name": "z-sql-tpcc-log",
+      "priority": 0,
+      "id": "1b6122c6-f5d4-1206-18f2-cb63bfd5cc71",
+      "destroyed": false,
+      "subtype": "regular",
+      "serial": "6C1B16CE1C034D1C005B52DC",
+      "host_encryption_key_status": "none",
+      "requested_promotion_state": "promoted",
+      "promotion_status": "promoted",
+      "pod": {
+        "name": null,
+        "id": null
+      },
+      "time_remaining": null,
+      "qos": {
+        "bandwidth_limit": null,
+        "iops_limit": null
+      },
+      "priority_adjustment": {
+        "priority_adjustment_operator": "+",
+        "priority_adjustment_value": 0
+      },
+      "volume_group": {
+        "name": null,
+        "id": null
+      }
+    },
+    {
+      "space": {
+        "data_reduction": 7.7924880096302775,
+        "shared": null,
+        "snapshots": 0,
+        "system": null,
+        "thin_provisioning": 0.5800952119752765,
+        "total_physical": 32161722562,
+        "total_provisioned": 1099511627776,
+        "total_reduction": 18.557749832496466,
+        "unique": 32161722562,
+        "virtual": 461690196992,
+        "unique_effective": 461690196992,
+        "snapshots_effective": 0,
+        "total_effective": 461690196992
+      },
+      "connection_count": 1,
+      "provisioned": 1099511627776,
+      "source": {
+        "name": null,
+        "id": null
+      },
+      "created": 1647349078836,
+      "name": "z-sql-tpcc-sys",
+      "priority": 0,
+      "id": "eca89790-ba0d-4392-f19c-ee20f58aecc9",
+      "destroyed": false,
+      "subtype": "regular",
+      "serial": "6C1B16CE1C034D1C005B68F0",
+      "host_encryption_key_status": "none",
+      "requested_promotion_state": "promoted",
+      "promotion_status": "promoted",
+      "pod": {
+        "name": null,
+        "id": null
+      },
+      "time_remaining": null,
+      "qos": {
+        "bandwidth_limit": null,
+        "iops_limit": null
+      },
+      "priority_adjustment": {
+        "priority_adjustment_operator": "+",
+        "priority_adjustment_value": 0
+      },
+      "volume_group": {
+        "name": null,
+        "id": null
+      }
+    },
+    {
+      "space": {
+        "data_reduction": 4.5670909250147185,
+        "shared": null,
+        "snapshots": 0,
+        "system": null,
+        "thin_provisioning": 0.5800444930791855,
+        "total_physical": 78028880284,
+        "total_provisioned": 1099511627776,
+        "total_reduction": 10.875178083748464,
+        "unique": 78028880284,
+        "virtual": 461745963008,
+        "unique_effective": 461745963008,
+        "snapshots_effective": 0,
+        "total_effective": 461745963008
+      },
+      "connection_count": 2,
+      "provisioned": 1099511627776,
+      "source": {
+        "name": null,
+        "id": null
+      },
+      "created": 1647393756209,
+      "name": "z-sql-tpcc",
+      "priority": 0,
+      "id": "b7b7bf01-98a8-b87f-faf0-81f392141bf9",
+      "destroyed": false,
+      "subtype": "regular",
+      "serial": "6C1B16CE1C034D1C005C7735",
+      "host_encryption_key_status": "none",
+      "requested_promotion_state": "promoted",
+      "promotion_status": "promoted",
+      "pod": {
+        "name": null,
+        "id": null
+      },
+      "time_remaining": null,
+      "qos": {
+        "bandwidth_limit": null,
+        "iops_limit": null
+      },
+      "priority_adjustment": {
+        "priority_adjustment_operator": "+",
+        "priority_adjustment_value": 0
+      },
+      "volume_group": {
+        "name": null,
+        "id": null
+      }
+    },
+    {
+      "space": {
+        "data_reduction": 1,
+        "shared": null,
+        "snapshots": 0,
+        "system": null,
+        "thin_provisioning": 1,
+        "total_physical": 0,
+        "total_provisioned": 107374182400,
+        "total_reduction": 1,
+        "unique": 0,
+        "virtual": 0,
+        "unique_effective": 0,
+        "snapshots_effective": 0,
+        "total_effective": 0
+      },
+      "connection_count": 0,
+      "provisioned": 107374182400,
+      "source": {
+        "name": null,
+        "id": null
+      },
+      "created": 1654504659785,
+      "name": "RecoverJM",
+      "priority": 0,
+      "id": "69594bd8-cd01-689b-2244-796b64a7acba",
+      "destroyed": false,
+      "subtype": "regular",
+      "serial": "6C1B16CE1C034D1C0103D667",
+      "host_encryption_key_status": "none",
+      "requested_promotion_state": "promoted",
+      "promotion_status": "promoted",
+      "pod": {
+        "name": null,
+        "id": null
+      },
+      "time_remaining": null,
+      "qos": {
+        "bandwidth_limit": null,
+        "iops_limit": null
+      },
+      "priority_adjustment": {
+        "priority_adjustment_operator": "+",
+        "priority_adjustment_value": 0
+      },
+      "volume_group": {
+        "name": null,
+        "id": null
+      }
+    },
+    {
+      "space": {
+        "data_reduction": 14.304400101613671,
+        "shared": null,
+        "snapshots": 231321,
+        "system": null,
+        "thin_provisioning": 0.9738645204342902,
+        "total_physical": 135328394,
+        "total_provisioned": 1099511627776,
+        "total_reduction": 547.3172996749321,
+        "unique": 135097073,
+        "virtual": 28736263680,
+        "unique_effective": 28713991168,
+        "snapshots_effective": 35161088,
+        "total_effective": 28749152256
+      },
+      "connection_count": 1,
+      "provisioned": 1099511627776,
+      "source": {
+        "name": "z-eg-test001",
+        "id": "8afe5988-b7a9-20cc-13db-68670d124c15"
+      },
+      "created": 1657800653959,
+      "name": "z-eg-test001",
+      "priority": 0,
+      "id": "8afe5988-b7a9-20cc-13db-68670d124c15",
+      "destroyed": false,
+      "subtype": "regular",
+      "serial": "6C1B16CE1C034D1C014B28B3",
+      "host_encryption_key_status": "none",
+      "requested_promotion_state": "promoted",
+      "promotion_status": "promoted",
+      "pod": {
+        "name": null,
+        "id": null
+      },
+      "time_remaining": null,
+      "qos": {
+        "bandwidth_limit": null,
+        "iops_limit": null
+      },
+      "priority_adjustment": {
+        "priority_adjustment_operator": "+",
+        "priority_adjustment_value": 0
+      },
+      "volume_group": {
+        "name": null,
+        "id": null
+      }
+    },
+    {
+      "space": {
+        "data_reduction": 12.01839567277571,
+        "shared": null,
+        "snapshots": 0,
+        "system": null,
+        "thin_provisioning": 0.9939688881859183,
+        "total_physical": 135810410,
+        "total_provisioned": 1099511627776,
+        "total_reduction": 1992.7330222455344,
+        "unique": 135810410,
+        "virtual": 6631277568,
+        "unique_effective": 6609005056,
+        "snapshots_effective": 0,
+        "total_effective": 6609005056
+      },
+      "connection_count": 1,
+      "provisioned": 1099511627776,
+      "source": {
+        "name": "z-eg-test001",
+        "id": "8afe5988-b7a9-20cc-13db-68670d124c15"
+      },
+      "created": 1657801273489,
+      "name": "z-eg-test002",
+      "priority": 0,
+      "id": "3659a05a-28bd-0a28-7bd4-91bc7317045b",
+      "destroyed": false,
+      "subtype": "regular",
+      "serial": "6C1B16CE1C034D1C0150FAD3",
+      "host_encryption_key_status": "none",
+      "requested_promotion_state": "promoted",
+      "promotion_status": "promoted",
+      "pod": {
+        "name": null,
+        "id": null
+      },
+      "time_remaining": null,
+      "qos": {
+        "bandwidth_limit": null,
+        "iops_limit": null
+      },
+      "priority_adjustment": {
+        "priority_adjustment_operator": "+",
+        "priority_adjustment_value": 0
+      },
+      "volume_group": {
+        "name": null,
+        "id": null
+      }
+    },
+    {
+      "space": {
+        "data_reduction": 3.7710539477168106,
+        "shared": null,
+        "snapshots": 0,
+        "system": null,
+        "thin_provisioning": 0.9977318048477173,
+        "total_physical": 2293221,
+        "total_provisioned": 4294967296,
+        "total_reduction": 1662.5791409181068,
+        "unique": 2293221,
+        "virtual": 9741824,
+        "unique_effective": 9741824,
+        "snapshots_effective": 0,
+        "total_effective": 9741824
+      },
+      "connection_count": 0,
+      "provisioned": 4294967296,
+      "source": {
+        "name": null,
+        "id": null
+      },
+      "created": 1658270659432,
+      "name": "vvol-z-eg-ubuntu02-c6e984c8-vg/Config-6087c186",
+      "priority": 0,
+      "id": "56ed1a85-f85f-9536-f528-42c9391d8a68",
+      "destroyed": false,
+      "subtype": "regular",
+      "serial": "6C1B16CE1C034D1C015BF975",
+      "host_encryption_key_status": "none",
+      "requested_promotion_state": "promoted",
+      "promotion_status": "promoted",
+      "pod": {
+        "name": null,
+        "id": null
+      },
+      "time_remaining": null,
+      "qos": {
+        "bandwidth_limit": null,
+        "iops_limit": null
+      },
+      "priority_adjustment": {
+        "priority_adjustment_operator": "+",
+        "priority_adjustment_value": 0
+      },
+      "volume_group": {
+        "name": "vvol-z-eg-ubuntu02-c6e984c8-vg",
+        "id": "78887968-2e06-719a-c6c4-e16f6007af61"
+      }
+    },
+    {
+      "space": {
+        "data_reduction": 2.9997263411113786,
+        "shared": null,
+        "snapshots": 0,
+        "system": null,
+        "thin_provisioning": 0.998185396194458,
+        "total_physical": 2403656,
+        "total_provisioned": 4294967296,
+        "total_reduction": 1653.1026397883088,
+        "unique": 2403656,
+        "virtual": 7793664,
+        "unique_effective": 7793664,
+        "snapshots_effective": 0,
+        "total_effective": 7793664
+      },
+      "connection_count": 0,
+      "provisioned": 4294967296,
+      "source": {
+        "name": null,
+        "id": null
+      },
+      "created": 1658270771070,
+      "name": "vvol-z-eg-ubuntu03-9e96c967-vg/Config-c3e172f8",
+      "priority": 0,
+      "id": "7cb17869-16f8-c8ed-1849-d7161c1dfb2b",
+      "destroyed": false,
+      "subtype": "regular",
+      "serial": "6C1B16CE1C034D1C015BF977",
+      "host_encryption_key_status": "none",
+      "requested_promotion_state": "promoted",
+      "promotion_status": "promoted",
+      "pod": {
+        "name": null,
+        "id": null
+      },
+      "time_remaining": null,
+      "qos": {
+        "bandwidth_limit": null,
+        "iops_limit": null
+      },
+      "priority_adjustment": {
+        "priority_adjustment_operator": "+",
+        "priority_adjustment_value": 0
+      },
+      "volume_group": {
+        "name": "vvol-z-eg-ubuntu03-9e96c967-vg",
+        "id": "1665256e-2dc1-263b-c523-c9bde1b28b8f"
+      }
+    },
+    {
+      "space": {
+        "data_reduction": 14.369768283251611,
+        "shared": null,
+        "snapshots": 0,
+        "system": null,
+        "thin_provisioning": 0.5570357322692872,
+        "total_physical": 118001323,
+        "total_provisioned": 64424509440,
+        "total_reduction": 32.44001679157401,
+        "unique": 118001323,
+        "virtual": 28537755648,
+        "unique_effective": 28537755648,
+        "snapshots_effective": 0,
+        "total_effective": 28537755648
+      },
+      "connection_count": 0,
+      "provisioned": 64424509440,
+      "source": {
+        "name": null,
+        "id": null
+      },
+      "created": 1658270771905,
+      "name": "vvol-z-eg-ubuntu03-9e96c967-vg/Data-5cff7daa",
+      "priority": 0,
+      "id": "3296bae1-3ba8-5018-bb96-3a36c90f254c",
+      "destroyed": false,
+      "subtype": "regular",
+      "serial": "6C1B16CE1C034D1C015BF978",
+      "host_encryption_key_status": "none",
+      "requested_promotion_state": "promoted",
+      "promotion_status": "promoted",
+      "pod": {
+        "name": null,
+        "id": null
+      },
+      "time_remaining": null,
+      "qos": {
+        "bandwidth_limit": null,
+        "iops_limit": null
+      },
+      "priority_adjustment": {
+        "priority_adjustment_operator": "+",
+        "priority_adjustment_value": 0
+      },
+      "volume_group": {
+        "name": "vvol-z-eg-ubuntu03-9e96c967-vg",
+        "id": "1665256e-2dc1-263b-c523-c9bde1b28b8f"
+      }
+    },
+    {
+      "space": {
+        "data_reduction": 1,
+        "shared": null,
+        "snapshots": 0,
+        "system": null,
+        "thin_provisioning": 1,
+        "total_physical": 0,
+        "total_provisioned": 1099511627776,
+        "total_reduction": 1,
+        "unique": 0,
+        "virtual": 0,
+        "unique_effective": 0,
+        "snapshots_effective": 0,
+        "total_effective": 0
+      },
+      "connection_count": 0,
+      "provisioned": 1099511627776,
+      "source": {
+        "name": null,
+        "id": null
+      },
+      "created": 1658318225710,
+      "name": "test1234",
+      "priority": 0,
+      "id": "0cb3ad8c-be5e-ef87-b6f7-06c4369865d9",
+      "destroyed": false,
+      "subtype": "regular",
+      "serial": "6C1B16CE1C034D1C015D2885",
+      "host_encryption_key_status": "none",
+      "requested_promotion_state": "promoted",
+      "promotion_status": "promoted",
+      "pod": {
+        "name": null,
+        "id": null
+      },
+      "time_remaining": null,
+      "qos": {
+        "bandwidth_limit": null,
+        "iops_limit": null
+      },
+      "priority_adjustment": {
+        "priority_adjustment_operator": "+",
+        "priority_adjustment_value": 0
+      },
+      "volume_group": {
+        "name": null,
+        "id": null
+      }
+    },
+    {
+      "space": {
+        "data_reduction": 1,
+        "shared": null,
+        "snapshots": 0,
+        "system": null,
+        "thin_provisioning": 1,
+        "total_physical": 0,
+        "total_provisioned": 1099511627776,
+        "total_reduction": 1,
+        "unique": 0,
+        "virtual": 0,
+        "unique_effective": 0,
+        "snapshots_effective": 0,
+        "total_effective": 0
+      },
+      "connection_count": 0,
+      "provisioned": 1099511627776,
+      "source": {
+        "name": null,
+        "id": null
+      },
+      "created": 1658333166697,
+      "name": "test5678",
+      "priority": 0,
+      "id": "95b809b6-e4ef-d3ad-c092-ea138f84bc0d",
+      "destroyed": false,
+      "subtype": "regular",
+      "serial": "6C1B16CE1C034D1C015D80D2",
+      "host_encryption_key_status": "none",
+      "requested_promotion_state": "promoted",
+      "promotion_status": "promoted",
+      "pod": {
+        "name": null,
+        "id": null
+      },
+      "time_remaining": null,
+      "qos": {
+        "bandwidth_limit": null,
+        "iops_limit": null
+      },
+      "priority_adjustment": {
+        "priority_adjustment_operator": "+",
+        "priority_adjustment_value": 0
+      },
+      "volume_group": {
+        "name": null,
+        "id": null
+      }
+    },
+    {
+      "space": {
+        "data_reduction": 5.633895679391617,
+        "shared": null,
+        "snapshots": 0,
+        "system": null,
+        "thin_provisioning": 0.9903603964485228,
+        "total_physical": 1452464590,
+        "total_provisioned": 1099511627776,
+        "total_reduction": 584.4530482302113,
+        "unique": 1452464590,
+        "virtual": 10598856192,
+        "unique_effective": 10598987264,
+        "snapshots_effective": 0,
+        "total_effective": 10598987264
+      },
+      "connection_count": 1,
+      "provisioned": 1099511627776,
+      "source": {
+        "name": null,
+        "id": null
+      },
+      "created": 1658396781986,
+      "name": "z-eg-cluster01-ds01",
+      "priority": 0,
+      "id": "1d75fc50-0839-9524-1c31-c21cb95f54fa",
+      "destroyed": false,
+      "subtype": "regular",
+      "serial": "6C1B16CE1C034D1C015EFDA9",
+      "host_encryption_key_status": "none",
+      "requested_promotion_state": "promoted",
+      "promotion_status": "promoted",
+      "pod": {
+        "name": null,
+        "id": null
+      },
+      "time_remaining": null,
+      "qos": {
+        "bandwidth_limit": null,
+        "iops_limit": null
+      },
+      "priority_adjustment": {
+        "priority_adjustment_operator": "+",
+        "priority_adjustment_value": 0
+      },
+      "volume_group": {
+        "name": null,
+        "id": null
+      }
+    },
+    {
+      "space": {
+        "data_reduction": 10.549198562097164,
+        "shared": null,
+        "snapshots": 0,
+        "system": null,
+        "thin_provisioning": 0.9999658847227693,
+        "total_physical": 1320138,
+        "total_provisioned": 1099511627776,
+        "total_reduction": 309222.12622654,
+        "unique": 1320138,
+        "virtual": 37510144,
+        "unique_effective": 37510144,
+        "snapshots_effective": 0,
+        "total_effective": 37510144
+      },
+      "connection_count": 1,
+      "provisioned": 1099511627776,
+      "source": {
+        "name": null,
+        "id": null
+      },
+      "created": 1658481747597,
+      "name": "z-eg-cluster01-ds02",
+      "priority": 0,
+      "id": "e0cad244-9059-679b-2eb8-399a1a687734",
+      "destroyed": false,
+      "subtype": "regular",
+      "serial": "6C1B16CE1C034D1C0160F91B",
+      "host_encryption_key_status": "none",
+      "requested_promotion_state": "promoted",
+      "promotion_status": "promoted",
+      "pod": {
+        "name": null,
+        "id": null
+      },
+      "time_remaining": null,
+      "qos": {
+        "bandwidth_limit": null,
+        "iops_limit": null
+      },
+      "priority_adjustment": {
+        "priority_adjustment_operator": "+",
+        "priority_adjustment_value": 0
+      },
+      "volume_group": {
+        "name": null,
+        "id": null
+      }
+    },
+    {
+      "space": {
+        "data_reduction": 2.849529404943664,
+        "shared": null,
+        "snapshots": 0,
+        "system": null,
+        "thin_provisioning": 0.9986268281936646,
+        "total_physical": 1999921,
+        "total_provisioned": 4294967296,
+        "total_reduction": 2075.144123842839,
+        "unique": 1999921,
+        "virtual": 5897728,
+        "unique_effective": 5897728,
+        "snapshots_effective": 0,
+        "total_effective": 5897728
+      },
+      "connection_count": 5,
+      "provisioned": 4294967296,
+      "source": {
+        "name": null,
+        "id": null
+      },
+      "created": 1658682646998,
+      "name": "vvol-catalog-856c9122-vg/Config-4d2057ba",
+      "priority": 0,
+      "id": "6f726e3a-2d9f-80c8-2ee7-14d265fb8b8f",
+      "destroyed": false,
+      "subtype": "regular",
+      "serial": "6C1B16CE1C034D1C0165A5D9",
+      "host_encryption_key_status": "none",
+      "requested_promotion_state": "promoted",
+      "promotion_status": "promoted",
+      "pod": {
+        "name": null,
+        "id": null
+      },
+      "time_remaining": null,
+      "qos": {
+        "bandwidth_limit": null,
+        "iops_limit": null
+      },
+      "priority_adjustment": {
+        "priority_adjustment_operator": "+",
+        "priority_adjustment_value": 0
+      },
+      "volume_group": {
+        "name": "vvol-catalog-856c9122-vg",
+        "id": "ae9c511a-a819-bae3-7414-44f021d94e27"
+      }
+    },
+    {
+      "space": {
+        "data_reduction": 12.119262022539774,
+        "shared": null,
+        "snapshots": 0,
+        "system": null,
+        "thin_provisioning": 0.9999573691748083,
+        "total_physical": 923337,
+        "total_provisioned": 1099511627776,
+        "total_reduction": 284284.01205072226,
+        "unique": 923337,
+        "virtual": 46873088,
+        "unique_effective": 46873088,
+        "snapshots_effective": 0,
+        "total_effective": 46873088
+      },
+      "connection_count": 1,
+      "provisioned": 1099511627776,
+      "source": {
+        "name": null,
+        "id": null
+      },
+      "created": 1659099412617,
+      "name": "eg-ocp-px01",
+      "priority": 0,
+      "id": "6db4ff4d-2401-50a4-a870-037bdc18915d",
+      "destroyed": false,
+      "subtype": "regular",
+      "serial": "6C1B16CE1C034D1C016F6D2B",
+      "host_encryption_key_status": "none",
+      "requested_promotion_state": "promoted",
+      "promotion_status": "promoted",
+      "pod": {
+        "name": null,
+        "id": null
+      },
+      "time_remaining": null,
+      "qos": {
+        "bandwidth_limit": null,
+        "iops_limit": null
+      },
+      "priority_adjustment": {
+        "priority_adjustment_operator": "+",
+        "priority_adjustment_value": 0
+      },
+      "volume_group": {
+        "name": null,
+        "id": null
+      }
+    },
+    {
+      "space": {
+        "data_reduction": 6.610009645887541,
+        "shared": null,
+        "snapshots": 0,
+        "system": null,
+        "thin_provisioning": 0.9863563729450107,
+        "total_physical": 1676351141,
+        "total_provisioned": 1099511627776,
+        "total_reduction": 484.4759842266669,
+        "unique": 1676351141,
+        "virtual": 15001326592,
+        "unique_effective": 15001583104,
+        "snapshots_effective": 0,
+        "total_effective": 15001583104
+      },
+      "connection_count": 0,
+      "provisioned": 1099511627776,
+      "source": {
+        "name": null,
+        "id": null
+      },
+      "created": 1659460960810,
+      "name": "eg-ADR-main01::eg-adr-datastore01",
+      "priority": 0,
+      "id": "7e0ef356-3fe5-c6dd-d763-a90661349a0d",
+      "destroyed": false,
+      "subtype": "regular",
+      "serial": "6C1B16CE1C034D1C0177DF54",
+      "host_encryption_key_status": "none",
+      "requested_promotion_state": "promoted",
+      "promotion_status": "promoted",
+      "pod": {
+        "name": "eg-ADR-main01",
+        "id": "33c2d598-cc99-f888-4f86-ea6c8ab3a614"
+      },
+      "time_remaining": null,
+      "qos": {
+        "bandwidth_limit": null,
+        "iops_limit": null
+      },
+      "priority_adjustment": {
+        "priority_adjustment_operator": "+",
+        "priority_adjustment_value": 0
+      },
+      "volume_group": {
+        "name": null,
+        "id": null
+      }
+    },
+    {
+      "space": {
+        "data_reduction": 5.802280047218496,
+        "shared": null,
+        "snapshots": 0,
+        "system": null,
+        "thin_provisioning": 0.9839712083339691,
+        "total_physical": 72751188,
+        "total_provisioned": 34359738368,
+        "total_reduction": 361.99110750905913,
+        "unique": 72751188,
+        "virtual": 550745088,
+        "unique_effective": 529230848,
+        "snapshots_effective": 0,
+        "total_effective": 529230848
+      },
+      "connection_count": 1,
+      "provisioned": 34359738368,
+      "source": {
+        "name": null,
+        "id": null
+      },
+      "created": 1659461808111,
+      "name": "z-win2019-poc-sqlbin",
+      "priority": 0,
+      "id": "ab88c810-ce8c-6be8-7cd7-8396d00a77b1",
+      "destroyed": false,
+      "subtype": "regular",
+      "serial": "6C1B16CE1C034D1C0177E4D9",
+      "host_encryption_key_status": "none",
+      "requested_promotion_state": "promoted",
+      "promotion_status": "promoted",
+      "pod": {
+        "name": null,
+        "id": null
+      },
+      "time_remaining": null,
+      "qos": {
+        "bandwidth_limit": null,
+        "iops_limit": null
+      },
+      "priority_adjustment": {
+        "priority_adjustment_operator": "+",
+        "priority_adjustment_value": 0
+      },
+      "volume_group": {
+        "name": null,
+        "id": null
+      }
+    },
+    {
+      "space": {
+        "data_reduction": 3.854046749237278,
+        "shared": null,
+        "snapshots": 0,
+        "system": null,
+        "thin_provisioning": 0.9989571273326874,
+        "total_physical": 17540347,
+        "total_provisioned": 68719476736,
+        "total_reduction": 3695.606251881899,
+        "unique": 17540347,
+        "virtual": 71665664,
+        "unique_effective": 71665664,
+        "snapshots_effective": 0,
+        "total_effective": 71665664
+      },
+      "connection_count": 1,
+      "provisioned": 68719476736,
+      "source": {
+        "name": null,
+        "id": null
+      },
+      "created": 1659461821230,
+      "name": "z-win2019-poc-sqlsys",
+      "priority": 0,
+      "id": "1527c5ec-1890-d951-42e1-3c489f64334f",
+      "destroyed": false,
+      "subtype": "regular",
+      "serial": "6C1B16CE1C034D1C0177E4DA",
+      "host_encryption_key_status": "none",
+      "requested_promotion_state": "promoted",
+      "promotion_status": "promoted",
+      "pod": {
+        "name": null,
+        "id": null
+      },
+      "time_remaining": null,
+      "qos": {
+        "bandwidth_limit": null,
+        "iops_limit": null
+      },
+      "priority_adjustment": {
+        "priority_adjustment_operator": "+",
+        "priority_adjustment_value": 0
+      },
+      "volume_group": {
+        "name": null,
+        "id": null
+      }
+    },
+    {
+      "space": {
+        "data_reduction": 3.8872406772252073,
+        "shared": null,
+        "snapshots": 0,
+        "system": null,
+        "thin_provisioning": 0.9834917306900024,
+        "total_physical": 428989089,
+        "total_provisioned": 107374182400,
+        "total_reduction": 235.47233233413868,
+        "unique": 428989089,
+        "virtual": 1772561920,
+        "unique_effective": 1772632064,
+        "snapshots_effective": 0,
+        "total_effective": 1772632064
+      },
+      "connection_count": 0,
+      "provisioned": 107374182400,
+      "source": {
+        "name": null,
+        "id": null
+      },
+      "created": 1659473793228,
+      "name": "eg-ADR-main01::eg-adr-rdm01",
+      "priority": 0,
+      "id": "0e80164d-10c1-8b9a-eed1-f83f0489e395",
+      "destroyed": false,
+      "subtype": "regular",
+      "serial": "6C1B16CE1C034D1C01782C9A",
+      "host_encryption_key_status": "none",
+      "requested_promotion_state": "promoted",
+      "promotion_status": "promoted",
+      "pod": {
+        "name": "eg-ADR-main01",
+        "id": "33c2d598-cc99-f888-4f86-ea6c8ab3a614"
+      },
+      "time_remaining": null,
+      "qos": {
+        "bandwidth_limit": null,
+        "iops_limit": null
+      },
+      "priority_adjustment": {
+        "priority_adjustment_operator": "+",
+        "priority_adjustment_value": 0
+      },
+      "volume_group": {
+        "name": null,
+        "id": null
+      }
+    },
+    {
+      "space": {
+        "data_reduction": 5.033370739831755,
+        "shared": null,
+        "snapshots": 0,
+        "system": null,
+        "thin_provisioning": 0.1314333979288737,
+        "total_physical": 67048615850,
+        "total_provisioned": 483183820800,
+        "total_reduction": 5.795031409024377,
+        "unique": 67048615850,
+        "virtual": 419677329408,
+        "unique_effective": 419677329408,
+        "snapshots_effective": 0,
+        "total_effective": 419677329408
+      },
+      "connection_count": 1,
+      "provisioned": 483183820800,
+      "source": {
+        "name": null,
+        "id": null
+      },
+      "created": 1659477215179,
+      "name": "z-win2019-poc-bak",
+      "priority": 0,
+      "id": "2853a7f6-2106-7f1d-78d6-c3b52c7687a2",
+      "destroyed": false,
+      "subtype": "regular",
+      "serial": "6C1B16CE1C034D1C01783D3A",
+      "host_encryption_key_status": "none",
+      "requested_promotion_state": "promoted",
+      "promotion_status": "promoted",
+      "pod": {
+        "name": null,
+        "id": null
+      },
+      "time_remaining": null,
+      "qos": {
+        "bandwidth_limit": null,
+        "iops_limit": null
+      },
+      "priority_adjustment": {
+        "priority_adjustment_operator": "+",
+        "priority_adjustment_value": 0
+      },
+      "volume_group": {
+        "name": null,
+        "id": null
+      }
+    },
+    {
+      "space": {
+        "data_reduction": 7.550147402664105,
+        "shared": null,
+        "snapshots": 0,
+        "system": null,
+        "thin_provisioning": 0.691388254899245,
+        "total_physical": 35073659518,
+        "total_provisioned": 1395864371200,
+        "total_reduction": 24.464873818069197,
+        "unique": 35073659518,
+        "virtual": 430780139520,
+        "unique_effective": 430780139520,
+        "snapshots_effective": 0,
+        "total_effective": 430780139520
+      },
+      "connection_count": 1,
+      "provisioned": 1395864371200,
+      "source": {
+        "name": null,
+        "id": null
+      },
+      "created": 1659515659673,
+      "name": "z-win2019-poc-userdb",
+      "priority": 0,
+      "id": "ebc132cc-dde3-e1ee-2b44-4056cdab2e2d",
+      "destroyed": false,
+      "subtype": "regular",
+      "serial": "6C1B16CE1C034D1C0179257D",
+      "host_encryption_key_status": "none",
+      "requested_promotion_state": "promoted",
+      "promotion_status": "promoted",
+      "pod": {
+        "name": null,
+        "id": null
+      },
+      "time_remaining": null,
+      "qos": {
+        "bandwidth_limit": null,
+        "iops_limit": null
+      },
+      "priority_adjustment": {
+        "priority_adjustment_operator": "+",
+        "priority_adjustment_value": 0
+      },
+      "volume_group": {
+        "name": null,
+        "id": null
+      }
+    },
+    {
+      "space": {
+        "data_reduction": 8.54847372215099,
+        "shared": null,
+        "snapshots": 0,
+        "system": null,
+        "thin_provisioning": 0.2798330628871918,
+        "total_physical": 19299489955,
+        "total_provisioned": 429496729600,
+        "total_reduction": 11.870127996187003,
+        "unique": 19299489955,
+        "virtual": 309309344256,
+        "unique_effective": 309309344256,
+        "snapshots_effective": 0,
+        "total_effective": 309309344256
+      },
+      "connection_count": 1,
+      "provisioned": 429496729600,
+      "source": {
+        "name": null,
+        "id": null
+      },
+      "created": 1659526290363,
+      "name": "z-win2019-poc-tlog",
+      "priority": 0,
+      "id": "41741740-ab40-5f64-550e-17cd2cfc8064",
+      "destroyed": false,
+      "subtype": "regular",
+      "serial": "6C1B16CE1C034D1C017967D6",
+      "host_encryption_key_status": "none",
+      "requested_promotion_state": "promoted",
+      "promotion_status": "promoted",
+      "pod": {
+        "name": null,
+        "id": null
+      },
+      "time_remaining": null,
+      "qos": {
+        "bandwidth_limit": null,
+        "iops_limit": null
+      },
+      "priority_adjustment": {
+        "priority_adjustment_operator": "+",
+        "priority_adjustment_value": 0
+      },
+      "volume_group": {
+        "name": null,
+        "id": null
+      }
+    },
+    {
+      "space": {
+        "data_reduction": 6.283369468327646,
+        "shared": null,
+        "snapshots": 0,
+        "system": null,
+        "thin_provisioning": 0.9946391153335571,
+        "total_physical": 69150912,
+        "total_provisioned": 107374182400,
+        "total_reduction": 1172.0769722316886,
+        "unique": 69150912,
+        "virtual": 575620608,
+        "unique_effective": 575707648,
+        "snapshots_effective": 0,
+        "total_effective": 575707648
+      },
+      "connection_count": 0,
+      "provisioned": 107374182400,
+      "source": {
+        "name": null,
+        "id": null
+      },
+      "created": 1659643414607,
+      "name": "eg-ADR-main02::eg-adr-rdm02",
+      "priority": 0,
+      "id": "0b5aeb45-d711-7797-8620-e7727c889baf",
+      "destroyed": false,
+      "subtype": "regular",
+      "serial": "6C1B16CE1C034D1C017C213C",
+      "host_encryption_key_status": "none",
+      "requested_promotion_state": "promoted",
+      "promotion_status": "promoted",
+      "pod": {
+        "name": "eg-ADR-main02",
+        "id": "554cd78e-902c-7a22-250f-d6b5add898aa"
+      },
+      "time_remaining": null,
+      "qos": {
+        "bandwidth_limit": null,
+        "iops_limit": null
+      },
+      "priority_adjustment": {
+        "priority_adjustment_operator": "+",
+        "priority_adjustment_value": 0
+      },
+      "volume_group": {
+        "name": null,
+        "id": null
+      }
+    },
+    {
+      "space": {
+        "data_reduction": 12.495908999137841,
+        "shared": null,
+        "snapshots": 0,
+        "system": null,
+        "thin_provisioning": 0.9984641009941697,
+        "total_physical": 30309418,
+        "total_provisioned": 1099511627776,
+        "total_reduction": 8135.892367729419,
+        "unique": 30309418,
+        "virtual": 1688738816,
+        "unique_effective": 1688962048,
+        "snapshots_effective": 0,
+        "total_effective": 1688962048
+      },
+      "connection_count": 0,
+      "provisioned": 1099511627776,
+      "source": {
+        "name": null,
+        "id": null
+      },
+      "created": 1659644459550,
+      "name": "eg-ADR-main02::eg-adr-datastore02",
+      "priority": 0,
+      "id": "8cfb3aae-fce5-f07c-bf05-0b44fa505601",
+      "destroyed": false,
+      "subtype": "regular",
+      "serial": "6C1B16CE1C034D1C017C26C5",
+      "host_encryption_key_status": "none",
+      "requested_promotion_state": "promoted",
+      "promotion_status": "promoted",
+      "pod": {
+        "name": "eg-ADR-main02",
+        "id": "554cd78e-902c-7a22-250f-d6b5add898aa"
+      },
+      "time_remaining": null,
+      "qos": {
+        "bandwidth_limit": null,
+        "iops_limit": null
+      },
+      "priority_adjustment": {
+        "priority_adjustment_operator": "+",
+        "priority_adjustment_value": 0
+      },
+      "volume_group": {
+        "name": null,
+        "id": null
+      }
+    },
+    {
+      "space": {
+        "data_reduction": 1,
+        "shared": null,
+        "snapshots": 0,
+        "system": null,
+        "thin_provisioning": 1,
+        "total_physical": 0,
+        "total_provisioned": 1073741824,
+        "total_reduction": 1,
+        "unique": 0,
+        "virtual": 0,
+        "unique_effective": 0,
+        "snapshots_effective": 0,
+        "total_effective": 0
+      },
+      "connection_count": 0,
+      "provisioned": 1073741824,
+      "source": {
+        "name": null,
+        "id": null
+      },
+      "created": 1660127169507,
+      "name": "eg-test01",
+      "priority": 0,
+      "id": "3faec649-3eef-aaea-a4bc-2b457b327486",
+      "destroyed": false,
+      "subtype": "regular",
+      "serial": "6C1B16CE1C034D1C01877350",
+      "host_encryption_key_status": "none",
+      "requested_promotion_state": "promoted",
+      "promotion_status": "promoted",
+      "pod": {
+        "name": null,
+        "id": null
+      },
+      "time_remaining": null,
+      "qos": {
+        "bandwidth_limit": null,
+        "iops_limit": null
+      },
+      "priority_adjustment": {
+        "priority_adjustment_operator": "+",
+        "priority_adjustment_value": 0
+      },
+      "volume_group": {
+        "name": null,
+        "id": null
+      }
+    },
+    {
+      "space": {
+        "data_reduction": 1,
+        "shared": null,
+        "snapshots": 0,
+        "system": null,
+        "thin_provisioning": 1,
+        "total_physical": 0,
+        "total_provisioned": 1073741824,
+        "total_reduction": 1,
+        "unique": 0,
+        "virtual": 0,
+        "unique_effective": 0,
+        "snapshots_effective": 0,
+        "total_effective": 0
+      },
+      "connection_count": 0,
+      "provisioned": 1073741824,
+      "source": {
+        "name": null,
+        "id": null
+      },
+      "created": 1660127187915,
+      "name": "eg-test02",
+      "priority": 0,
+      "id": "7509d808-cb4a-864e-579a-7c67ec99754e",
+      "destroyed": false,
+      "subtype": "regular",
+      "serial": "6C1B16CE1C034D1C01877351",
+      "host_encryption_key_status": "none",
+      "requested_promotion_state": "promoted",
+      "promotion_status": "promoted",
+      "pod": {
+        "name": null,
+        "id": null
+      },
+      "time_remaining": null,
+      "qos": {
+        "bandwidth_limit": null,
+        "iops_limit": null
+      },
+      "priority_adjustment": {
+        "priority_adjustment_operator": "+",
+        "priority_adjustment_value": 0
+      },
+      "volume_group": {
+        "name": null,
+        "id": null
+      }
+    },
+    {
+      "space": {
+        "data_reduction": 1,
+        "shared": null,
+        "snapshots": 0,
+        "system": null,
+        "thin_provisioning": 1,
+        "total_physical": 0,
+        "total_provisioned": 1073741824,
+        "total_reduction": 1,
+        "unique": 0,
+        "virtual": 0,
+        "unique_effective": 0,
+        "snapshots_effective": 0,
+        "total_effective": 0
+      },
+      "connection_count": 0,
+      "provisioned": 1073741824,
+      "source": {
+        "name": "eg-test01",
+        "id": "3faec649-3eef-aaea-a4bc-2b457b327486"
+      },
+      "created": 1660200620763,
+      "name": "eg_test03",
+      "priority": 0,
+      "id": "68cd6435-3003-5323-0bd9-7e66b1f4d315",
+      "destroyed": false,
+      "subtype": "regular",
+      "serial": "6C1B16CE1C034D1C0189391F",
+      "host_encryption_key_status": "none",
+      "requested_promotion_state": "promoted",
+      "promotion_status": "promoted",
+      "pod": {
+        "name": null,
+        "id": null
+      },
+      "time_remaining": null,
+      "qos": {
+        "bandwidth_limit": null,
+        "iops_limit": null
+      },
+      "priority_adjustment": {
+        "priority_adjustment_operator": "+",
+        "priority_adjustment_value": 0
+      },
+      "volume_group": {
+        "name": null,
+        "id": null
+      }
+    },
+    {
+      "space": {
+        "data_reduction": 3.1081757872603504,
+        "shared": null,
+        "snapshots": 0,
+        "system": null,
+        "thin_provisioning": 0.9945898596445719,
+        "total_physical": 280104234,
+        "total_provisioned": 161061273600,
+        "total_reduction": 574.5092701970069,
+        "unique": 280104234,
+        "virtual": 871364096,
+        "unique_effective": 871364096,
+        "snapshots_effective": 0,
+        "total_effective": 871364096
+      },
+      "connection_count": 1,
+      "provisioned": 161061273600,
+      "source": {
+        "name": null,
+        "id": null
+      },
+      "created": 1661170040869,
+      "name": "pxclouddrive-eeb5a2f418",
+      "priority": 0,
+      "id": "731c42af-4204-e3f9-53fe-42c3b7037962",
+      "destroyed": false,
+      "subtype": "regular",
+      "serial": "6C1B16CE1C034D1C019D299C",
+      "host_encryption_key_status": "none",
+      "requested_promotion_state": "promoted",
+      "promotion_status": "promoted",
+      "pod": {
+        "name": null,
+        "id": null
+      },
+      "time_remaining": null,
+      "qos": {
+        "bandwidth_limit": null,
+        "iops_limit": null
+      },
+      "priority_adjustment": {
+        "priority_adjustment_operator": "+",
+        "priority_adjustment_value": 0
+      },
+      "volume_group": {
+        "name": null,
+        "id": null
+      }
+    },
+    {
+      "space": {
+        "data_reduction": 3.1210977051441424,
+        "shared": null,
+        "snapshots": 0,
+        "system": null,
+        "thin_provisioning": 0.9942645708719889,
+        "total_physical": 295712877,
+        "total_provisioned": 161061273600,
+        "total_reduction": 544.1785846330346,
+        "unique": 295712877,
+        "virtual": 923755520,
+        "unique_effective": 923755520,
+        "snapshots_effective": 0,
+        "total_effective": 923755520
+      },
+      "connection_count": 1,
+      "provisioned": 161061273600,
+      "source": {
+        "name": null,
+        "id": null
+      },
+      "created": 1661170049588,
+      "name": "pxclouddrive-3ea7c68406",
+      "priority": 0,
+      "id": "b68e9924-1663-2e32-e390-2f531e9bb34c",
+      "destroyed": false,
+      "subtype": "regular",
+      "serial": "6C1B16CE1C034D1C019D299D",
+      "host_encryption_key_status": "none",
+      "requested_promotion_state": "promoted",
+      "promotion_status": "promoted",
+      "pod": {
+        "name": null,
+        "id": null
+      },
+      "time_remaining": null,
+      "qos": {
+        "bandwidth_limit": null,
+        "iops_limit": null
+      },
+      "priority_adjustment": {
+        "priority_adjustment_operator": "+",
+        "priority_adjustment_value": 0
+      },
+      "volume_group": {
+        "name": null,
+        "id": null
+      }
+    },
+    {
+      "space": {
+        "data_reduction": 3.1249359481883316,
+        "shared": null,
+        "snapshots": 0,
+        "system": null,
+        "thin_provisioning": 0.9968613243103027,
+        "total_physical": 161725762,
+        "total_provisioned": 161061273600,
+        "total_reduction": 995.6224398863397,
+        "unique": 161725762,
+        "virtual": 505519104,
+        "unique_effective": 505519104,
+        "snapshots_effective": 0,
+        "total_effective": 505519104
+      },
+      "connection_count": 1,
+      "provisioned": 161061273600,
+      "source": {
+        "name": null,
+        "id": null
+      },
+      "created": 1661170052481,
+      "name": "pxclouddrive-8aa7baef8c",
+      "priority": 0,
+      "id": "59557767-82d5-04cf-8af2-6b42e5ef3c08",
+      "destroyed": false,
+      "subtype": "regular",
+      "serial": "6C1B16CE1C034D1C019D299E",
+      "host_encryption_key_status": "none",
+      "requested_promotion_state": "promoted",
+      "promotion_status": "promoted",
+      "pod": {
+        "name": null,
+        "id": null
+      },
+      "time_remaining": null,
+      "qos": {
+        "bandwidth_limit": null,
+        "iops_limit": null
+      },
+      "priority_adjustment": {
+        "priority_adjustment_operator": "+",
+        "priority_adjustment_value": 0
+      },
+      "volume_group": {
+        "name": null,
+        "id": null
+      }
+    },
+    {
+      "space": {
+        "data_reduction": 3.113553084028067,
+        "shared": null,
+        "snapshots": 0,
+        "system": null,
+        "thin_provisioning": 0.9975267052650452,
+        "total_physical": 27234837,
+        "total_provisioned": 34359738368,
+        "total_reduction": 1258.8686014749978,
+        "unique": 27234837,
+        "virtual": 84981760,
+        "unique_effective": 84981760,
+        "snapshots_effective": 0,
+        "total_effective": 84981760
+      },
+      "connection_count": 1,
+      "provisioned": 34359738368,
+      "source": {
+        "name": null,
+        "id": null
+      },
+      "created": 1661170058818,
+      "name": "pxclouddrive-be27d662c9",
+      "priority": 0,
+      "id": "655a5496-7644-d50a-0cb0-135a86a2f998",
+      "destroyed": false,
+      "subtype": "regular",
+      "serial": "6C1B16CE1C034D1C019D299F",
+      "host_encryption_key_status": "none",
+      "requested_promotion_state": "promoted",
+      "promotion_status": "promoted",
+      "pod": {
+        "name": null,
+        "id": null
+      },
+      "time_remaining": null,
+      "qos": {
+        "bandwidth_limit": null,
+        "iops_limit": null
+      },
+      "priority_adjustment": {
+        "priority_adjustment_operator": "+",
+        "priority_adjustment_value": 0
+      },
+      "volume_group": {
+        "name": null,
+        "id": null
+      }
+    },
+    {
+      "space": {
+        "data_reduction": 3.0907906862479684,
+        "shared": null,
+        "snapshots": 0,
+        "system": null,
+        "thin_provisioning": 0.997526228427887,
+        "total_physical": 27481598,
+        "total_provisioned": 34359738368,
+        "total_reduction": 1249.4244501354215,
+        "unique": 27481598,
+        "virtual": 84998144,
+        "unique_effective": 84998144,
+        "snapshots_effective": 0,
+        "total_effective": 84998144
+      },
+      "connection_count": 1,
+      "provisioned": 34359738368,
+      "source": {
+        "name": null,
+        "id": null
+      },
+      "created": 1661170116432,
+      "name": "pxclouddrive-7e0f7ef4e1",
+      "priority": 0,
+      "id": "68d3ac56-1334-cb6d-64e3-7012791dd702",
+      "destroyed": false,
+      "subtype": "regular",
+      "serial": "6C1B16CE1C034D1C019D29A0",
+      "host_encryption_key_status": "none",
+      "requested_promotion_state": "promoted",
+      "promotion_status": "promoted",
+      "pod": {
+        "name": null,
+        "id": null
+      },
+      "time_remaining": null,
+      "qos": {
+        "bandwidth_limit": null,
+        "iops_limit": null
+      },
+      "priority_adjustment": {
+        "priority_adjustment_operator": "+",
+        "priority_adjustment_value": 0
+      },
+      "volume_group": {
+        "name": null,
+        "id": null
+      }
+    },
+    {
+      "space": {
+        "data_reduction": 3.115462217786443,
+        "shared": null,
+        "snapshots": 0,
+        "system": null,
+        "thin_provisioning": 0.9975441694259644,
+        "total_physical": 27068526,
+        "total_provisioned": 34359738368,
+        "total_reduction": 1268.5981886229358,
+        "unique": 27068526,
+        "virtual": 84381696,
+        "unique_effective": 84381696,
+        "snapshots_effective": 0,
+        "total_effective": 84381696
+      },
+      "connection_count": 1,
+      "provisioned": 34359738368,
+      "source": {
+        "name": null,
+        "id": null
+      },
+      "created": 1661170120255,
+      "name": "pxclouddrive-04250b2315",
+      "priority": 0,
+      "id": "4ac5a047-1734-dda2-a2df-bc970ce88722",
+      "destroyed": false,
+      "subtype": "regular",
+      "serial": "6C1B16CE1C034D1C019D29A1",
+      "host_encryption_key_status": "none",
+      "requested_promotion_state": "promoted",
+      "promotion_status": "promoted",
+      "pod": {
+        "name": null,
+        "id": null
+      },
+      "time_remaining": null,
+      "qos": {
+        "bandwidth_limit": null,
+        "iops_limit": null
+      },
+      "priority_adjustment": {
+        "priority_adjustment_operator": "+",
+        "priority_adjustment_value": 0
+      },
+      "volume_group": {
+        "name": null,
+        "id": null
+      }
+    },
+    {
+      "space": {
+        "data_reduction": 5.944112367008311,
+        "shared": null,
+        "snapshots": 0,
+        "system": null,
+        "thin_provisioning": 0.9945777082443237,
+        "total_physical": 77639740,
+        "total_provisioned": 107374182400,
+        "total_reduction": 1096.2361737148833,
+        "unique": 77639740,
+        "virtual": 582214144,
+        "unique_effective": 582965248,
+        "snapshots_effective": 0,
+        "total_effective": 582965248
+      },
+      "connection_count": 1,
+      "provisioned": 107374182400,
+      "source": {
+        "name": null,
+        "id": null
+      },
+      "created": 1661170776393,
+      "name": "px_30a50d01-pvc-1f2e4129-e352-4294-84ef-5311b6a81685",
+      "priority": 0,
+      "id": "da3bcf65-8dbd-e2f7-8410-6d445ebaed54",
+      "destroyed": false,
+      "subtype": "regular",
+      "serial": "6C1B16CE1C034D1C019D2EFB",
+      "host_encryption_key_status": "none",
+      "requested_promotion_state": "promoted",
+      "promotion_status": "promoted",
+      "pod": {
+        "name": null,
+        "id": null
+      },
+      "time_remaining": null,
+      "qos": {
+        "bandwidth_limit": null,
+        "iops_limit": null
+      },
+      "priority_adjustment": {
+        "priority_adjustment_operator": "+",
+        "priority_adjustment_value": 0
+      },
+      "volume_group": {
+        "name": null,
+        "id": null
+      }
+    },
+    {
+      "space": {
+        "data_reduction": 1,
+        "shared": null,
+        "snapshots": 0,
+        "system": null,
+        "thin_provisioning": 1,
+        "total_physical": 0,
+        "total_provisioned": 10737418240,
+        "total_reduction": 1,
+        "unique": 0,
+        "virtual": 0,
+        "unique_effective": 0,
+        "snapshots_effective": 0,
+        "total_effective": 0
+      },
+      "connection_count": 0,
+      "provisioned": 10737418240,
+      "source": {
+        "name": null,
+        "id": null
+      },
+      "created": 1662570639937,
+      "name": "BFVol1",
+      "priority": 0,
+      "id": "e486d49c-162b-edd8-e1c9-10f06f60d155",
+      "destroyed": false,
+      "subtype": "regular",
+      "serial": "6C1B16CE1C034D1C01BCC9AE",
+      "host_encryption_key_status": "none",
+      "requested_promotion_state": "promoted",
+      "promotion_status": "promoted",
+      "pod": {
+        "name": null,
+        "id": null
+      },
+      "time_remaining": null,
+      "qos": {
+        "bandwidth_limit": null,
+        "iops_limit": null
+      },
+      "priority_adjustment": {
+        "priority_adjustment_operator": "+",
+        "priority_adjustment_value": 0
+      },
+      "volume_group": {
+        "name": null,
+        "id": null
+      }
+    },
+    {
+      "space": {
+        "data_reduction": 3.6284002329603413,
+        "shared": null,
+        "snapshots": 6169,
+        "system": null,
+        "thin_provisioning": 0.9965144763700664,
+        "total_physical": 1036879613,
+        "total_provisioned": 1099511627776,
+        "total_reduction": 1040.9914314738035,
+        "unique": 1036873444,
+        "virtual": 3832373760,
+        "unique_effective": 3849758208,
+        "snapshots_effective": 7405568,
+        "total_effective": 3857163776
+      },
+      "connection_count": 1,
+      "provisioned": 1099511627776,
+      "source": {
+        "name": null,
+        "id": null
+      },
+      "created": 1662747325454,
+      "name": "eg-AC-main01::eg-ac-datastore01",
+      "priority": 0,
+      "id": "4ff7b18f-b263-8d21-2cad-4623e2aa518f",
+      "destroyed": false,
+      "subtype": "regular",
+      "serial": "6C1B16CE1C034D1C01C0D56C",
+      "host_encryption_key_status": "none",
+      "requested_promotion_state": "promoted",
+      "promotion_status": "promoted",
+      "pod": {
+        "name": "eg-AC-main01",
+        "id": "4e48b9a0-78a4-ed67-fa66-d8ec4b96b54c"
+      },
+      "time_remaining": null,
+      "qos": {
+        "bandwidth_limit": null,
+        "iops_limit": null
+      },
+      "priority_adjustment": {
+        "priority_adjustment_operator": "+",
+        "priority_adjustment_value": 0
+      },
+      "volume_group": {
+        "name": null,
+        "id": null
+      }
+    },
+    {
+      "space": {
+        "data_reduction": 1,
+        "shared": null,
+        "snapshots": 0,
+        "system": null,
+        "thin_provisioning": 1,
+        "total_physical": 0,
+        "total_provisioned": 107374182400,
+        "total_reduction": 1,
+        "unique": 0,
+        "virtual": 0,
+        "unique_effective": 0,
+        "snapshots_effective": 0,
+        "total_effective": 0
+      },
+      "connection_count": 1,
+      "provisioned": 107374182400,
+      "source": {
+        "name": null,
+        "id": null
+      },
+      "created": 1662762440409,
+      "name": "eg-AC-main01::eg-ac-rdm01",
+      "priority": 0,
+      "id": "c4c50269-b459-95ad-2c41-109598331b0b",
+      "destroyed": false,
+      "subtype": "regular",
+      "serial": "6C1B16CE1C034D1C01C13317",
+      "host_encryption_key_status": "none",
+      "requested_promotion_state": "promoted",
+      "promotion_status": "promoted",
+      "pod": {
+        "name": "eg-AC-main01",
+        "id": "4e48b9a0-78a4-ed67-fa66-d8ec4b96b54c"
+      },
+      "time_remaining": null,
+      "qos": {
+        "bandwidth_limit": null,
+        "iops_limit": null
+      },
+      "priority_adjustment": {
+        "priority_adjustment_operator": "+",
+        "priority_adjustment_value": 0
+      },
+      "volume_group": {
+        "name": null,
+        "id": null
+      }
+    },
+    {
+      "space": {
+        "data_reduction": 3.849844373716392,
+        "shared": null,
+        "snapshots": 0,
+        "system": null,
+        "thin_provisioning": 0.9986217021942139,
+        "total_physical": 1467656,
+        "total_provisioned": 4294967296,
+        "total_reduction": 2793.18762429617,
+        "unique": 1467656,
+        "virtual": 5919744,
+        "unique_effective": 6009856,
+        "snapshots_effective": 0,
+        "total_effective": 6009856
+      },
+      "connection_count": 1,
+      "provisioned": 4294967296,
+      "source": {
+        "name": null,
+        "id": null
+      },
+      "created": 1663817357219,
+      "name": "vvol-vCLS-b0e9e645-a-d8e5b185-62bfd858-vg/Config-57610730",
+      "priority": 0,
+      "id": "7203d998-6e8e-69b0-1a66-c1ca702f6665",
+      "destroyed": false,
+      "subtype": "regular",
+      "serial": "6C1B16CE1C034D1C01D9C76C",
+      "host_encryption_key_status": "none",
+      "requested_promotion_state": "promoted",
+      "promotion_status": "promoted",
+      "pod": {
+        "name": null,
+        "id": null
+      },
+      "time_remaining": null,
+      "qos": {
+        "bandwidth_limit": null,
+        "iops_limit": null
+      },
+      "priority_adjustment": {
+        "priority_adjustment_operator": "+",
+        "priority_adjustment_value": 0
+      },
+      "volume_group": {
+        "name": "vvol-vCLS-b0e9e645-a-d8e5b185-62bfd858-vg",
+        "id": "676677b9-9962-d46a-55a0-d87d14ea86c9"
+      }
+    },
+    {
+      "space": {
+        "data_reduction": 9.890399591361899,
+        "shared": null,
+        "snapshots": 0,
+        "system": null,
+        "thin_provisioning": 0.8664665222167969,
+        "total_physical": 13130733,
+        "total_provisioned": 2147483648,
+        "total_reduction": 74.0668164684466,
+        "unique": 13130733,
+        "virtual": 286760960,
+        "unique_effective": 288006144,
+        "snapshots_effective": 0,
+        "total_effective": 288006144
+      },
+      "connection_count": 1,
+      "provisioned": 2147483648,
+      "source": {
+        "name": null,
+        "id": null
+      },
+      "created": 1663817357927,
+      "name": "vvol-vCLS-b0e9e645-a-d8e5b185-62bfd858-vg/Data-d412d5fa",
+      "priority": 0,
+      "id": "e426ecc3-04d5-458c-28cb-49747ac3a36c",
+      "destroyed": false,
+      "subtype": "regular",
+      "serial": "6C1B16CE1C034D1C01D9C76D",
+      "host_encryption_key_status": "none",
+      "requested_promotion_state": "promoted",
+      "promotion_status": "promoted",
+      "pod": {
+        "name": null,
+        "id": null
+      },
+      "time_remaining": null,
+      "qos": {
+        "bandwidth_limit": null,
+        "iops_limit": null
+      },
+      "priority_adjustment": {
+        "priority_adjustment_operator": "+",
+        "priority_adjustment_value": 0
+      },
+      "volume_group": {
+        "name": "vvol-vCLS-b0e9e645-a-d8e5b185-62bfd858-vg",
+        "id": "676677b9-9962-d46a-55a0-d87d14ea86c9"
+      }
+    },
+    {
+      "space": {
+        "data_reduction": 1,
+        "shared": null,
+        "snapshots": 0,
+        "system": null,
+        "thin_provisioning": 1,
+        "total_physical": 0,
+        "total_provisioned": 134217728,
+        "total_reduction": 1,
+        "unique": 0,
+        "virtual": 0,
+        "unique_effective": 0,
+        "snapshots_effective": 0,
+        "total_effective": 0
+      },
+      "connection_count": 1,
+      "provisioned": 134217728,
+      "source": {
+        "name": null,
+        "id": null
+      },
+      "created": 1663817396865,
+      "name": "vvol-vCLS-b0e9e645-a-d8e5b185-62bfd858-vg/Swap-be1e87de",
+      "priority": 0,
+      "id": "9106ca5e-edd1-b418-3570-f620b8aa2dba",
+      "destroyed": false,
+      "subtype": "regular",
+      "serial": "6C1B16CE1C034D1C01D9C76E",
+      "host_encryption_key_status": "none",
+      "requested_promotion_state": "promoted",
+      "promotion_status": "promoted",
+      "pod": {
+        "name": null,
+        "id": null
+      },
+      "time_remaining": null,
+      "qos": {
+        "bandwidth_limit": null,
+        "iops_limit": null
+      },
+      "priority_adjustment": {
+        "priority_adjustment_operator": "+",
+        "priority_adjustment_value": 0
+      },
+      "volume_group": {
+        "name": "vvol-vCLS-b0e9e645-a-d8e5b185-62bfd858-vg",
+        "id": "676677b9-9962-d46a-55a0-d87d14ea86c9"
+      }
+    },
+    {
+      "space": {
+        "data_reduction": 3.8650836312397256,
+        "shared": null,
+        "snapshots": 0,
+        "system": null,
+        "thin_provisioning": 0.9986205101013184,
+        "total_physical": 1462681,
+        "total_provisioned": 4294967296,
+        "total_reduction": 2801.8209012864336,
+        "unique": 1462681,
+        "virtual": 5924864,
+        "unique_effective": 6016512,
+        "snapshots_effective": 0,
+        "total_effective": 6016512
+      },
+      "connection_count": 1,
+      "provisioned": 4294967296,
+      "source": {
+        "name": null,
+        "id": null
+      },
+      "created": 1663817398306,
+      "name": "vvol-vCLS-03b30228-d-8e858fa3-127fcf15-vg/Config-5f54b2c2",
+      "priority": 0,
+      "id": "00a99ba1-2d9e-53ef-cd97-85ffe88a6991",
+      "destroyed": false,
+      "subtype": "regular",
+      "serial": "6C1B16CE1C034D1C01D9C770",
+      "host_encryption_key_status": "none",
+      "requested_promotion_state": "promoted",
+      "promotion_status": "promoted",
+      "pod": {
+        "name": null,
+        "id": null
+      },
+      "time_remaining": null,
+      "qos": {
+        "bandwidth_limit": null,
+        "iops_limit": null
+      },
+      "priority_adjustment": {
+        "priority_adjustment_operator": "+",
+        "priority_adjustment_value": 0
+      },
+      "volume_group": {
+        "name": "vvol-vCLS-03b30228-d-8e858fa3-127fcf15-vg",
+        "id": "c3bc2997-b6e3-b2b7-e104-f0f567aa7b2e"
+      }
+    },
+    {
+      "space": {
+        "data_reduction": 9.923702244126714,
+        "shared": null,
+        "snapshots": 0,
+        "system": null,
+        "thin_provisioning": 0.8663859367370605,
+        "total_physical": 13013062,
+        "total_provisioned": 2147483648,
+        "total_reduction": 74.27139031463952,
+        "unique": 13013062,
+        "virtual": 286934016,
+        "unique_effective": 288749056,
+        "snapshots_effective": 0,
+        "total_effective": 288749056
+      },
+      "connection_count": 1,
+      "provisioned": 2147483648,
+      "source": {
+        "name": null,
+        "id": null
+      },
+      "created": 1663817398993,
+      "name": "vvol-vCLS-03b30228-d-8e858fa3-127fcf15-vg/Data-2be1c69d",
+      "priority": 0,
+      "id": "877c87d5-2d9e-4c1a-61f3-0d59de4fabf1",
+      "destroyed": false,
+      "subtype": "regular",
+      "serial": "6C1B16CE1C034D1C01D9C771",
+      "host_encryption_key_status": "none",
+      "requested_promotion_state": "promoted",
+      "promotion_status": "promoted",
+      "pod": {
+        "name": null,
+        "id": null
+      },
+      "time_remaining": null,
+      "qos": {
+        "bandwidth_limit": null,
+        "iops_limit": null
+      },
+      "priority_adjustment": {
+        "priority_adjustment_operator": "+",
+        "priority_adjustment_value": 0
+      },
+      "volume_group": {
+        "name": "vvol-vCLS-03b30228-d-8e858fa3-127fcf15-vg",
+        "id": "c3bc2997-b6e3-b2b7-e104-f0f567aa7b2e"
+      }
+    },
+    {
+      "space": {
+        "data_reduction": 1,
+        "shared": null,
+        "snapshots": 0,
+        "system": null,
+        "thin_provisioning": 1,
+        "total_physical": 0,
+        "total_provisioned": 134217728,
+        "total_reduction": 1,
+        "unique": 0,
+        "virtual": 0,
+        "unique_effective": 0,
+        "snapshots_effective": 0,
+        "total_effective": 0
+      },
+      "connection_count": 1,
+      "provisioned": 134217728,
+      "source": {
+        "name": null,
+        "id": null
+      },
+      "created": 1663817427839,
+      "name": "vvol-vCLS-03b30228-d-8e858fa3-127fcf15-vg/Swap-92696efc",
+      "priority": 0,
+      "id": "55ff1b50-be3f-fb0e-8dc0-d5f4d6280eef",
+      "destroyed": false,
+      "subtype": "regular",
+      "serial": "6C1B16CE1C034D1C01D9C772",
+      "host_encryption_key_status": "none",
+      "requested_promotion_state": "promoted",
+      "promotion_status": "promoted",
+      "pod": {
+        "name": null,
+        "id": null
+      },
+      "time_remaining": null,
+      "qos": {
+        "bandwidth_limit": null,
+        "iops_limit": null
+      },
+      "priority_adjustment": {
+        "priority_adjustment_operator": "+",
+        "priority_adjustment_value": 0
+      },
+      "volume_group": {
+        "name": "vvol-vCLS-03b30228-d-8e858fa3-127fcf15-vg",
+        "id": "c3bc2997-b6e3-b2b7-e104-f0f567aa7b2e"
+      }
+    },
+    {
+      "space": {
+        "data_reduction": 3.774724104735007,
+        "shared": null,
+        "snapshots": 0,
+        "system": null,
+        "thin_provisioning": 0.9986214637756348,
+        "total_physical": 1498596,
+        "total_provisioned": 4294967296,
+        "total_reduction": 2738.211762605752,
+        "unique": 1498596,
+        "virtual": 5920768,
+        "unique_effective": 6012928,
+        "snapshots_effective": 0,
+        "total_effective": 6012928
+      },
+      "connection_count": 1,
+      "provisioned": 4294967296,
+      "source": {
+        "name": null,
+        "id": null
+      },
+      "created": 1663817429340,
+      "name": "vvol-vCLS-9e03804c-e-d9ffee54-46b6cbe2-vg/Config-ccd9b203",
+      "priority": 0,
+      "id": "12cfd3d6-100e-13c7-fd20-399ea9c60821",
+      "destroyed": false,
+      "subtype": "regular",
+      "serial": "6C1B16CE1C034D1C01D9C774",
+      "host_encryption_key_status": "none",
+      "requested_promotion_state": "promoted",
+      "promotion_status": "promoted",
+      "pod": {
+        "name": null,
+        "id": null
+      },
+      "time_remaining": null,
+      "qos": {
+        "bandwidth_limit": null,
+        "iops_limit": null
+      },
+      "priority_adjustment": {
+        "priority_adjustment_operator": "+",
+        "priority_adjustment_value": 0
+      },
+      "volume_group": {
+        "name": "vvol-vCLS-9e03804c-e-d9ffee54-46b6cbe2-vg",
+        "id": "04bc7dae-f504-636f-4bcd-86ad36b29dea"
+      }
+    },
+    {
+      "space": {
+        "data_reduction": 10.002106135078238,
+        "shared": null,
+        "snapshots": 0,
+        "system": null,
+        "thin_provisioning": 0.8664333820343018,
+        "total_physical": 12714957,
+        "total_provisioned": 2147483648,
+        "total_reduction": 74.88477500902896,
+        "unique": 12714957,
+        "virtual": 286832128,
+        "unique_effective": 287877632,
+        "snapshots_effective": 0,
+        "total_effective": 287877632
+      },
+      "connection_count": 1,
+      "provisioned": 2147483648,
+      "source": {
+        "name": null,
+        "id": null
+      },
+      "created": 1663817430077,
+      "name": "vvol-vCLS-9e03804c-e-d9ffee54-46b6cbe2-vg/Data-808c80b0",
+      "priority": 0,
+      "id": "283aba01-9db5-7738-e3aa-d52dbb04e286",
+      "destroyed": false,
+      "subtype": "regular",
+      "serial": "6C1B16CE1C034D1C01D9C775",
+      "host_encryption_key_status": "none",
+      "requested_promotion_state": "promoted",
+      "promotion_status": "promoted",
+      "pod": {
+        "name": null,
+        "id": null
+      },
+      "time_remaining": null,
+      "qos": {
+        "bandwidth_limit": null,
+        "iops_limit": null
+      },
+      "priority_adjustment": {
+        "priority_adjustment_operator": "+",
+        "priority_adjustment_value": 0
+      },
+      "volume_group": {
+        "name": "vvol-vCLS-9e03804c-e-d9ffee54-46b6cbe2-vg",
+        "id": "04bc7dae-f504-636f-4bcd-86ad36b29dea"
+      }
+    },
+    {
+      "space": {
+        "data_reduction": 1,
+        "shared": null,
+        "snapshots": 0,
+        "system": null,
+        "thin_provisioning": 1,
+        "total_physical": 0,
+        "total_provisioned": 134217728,
+        "total_reduction": 1,
+        "unique": 0,
+        "virtual": 0,
+        "unique_effective": 0,
+        "snapshots_effective": 0,
+        "total_effective": 0
+      },
+      "connection_count": 1,
+      "provisioned": 134217728,
+      "source": {
+        "name": null,
+        "id": null
+      },
+      "created": 1663817449517,
+      "name": "vvol-vCLS-9e03804c-e-d9ffee54-46b6cbe2-vg/Swap-f6961b08",
+      "priority": 0,
+      "id": "c09aa989-0f64-0232-a771-649c56029e23",
+      "destroyed": false,
+      "subtype": "regular",
+      "serial": "6C1B16CE1C034D1C01D9C776",
+      "host_encryption_key_status": "none",
+      "requested_promotion_state": "promoted",
+      "promotion_status": "promoted",
+      "pod": {
+        "name": null,
+        "id": null
+      },
+      "time_remaining": null,
+      "qos": {
+        "bandwidth_limit": null,
+        "iops_limit": null
+      },
+      "priority_adjustment": {
+        "priority_adjustment_operator": "+",
+        "priority_adjustment_value": 0
+      },
+      "volume_group": {
+        "name": "vvol-vCLS-9e03804c-e-d9ffee54-46b6cbe2-vg",
+        "id": "04bc7dae-f504-636f-4bcd-86ad36b29dea"
+      }
+    }
+  ],
+  "more_items_remaining": false,
+  "total": [
+    {
+      "space": {
+        "data_reduction": 4.405849066858218,
+        "shared": null,
+        "snapshots": 1008493036636,
+        "system": null,
+        "thin_provisioning": 0.93223944768329,
+        "total_physical": 2972653947094,
+        "total_provisioned": 153671111278592,
+        "total_reduction": 65.02085529447078,
+        "unique": 1964160910458,
+        "virtual": 10412839375360,
+        "unique_effective": 9687652379648,
+        "snapshots_effective": 5997546690048,
+        "total_effective": 15685199069696
+      },
+      "connection_count": null,
+      "provisioned": 153671111278592,
+      "source": {
+        "name": null,
+        "id": null
+      },
+      "created": null,
+      "name": null,
+      "priority": null,
+      "id": null,
+      "destroyed": null,
+      "subtype": null,
+      "serial": null,
+      "host_encryption_key_status": null,
+      "requested_promotion_state": null,
+      "promotion_status": null,
+      "pod": {
+        "name": null,
+        "id": null
+      },
+      "time_remaining": null,
+      "qos": {
+        "bandwidth_limit": null,
+        "iops_limit": null
+      },
+      "priority_adjustment": {
+        "priority_adjustment_operator": null,
+        "priority_adjustment_value": null
+      },
+      "volume_group": {
+        "name": null,
+        "id": null
+      }
+    }
+  ],
+  "total_item_count": null
+}
