@@ -4,39 +4,39 @@ package collectors
 import (
 	"fmt"
 	"testing"
-        "regexp"
-        "strings"
+	"regexp"
+	"strings"
 	"net/http"
 	"net/http/httptest"
-        "encoding/json"
-        "io/ioutil"
+	"encoding/json"
+	"io/ioutil"
 
-        "purestorage/fa-openmetrics-exporter/internal/rest-client"
+	"purestorage/fa-openmetrics-exporter/internal/rest-client"
 )
 
 func TestArrayPerformanceCollector(t *testing.T) {
 
 	res, _ := ioutil.ReadFile("../../test/data/arrays_performance.json")
 	vers, _ := ioutil.ReadFile("../../test/data/versions.json")
-        var arrs client.ArraysPerformanceList
-        json.Unmarshal(res, &arrs)
+	var arrs client.ArraysPerformanceList
+	json.Unmarshal(res, &arrs)
 	server := httptest.NewTLSServer(http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
-	        valid := regexp.MustCompile(`^/api/([0-9]+.[0-9]+)?/arrays/performance$`)
-                if r.URL.Path == "/api/api_version" {
+		valid := regexp.MustCompile(`^/api/([0-9]+.[0-9]+)?/arrays/performance$`)
+		if r.URL.Path == "/api/api_version" {
                         w.Header().Set("Content-Type", "application/json")
                         w.WriteHeader(http.StatusOK)
                         w.Write([]byte(vers))
-                } else if valid.MatchString(r.URL.Path) {
-			w.Header().Set("x-auth-token", "faketoken")
-			w.Header().Set("Content-Type", "application/json")
-			w.WriteHeader(http.StatusOK)
-			w.Write([]byte(res))
+		} else if valid.MatchString(r.URL.Path) {
+                        w.Header().Set("x-auth-token", "faketoken")
+                        w.Header().Set("Content-Type", "application/json")
+                        w.WriteHeader(http.StatusOK)
+                        w.Write([]byte(res))
 		}
 	   }))
-        endp := strings.Split(server.URL, "/")
-        e := endp[len(endp)-1]
+	endp := strings.Split(server.URL, "/")
+	e := endp[len(endp)-1]
+	defer server.Close()
 	p := arrs.Items[0]
-        defer server.Close()
 	want := make(map[string]bool)
 	want[fmt.Sprintf("label:<name:\"dimension\" value:\"queue_usec_per_mirrored_write_op\" > gauge:<value:%g > ", p.QueueUsecPerMirroredWriteOp)] = true
 	want[fmt.Sprintf("label:<name:\"dimension\" value:\"queue_usec_per_read_op\" > gauge:<value:%g > ", p.QueueUsecPerReadOp)] = true
@@ -65,8 +65,7 @@ func TestArrayPerformanceCollector(t *testing.T) {
 	want[fmt.Sprintf("label:<name:\"dimension\" value:\"bytes_per_read\" > gauge:<value:%g > ", p.BytesPerRead)] = true
 	want[fmt.Sprintf("label:<name:\"dimension\" value:\"bytes_per_write\" > gauge:<value:%g > ", p.BytesPerWrite)] = true
 	want[fmt.Sprintf("gauge:<value:%g > ", p.QueueDepth)] = true
-
 	c := client.NewRestClient(e, "fake-api-token", "latest")
-        asc := NewArraysPerformanceCollector(c)
-	metricsCheck(t, asc, want)
+	pc := NewArraysPerformanceCollector(c)
+	metricsCheck(t, pc, want)
 }

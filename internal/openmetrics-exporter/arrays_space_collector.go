@@ -1,5 +1,6 @@
 package collectors
 
+
 import (
 	"github.com/prometheus/client_golang/prometheus"
 	"purestorage/fa-openmetrics-exporter/internal/rest-client"
@@ -20,107 +21,98 @@ func (c *ArraySpaceCollector) Collect(ch chan<- prometheus.Metric) {
 	if len(arrays.Items) == 0 {
 		return
 	}
-	array := arrays.Items[0]
-
+	a := arrays.Items[0]
 	ch <- prometheus.MustNewConstMetric(
 		c.ReductionDesc,
 		prometheus.GaugeValue,
-		array.Space.DataReduction,
+		a.Space.DataReduction,
 	)
 	ch <- prometheus.MustNewConstMetric(
 		c.SpaceDesc,
 		prometheus.GaugeValue,
-		array.Space.Shared,
-		"shared",
+		a.Space.Shared, "shared",
 	)
 	ch <- prometheus.MustNewConstMetric(
 		c.SpaceDesc,
 		prometheus.GaugeValue,
-		array.Space.Snapshots,
-		"snapshots",
+		a.Space.Snapshots, "snapshots",
 	)
 	ch <- prometheus.MustNewConstMetric(
 		c.SpaceDesc,
 		prometheus.GaugeValue,
-		array.Space.System,
-		"system",
+		a.Space.System, "system",
 	)
 	ch <- prometheus.MustNewConstMetric(
 		c.SpaceDesc,
 		prometheus.GaugeValue,
-		array.Space.ThinProvisioning,
-		"thin_provisioning",
+		a.Space.ThinProvisioning, "thin_provisioning",
 	)
 	ch <- prometheus.MustNewConstMetric(
 		c.SpaceDesc,
 		prometheus.GaugeValue,
-		array.Space.TotalPhysical,
-		"total_physical",
+		a.Space.TotalPhysical, "total_physical",
 	)
 	ch <- prometheus.MustNewConstMetric(
 		c.SpaceDesc,
 		prometheus.GaugeValue,
-		array.Space.TotalProvisioned,
-		"total_provisioned",
+		a.Space.TotalProvisioned, "total_provisioned",
 	)
 	ch <- prometheus.MustNewConstMetric(
 		c.SpaceDesc,
 		prometheus.GaugeValue,
-		array.Space.Unique,
-		"unique",
+		a.Space.TotalReduction, "total_reduction",
 	)
 	ch <- prometheus.MustNewConstMetric(
 		c.SpaceDesc,
 		prometheus.GaugeValue,
-		array.Space.Virtual,
-		"virtual",
+		a.Space.Unique, "unique",
 	)
 	ch <- prometheus.MustNewConstMetric(
 		c.SpaceDesc,
 		prometheus.GaugeValue,
-		array.Space.Replication,
-		"replication",
+		a.Space.Virtual, "virtual",
 	)
 	ch <- prometheus.MustNewConstMetric(
 		c.SpaceDesc,
 		prometheus.GaugeValue,
-		array.Space.SharedEffective,
-		"shared_effective",
+		a.Space.Replication, "replication",
 	)
 	ch <- prometheus.MustNewConstMetric(
 		c.SpaceDesc,
 		prometheus.GaugeValue,
-		array.Space.SnapshotsEffective,
-		"snapshots_effective",
+		a.Space.SharedEffective, "shared_effective",
 	)
 	ch <- prometheus.MustNewConstMetric(
 		c.SpaceDesc,
 		prometheus.GaugeValue,
-		array.Space.UniqueEffective,
-		"unique_effective",
+		a.Space.SnapshotsEffective, "snapshots_effective",
 	)
 	ch <- prometheus.MustNewConstMetric(
 		c.SpaceDesc,
 		prometheus.GaugeValue,
-		array.Space.TotalEffective,
-		"total_effective",
+		a.Space.UniqueEffective, "unique_effective",
+	)
+	ch <- prometheus.MustNewConstMetric(
+		c.SpaceDesc,
+		prometheus.GaugeValue,
+		a.Space.TotalEffective, "total_effective",
 	)
 }
 
-func NewArraysSpaceCollector(fa *client.FAClient) *ArraySpaceCollector {
+func NewArraySpaceCollector(fa *client.FAClient) *ArraySpaceCollector {
 	return &ArraySpaceCollector{
-                ReductionDesc: prometheus.NewDesc(
-                        "purefa_array_space_data_reduction_ratio",
-                        "FlashArray space data reduction",
-                        []string{},
-                        prometheus.Labels{},
-                ),
-                SpaceDesc: prometheus.NewDesc(
-                        "purefa_array_space_bytes",
-                        "FlashArray space in bytes",
-                        []string{"space"},
-                        prometheus.Labels{},
-                ),
+		ReductionDesc: prometheus.NewDesc(
+			"purefa_array_space_data_reduction_ratio",
+			"FlashArray array space data reduction",
+			[]string{},
+			prometheus.Labels{},
+		),
+		SpaceDesc: prometheus.NewDesc(
+			"purefa_array_space_bytes",
+			"FlashArray array space in bytes",
+			[]string{"space"},
+			prometheus.Labels{},
+		),
 		Client: fa,
 	}
 }

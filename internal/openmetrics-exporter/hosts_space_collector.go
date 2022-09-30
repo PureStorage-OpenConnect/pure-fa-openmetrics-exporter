@@ -6,126 +6,126 @@ import (
 	"purestorage/fa-openmetrics-exporter/internal/rest-client"
 )
 
-type DirectoriesSpaceCollector struct {
+type HostsSpaceCollector struct {
 	ReductionDesc *prometheus.Desc
 	SpaceDesc     *prometheus.Desc
 	Client        *client.FAClient
 }
 
-func (c *DirectoriesSpaceCollector) Describe(ch chan<- *prometheus.Desc) {
+func (c *HostsSpaceCollector) Describe(ch chan<- *prometheus.Desc) {
 	prometheus.DescribeByCollect(c, ch)
 }
 
-func (c *DirectoriesSpaceCollector) Collect(ch chan<- prometheus.Metric) {
-	dirs := c.Client.GetDirectories()
-	if len(dirs.Items) == 0 {
+func (c *HostsSpaceCollector) Collect(ch chan<- prometheus.Metric) {
+	hosts := c.Client.GetHosts()
+	if len(hosts.Items) == 0 {
 		return
 	}
-	for _, d := range dirs.Items {
+	for _, h := range hosts.Items {
 		ch <- prometheus.MustNewConstMetric(
 			c.ReductionDesc,
 			prometheus.GaugeValue,
-			d.Space.DataReduction,
-			d.Name,
+			h.Space.DataReduction,
+			h.Name,
 		)
 		ch <- prometheus.MustNewConstMetric(
 			c.SpaceDesc,
 			prometheus.GaugeValue,
-			d.Space.Shared,
-			d.Name, "shared",
+			h.Space.Shared,
+			h.Name, "shared",
 		)
 		ch <- prometheus.MustNewConstMetric(
 			c.SpaceDesc,
 			prometheus.GaugeValue,
-			d.Space.Snapshots,
-			d.Name, "snapshots",
+			h.Space.Snapshots,
+			h.Name, "snapshots",
 		)
 		ch <- prometheus.MustNewConstMetric(
 			c.SpaceDesc,
 			prometheus.GaugeValue,
-			d.Space.System,
-			d.Name, "system",
+			h.Space.System,
+			h.Name, "system",
 		)
 		ch <- prometheus.MustNewConstMetric(
 			c.SpaceDesc,
 			prometheus.GaugeValue,
-			d.Space.ThinProvisioning,
-			d.Name, "thin_provisioning",
+			h.Space.ThinProvisioning,
+			h.Name, "thin_provisioning",
 		)
 		ch <- prometheus.MustNewConstMetric(
 			c.SpaceDesc,
 			prometheus.GaugeValue,
-			d.Space.TotalPhysical,
-			d.Name, "total_physical",
+			h.Space.TotalPhysical,
+			h.Name, "total_physical",
 		)
 		ch <- prometheus.MustNewConstMetric(
 			c.SpaceDesc,
 			prometheus.GaugeValue,
-			d.Space.TotalProvisioned,
-			d.Name, "total_provisioned",
+			h.Space.TotalProvisioned,
+			h.Name, "total_provisioned",
 		)
 		ch <- prometheus.MustNewConstMetric(
 			c.SpaceDesc,
 			prometheus.GaugeValue,
-			d.Space.TotalReduction,
-			d.Name, "total_reduction",
+			h.Space.TotalReduction,
+			h.Name, "total_reduction",
 		)
 		ch <- prometheus.MustNewConstMetric(
 			c.SpaceDesc,
 			prometheus.GaugeValue,
-			d.Space.Unique,
-			d.Name, "unique",
+			h.Space.Unique,
+			h.Name, "unique",
 		)
 		ch <- prometheus.MustNewConstMetric(
 			c.SpaceDesc,
 			prometheus.GaugeValue,
-			d.Space.Virtual,
-			d.Name, "virtual",
+			h.Space.Virtual,
+			h.Name, "virtual",
 		)
 		ch <- prometheus.MustNewConstMetric(
 			c.SpaceDesc,
 			prometheus.GaugeValue,
-			d.Space.Replication,
-			d.Name, "replication",
+			h.Space.Replication,
+			h.Name, "replication",
 		)
 		ch <- prometheus.MustNewConstMetric(
 			c.SpaceDesc,
 			prometheus.GaugeValue,
-			d.Space.SharedEffective,
-			d.Name, "shared_effective",
+			h.Space.SharedEffective,
+			h.Name, "shared_effective",
 		)
 		ch <- prometheus.MustNewConstMetric(
 			c.SpaceDesc,
 			prometheus.GaugeValue,
-			d.Space.SnapshotsEffective,
-			d.Name, "snapshots_effective",
+			h.Space.SnapshotsEffective,
+			h.Name, "snapshots_effective",
 		)
 		ch <- prometheus.MustNewConstMetric(
 			c.SpaceDesc,
 			prometheus.GaugeValue,
-			d.Space.UniqueEffective,
-			d.Name, "unique_effective",
+			h.Space.UniqueEffective,
+			h.Name, "unique_effective",
 		)
 		ch <- prometheus.MustNewConstMetric(
 			c.SpaceDesc,
 			prometheus.GaugeValue,
-			d.Space.TotalEffective,
-			d.Name, "total_effective",
+			h.Space.TotalEffective,
+			h.Name, "total_effective",
 		)
         }
 }
 
-func NewDirectoriesSpaceCollector(fa *client.FAClient) *DirectoriesSpaceCollector {
-	return &DirectoriesSpaceCollector{
+func NewHostsSpaceCollector(fa *client.FAClient) *HostsSpaceCollector {
+	return &HostsSpaceCollector{
 		ReductionDesc: prometheus.NewDesc(
-			"purefa_directory_space_data_reduction_ratio",
-			"FlashArray directory space data reduction",
+			"purefa_host_space_data_reduction_ratio",
+			"FlashArray host space data reduction",
 			[]string{"name"},
 			prometheus.Labels{},
 		),
 		SpaceDesc: prometheus.NewDesc(
-			"purefa_directory_space_bytes",
-			"FlashArray directory space in bytes",
+			"purefa_host_space_bytes",
+			"FlashArray host space in bytes",
 			[]string{"name", "space"},
 			prometheus.Labels{},
 		),

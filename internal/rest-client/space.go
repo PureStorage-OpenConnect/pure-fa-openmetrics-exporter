@@ -14,6 +14,6 @@ type Space struct {
 	Replication          float64 `json:"replication"`
         SharedEffective      float64 `json:"shared_effective"`
         SnapshotsEffective   float64 `json:"snapshots_effective"`
-        UniqueEffective      float64  `json:"unique_effective"`
-        TotalEffective       float64  `json:"total_effective"`
+        UniqueEffective      float64 `json:"unique_effective"`
+        TotalEffective       float64 `json:"total_effective"`
 }

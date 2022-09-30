@@ -4,35 +4,35 @@ package client
 type PodPerformance struct {
 	Id      string  `json:"id"`
 	Name      string  `json:"name"`
-	BytesPerMirroredWrite      int  `json:"bytes_per_mirrored_write"`
-	BytesPerOp      int  `json:"bytes_per_op"`
-	BytesPerRead      int  `json:"bytes_per_read"`
-	BytesPerWrite      int  `json:"bytes_per_write"`
-	MirroredWriteBytesPerSec      int  `json:"mirrored_write_bytes_per_sec"`
-	MirroredWritesPerSec      int  `json:"mirrored_writes_per_sec"`
-	QosRateLimitUsecPerMirroredWriteOp      int  `json:"qos_rate_limit_usec_per_mirrored_write_op"`
-	QosRateLimitUsecPerReadOp      int  `json:"qos_rate_limit_usec_per_read_op"`
-	QosRateLimitUsecPerWriteOp      int  `json:"qos_rate_limit_usec_per_write_op"`
-	QueueUsecPerMirroredWriteOp      int  `json:"queue_usec_per_mirrored_write_op"`
-	QueueUsecPerReadOp      int  `json:"queue_usec_per_read_op"`
-	QueueUsecPerWriteOp      int  `json:"queue_usec_per_write_op"`
-	ReadBytesPerSec      int  `json:"read_bytes_per_sec"`
-	ReadsPerSec      int  `json:"reads_per_sec"`
-	SanUsecPerMirroredWriteOp      int  `json:"san_usec_per_mirrored_write_op"`
-	SanUsecPerReadOp      int  `json:"san_usec_per_read_op"`
-	SanUsecPerWriteOp      int  `json:"san_usec_per_write_op"`
-	ServiceUsecPerMirroredWriteOp      int  `json:"service_usec_per_mirrored_write_op"`
-	ServiceUsecPerReadOp      int  `json:"service_usec_per_read_op"`
-	ServiceUsecPerWriteOp      int  `json:"service_usec_per_write_op"`
+	BytesPerMirroredWrite      float64  `json:"bytes_per_mirrored_write"`
+	BytesPerOp      float64  `json:"bytes_per_op"`
+	BytesPerRead      float64  `json:"bytes_per_read"`
+	BytesPerWrite      float64  `json:"bytes_per_write"`
+	MirroredWriteBytesPerSec      float64  `json:"mirrored_write_bytes_per_sec"`
+	MirroredWritesPerSec      float64  `json:"mirrored_writes_per_sec"`
+	QosRateLimitUsecPerMirroredWriteOp      float64  `json:"qos_rate_limit_usec_per_mirrored_write_op"`
+	QosRateLimitUsecPerReadOp      float64  `json:"qos_rate_limit_usec_per_read_op"`
+	QosRateLimitUsecPerWriteOp      float64  `json:"qos_rate_limit_usec_per_write_op"`
+	QueueUsecPerMirroredWriteOp      float64  `json:"queue_usec_per_mirrored_write_op"`
+	QueueUsecPerReadOp      float64  `json:"queue_usec_per_read_op"`
+	QueueUsecPerWriteOp      float64  `json:"queue_usec_per_write_op"`
+	ReadBytesPerSec      float64  `json:"read_bytes_per_sec"`
+	ReadsPerSec      float64  `json:"reads_per_sec"`
+	SanUsecPerMirroredWriteOp      float64  `json:"san_usec_per_mirrored_write_op"`
+	SanUsecPerReadOp      float64  `json:"san_usec_per_read_op"`
+	SanUsecPerWriteOp      float64  `json:"san_usec_per_write_op"`
+	ServiceUsecPerMirroredWriteOp      float64  `json:"service_usec_per_mirrored_write_op"`
+	ServiceUsecPerReadOp      float64  `json:"service_usec_per_read_op"`
+	ServiceUsecPerWriteOp      float64  `json:"service_usec_per_write_op"`
 	Time      int  `json:"time"`
-	UsecPerMirroredWriteOp      int  `json:"usec_per_mirrored_write_op"`
-	UsecPerReadOp      int  `json:"usec_per_read_op"`
-	UsecPerWriteOp      int  `json:"usec_per_write_op"`
-	WriteBytesPerSec      int  `json:"write_bytes_per_sec"`
-	WritesPerSec      int  `json:"writes_per_sec"`
-	ServiceUsecPerReadOpCacheReduction      int  `json:"service_usec_per_read_op_cache_reduction"`
-	OthersPerSec      int  `json:"others_per_sec"`
-	UsecPerOtherOp      int  `json:"usec_per_other_op"`
+	UsecPerMirroredWriteOp      float64  `json:"usec_per_mirrored_write_op"`
+	UsecPerReadOp      float64  `json:"usec_per_read_op"`
+	UsecPerWriteOp      float64  `json:"usec_per_write_op"`
+	WriteBytesPerSec      float64  `json:"write_bytes_per_sec"`
+	WritesPerSec      float64  `json:"writes_per_sec"`
+	ServiceUsecPerReadOpCacheReduction      float64  `json:"service_usec_per_read_op_cache_reduction"`
+	OthersPerSec      float64  `json:"others_per_sec"`
+	UsecPerOtherOp      float64  `json:"usec_per_other_op"`
 }
 
 type PodsPerformanceList struct {
