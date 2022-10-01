@@ -9,15 +9,15 @@ import (
 	"net/http"
 	"net/http/httptest"
 	"encoding/json"
-	"io/ioutil"
+	"os"
 
 	"purestorage/fa-openmetrics-exporter/internal/rest-client"
 )
 
 func TestArraySpaceCollector(t *testing.T) {
 
-	res, _ := ioutil.ReadFile("../../test/data/arrays.json")
-	vers, _ := ioutil.ReadFile("../../test/data/versions.json")
+	res, _ := os.ReadFile("../../test/data/arrays.json")
+	vers, _ := os.ReadFile("../../test/data/versions.json")
 	var arrs client.ArraysList
 	json.Unmarshal(res, &arrs)
 	server := httptest.NewTLSServer(http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
@@ -53,7 +53,7 @@ func TestArraySpaceCollector(t *testing.T) {
 	want[fmt.Sprintf("label:<name:\"space\" value:\"unique_effective\" > gauge:<value:%g > ", sp.UniqueEffective)] = true
 	want[fmt.Sprintf("label:<name:\"space\" value:\"total_effective\" > gauge:<value:%g > ", sp.TotalEffective)] = true
 	defer server.Close()
-	c := client.NewRestClient(e, "fake-api-token", "latest")
+	c := client.NewRestClient(e, "fake-api-token", "latest", false)
 	ac := NewArraySpaceCollector(c)
 	metricsCheck(t, ac, want)
 }

@@ -8,15 +8,15 @@ import (
 	"net/http"
 	"net/http/httptest"
 	"encoding/json"
-	"io/ioutil"
+	"os"
 
 	"github.com/google/go-cmp/cmp"
 )
 
 func TestPods(t *testing.T) {
 
-	res, _ := ioutil.ReadFile("../../test/data/pods.json")
-	vers, _ := ioutil.ReadFile("../../test/data/versions.json")
+	res, _ := os.ReadFile("../../test/data/pods.json")
+	vers, _ := os.ReadFile("../../test/data/versions.json")
 	var pods PodsList
 	json.Unmarshal(res, &pods)
 	server := httptest.NewTLSServer(http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
@@ -36,7 +36,7 @@ func TestPods(t *testing.T) {
         e := endp[len(endp)-1]
         t.Run("pods_1", func(t *testing.T) {
             defer server.Close()
-            c := NewRestClient(e, "fake-api-token", "latest")
+            c := NewRestClient(e, "fake-api-token", "latest", false)
 	    pl := c.GetPods()
 	    if diff := cmp.Diff(pl.Items, pods.Items); diff != "" {
                 t.Errorf("Mismatch (-want +got):\n%s", diff)

@@ -8,15 +8,15 @@ import (
 	"net/http"
 	"net/http/httptest"
 	"encoding/json"
-	"io/ioutil"
+	"os"
 
 	"github.com/google/go-cmp/cmp"
 )
 
 func TestVolumesPerformance(t *testing.T) {
 
-	res, _ := ioutil.ReadFile("../../test/data/volumes_performance.json")
-	vers, _ := ioutil.ReadFile("../../test/data/versions.json")
+	res, _ := os.ReadFile("../../test/data/volumes_performance.json")
+	vers, _ := os.ReadFile("../../test/data/versions.json")
 	var volsp VolumesPerformanceList
 	json.Unmarshal(res, &volsp)
 	server := httptest.NewTLSServer(http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
@@ -36,7 +36,7 @@ func TestVolumesPerformance(t *testing.T) {
         e := endp[len(endp)-1]
         t.Run("volumes_performance_1", func(t *testing.T) {
             defer server.Close()
-            c := NewRestClient(e, "fake-api-token", "latest")
+            c := NewRestClient(e, "fake-api-token", "latest", false)
 	    vpl := c.GetVolumesPerformance()
 	    if diff := cmp.Diff(vpl.Items, volsp.Items); diff != "" {
                 t.Errorf("Mismatch (-want +got):\n%s", diff)

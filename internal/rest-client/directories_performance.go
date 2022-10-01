@@ -28,12 +28,22 @@ type DirectoriesPerformanceList struct {
 
 func (fa *FAClient) GetDirectoriesPerformance() *DirectoriesPerformanceList {
         result := new(DirectoriesPerformanceList)
-        _, err := fa.RestClient.R().
+        res, err := fa.RestClient.R().
                 SetResult(&result).
                 Get("/directories/performance")
 
         if err != nil {
                 fa.Error = err
         }
+        if res.StatusCode() == 401 {
+                fa.RefreshSession()
+        }
+        res, err = fa.RestClient.R().
+                SetResult(&result).
+                Get("/directories/performance")
+        if err != nil {
+                fa.Error = err
+        }
+
         return result
 }

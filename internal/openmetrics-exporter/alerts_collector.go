@@ -1,5 +1,6 @@
 package collectors
 
+
 import (
 	"github.com/prometheus/client_golang/prometheus"
 	"purestorage/fa-openmetrics-exporter/internal/rest-client"
@@ -24,7 +25,7 @@ func (c *AlertsCollector) Collect(ch chan<- prometheus.Metric) {
 			c.AlertsDesc,
 			prometheus.GaugeValue,
 			1.0,
-			alert.Severity, alert.ComponentType, alert.ComponentName,
+			alert.ComponentName, alert.ComponentType, alert.Severity, 
 		)
 	}
 }
@@ -34,7 +35,7 @@ func NewAlertsCollector(fa *client.FAClient) *AlertsCollector {
 		AlertsDesc: prometheus.NewDesc(
 			"purefa_alerts_open",
 			"FlashArray open alert events",
-			[]string{"severity", "component_type", "component_name"},
+			[]string{"component_name", "component_type", "severity"},
 			prometheus.Labels{},
 		),
 		Client: fa,

@@ -8,16 +8,16 @@ import (
 	"net/http"
 	"net/http/httptest"
 	"encoding/json"
-	"io/ioutil"
+	"os"
 
 	"github.com/google/go-cmp/cmp"
 )
 
 func TestAlerts(t *testing.T) {
 
-	ropen, _ := ioutil.ReadFile("../../test/data/alerts_open.json")
-	rall, _ := ioutil.ReadFile("../../test/data/alerts.json")
-	vers, _ := ioutil.ReadFile("../../test/data/versions.json")
+	ropen, _ := os.ReadFile("../../test/data/alerts_open.json")
+	rall, _ := os.ReadFile("../../test/data/alerts.json")
+	vers, _ := os.ReadFile("../../test/data/versions.json")
 	var aopen AlertsList
 	var aall AlertsList
 	json.Unmarshal(ropen, &aopen)
@@ -44,7 +44,7 @@ func TestAlerts(t *testing.T) {
         endp := strings.Split(server.URL, "/")
         e := endp[len(endp)-1]
         t.Run("alerts_open", func(t *testing.T) {
-            c := NewRestClient(e, "fake-api-token", "latest")
+            c := NewRestClient(e, "fake-api-token", "latest", false)
 	    al := c.GetAlerts("state='open'")
 	    if diff := cmp.Diff(al.Items, aopen.Items); diff != "" {
                 t.Errorf("Mismatch (-want +got):\n%s", diff)
@@ -52,7 +52,7 @@ func TestAlerts(t *testing.T) {
             }
         })
         t.Run("alerts_all", func(t *testing.T) {
-            c := NewRestClient(e, "fake-api-token", "latest")
+            c := NewRestClient(e, "fake-api-token", "latest", false)
 	    al := c.GetAlerts("")
 	    if diff := cmp.Diff(al.Items, aall.Items); diff != "" {
                 t.Errorf("Mismatch (-want +got):\n%s", diff)

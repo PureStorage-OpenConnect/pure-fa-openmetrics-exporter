@@ -8,15 +8,15 @@ import (
 	"net/http"
 	"net/http/httptest"
 	"encoding/json"
-	"io/ioutil"
+	"os"
 
 	"github.com/google/go-cmp/cmp"
 )
 
 func TestDirectories(t *testing.T) {
 
-	res, _ := ioutil.ReadFile("../../test/data/directories.json")
-	vers, _ := ioutil.ReadFile("../../test/data/versions.json")
+	res, _ := os.ReadFile("../../test/data/directories.json")
+	vers, _ := os.ReadFile("../../test/data/versions.json")
 	var dirs DirectoriesList
 	json.Unmarshal(res, &dirs)
 	server := httptest.NewTLSServer(http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
@@ -36,7 +36,7 @@ func TestDirectories(t *testing.T) {
         e := endp[len(endp)-1]
         t.Run("directories_1", func(t *testing.T) {
             defer server.Close()
-            c := NewRestClient(e, "fake-api-token", "latest")
+            c := NewRestClient(e, "fake-api-token", "latest", false)
 	    dl := c.GetDirectories()
 	    if diff := cmp.Diff(dl.Items, dirs.Items); diff != "" {
                 t.Errorf("Mismatch (-want +got):\n%s", diff)

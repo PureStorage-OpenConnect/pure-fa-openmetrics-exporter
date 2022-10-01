@@ -1,6 +1,7 @@
 package client
 
 import (
+//	"log"
 	"crypto/tls"
 	"errors"
 	"github.com/go-resty/resty/v2"
@@ -33,7 +34,7 @@ type FAClient struct {
 	Error      error
 }
 
-func NewRestClient(endpoint string, apitoken string, apiversion string) *FAClient {
+func NewRestClient(endpoint string, apitoken string, apiversion string, debug bool) *FAClient {
 	type ApiVersions struct {
 		Versions []string `json:"version"`
 	}
@@ -49,6 +50,13 @@ func NewRestClient(endpoint string, apitoken string, apiversion string) *FAClien
 		"Content-Type": "application/json",
 		"Accept":       "application/json",
 	})
+	if debug {
+		fa.RestClient.SetDebug(true)
+	}
+//	fa.RestClient.OnRequestLog(func(rl *resty.RequestLog) error {
+//		fmt.Fprintln(os.Stderr, rl)
+//		return nil
+//	})
 
 	result := new(ApiVersions)
 	res, err := fa.RestClient.R().
@@ -94,5 +102,18 @@ func (fa *FAClient) Close() *FAClient {
 	if err != nil {
 		fa.Error = err
 	}
+	return fa
+}
+
+func (fa *FAClient) RefreshSession() *FAClient {
+	res, err := fa.RestClient.R().
+		SetHeader("api-token", fa.ApiToken).
+		Post("/login")
+	if err != nil {
+		fa.Error = err
+		return fa
+	}
+	fa.XAuthToken = res.Header().Get("x-auth-token")
+	fa.RestClient.SetHeader("x-auth-token", fa.XAuthToken)
 	return fa
 }

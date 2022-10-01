@@ -8,15 +8,15 @@ import (
 	"net/http"
 	"net/http/httptest"
 	"encoding/json"
-	"io/ioutil"
+	"os"
 
 	"github.com/google/go-cmp/cmp"
 )
 
 func TestConnections(t *testing.T) {
 
-	res, _ := ioutil.ReadFile("../../test/data/connections.json")
-	vers, _ := ioutil.ReadFile("../../test/data/versions.json")
+	res, _ := os.ReadFile("../../test/data/connections.json")
+	vers, _ := os.ReadFile("../../test/data/versions.json")
 	var conns ConnectionsList
 	json.Unmarshal(res, &conns)
 	server := httptest.NewTLSServer(http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
@@ -36,7 +36,7 @@ func TestConnections(t *testing.T) {
         e := endp[len(endp)-1]
         t.Run("connections_1", func(t *testing.T) {
             defer server.Close()
-            c := NewRestClient(e, "fake-api-token", "latest")
+            c := NewRestClient(e, "fake-api-token", "latest", false)
 	    cl := c.GetConnections()
 	    if diff := cmp.Diff(cl.Items, conns.Items); diff != "" {
                 t.Errorf("Mismatch (-want +got):\n%s", diff)

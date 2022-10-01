@@ -9,15 +9,15 @@ import (
 	"net/http"
 	"net/http/httptest"
         "encoding/json"
-        "io/ioutil"
+        "os"
 
         "purestorage/fa-openmetrics-exporter/internal/rest-client"
 )
 
 func TestArraysCollector(t *testing.T) {
 
-	res, _ := ioutil.ReadFile("../../test/data/arrays.json")
-	vers, _ := ioutil.ReadFile("../../test/data/versions.json")
+	res, _ := os.ReadFile("../../test/data/arrays.json")
+	vers, _ := os.ReadFile("../../test/data/versions.json")
         var arrs client.ArraysList
         json.Unmarshal(res, &arrs)
 	server := httptest.NewTLSServer(http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
@@ -40,7 +40,7 @@ func TestArraysCollector(t *testing.T) {
                 want[fmt.Sprintf("label:<name:\"array_name\" value:\"%s\" > label:<name:\"os\" value:\"%s\" > label:<name:\"system_id\" value:\"%s\" > label:<name:\"version\" value:\"%s\" > gauge:<value:1 > ", a.Name, a.Os, a.Id, a.Version)] = true
         }
         defer server.Close()
-	c := client.NewRestClient(e, "fake-api-token", "latest")
+	c := client.NewRestClient(e, "fake-api-token", "latest", false)
         ac := NewArraysCollector(c)
 	metricsCheck(t, ac, want)
 }

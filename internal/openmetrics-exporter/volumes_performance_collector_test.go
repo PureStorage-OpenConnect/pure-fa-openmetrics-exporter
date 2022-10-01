@@ -9,14 +9,14 @@ import (
 	"net/http"
 	"net/http/httptest"
 	"encoding/json"
-	"io/ioutil"
+	"os"
 
 	"purestorage/fa-openmetrics-exporter/internal/rest-client"
 )
 
 func TestVolumesPerformanceCollector(t *testing.T) {
-	res, _ := ioutil.ReadFile("../../test/data/volumes_performance.json")
-	vers, _ := ioutil.ReadFile("../../test/data/versions.json")
+	res, _ := os.ReadFile("../../test/data/volumes_performance.json")
+	vers, _ := os.ReadFile("../../test/data/versions.json")
 	var volumes client.VolumesPerformanceList
 	json.Unmarshal(res, &volumes)
 	server := httptest.NewTLSServer(http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
@@ -61,7 +61,7 @@ func TestVolumesPerformanceCollector(t *testing.T) {
 		want[fmt.Sprintf("label:<name:\"dimension\" value:\"bytes_per_read\" > label:<name:\"name\" value:\"%s\" > gauge:<value:%g > ", p.Name, p.BytesPerRead)] = true
 		want[fmt.Sprintf("label:<name:\"dimension\" value:\"bytes_per_write\" > label:<name:\"name\" value:\"%s\" > gauge:<value:%g > ", p.Name, p.BytesPerWrite)] = true
 	}
-	c := client.NewRestClient(e, "fake-api-token", "latest")
+	c := client.NewRestClient(e, "fake-api-token", "latest", false)
 	pc := NewVolumesPerformanceCollector(c)
 	metricsCheck(t, pc, want)
 }

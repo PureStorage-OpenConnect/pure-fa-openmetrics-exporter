@@ -9,16 +9,16 @@ import (
 	"net/http"
 	"net/http/httptest"
 	"encoding/json"
-	"io/ioutil"
+	"os"
 
 	"purestorage/fa-openmetrics-exporter/internal/rest-client"
 )
 
 func TestAlertsCollector(t *testing.T) {
 
-	ropen, _ := ioutil.ReadFile("../../test/data/alerts_open.json")
-	rall, _ := ioutil.ReadFile("../../test/data/alerts.json")
-	vers, _ := ioutil.ReadFile("../../test/data/versions.json")
+	ropen, _ := os.ReadFile("../../test/data/alerts_open.json")
+	rall, _ := os.ReadFile("../../test/data/alerts.json")
+	vers, _ := os.ReadFile("../../test/data/versions.json")
 	var aopen client.AlertsList
 	var aall client.AlertsList
 	json.Unmarshal(ropen, &aopen)
@@ -48,7 +48,7 @@ func TestAlertsCollector(t *testing.T) {
 	for _, a := range aopen.Items {
 		want[fmt.Sprintf("label:<name:\"component_name\" value:\"%s\" > label:<name:\"component_type\" value:\"%s\" > label:<name:\"severity\" value:\"%s\" > gauge:<value:1 > ", a.ComponentName, a.ComponentType, a.Severity)] = true
 	}
-        c := client.NewRestClient(e, "fake-api-token", "latest")
+        c := client.NewRestClient(e, "fake-api-token", "latest", false)
 	ac := NewAlertsCollector(c)
         metricsCheck(t, ac, want)
         server.Close()

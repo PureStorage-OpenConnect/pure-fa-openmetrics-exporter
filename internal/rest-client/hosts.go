@@ -47,10 +47,19 @@ type HostsList struct {
 
 func (fa *FAClient) GetHosts() *HostsList {
         result := new(HostsList)
-        _, err := fa.RestClient.R().
+        res, err := fa.RestClient.R().
                 SetResult(&result).
                 Get("/hosts")
 
+        if err != nil {
+                fa.Error = err
+        }
+        if res.StatusCode() == 401 {
+                fa.RefreshSession()
+        }
+        res, err = fa.RestClient.R().
+                SetResult(&result).
+                Get("/hosts")
         if err != nil {
                 fa.Error = err
         }

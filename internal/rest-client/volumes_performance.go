@@ -43,12 +43,22 @@ type VolumesPerformanceList struct {
 
 func (fa *FAClient) GetVolumesPerformance() *VolumesPerformanceList {
         result := new(VolumesPerformanceList)
-        _, err := fa.RestClient.R().
+        res, err := fa.RestClient.R().
                 SetResult(&result).
                 Get("/volumes/performance")
 
         if err != nil {
                 fa.Error = err
         }
+        if res.StatusCode() == 401 {
+                fa.RefreshSession()
+        }
+        res, err = fa.RestClient.R().
+                SetResult(&result).
+                Get("/volumes/performance")
+        if err != nil {
+                fa.Error = err
+        }
+
         return result
 }

@@ -46,12 +46,22 @@ type ArraysPerformanceList struct {
 
 func (fa *FAClient) GetArraysPerformance() *ArraysPerformanceList {
 	result := new(ArraysPerformanceList)
-	_, err := fa.RestClient.R().
+	res, err := fa.RestClient.R().
 		SetResult(&result).
 		Get("/arrays/performance")
 
 	if err != nil {
 		fa.Error = err
 	}
+        if res.StatusCode() == 401 {
+                fa.RefreshSession()
+        }
+	res, err = fa.RestClient.R().
+		SetResult(&result).
+		Get("/arrays/performance")
+        if err != nil {
+                fa.Error = err
+        }
+
 	return result
 }

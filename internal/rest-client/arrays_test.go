@@ -8,15 +8,15 @@ import (
 	"net/http"
 	"net/http/httptest"
         "encoding/json"
-        "io/ioutil"
+        "os"
 
 	"github.com/google/go-cmp/cmp"
 )
 
 func TestArrays(t *testing.T) {
 
-	res, _ := ioutil.ReadFile("../../test/data/arrays.json")
-	vers, _ := ioutil.ReadFile("../../test/data/versions.json")
+	res, _ := os.ReadFile("../../test/data/arrays.json")
+	vers, _ := os.ReadFile("../../test/data/versions.json")
         var arrs ArraysList
         json.Unmarshal(res, &arrs)
 	server := httptest.NewTLSServer(http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
@@ -36,7 +36,7 @@ func TestArrays(t *testing.T) {
         e := endp[len(endp)-1]
         t.Run("arrays_1", func(t *testing.T) {
             defer server.Close()
-	    c := NewRestClient(e, "fake-api-token", "latest")
+	    c := NewRestClient(e, "fake-api-token", "latest", false)
             al := c.GetArrays()
 	    if diff := cmp.Diff(al.Items[0], arrs.Items[0]); diff != "" {
                 t.Errorf("Mismatch (-want +got):\n%s", diff)

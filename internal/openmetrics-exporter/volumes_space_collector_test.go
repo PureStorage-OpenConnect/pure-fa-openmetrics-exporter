@@ -9,15 +9,15 @@ import (
 	"net/http"
 	"net/http/httptest"
 	"encoding/json"
-	"io/ioutil"
+	"os"
 
 	"purestorage/fa-openmetrics-exporter/internal/rest-client"
 )
 
 func TestVolumesSpaceCollector(t *testing.T) {
-
-	res, _ := ioutil.ReadFile("../../test/data/volumes.json")
-	vers, _ := ioutil.ReadFile("../../test/data/versions.json")
+	purenaa := "naa.624a9370"
+	res, _ := os.ReadFile("../../test/data/volumes.json")
+	vers, _ := os.ReadFile("../../test/data/versions.json")
 	var volumes client.VolumesList
 	json.Unmarshal(res, &volumes)
 	server := httptest.NewTLSServer(http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
@@ -37,24 +37,24 @@ func TestVolumesSpaceCollector(t *testing.T) {
 	e := endp[len(endp)-1]
 	want := make(map[string]bool)
 	for _, v := range volumes.Items {
-		want[fmt.Sprintf("label:<name:\"name\" value:\"%s\" > gauge:<value:%g > ", v.Name, v.Space.DataReduction)] = true
-		want[fmt.Sprintf("label:<name:\"name\" value:\"%s\" > label:<name:\"space\" value:\"shared\" > gauge:<value:%g > ", v.Name, v.Space.Shared)] = true
-		want[fmt.Sprintf("label:<name:\"name\" value:\"%s\" > label:<name:\"space\" value:\"snapshots\" > gauge:<value:%g > ", v.Name, v.Space.Snapshots)] = true
-		want[fmt.Sprintf("label:<name:\"name\" value:\"%s\" > label:<name:\"space\" value:\"system\" > gauge:<value:%g > ", v.Name, v.Space.System)] = true
-		want[fmt.Sprintf("label:<name:\"name\" value:\"%s\" > label:<name:\"space\" value:\"thin_provisioning\" > gauge:<value:%g > ", v.Name, v.Space.ThinProvisioning)] = true
-		want[fmt.Sprintf("label:<name:\"name\" value:\"%s\" > label:<name:\"space\" value:\"total_physical\" > gauge:<value:%g > ", v.Name, v.Space.TotalPhysical)] = true
-		want[fmt.Sprintf("label:<name:\"name\" value:\"%s\" > label:<name:\"space\" value:\"total_provisioned\" > gauge:<value:%g > ", v.Name, v.Space.TotalProvisioned)] = true
-		want[fmt.Sprintf("label:<name:\"name\" value:\"%s\" > label:<name:\"space\" value:\"total_reduction\" > gauge:<value:%g > ", v.Name, v.Space.TotalReduction)] = true
-		want[fmt.Sprintf("label:<name:\"name\" value:\"%s\" > label:<name:\"space\" value:\"unique\" > gauge:<value:%g > ", v.Name, v.Space.Unique)] = true
-		want[fmt.Sprintf("label:<name:\"name\" value:\"%s\" > label:<name:\"space\" value:\"virtual\" > gauge:<value:%g > ", v.Name, v.Space.Virtual)] = true
-		want[fmt.Sprintf("label:<name:\"name\" value:\"%s\" > label:<name:\"space\" value:\"replication\" > gauge:<value:%g > ", v.Name, v.Space.Replication)] = true
-		want[fmt.Sprintf("label:<name:\"name\" value:\"%s\" > label:<name:\"space\" value:\"shared_effective\" > gauge:<value:%g > ", v.Name, v.Space.SharedEffective)] = true
-		want[fmt.Sprintf("label:<name:\"name\" value:\"%s\" > label:<name:\"space\" value:\"snapshots_effective\" > gauge:<value:%g > ", v.Name, v.Space.SnapshotsEffective)] = true
-		want[fmt.Sprintf("label:<name:\"name\" value:\"%s\" > label:<name:\"space\" value:\"unique_effective\" > gauge:<value:%g > ", v.Name, v.Space.UniqueEffective)] = true
-		want[fmt.Sprintf("label:<name:\"name\" value:\"%s\" > label:<name:\"space\" value:\"total_effective\" > gauge:<value:%g > ", v.Name, v.Space.TotalEffective)] = true
+		want[fmt.Sprintf("label:<name:\"naa_id\" value:\"%s\" > label:<name:\"name\" value:\"%s\" > label:<name:\"pod\" value:\"%s\" > label:<name:\"volume_group\" value:\"%s\" > gauge:<value:%g > ", purenaa + v.Serial, v.Name, v.Pod.Name, v.VolumeGroup.Name, v.Space.DataReduction)] = true
+		want[fmt.Sprintf("label:<name:\"naa_id\" value:\"%s\" > label:<name:\"name\" value:\"%s\" > label:<name:\"pod\" value:\"%s\" > label:<name:\"space\" value:\"shared\" > label:<name:\"volume_group\" value:\"%s\" > gauge:<value:%g > ", purenaa + v.Serial, v.Name, v.Pod.Name, v.VolumeGroup.Name, v.Space.Shared)] = true
+		want[fmt.Sprintf("label:<name:\"naa_id\" value:\"%s\" > label:<name:\"name\" value:\"%s\" > label:<name:\"pod\" value:\"%s\" > label:<name:\"space\" value:\"snapshots\" > label:<name:\"volume_group\" value:\"%s\" > gauge:<value:%g > ", purenaa + v.Serial, v.Name, v.Pod.Name, v.VolumeGroup.Name, v.Space.Snapshots)] = true
+		want[fmt.Sprintf("label:<name:\"naa_id\" value:\"%s\" > label:<name:\"name\" value:\"%s\" > label:<name:\"pod\" value:\"%s\" > label:<name:\"space\" value:\"system\" > label:<name:\"volume_group\" value:\"%s\" > gauge:<value:%g > ", purenaa + v.Serial, v.Name, v.Pod.Name, v.VolumeGroup.Name, v.Space.System)] = true
+		want[fmt.Sprintf("label:<name:\"naa_id\" value:\"%s\" > label:<name:\"name\" value:\"%s\" > label:<name:\"pod\" value:\"%s\" > label:<name:\"space\" value:\"thin_provisioning\" > label:<name:\"volume_group\" value:\"%s\" > gauge:<value:%g > ", purenaa + v.Serial, v.Name, v.Pod.Name, v.VolumeGroup.Name, v.Space.ThinProvisioning)] = true
+		want[fmt.Sprintf("label:<name:\"naa_id\" value:\"%s\" > label:<name:\"name\" value:\"%s\" > label:<name:\"pod\" value:\"%s\" > label:<name:\"space\" value:\"total_physical\" > label:<name:\"volume_group\" value:\"%s\" > gauge:<value:%g > ", purenaa + v.Serial, v.Name, v.Pod.Name, v.VolumeGroup.Name, v.Space.TotalPhysical)] = true
+		want[fmt.Sprintf("label:<name:\"naa_id\" value:\"%s\" > label:<name:\"name\" value:\"%s\" > label:<name:\"pod\" value:\"%s\" > label:<name:\"space\" value:\"total_provisioned\" > label:<name:\"volume_group\" value:\"%s\" > gauge:<value:%g > ", purenaa + v.Serial, v.Name, v.Pod.Name, v.VolumeGroup.Name, v.Space.TotalProvisioned)] = true
+		want[fmt.Sprintf("label:<name:\"naa_id\" value:\"%s\" > label:<name:\"name\" value:\"%s\" > label:<name:\"pod\" value:\"%s\" > label:<name:\"space\" value:\"total_reduction\" > label:<name:\"volume_group\" value:\"%s\" > gauge:<value:%g > ", purenaa + v.Serial, v.Name, v.Pod.Name, v.VolumeGroup.Name, v.Space.TotalReduction)] = true
+		want[fmt.Sprintf("label:<name:\"naa_id\" value:\"%s\" > label:<name:\"name\" value:\"%s\" > label:<name:\"pod\" value:\"%s\" > label:<name:\"space\" value:\"unique\" > label:<name:\"volume_group\" value:\"%s\" > gauge:<value:%g > ", purenaa + v.Serial, v.Name, v.Pod.Name, v.VolumeGroup.Name, v.Space.Unique)] = true
+		want[fmt.Sprintf("label:<name:\"naa_id\" value:\"%s\" > label:<name:\"name\" value:\"%s\" > label:<name:\"pod\" value:\"%s\" > label:<name:\"space\" value:\"virtual\" > label:<name:\"volume_group\" value:\"%s\" > gauge:<value:%g > ", purenaa + v.Serial, v.Name, v.Pod.Name, v.VolumeGroup.Name, v.Space.Virtual)] = true
+		want[fmt.Sprintf("label:<name:\"naa_id\" value:\"%s\" > label:<name:\"name\" value:\"%s\" > label:<name:\"pod\" value:\"%s\" > label:<name:\"space\" value:\"replication\" > label:<name:\"volume_group\" value:\"%s\" > gauge:<value:%g > ", purenaa + v.Serial, v.Name, v.Pod.Name, v.VolumeGroup.Name, v.Space.Replication)] = true
+		want[fmt.Sprintf("label:<name:\"naa_id\" value:\"%s\" > label:<name:\"name\" value:\"%s\" > label:<name:\"pod\" value:\"%s\" > label:<name:\"space\" value:\"shared_effective\" > label:<name:\"volume_group\" value:\"%s\" > gauge:<value:%g > ", purenaa + v.Serial, v.Name, v.Pod.Name, v.VolumeGroup.Name, v.Space.SharedEffective)] = true
+		want[fmt.Sprintf("label:<name:\"naa_id\" value:\"%s\" > label:<name:\"name\" value:\"%s\" > label:<name:\"pod\" value:\"%s\" > label:<name:\"space\" value:\"snapshots_effective\" > label:<name:\"volume_group\" value:\"%s\" > gauge:<value:%g > ", purenaa + v.Serial, v.Name, v.Pod.Name, v.VolumeGroup.Name, v.Space.SnapshotsEffective)] = true
+		want[fmt.Sprintf("label:<name:\"naa_id\" value:\"%s\" > label:<name:\"name\" value:\"%s\" > label:<name:\"pod\" value:\"%s\" > label:<name:\"space\" value:\"unique_effective\" > label:<name:\"volume_group\" value:\"%s\" > gauge:<value:%g > ", purenaa + v.Serial, v.Name, v.Pod.Name, v.VolumeGroup.Name, v.Space.UniqueEffective)] = true
+		want[fmt.Sprintf("label:<name:\"naa_id\" value:\"%s\" > label:<name:\"name\" value:\"%s\" > label:<name:\"pod\" value:\"%s\" > label:<name:\"space\" value:\"total_effective\" > label:<name:\"volume_group\" value:\"%s\" > gauge:<value:%g > ", purenaa + v.Serial, v.Name, v.Pod.Name, v.VolumeGroup.Name, v.Space.TotalEffective)] = true
 	}
 	defer server.Close()
-	c := client.NewRestClient(e, "fake-api-token", "latest")
+	c := client.NewRestClient(e, "fake-api-token", "latest", false)
 	pc := NewVolumesSpaceCollector(c)
 	metricsCheck(t, pc, want)
 }

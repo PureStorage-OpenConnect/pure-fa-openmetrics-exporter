@@ -43,12 +43,21 @@ type ArraysList struct {
 
 func (fa *FAClient) GetArrays() *ArraysList {
 	result := new(ArraysList)
-	_, err := fa.RestClient.R().
+	res, err := fa.RestClient.R().
 		SetResult(&result).
 		Get("/arrays")
-
 	if err != nil {
 		fa.Error = err
 	}
+        if res.StatusCode() == 401 {
+                fa.RefreshSession()
+        }
+	res, err = fa.RestClient.R().
+		SetResult(&result).
+		Get("/arrays")
+        if err != nil {
+                fa.Error = err
+        }
+
 	return result
 }

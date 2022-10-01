@@ -31,12 +31,22 @@ type PodsList struct {
 
 func (fa *FAClient) GetPods() *PodsList {
         result := new(PodsList)
-        _, err := fa.RestClient.R().
+        res, err := fa.RestClient.R().
                 SetResult(&result).
                 Get("/pods")
 
         if err != nil {
                 fa.Error = err
         }
+        if res.StatusCode() == 401 {
+                fa.RefreshSession()
+        }
+        res, err = fa.RestClient.R().
+                SetResult(&result).
+                Get("/pods")
+        if err != nil {
+                fa.Error = err
+        }
+
         return result
 }

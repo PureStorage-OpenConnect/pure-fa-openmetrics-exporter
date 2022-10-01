@@ -7,7 +7,7 @@ type Qos struct  {
 }
 
 type PriorityAdjustment struct {
-	PriorityAdjustmentOperator   int  `json:string","priority_adjustment_operator"`
+	PriorityAdjustmentOperator   int  `json:"priority_adjustment_operator"`
 	PriorityAdjustmentValue      int  `json:"priority_adjustment_value"`
 }
 
@@ -57,12 +57,22 @@ type VolumesList struct {
 
 func (fa *FAClient) GetVolumes() *VolumesList {
         result := new(VolumesList)
-        _, err := fa.RestClient.R().
+        res, err := fa.RestClient.R().
                 SetResult(&result).
                 Get("/volumes")
 
         if err != nil {
                 fa.Error = err
         }
+        if res.StatusCode() == 401 {
+                fa.RefreshSession()
+        }
+        res, err = fa.RestClient.R().
+                SetResult(&result).
+                Get("/volumes")
+        if err != nil {
+                fa.Error = err
+        }
+
         return result
 }

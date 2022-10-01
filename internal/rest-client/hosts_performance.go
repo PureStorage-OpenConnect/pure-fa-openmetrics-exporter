@@ -42,12 +42,22 @@ type HostsPerformanceList struct {
 
 func (fa *FAClient) GetHostsPerformance() *HostsPerformanceList {
         result := new(HostsPerformanceList)
-        _, err := fa.RestClient.R().
+        res, err := fa.RestClient.R().
                 SetResult(&result).
                 Get("/hosts/performance")
 
         if err != nil {
                 fa.Error = err
         }
+        if res.StatusCode() == 401 {
+                fa.RefreshSession()
+        }
+        res, err = fa.RestClient.R().
+                SetResult(&result).
+                Get("/hosts/performance")
+        if err != nil {
+                fa.Error = err
+        }
+
         return result
 }

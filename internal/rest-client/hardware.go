@@ -17,19 +17,29 @@ type Hardware struct {
 }
 
 type HardwareList struct {
-        ContinuationToken    string   `json:"continuation_token"`
-        TotalItemCount       int      `json:"total_item_count"`
-        MoreItemsRemaining   bool     `json:"more_items_remaining"`
-	Items                []Alert  `json:"items"`
+        ContinuationToken    string      `json:"continuation_token"`
+        TotalItemCount       int         `json:"total_item_count"`
+        MoreItemsRemaining   bool        `json:"more_items_remaining"`
+	Items                []Hardware  `json:"items"`
 }
 
 func (fa *FAClient) GetHardware() *HardwareList {
 	result := new(HardwareList)
-	_, err := fa.RestClient.R().
+	res, err := fa.RestClient.R().
 		SetResult(&result).
 		Get("/hardware")
 	if err != nil {
 		fa.Error = err
 	}
+        if res.StatusCode() == 401 {
+                fa.RefreshSession()
+        }
+	res, err = fa.RestClient.R().
+		SetResult(&result).
+		Get("/hardware")
+        if err != nil {
+                fa.Error = err
+        }
+
 	return result
 }

@@ -13,14 +13,14 @@ import (
 	"github.com/google/go-cmp/cmp"
 )
 
-func TestHostsBalance(t *testing.T) {
+func TestHardware(t *testing.T) {
 
-	res, _ := os.ReadFile("../../test/data/hosts_performance.json")
+	res, _ := os.ReadFile("../../test/data/hardware.json")
 	vers, _ := os.ReadFile("../../test/data/versions.json")
-	var hostsb HostsBalanceList
-	json.Unmarshal(res, &hostsb)
+	var hw HardwareList
+	json.Unmarshal(res, &hw)
 	server := httptest.NewTLSServer(http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
-	        valid := regexp.MustCompile(`^/api/([0-9]+.[0-9]+)?/hosts/performance/balance$`)
+	        valid := regexp.MustCompile(`^/api/([0-9]+.[0-9]+)?/hardware$`)
                 if r.URL.Path == "/api/api_version" {
                         w.Header().Set("Content-Type", "application/json")
                         w.WriteHeader(http.StatusOK)
@@ -34,11 +34,11 @@ func TestHostsBalance(t *testing.T) {
 	   }))
         endp := strings.Split(server.URL, "/")
         e := endp[len(endp)-1]
-        t.Run("hosts_balance_1", func(t *testing.T) {
+        t.Run("hardware_1", func(t *testing.T) {
             defer server.Close()
             c := NewRestClient(e, "fake-api-token", "latest", false)
-	    hbl := c.GetHostsBalance()
-	    if diff := cmp.Diff(hbl.Items, hostsb.Items); diff != "" {
+	    hl := c.GetHardware()
+	    if diff := cmp.Diff(hl.Items, hw.Items); diff != "" {
                 t.Errorf("Mismatch (-want +got):\n%s", diff)
             }
         })

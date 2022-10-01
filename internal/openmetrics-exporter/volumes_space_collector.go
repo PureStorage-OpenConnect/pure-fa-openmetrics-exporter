@@ -17,6 +17,7 @@ func (c *VolumesSpaceCollector) Describe(ch chan<- *prometheus.Desc) {
 }
 
 func (c *VolumesSpaceCollector) Collect(ch chan<- prometheus.Metric) {
+	purenaa := "naa.624a9370"
 	volumes := c.Client.GetVolumes()
 	if len(volumes.Items) == 0 {
 		return
@@ -26,91 +27,91 @@ func (c *VolumesSpaceCollector) Collect(ch chan<- prometheus.Metric) {
 			c.ReductionDesc,
 			prometheus.GaugeValue,
 			v.Space.DataReduction,
-			v.Name,
+			purenaa + v.Serial, v.Name, v.Pod.Name, v.VolumeGroup.Name,
 		)
 		ch <- prometheus.MustNewConstMetric(
 			c.SpaceDesc,
 			prometheus.GaugeValue,
 			v.Space.Shared,
-			v.Name, "shared",
+			purenaa + v.Serial, v.Name, v.Pod.Name, v.VolumeGroup.Name, "shared",
 		)
 		ch <- prometheus.MustNewConstMetric(
 			c.SpaceDesc,
 			prometheus.GaugeValue,
 			v.Space.Snapshots,
-			v.Name, "snapshots",
+			purenaa + v.Serial, v.Name, v.Pod.Name, v.VolumeGroup.Name, "snapshots",
 		)
 		ch <- prometheus.MustNewConstMetric(
 			c.SpaceDesc,
 			prometheus.GaugeValue,
 			v.Space.System,
-			v.Name, "system",
+			purenaa + v.Serial, v.Name, v.Pod.Name, v.VolumeGroup.Name, "system",
 		)
 		ch <- prometheus.MustNewConstMetric(
 			c.SpaceDesc,
 			prometheus.GaugeValue,
 			v.Space.ThinProvisioning,
-			v.Name, "thin_provisioning",
+			purenaa + v.Serial, v.Name, v.Pod.Name, v.VolumeGroup.Name, "thin_provisioning",
 		)
 		ch <- prometheus.MustNewConstMetric(
 			c.SpaceDesc,
 			prometheus.GaugeValue,
 			v.Space.TotalPhysical,
-			v.Name, "total_physical",
+			purenaa + v.Serial, v.Name, v.Pod.Name, v.VolumeGroup.Name, "total_physical",
 		)
 		ch <- prometheus.MustNewConstMetric(
 			c.SpaceDesc,
 			prometheus.GaugeValue,
 			v.Space.TotalProvisioned,
-			v.Name, "total_provisioned",
+			purenaa + v.Serial, v.Name, v.Pod.Name, v.VolumeGroup.Name, "total_provisioned",
 		)
 		ch <- prometheus.MustNewConstMetric(
 			c.SpaceDesc,
 			prometheus.GaugeValue,
 			v.Space.TotalReduction,
-			v.Name, "total_reduction",
+			purenaa + v.Serial, v.Name, v.Pod.Name, v.VolumeGroup.Name, "total_reduction",
 		)
 		ch <- prometheus.MustNewConstMetric(
 			c.SpaceDesc,
 			prometheus.GaugeValue,
 			v.Space.Unique,
-			v.Name, "unique",
+			purenaa + v.Serial, v.Name, v.Pod.Name, v.VolumeGroup.Name, "unique",
 		)
 		ch <- prometheus.MustNewConstMetric(
 			c.SpaceDesc,
 			prometheus.GaugeValue,
 			v.Space.Virtual,
-			v.Name, "virtual",
+			purenaa + v.Serial, v.Name, v.Pod.Name, v.VolumeGroup.Name, "virtual",
 		)
 		ch <- prometheus.MustNewConstMetric(
 			c.SpaceDesc,
 			prometheus.GaugeValue,
 			v.Space.Replication,
-			v.Name, "replication",
+			purenaa + v.Serial, v.Name, v.Pod.Name, v.VolumeGroup.Name, "replication",
 		)
 		ch <- prometheus.MustNewConstMetric(
 			c.SpaceDesc,
 			prometheus.GaugeValue,
 			v.Space.SharedEffective,
-			v.Name, "shared_effective",
+			purenaa + v.Serial, v.Name, v.Pod.Name, v.VolumeGroup.Name, "shared_effective",
 		)
 		ch <- prometheus.MustNewConstMetric(
 			c.SpaceDesc,
 			prometheus.GaugeValue,
 			v.Space.SnapshotsEffective,
-			v.Name, "snapshots_effective",
+			purenaa + v.Serial, v.Name, v.Pod.Name, v.VolumeGroup.Name, "snapshots_effective",
 		)
 		ch <- prometheus.MustNewConstMetric(
 			c.SpaceDesc,
 			prometheus.GaugeValue,
 			v.Space.UniqueEffective,
-			v.Name, "unique_effective",
+			purenaa + v.Serial, v.Name, v.Pod.Name, v.VolumeGroup.Name, "unique_effective",
 		)
 		ch <- prometheus.MustNewConstMetric(
 			c.SpaceDesc,
 			prometheus.GaugeValue,
 			v.Space.TotalEffective,
-			v.Name, "total_effective",
+			purenaa + v.Serial, v.Name, v.Pod.Name, v.VolumeGroup.Name, "total_effective",
 		)
         }
 }
@@ -120,13 +121,13 @@ func NewVolumesSpaceCollector(fa *client.FAClient) *VolumesSpaceCollector {
 		ReductionDesc: prometheus.NewDesc(
 			"purefa_volume_space_data_reduction_ratio",
 			"FlashArray volume space data reduction",
-			[]string{"name"},
+			[]string{"naa_id", "name", "pod", "volume_group"},
 			prometheus.Labels{},
 		),
 		SpaceDesc: prometheus.NewDesc(
 			"purefa_volume_space_bytes",
 			"FlashArray volume space in bytes",
-			[]string{"name", "space"},
+			[]string{"naa_id", "name", "pod", "volume_group", "space"},
 			prometheus.Labels{},
 		),
 		Client: fa,

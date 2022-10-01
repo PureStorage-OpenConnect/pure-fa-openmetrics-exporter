@@ -9,15 +9,15 @@ import (
 	"net/http"
 	"net/http/httptest"
 	"encoding/json"
-	"io/ioutil"
+	"os"
 
 	"purestorage/fa-openmetrics-exporter/internal/rest-client"
 )
 
 func TestPodsSpaceCollector(t *testing.T) {
 
-	res, _ := ioutil.ReadFile("../../test/data/pods.json")
-	vers, _ := ioutil.ReadFile("../../test/data/versions.json")
+	res, _ := os.ReadFile("../../test/data/pods.json")
+	vers, _ := os.ReadFile("../../test/data/versions.json")
 	var pods client.PodsList
 	json.Unmarshal(res, &pods)
 	server := httptest.NewTLSServer(http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
@@ -54,7 +54,7 @@ func TestPodsSpaceCollector(t *testing.T) {
 		want[fmt.Sprintf("label:<name:\"name\" value:\"%s\" > label:<name:\"space\" value:\"total_effective\" > gauge:<value:%g > ", p.Name, p.Space.TotalEffective)] = true
 	}
 	defer server.Close()
-	c := client.NewRestClient(e, "fake-api-token", "latest")
+	c := client.NewRestClient(e, "fake-api-token", "latest", false)
 	pc := NewPodsSpaceCollector(c)
 	metricsCheck(t, pc, want)
 }
