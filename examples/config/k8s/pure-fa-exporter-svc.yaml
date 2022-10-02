@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: Service
+metadata:
+    name: pure-fa-exporter
+    namespace: monitoring
+spec:
+    selector:
+        app: pure-fa-exporter
+    type: NodePort
+    ports:
+    - port: 9490
+      targetPort: 9490
+      nodePort: 30490

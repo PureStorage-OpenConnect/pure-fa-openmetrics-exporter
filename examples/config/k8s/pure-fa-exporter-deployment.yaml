@@ -1,0 +1,32 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: pure-fa-om-exporter
+  namespace: monitoring
+  labels:
+    app: pure-fa-exporter
+spec:
+  replicas: 1
+  strategy:
+    rollingUpdate:
+      maxSurge: 1
+      maxUnavailable: 1
+    type: RollingUpdate
+  selector:
+    matchLabels:
+      app: pure-fa-exporter
+  template:
+    metadata:
+      labels:
+        app: pure-fa-exporter
+    spec:
+      containers:
+      - name: pure-fa-om-exporter
+        image: quay.io/purestorage/pure-fa-om-exporter
+        args:
+          - '--host=0.0.0.0'
+          - '--port=9490'
+        ports:
+        - name: web
+          containerPort: 9490
+      restartPolicy: Always
