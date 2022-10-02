@@ -15,7 +15,7 @@ func Collector(ctx context.Context, metrics string, registry *prometheus.Registr
 		collectors.NewGoCollector(),
 		arrayscoll,
 	)
-	if metrics == "all" {
+	if metrics == "all" || metrics == "array" {
 		alertscoll := NewAlertsCollector(faclient)
 		arrayperfcoll := NewArraysPerformanceCollector(faclient)
 		arrayspacecoll := NewArraySpaceCollector(faclient)
@@ -54,8 +54,9 @@ func Collector(ctx context.Context, metrics string, registry *prometheus.Registr
 		         )
 	}
 	if metrics == "all" || metrics == "volumes" {
-		volperfcoll := NewVolumesPerformanceCollector(faclient)
-		volspacecoll := NewVolumesSpaceCollector(faclient)
+		vols := faclient.GetVolumes()
+		volperfcoll := NewVolumesPerformanceCollector(faclient, vols)
+		volspacecoll := NewVolumesSpaceCollector(vols)
 		registry.MustRegister(
 		           volperfcoll,
 		           volspacecoll,

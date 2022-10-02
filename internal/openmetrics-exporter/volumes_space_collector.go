@@ -9,7 +9,7 @@ import (
 type VolumesSpaceCollector struct {
 	ReductionDesc *prometheus.Desc
 	SpaceDesc     *prometheus.Desc
-	Client        *client.FAClient
+	Volumes       *client.VolumesList
 }
 
 func (c *VolumesSpaceCollector) Describe(ch chan<- *prometheus.Desc) {
@@ -18,7 +18,7 @@ func (c *VolumesSpaceCollector) Describe(ch chan<- *prometheus.Desc) {
 
 func (c *VolumesSpaceCollector) Collect(ch chan<- prometheus.Metric) {
 	purenaa := "naa.624a9370"
-	volumes := c.Client.GetVolumes()
+	volumes := c.Volumes
 	if len(volumes.Items) == 0 {
 		return
 	}
@@ -116,7 +116,7 @@ func (c *VolumesSpaceCollector) Collect(ch chan<- prometheus.Metric) {
         }
 }
 
-func NewVolumesSpaceCollector(fa *client.FAClient) *VolumesSpaceCollector {
+func NewVolumesSpaceCollector(volumes *client.VolumesList) *VolumesSpaceCollector {
 	return &VolumesSpaceCollector{
 		ReductionDesc: prometheus.NewDesc(
 			"purefa_volume_space_data_reduction_ratio",
@@ -130,6 +130,6 @@ func NewVolumesSpaceCollector(fa *client.FAClient) *VolumesSpaceCollector {
 			[]string{"naa_id", "name", "pod", "volume_group", "space"},
 			prometheus.Labels{},
 		),
-		Client: fa,
+		Volumes: volumes,
 	}
 }

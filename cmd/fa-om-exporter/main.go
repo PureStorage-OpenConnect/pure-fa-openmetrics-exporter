@@ -39,6 +39,9 @@ func main() {
 	http.HandleFunc("/metrics/directories", func(w http.ResponseWriter, r *http.Request) {
 		metricsHandler(w, r)
 	})
+	http.HandleFunc("/metrics/array", func(w http.ResponseWriter, r *http.Request) {
+		metricsHandler(w, r)
+	})
 	http.HandleFunc("/metrics", func(w http.ResponseWriter, r *http.Request) {
 		metricsHandler(w, r)
 	})

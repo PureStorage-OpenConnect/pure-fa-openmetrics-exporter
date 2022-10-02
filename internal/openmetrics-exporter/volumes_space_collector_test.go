@@ -55,6 +55,7 @@ func TestVolumesSpaceCollector(t *testing.T) {
 	}
 	defer server.Close()
 	c := client.NewRestClient(e, "fake-api-token", "latest", false)
-	pc := NewVolumesSpaceCollector(c)
+	vl := c.GetVolumes()
+	pc := NewVolumesSpaceCollector(vl)
 	metricsCheck(t, pc, want)
 }
