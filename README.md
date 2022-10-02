@@ -80,13 +80,13 @@ The exporter uses a RESTful API schema to provide Prometheus scraping endpoints.
 
 
 URL | GET parameters | Description
----|---
-http://\<exporter-host\>:\<port\>/metrics | Full array metrics
-http://\<exporter-host\>:\<port\>/metrics/array | Array only metrics
-http://\<exporter-host\>:\<port\>/metrics/volumes | Volumes only metrics
-http://\<exporter-host\>:\<port\>/metrics/hosts | Hosts only metrics
-http://\<exporter-host\>:\<port\>/metrics/pods | Pods only metrics
-http://\<exporter-host\>:\<port\>/metrics/directories| Directories only metrics
+---|---|---
+http://\<exporter-host\>:\<port\>/metrics | endpoint | Full array metrics
+http://\<exporter-host\>:\<port\>/metrics/array | endpoint| Array only metrics
+http://\<exporter-host\>:\<port\>/metrics/volumes | endpoint | Volumes only metrics
+http://\<exporter-host\>:\<port\>/metrics/hosts | endpoint | Hosts only metrics
+http://\<exporter-host\>:\<port\>/metrics/pods | endpoint | Pods only metrics
+http://\<exporter-host\>:\<port\>/metrics/directories| endpoint | Directories only metrics
 
 Depending on the target array, scraping for the whole set of metrics could result into timeout issues, in which case it is suggested either to increase the scraping timeout or to scrape each single endpoint instead.
 
