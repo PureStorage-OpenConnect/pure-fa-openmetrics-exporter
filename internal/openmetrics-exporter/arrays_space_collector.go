@@ -107,6 +107,11 @@ func (c *ArraySpaceCollector) Collect(ch chan<- prometheus.Metric) {
 		prometheus.GaugeValue,
 		a.Capacity-a.Space.System-a.Space.Replication-a.Space.Shared-a.Space.Snapshots-a.Space.Unique, "empty",
 	)
+	ch <- prometheus.MustNewConstMetric(
+		c.SpaceDesc,
+		prometheus.GaugeValue,
+		(a.Space.System+a.Space.Replication+a.Space.Shared+a.Space.Snapshots+a.Space.Unique)/a.Capacity*100, "utilization",
+	)
 }
 
 func NewArraySpaceCollector(fa *client.FAClient) *ArraySpaceCollector {
