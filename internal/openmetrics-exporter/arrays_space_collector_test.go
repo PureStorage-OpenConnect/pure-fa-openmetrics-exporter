@@ -1,17 +1,16 @@
 package collectors
 
-
 import (
+	"encoding/json"
 	"fmt"
-	"testing"
-	"regexp"
-	"strings"
 	"net/http"
 	"net/http/httptest"
-	"encoding/json"
 	"os"
+	"regexp"
+	"strings"
+	"testing"
 
-	"purestorage/fa-openmetrics-exporter/internal/rest-client"
+	client "purestorage/fa-openmetrics-exporter/internal/rest-client"
 )
 
 func TestArraySpaceCollector(t *testing.T) {
@@ -23,21 +22,23 @@ func TestArraySpaceCollector(t *testing.T) {
 	server := httptest.NewTLSServer(http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 		valid := regexp.MustCompile(`^/api/([0-9]+.[0-9]+)?/arrays$`)
 		if r.URL.Path == "/api/api_version" {
-                        w.Header().Set("Content-Type", "application/json")
-                        w.WriteHeader(http.StatusOK)
-                        w.Write([]byte(vers))
+			w.Header().Set("Content-Type", "application/json")
+			w.WriteHeader(http.StatusOK)
+			w.Write([]byte(vers))
 		} else if valid.MatchString(r.URL.Path) {
-                        w.Header().Set("x-auth-token", "faketoken")
-                        w.Header().Set("Content-Type", "application/json")
-                        w.WriteHeader(http.StatusOK)
-                        w.Write([]byte(res))
+			w.Header().Set("x-auth-token", "faketoken")
+			w.Header().Set("Content-Type", "application/json")
+			w.WriteHeader(http.StatusOK)
+			w.Write([]byte(res))
 		}
-	    }))
+	}))
 	endp := strings.Split(server.URL, "/")
 	e := endp[len(endp)-1]
 	want := make(map[string]bool)
+	a := arrs.Items[0]
 	sp := arrs.Items[0].Space
 	want[fmt.Sprintf("gauge:<value:%g > ", sp.DataReduction)] = true
+	want[fmt.Sprintf("label:<name:\"space\" value:\"capacity\" > gauge:<value:%g > ", a.Capacity)] = true
 	want[fmt.Sprintf("label:<name:\"space\" value:\"shared\" > gauge:<value:%g > ", sp.Shared)] = true
 	want[fmt.Sprintf("label:<name:\"space\" value:\"snapshots\" > gauge:<value:%g > ", sp.Snapshots)] = true
 	want[fmt.Sprintf("label:<name:\"space\" value:\"system\" > gauge:<value:%g > ", sp.System)] = true

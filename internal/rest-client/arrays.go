@@ -1,44 +1,42 @@
 package client
 
-
 type Array struct {
-	Id              string             `json:"id"`
-	Name            string             `json:"name"`
-	Banner          string             `json:"banner"`
-        Capacity        int                `json:"capacity"`
-        ConsoleLock     bool               `json:"console_lock_enabled"`
-        Encryption      Encryption         `json:"encryption"`
-        EradicationConfig  EradicationConfig     `json:"eradication_config"`
-	IdleTimeout     int                `json:"idle_timeout"`
-	NtpServers      []string           `json:"ntp_servers"`
-	Os              string             `json:"os"`
-        Parity          float64            `json:"parity"`
-        SCSITimeo       int                `json:"scsi_timeout"`
-        Space           Space              `json:"space"`
-	Version         string             `json:"version"`
+	Id                string            `json:"id"`
+	Name              string            `json:"name"`
+	Banner            string            `json:"banner"`
+	Capacity          float64           `json:"capacity"`
+	ConsoleLock       bool              `json:"console_lock_enabled"`
+	Encryption        Encryption        `json:"encryption"`
+	EradicationConfig EradicationConfig `json:"eradication_config"`
+	IdleTimeout       int               `json:"idle_timeout"`
+	NtpServers        []string          `json:"ntp_servers"`
+	Os                string            `json:"os"`
+	Parity            float64           `json:"parity"`
+	SCSITimeo         int               `json:"scsi_timeout"`
+	Space             Space             `json:"space"`
+	Version           string            `json:"version"`
 }
 
 type Encryption struct {
-	DataAtRest      DataAtRest    `json:"data_at_rest"`
-        ModuleVersion   string        `json:"module_version"`
-        
+	DataAtRest    DataAtRest `json:"data_at_rest"`
+	ModuleVersion string     `json:"module_version"`
 }
 
 type DataAtRest struct {
-	Algorithm    string     `json:"algorithm"`
-	Enabled      bool       `json:"enabled"`
+	Algorithm string `json:"algorithm"`
+	Enabled   bool   `json:"enabled"`
 }
 
 type EradicationConfig struct {
-	EradicationDelay     int      `json:"eradication_delay"`
-	ManualEradication    string   `json:"manual_eradication"`
+	EradicationDelay  int    `json:"eradication_delay"`
+	ManualEradication string `json:"manual_eradication"`
 }
 
 type ArraysList struct {
-	ContinuationToken    string  `json:"continuation_token"`
-	TotalItemCount       int     `json:"total_item_count"`
-        MoreItemsRemaining   bool    `json:"more_items_remaining"`
-	Items                []Array `json:"items"`
+	ContinuationToken  string  `json:"continuation_token"`
+	TotalItemCount     int     `json:"total_item_count"`
+	MoreItemsRemaining bool    `json:"more_items_remaining"`
+	Items              []Array `json:"items"`
 }
 
 func (fa *FAClient) GetArrays() *ArraysList {
@@ -49,15 +47,15 @@ func (fa *FAClient) GetArrays() *ArraysList {
 	if err != nil {
 		fa.Error = err
 	}
-        if res.StatusCode() == 401 {
-                fa.RefreshSession()
-        }
+	if res.StatusCode() == 401 {
+		fa.RefreshSession()
+	}
 	res, err = fa.RestClient.R().
 		SetResult(&result).
 		Get("/arrays")
-        if err != nil {
-                fa.Error = err
-        }
+	if err != nil {
+		fa.Error = err
+	}
 
 	return result
 }
