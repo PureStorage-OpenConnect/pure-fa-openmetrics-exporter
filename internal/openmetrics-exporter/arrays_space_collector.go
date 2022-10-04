@@ -7,9 +7,10 @@ import (
 )
 
 type ArraySpaceCollector struct {
-	ReductionDesc *prometheus.Desc
-	SpaceDesc     *prometheus.Desc
-	Client        *client.FAClient
+	ReductionDesc   *prometheus.Desc
+	SpaceDesc       *prometheus.Desc
+	UtilizationDesc *prometheus.Desc
+	Client          *client.FAClient
 }
 
 func (c *ArraySpaceCollector) Describe(ch chan<- *prometheus.Desc) {
@@ -108,9 +109,9 @@ func (c *ArraySpaceCollector) Collect(ch chan<- prometheus.Metric) {
 		a.Capacity-a.Space.System-a.Space.Replication-a.Space.Shared-a.Space.Snapshots-a.Space.Unique, "empty",
 	)
 	ch <- prometheus.MustNewConstMetric(
-		c.SpaceDesc,
+		c.UtilizationDesc,
 		prometheus.GaugeValue,
-		(a.Space.System+a.Space.Replication+a.Space.Shared+a.Space.Snapshots+a.Space.Unique)/a.Capacity*100, "utilization",
+		(a.Space.System+a.Space.Replication+a.Space.Shared+a.Space.Snapshots+a.Space.Unique)/a.Capacity*100,
 	)
 }
 
@@ -126,6 +127,12 @@ func NewArraySpaceCollector(fa *client.FAClient) *ArraySpaceCollector {
 			"purefa_array_space_bytes",
 			"FlashArray array space in bytes",
 			[]string{"space"},
+			prometheus.Labels{},
+		),
+		UtilizationDesc: prometheus.NewDesc(
+			"purefa_array_space_utilization",
+			"FlashArray array space utilization in percent",
+			[]string{},
 			prometheus.Labels{},
 		),
 		Client: fa,
