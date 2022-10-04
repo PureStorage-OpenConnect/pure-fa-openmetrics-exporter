@@ -1,9 +1,9 @@
 package collectors
 
-
 import (
+	client "purestorage/fa-openmetrics-exporter/internal/rest-client"
+
 	"github.com/prometheus/client_golang/prometheus"
-	"purestorage/fa-openmetrics-exporter/internal/rest-client"
 )
 
 type ArraySpaceCollector struct {
@@ -26,6 +26,11 @@ func (c *ArraySpaceCollector) Collect(ch chan<- prometheus.Metric) {
 		c.ReductionDesc,
 		prometheus.GaugeValue,
 		a.Space.DataReduction,
+	)
+	ch <- prometheus.MustNewConstMetric(
+		c.SpaceDesc,
+		prometheus.GaugeValue,
+		a.Capacity, "capacity",
 	)
 	ch <- prometheus.MustNewConstMetric(
 		c.SpaceDesc,
