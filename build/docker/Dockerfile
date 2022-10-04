@@ -9,6 +9,6 @@ RUN go mod download && go mod verify
 COPY . .
 RUN go build -v -o /usr/local/bin/pure-fa-om-exporter cmd/fa-om-exporter/main.go
 
-EXPOSE 9491
+EXPOSE 9490
 ENTRYPOINT ["/usr/local/bin/pure-fa-om-exporter"]
 CMD ["--host", "0.0.0.0", "--port", "9490"]

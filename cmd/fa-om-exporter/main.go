@@ -4,16 +4,17 @@ import (
 	"context"
 	"flag"
 	"fmt"
-	"strings"
-	"github.com/prometheus/client_golang/prometheus"
-	"github.com/prometheus/client_golang/prometheus/promhttp"
 	"log"
 	"net/http"
-	"purestorage/fa-openmetrics-exporter/internal/openmetrics-exporter"
-	"purestorage/fa-openmetrics-exporter/internal/rest-client"
+	collectors "purestorage/fa-openmetrics-exporter/internal/openmetrics-exporter"
+	client "purestorage/fa-openmetrics-exporter/internal/rest-client"
+	"strings"
+
+	"github.com/prometheus/client_golang/prometheus"
+	"github.com/prometheus/client_golang/prometheus/promhttp"
 )
 
-var version string = "0.2.0"
+var version string = "0.2.1"
 var debug bool = false
 
 func main() {
@@ -57,6 +58,7 @@ func metricsHandler(w http.ResponseWriter, r *http.Request) {
 	} else {
 		metrics = path[2]
 		switch metrics {
+		case "array":
 		case "volumes":
 		case "hosts":
 		case "pods":
@@ -94,7 +96,7 @@ func metricsHandler(w http.ResponseWriter, r *http.Request) {
 func index(w http.ResponseWriter, r *http.Request) {
 	msg := `<html>
 <body>
-<h1>Pure Storage Flashblade OpenMetrics Exporter</h1>
+<h1>Pure Storage FlashArray OpenMetrics Exporter</h1>
 <table>
     <thead>
         <tr>
@@ -110,6 +112,12 @@ func index(w http.ResponseWriter, r *http.Request) {
             <td><a href="/metrics?endpoint=host">/metrics</a></td>
             <td>endpoint</td>
             <td>All array metrics. Expect slow response time.</td>
+        </tr>
+        <tr>
+            <td>Array metrics</td>
+            <td><a href="/metrics/array?endpoint=host">/metrics/array</a></td>
+            <td>endpoint</td>
+            <td>Provides only array related metrics.</td>
         </tr>
         <tr>
             <td>Volumes metrics</td>

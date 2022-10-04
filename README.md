@@ -80,7 +80,7 @@ The exporter uses a RESTful API schema to provide Prometheus scraping endpoints.
 
 
 URL | GET parameters | Description
----|---
+---|---|---
 http://\<exporter-host\>:\<port\>/metrics | endpoint | Full array metrics
 http://\<exporter-host\>:\<port\>/metrics/array | endpoint | Array only metrics
 http://\<exporter-host\>:\<port\>/metrics/volumes | endpoint | Volumes only metrics
