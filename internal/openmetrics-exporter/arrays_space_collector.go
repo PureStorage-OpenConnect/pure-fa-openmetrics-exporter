@@ -102,6 +102,11 @@ func (c *ArraySpaceCollector) Collect(ch chan<- prometheus.Metric) {
 		prometheus.GaugeValue,
 		a.Space.TotalEffective, "total_effective",
 	)
+	ch <- prometheus.MustNewConstMetric(
+		c.SpaceDesc,
+		prometheus.GaugeValue,
+		a.Capacity-a.Space.System-a.Space.Replication-a.Space.Shared-a.Space.Snapshots-a.Space.Unique, "empty",
+	)
 }
 
 func NewArraySpaceCollector(fa *client.FAClient) *ArraySpaceCollector {
