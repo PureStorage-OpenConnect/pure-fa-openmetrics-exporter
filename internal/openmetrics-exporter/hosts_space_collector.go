@@ -120,13 +120,13 @@ func NewHostsSpaceCollector(fa *client.FAClient) *HostsSpaceCollector {
 		ReductionDesc: prometheus.NewDesc(
 			"purefa_host_space_data_reduction_ratio",
 			"FlashArray host space data reduction",
-			[]string{"hostname"},
+			[]string{"host"},
 			prometheus.Labels{},
 		),
 		SpaceDesc: prometheus.NewDesc(
 			"purefa_host_space_bytes",
 			"FlashArray host space in bytes",
-			[]string{"hostname", "space"},
+			[]string{"host", "space"},
 			prometheus.Labels{},
 		),
 		Client: fa,
