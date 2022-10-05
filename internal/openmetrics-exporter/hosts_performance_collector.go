@@ -1,9 +1,9 @@
 package collectors
 
-
 import (
+	client "purestorage/fa-openmetrics-exporter/internal/rest-client"
+
 	"github.com/prometheus/client_golang/prometheus"
-	"purestorage/fa-openmetrics-exporter/internal/rest-client"
 )
 
 type HostsPerformanceCollector struct {
@@ -170,25 +170,25 @@ func NewHostsPerformanceCollector(fa *client.FAClient) *HostsPerformanceCollecto
 		LatencyDesc: prometheus.NewDesc(
 			"purefa_host_performance_latency_usec",
 			"FlashArray host latency",
-			[]string{"name", "dimension"},
+			[]string{"hostname", "dimension"},
 			prometheus.Labels{},
 		),
 		ThroughputDesc: prometheus.NewDesc(
 			"purefa_host_performance_throughput_iops",
 			"FlashArray host throughput",
-			[]string{"name", "dimension"},
+			[]string{"hostname", "dimension"},
 			prometheus.Labels{},
 		),
 		BandwidthDesc: prometheus.NewDesc(
 			"purefa_host_performance_bandwidth_bytes",
 			"FlashArray host throughput",
-			[]string{"name", "dimension"},
+			[]string{"hostname", "dimension"},
 			prometheus.Labels{},
 		),
 		AverageSizeDesc: prometheus.NewDesc(
 			"purefa_host_performance_average_bytes",
 			"FlashArray host average operations size",
-			[]string{"name", "dimension"},
+			[]string{"hostname", "dimension"},
 			prometheus.Labels{},
 		),
 		Client: fa,
