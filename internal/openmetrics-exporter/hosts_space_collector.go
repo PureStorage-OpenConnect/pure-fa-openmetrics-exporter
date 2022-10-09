@@ -1,9 +1,9 @@
 package collectors
 
-
 import (
+	client "purestorage/fa-openmetrics-exporter/internal/rest-client"
+
 	"github.com/prometheus/client_golang/prometheus"
-	"purestorage/fa-openmetrics-exporter/internal/rest-client"
 )
 
 type HostsSpaceCollector struct {
@@ -112,7 +112,7 @@ func (c *HostsSpaceCollector) Collect(ch chan<- prometheus.Metric) {
 			h.Space.TotalEffective,
 			h.Name, "total_effective",
 		)
-        }
+	}
 }
 
 func NewHostsSpaceCollector(fa *client.FAClient) *HostsSpaceCollector {
@@ -120,13 +120,13 @@ func NewHostsSpaceCollector(fa *client.FAClient) *HostsSpaceCollector {
 		ReductionDesc: prometheus.NewDesc(
 			"purefa_host_space_data_reduction_ratio",
 			"FlashArray host space data reduction",
-			[]string{"name"},
+			[]string{"host"},
 			prometheus.Labels{},
 		),
 		SpaceDesc: prometheus.NewDesc(
 			"purefa_host_space_bytes",
 			"FlashArray host space in bytes",
-			[]string{"name", "space"},
+			[]string{"host", "space"},
 			prometheus.Labels{},
 		),
 		Client: fa,

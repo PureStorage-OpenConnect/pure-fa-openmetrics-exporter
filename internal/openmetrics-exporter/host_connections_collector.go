@@ -1,14 +1,14 @@
 package collectors
 
-
 import (
+	client "purestorage/fa-openmetrics-exporter/internal/rest-client"
+
 	"github.com/prometheus/client_golang/prometheus"
-	"purestorage/fa-openmetrics-exporter/internal/rest-client"
 )
 
 type HostConnectionsCollector struct {
 	HostConnectionsDesc *prometheus.Desc
-	Client     *client.FAClient
+	Client              *client.FAClient
 }
 
 func (c *HostConnectionsCollector) Describe(ch chan<- *prometheus.Desc) {
@@ -35,7 +35,7 @@ func NewHostConnectionsCollector(fa *client.FAClient) *HostConnectionsCollector 
 		HostConnectionsDesc: prometheus.NewDesc(
 			"purefa_host_connections_info",
 			"FlashArray host volumes connections",
-			[]string{"hostname", "hostgroup", "volume"},
+			[]string{"host", "hostgroup", "volume"},
 			prometheus.Labels{},
 		),
 		Client: fa,
