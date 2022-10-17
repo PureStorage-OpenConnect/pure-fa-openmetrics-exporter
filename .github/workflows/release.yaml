@@ -16,4 +16,3 @@ jobs:
         goos: linux
         goarch: amd64
         project_path: "./cmd/fa-om-exporter"
-	ldflags: "-s -w"
