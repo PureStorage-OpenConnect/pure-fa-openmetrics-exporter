@@ -22,18 +22,12 @@ func (c *HardwareCollector) Collect(ch chan<- prometheus.Metric) {
 	if len(hwl.Items) == 0 {
 		return
 	}
-	var s float64
 	for _, h := range hwl.Items {
-		if h.Status != "ok" {
-			s = 1
-		} else {
-			s = 0
-		}
 		ch <- prometheus.MustNewConstMetric(
 			c.StatusDesc,
 			prometheus.GaugeValue,
-			s,
-			h.Name, h.Type,
+			1,
+			h.Name, h.Type, h.Status,
 		)
 		if h.Temperature > 0 {
 			ch <- prometheus.MustNewConstMetric(
@@ -59,7 +53,7 @@ func NewHardwareCollector(fa *client.FAClient) *HardwareCollector {
 		StatusDesc: prometheus.NewDesc(
 			"purefa_hw_component_status",
 			"FlashArray hardware component status",
-			[]string{"component_name", "component_type"},
+			[]string{"component_name", "component_type", "component_status"},
 			prometheus.Labels{},
 		),
 		TemperatureDesc: prometheus.NewDesc(

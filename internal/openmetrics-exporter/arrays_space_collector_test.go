@@ -53,6 +53,8 @@ func TestArraySpaceCollector(t *testing.T) {
 	want[fmt.Sprintf("label:<name:\"space\" value:\"snapshots_effective\" > gauge:<value:%g > ", sp.SnapshotsEffective)] = true
 	want[fmt.Sprintf("label:<name:\"space\" value:\"unique_effective\" > gauge:<value:%g > ", sp.UniqueEffective)] = true
 	want[fmt.Sprintf("label:<name:\"space\" value:\"total_effective\" > gauge:<value:%g > ", sp.TotalEffective)] = true
+	want[fmt.Sprintf("label:<name:\"space\" value:\"empty\" > gauge:<value:%g > ", a.Capacity-a.Space.System-a.Space.Replication-a.Space.Shared-a.Space.Snapshots-a.Space.Unique)] = true
+	want[fmt.Sprintf("gauge:<value:%g > ", (a.Space.System+a.Space.Replication+a.Space.Shared+a.Space.Snapshots+a.Space.Unique)/a.Capacity*100)] = true
 	defer server.Close()
 	c := client.NewRestClient(e, "fake-api-token", "latest", false)
 	ac := NewArraySpaceCollector(c)
