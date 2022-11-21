@@ -28,7 +28,7 @@ data:
       - job_name: 'purestorage-fa'
         metrics_path: /metrics/array
         authorization:
-          credentials: T-2b74f9eb-a35f-40d9-a6a6-33c13775a53c
+          credentials: 2b74f9eb-a35f-40d9-a6a6-33c13775a53c
         params:
           endpoint: ['10.11.112.6']
         static_configs:
