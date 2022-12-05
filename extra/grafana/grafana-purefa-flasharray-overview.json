@@ -77,7 +77,7 @@
     ]
   },
   "description": "",
-  "editable": true,
+  "editable": false,
   "fiscalYearStartMonth": 0,
   "graphTooltip": 1,
   "id": null,
@@ -326,7 +326,7 @@
         ]
       },
       "gridPos": {
-        "h": 9,
+        "h": 4,
         "w": 18,
         "x": 6,
         "y": 0
@@ -527,30 +527,6 @@
         "type": "prometheus",
         "uid": "${DS_PROMETHEUS}"
       },
-      "gridPos": {
-        "h": 26,
-        "w": 6,
-        "x": 0,
-        "y": 9
-      },
-      "id": 165,
-      "options": {
-        "code": {
-          "language": "plaintext",
-          "showLineNumbers": false,
-          "showMiniMap": false
-        },
-        "content": "## Metrics\n\nAll metrics are prefixed with purefa_\nBelow are the metrics names available\n```\n* alerts_open\n* array_performance_average_bytes\n* array_performance_bandwidth_bytes\n* array_performance_latency_usec\n* array_performance_queue_depth_ops\n* array_performance_throughput_iops\n* array_space_bytes\n* array_space_data_reduction_ratio\n* array_space_utilization\n* directory_performance_average_bytes\n* directory_performance_bandwidth_bytes\n* directory_performance_latency_usec\n* directory_performance_throughput_iops\n* directory_space_bytes\n* directory_space_data_reduction_ratio\n* host_connections_info\n* host_performance_average_bytes\n* host_performance_bandwidth_bytes\n* host_performance_latency_usec\n* host_performance_throughput_iops\n* host_space_bytes\n* host_space_data_reduction_ratio\n* host_space_size_bytes\n* hw_component_status\n* hw_component_temperature_celsius\n* hw_component_voltage_volt\n* info\n* pod_performance_average_bytes\n* pod_performance_bandwidth_bytes\n* pod_performance_latency_usec\n* pod_performance_throughput_iops\n* pod_space_bytes\n* pod_space_data_reduction_ratio\n* volume_performance_average_bytes\n* volume_performance_bandwidth_bytes\n* volume_performance_latency_usec\n* volume_performance_throughput_iops\n* volume_space_bytes\n* volume_space_data_reduction_ratio\n```",
-        "mode": "markdown"
-      },
-      "pluginVersion": "9.2.6",
-      "type": "text"
-    },
-    {
-      "datasource": {
-        "type": "prometheus",
-        "uid": "${DS_PROMETHEUS}"
-      },
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -713,10 +689,10 @@
         ]
       },
       "gridPos": {
-        "h": 6,
+        "h": 4,
         "w": 18,
         "x": 6,
-        "y": 9
+        "y": 4
       },
       "id": 172,
       "options": {
@@ -884,7 +860,7 @@
         "h": 5,
         "w": 6,
         "x": 6,
-        "y": 15
+        "y": 8
       },
       "id": 97,
       "links": [],
@@ -904,9 +880,7 @@
           "fields": "",
           "values": false
         },
-        "text": {
-          "valueSize": 100
-        },
+        "text": {},
         "textMode": "auto"
       },
       "pluginVersion": "9.2.6",
@@ -971,7 +945,7 @@
         "h": 5,
         "w": 6,
         "x": 12,
-        "y": 15
+        "y": 8
       },
       "id": 108,
       "links": [],
@@ -993,9 +967,7 @@
           "fields": "",
           "values": false
         },
-        "text": {
-          "valueSize": 100
-        },
+        "text": {},
         "textMode": "auto"
       },
       "pluginVersion": "9.2.6",
@@ -1057,7 +1029,7 @@
         "h": 5,
         "w": 6,
         "x": 18,
-        "y": 15
+        "y": 8
       },
       "id": 30,
       "links": [],
@@ -1095,6 +1067,30 @@
       ],
       "title": "Average Array Utilization for $instance array(s)",
       "type": "stat"
+    },
+    {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "${DS_PROMETHEUS}"
+      },
+      "gridPos": {
+        "h": 26,
+        "w": 6,
+        "x": 0,
+        "y": 9
+      },
+      "id": 165,
+      "options": {
+        "code": {
+          "language": "plaintext",
+          "showLineNumbers": false,
+          "showMiniMap": false
+        },
+        "content": "## Metrics\n\nAll metrics are prefixed with purefa_\nBelow are the metrics names available\n```\n* alerts_open\n* array_performance_average_bytes\n* array_performance_bandwidth_bytes\n* array_performance_latency_usec\n* array_performance_queue_depth_ops\n* array_performance_throughput_iops\n* array_space_bytes\n* array_space_data_reduction_ratio\n* array_space_utilization\n* directory_performance_average_bytes\n* directory_performance_bandwidth_bytes\n* directory_performance_latency_usec\n* directory_performance_throughput_iops\n* directory_space_bytes\n* directory_space_data_reduction_ratio\n* host_connections_info\n* host_performance_average_bytes\n* host_performance_bandwidth_bytes\n* host_performance_latency_usec\n* host_performance_throughput_iops\n* host_space_bytes\n* host_space_data_reduction_ratio\n* host_space_size_bytes\n* hw_component_status\n* hw_component_temperature_celsius\n* hw_component_voltage_volt\n* info\n* pod_performance_average_bytes\n* pod_performance_bandwidth_bytes\n* pod_performance_latency_usec\n* pod_performance_throughput_iops\n* pod_space_bytes\n* pod_space_data_reduction_ratio\n* volume_performance_average_bytes\n* volume_performance_bandwidth_bytes\n* volume_performance_latency_usec\n* volume_performance_throughput_iops\n* volume_space_bytes\n* volume_space_data_reduction_ratio\n```",
+        "mode": "markdown"
+      },
+      "pluginVersion": "9.2.6",
+      "type": "text"
     },
     {
       "datasource": {
@@ -1213,7 +1209,7 @@
         "h": 7,
         "w": 9,
         "x": 6,
-        "y": 20
+        "y": 13
       },
       "id": 127,
       "options": {
@@ -1362,7 +1358,7 @@
         "h": 7,
         "w": 9,
         "x": 15,
-        "y": 20
+        "y": 13
       },
       "id": 128,
       "options": {
@@ -1472,7 +1468,7 @@
         "h": 8,
         "w": 9,
         "x": 6,
-        "y": 27
+        "y": 20
       },
       "id": 143,
       "options": {
@@ -1572,7 +1568,7 @@
         "h": 8,
         "w": 9,
         "x": 15,
-        "y": 27
+        "y": 20
       },
       "id": 131,
       "options": {
@@ -1672,7 +1668,7 @@
         "h": 8,
         "w": 9,
         "x": 6,
-        "y": 35
+        "y": 28
       },
       "id": 173,
       "options": {
@@ -1775,7 +1771,7 @@
         "h": 8,
         "w": 9,
         "x": 15,
-        "y": 35
+        "y": 28
       },
       "id": 133,
       "options": {
@@ -1875,7 +1871,7 @@
         "h": 8,
         "w": 9,
         "x": 6,
-        "y": 43
+        "y": 36
       },
       "id": 160,
       "options": {
@@ -1980,7 +1976,7 @@
         "h": 8,
         "w": 9,
         "x": 15,
-        "y": 43
+        "y": 36
       },
       "id": 153,
       "options": {
@@ -2020,6 +2016,321 @@
         }
       ],
       "title": "Average Top $TopItems Write Throughput by $instance array(s) & Hosts",
+      "transformations": [],
+      "type": "timeseries"
+    },
+    {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "${DS_PROMETHEUS}"
+      },
+      "description": "",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "drawStyle": "line",
+            "fillOpacity": 10,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "lineInterpolation": "smooth",
+            "lineStyle": {
+              "fill": "solid"
+            },
+            "lineWidth": 1,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "never",
+            "spanNulls": false,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "mappings": [],
+          "min": 0,
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green"
+              }
+            ]
+          },
+          "unit": "µs"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 8,
+        "x": 0,
+        "y": 44
+      },
+      "id": 174,
+      "options": {
+        "legend": {
+          "calcs": [
+            "mean",
+            "min",
+            "max",
+            "lastNotNull"
+          ],
+          "displayMode": "table",
+          "placement": "bottom",
+          "showLegend": true,
+          "sortBy": "Mean",
+          "sortDesc": true
+        },
+        "tooltip": {
+          "mode": "single",
+          "sort": "none"
+        }
+      },
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${DS_PROMETHEUS}"
+          },
+          "editorMode": "code",
+          "exemplar": false,
+          "expr": "purefa_array_performance_latency_usec{instance=~\"$instance\",env=~\"$env\"}\nand \ntopk($TopItems,rate(purefa_array_performance_latency_usec{instance=~\"$instance\",env=~\"$env\"}[$__range] @ end() ))",
+          "format": "time_series",
+          "instant": false,
+          "interval": "",
+          "legendFormat": "{{instance}}  - {{dimension}}",
+          "range": true,
+          "refId": "Read Bandwidth"
+        }
+      ],
+      "title": "Latency by $instance array(s) IO Type",
+      "transformations": [],
+      "type": "timeseries"
+    },
+    {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "${DS_PROMETHEUS}"
+      },
+      "description": "",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "drawStyle": "line",
+            "fillOpacity": 10,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "lineInterpolation": "smooth",
+            "lineStyle": {
+              "fill": "solid"
+            },
+            "lineWidth": 1,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "never",
+            "spanNulls": false,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "mappings": [],
+          "min": 0,
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green"
+              }
+            ]
+          },
+          "unit": "iops"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 8,
+        "x": 8,
+        "y": 44
+      },
+      "id": 175,
+      "options": {
+        "legend": {
+          "calcs": [
+            "mean",
+            "min",
+            "max",
+            "lastNotNull"
+          ],
+          "displayMode": "table",
+          "placement": "bottom",
+          "showLegend": true,
+          "sortBy": "Mean",
+          "sortDesc": true
+        },
+        "tooltip": {
+          "mode": "single",
+          "sort": "none"
+        }
+      },
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${DS_PROMETHEUS}"
+          },
+          "editorMode": "code",
+          "exemplar": false,
+          "expr": "purefa_array_performance_throughput_iops{instance=~\"$instance\",env=~\"$env\"}\nand \ntopk($TopItems,rate(purefa_array_performance_throughput_iops{instance=~\"$instance\",env=~\"$env\"}[$__range] @ end() ))",
+          "format": "time_series",
+          "instant": false,
+          "interval": "",
+          "legendFormat": "{{instance}}  - {{dimension}}",
+          "range": true,
+          "refId": "Read Bandwidth"
+        }
+      ],
+      "title": "Throughput by $instance array(s) IO Type",
+      "transformations": [],
+      "type": "timeseries"
+    },
+    {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "${DS_PROMETHEUS}"
+      },
+      "description": "",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "drawStyle": "line",
+            "fillOpacity": 10,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "lineInterpolation": "smooth",
+            "lineStyle": {
+              "fill": "solid"
+            },
+            "lineWidth": 1,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "never",
+            "spanNulls": false,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "mappings": [],
+          "min": 0,
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green"
+              }
+            ]
+          },
+          "unit": "bytes"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 8,
+        "x": 16,
+        "y": 44
+      },
+      "id": 176,
+      "options": {
+        "legend": {
+          "calcs": [
+            "mean",
+            "min",
+            "max",
+            "lastNotNull"
+          ],
+          "displayMode": "table",
+          "placement": "bottom",
+          "showLegend": true,
+          "sortBy": "Mean",
+          "sortDesc": true
+        },
+        "tooltip": {
+          "mode": "single",
+          "sort": "none"
+        }
+      },
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${DS_PROMETHEUS}"
+          },
+          "editorMode": "code",
+          "exemplar": false,
+          "expr": "purefa_array_performance_bandwidth_bytes{instance=~\"$instance\",env=~\"$env\"}\nand \ntopk($TopItems,rate(purefa_array_performance_bandwidth_bytes{instance=~\"$instance\",env=~\"$env\"}[$__range] @ end() ))",
+          "format": "time_series",
+          "instant": false,
+          "interval": "",
+          "legendFormat": "{{instance}}  - {{dimension}}",
+          "range": true,
+          "refId": "Read Bandwidth"
+        }
+      ],
+      "title": "Bandwidth by $instance array(s) IO Type",
       "transformations": [],
       "type": "timeseries"
     }
@@ -2215,6 +2526,6 @@
   "timezone": "",
   "title": "Pure Storage FlashArray - Overview",
   "uid": "W1HXasdVk",
-  "version": 47,
+  "version": 52,
   "weekStart": ""
 }
