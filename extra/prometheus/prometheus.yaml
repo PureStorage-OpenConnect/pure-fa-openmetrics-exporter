@@ -117,13 +117,13 @@ scrape_configs:
 # Pure Storage FlashArray Number 2 #
 # ################################ #
 # Scrape job for Pure Storage FlashArray 2 scraping /metrics/array
-  - job_name: 'purefa_array_arrayname01'
+  - job_name: 'purefa_array_arrayname02'
     metrics_path: /metrics/array
     # Bearer authorization token
     authorization:
       credentials: a12345bc6-d78e-901f-23a4-56b07b89012
     params:
-      endpoint: ['arrayname01.fqdn.com']
+      endpoint: ['arrayname02.fqdn.com']
 
     static_configs:
     # purefa openmetrics exporter
@@ -132,24 +132,24 @@ scrape_configs:
       labels:
         location: uk
         site: London
-        instance: arrayname01
+        instance: arrayname02
         env: production
 
 # Scrape job for Pure Storage FlashArray 2 scraping /metrics/volumes
-  - job_name: 'purefa_volumes_arrayname01'
+  - job_name: 'purefa_volumes_arrayname02'
     metrics_path: /metrics/volumes
     # Bearer authorization token
     authorization:
-      credentials: a12345bc6-d78e-901f-23a4-56b07b89012
+      credentials: f65432ed1-d78e-901f-23a4-56b07b89012
     params:
-      endpoint: ['arrayname01.fqdn.com']
+      endpoint: ['arrayname02.fqdn.com']
 
 # Scrape job for Pure Storage FlashArray 2 scraping /metrics/hosts
   - job_name: 'purefa_hosts_arrayname02'
     metrics_path: /metrics/hosts
     # Bearer authorization token
     authorization:
-      credentials: a12345bc6-d78e-901f-23a4-56b07b89012
+      credentials: f65432ed1-d78e-901f-23a4-56b07b89012
     params:
       endpoint: ['arrayname02.fqdn.com']
 
@@ -168,7 +168,7 @@ scrape_configs:
     metrics_path: /metrics/pods
     # Bearer authorization token
     authorization:
-      credentials: a12345bc6-d78e-901f-23a4-56b07b89012
+      credentials: f65432ed1-d78e-901f-23a4-56b07b89012
     params:
       endpoint: ['arrayname02.fqdn.com']
 
@@ -187,7 +187,7 @@ scrape_configs:
     metrics_path: /metrics/directories
     # Bearer authorization token
     authorization:
-      credentials: a12345bc6-d78e-901f-23a4-56b07b89012
+      credentials: f65432ed1-d78e-901f-23a4-56b07b89012
     params:
       endpoint: ['arrayname02.fqdn.com']
 

@@ -9,10 +9,10 @@ This exporter is provided under Best Efforts support by the Pure Portfolio Solut
 2. Deploy and configure Prometheus ([prometheus-docs][2]).
 3. Deploy and configure Grafana ([grafana-docs][3]).
 4. Import Pure Storage dashboards using .json files into Grafana.
-5. Check out the features and default values set in the [Pure Storage FlashArray Overview Grafana Dashboard](#Pure-Storage-FlashArray-Overview-Grafana-Dashboard)
+5. Check out the features and default values set in the [Pure Storage FlashArray Overview Grafana Dashboard](grafana-purefa-flasharray-overview.json)
 
 # Overview
-Take holistic overview of your Pure Storage FlashArray estate on-preimise with Prometheus and Grafana to summerise statistics such as:
+Take a holistic overview of your Pure Storage FlashArray estate on-premise with Prometheus and Grafana to summerise statistics such as:
   * Array Utilization
   * Purity OS version
   * Data Reduction Rate
@@ -24,9 +24,9 @@ Drill down into specific arrays and identify top busy hosts while correlating re
 <img src="./images/grafana_purefa_overview_dash_2.png" width="33%" height="33%">
 <br>
 
-These dashboards are provide an overview of your fleet to give you early indications of potential issues and a look back in time of recent history. Once you are pulling the metrics, you can create your own dashboards bespooke to your environment, even correlating metrics from other technologies. 
+These dashboards provide an overview of your fleet to give you early indications of potential issues and a look back in time to recent history. Once you are pulling the metrics, you can create your own dashboards bespoke to your environment, even correlating metrics from other technologies. 
 
-If you would like to collect metrics from your Pure Storage FlashArray fleet and monitor your environment on-premise? Let's walk through it.
+Would you like to collect metrics from your Pure Storage FlashArray fleet and monitor your environment on-premise? Let's walk through it.
 
 Included in this guide
 * Overview
@@ -133,15 +133,16 @@ Checking prometheus.yml
 1. Install Grafana on your chosen OS platform ([grafana-docs][3]).
 2. Point Grafana as your Prometheus data source ([grafana-datasource][4]]).
 <br>
-<img src="./images/grafana_add_datasource.png" width="30%" height="30%">
+<img src="./images/grafana_add_datasource.png" width="40%" height="40%">
 <br>
 
 3. Download dashboard(s) from this folder postfixed with .json.
-    Either copy the contents of the .json file or download it.
+    Either copy the contents of the .json file or download the file and import it into Grafana.
+    [Pure Storage FlashArray Overview Grafana Dashboard](grafana-purefa-flasharray-overview.json)
 4. Import the .json file into Grafana and specify the Prometheus datasource.
 5. Now open the dashboard and check that data from your devices are visible.
 <br>
-<img src="./images/grafana_purefa_overview_dash_1.png" width="30%" height="30%">
+<img src="./images/grafana_purefa_overview_dash_1.png" width="40%" height="40%">
 <br>
 
 
@@ -158,15 +159,20 @@ Check the data is accessible at component in the stack. If at any on these point
 1. Start by querying the exporter to make sure it is returning results. Use an API query tool such as [Postman](https://www.postman.com/) to query the device direct and retrieve the raw API call.
   - GET: `http://<exporter_ip>:9490/metrics/array?endpoint=arrayname01.fqdn.com`.
   - Authorization > Type:Bearer Token: `a12345bc6-d78e-901f-23a4-56b07b89012`.
+<br>
+<img src="./images/postman-purefa-openmetricsexporter-query.png" width="40%" height="40%">
+<br>
 2. Ensure the API authorization token is correct and correctly configured in prometheus.yaml.
 ### Check Prometheus
 3. Using the Prometheus UI, run a simple query to see if any results are returned.
 <br>
-<img src="./images/prometheus_simple_query.png" width="30%" height="30%">
+<img src="./images/prometheus_purefa_simple_query.png" width="40%" height="40%">
 <br>
 
 4. If the query does not return results, check the status of the targets for status errors.
-![prometheus_target_status](images/prometheus_target_status.png)
+<br>
+<img src="./images/prometheus_purefa_target_status.png" width="40%" height="40%">
+<br>
 5. Run prometheus.yaml through the yaml checker. Check the configuration is correct and retsart Prometheus.
 ```console
 > promtool check config /etc/prometheus/prometheus.yml
@@ -178,7 +184,7 @@ Checking prometheus.yml
 ### Check Grafana
 7. Perform a simple test for Grafana by navigating to 'Explore' and entering a simple query.
 <br>
-<img src="./images/grafana_simple_query.png" width="30%" height="30%">
+<img src="./images/grafana_purefa_simple_query.png" width="40%" height="40%">
 <br>
 
 # Troubleshooting Specific Errors
@@ -201,7 +207,7 @@ Try reducing the scope of the query and/or increase processing and memory resour
 ## Dashboard Templating and Filters
 The dashboards are fully termplated which means they will work with your FlashArray confgiuration and allow you to filter by environemnt, array and how many top(k) metrics you wish to display on your dashboard.
 <br>
-<img src="./images/purefa_grafana_dashboard_template.png">
+<img src="./images/grafana_purefa_dashboard_template.png">
 <br>
 
 ## Average values
@@ -209,7 +215,7 @@ Many of the dashboard panels average metrics to help smooth out graphs and ident
 ## Accessibility - Dark/Light Mode
 Colors have been selected to work equally in both dark and light mode. 
 <br>
-<img src="./images/grafana_dark_light_modes.png">
+<img src="./images/grafana_purefa_dark_light_modes.png">
 <br>
 
 ## Threshold Defaults
@@ -218,12 +224,12 @@ Grafana dashboards are configured with utilization thresholds to pro-actively hi
 
 The utilization bar and value text will change color according to the array utilization.
 
-* <70% Base = Pure Ocean
-* 70% = Pure Yellow
-* 80% = Pure Orange
-* 90% = Pure Magenta
+* <70% Base is Pure Ocean
+* $\ge$ 70% is Pure Yellow
+* $\ge$ 80% is Pure Orange
+* $\ge$ 90% is Pure Magenta
 <br>
-<img src="./images/grafana_utilization_thresholds.png" width="50%" height="50%">
+<img src="./images/grafana_utilization_thresholds.png" width="40%" height="40%">
 <br>
 
 ## Alerts
@@ -236,14 +242,14 @@ Alert panel is ordered by Critical alerts to ensure any arrays with critical ale
 
 **Alert Criticality**
 * $\gt$ 0 Info Alert background is Pure Ocean
-* $\gt$ Warning Alert background is Pure Magenta
-* $\gt$ Critical Alert background is Pure Magenta
+* $\gt$ 0 Warning Alert background is Pure Magenta
+* $\gt$ 0 Critical Alert background is Pure Magenta
 
 ## Data Reduction Rate
 Data Reduction Rate also has a threshold set for informational purposes to highlight when an array might be storing incompressible or unique datasets. This can be adjusted to suit your environment policies.
 * Default Data Reduction Rate <1.01:1 = Pure Yellow
 <br>
-<img src="./images/purefa_grafana_dashboard_drr_threshold.png" width="50%" height="50%">
+<img src="./images/grafana_purefa_dashboard_drr_threshold.png" width="50%" height="50%">
 <br>
 
 [1]: https://github.com/PureStorage-OpenConnect/pure-fa-openmetrics-exporter "pure-fa-openmetrics-exporter"

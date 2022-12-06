@@ -111,8 +111,8 @@ Please have a look at the documentation of each image/application for adequate c
 A simple but complete example to deploy a full monitoring stack on kubernetes can be found in the [examples](examples/config/k8s) directory
 
 ## Monitoring On-Premise with Prometheus and Grafana
-Take holistic overview of your Pure Storage FlashArray estate on-preimise with Prometheus and Grafana to summerise statistics such as:
-  * Array Utilization
+Take a holistic overview of your Pure Storage FlashArray estate on-premise with Prometheus and Grafana to summerise statistics such as:
+  * FlashArray Utilization
   * Purity OS version
   * Data Reduction Rate
   * Number and type of open alerts
