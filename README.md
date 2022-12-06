@@ -11,9 +11,9 @@ We will address these as soon as we can, but there are no specific SLAs.
 
 ### Overview
 
-This application aims to help monitor Pure Storage FlashArrays by providing an "exporter", which means it extracts data from the Purity API and converts it to the OpenMetrics format, which is for instance consumable by Prometheus.
+This application aims to help monitor Pure Storage FlashArrays by providing an "exporter", which means it extracts data from the Purity API and converts it to the OpenMetrics format, which is for instance consumable by Prometheus, or other observability platforms.
 
-The stateless design of the exporter allows for easy configuration management as well as scalability for a whole fleet of Pure Storage systems. Each time the OpenMetrics client scrapes metrics for a specific system, it should provide the hostname via GET parameter and the API token as Authorization token to this exporter.
+The stateless design of the exporter allows for easy configuration management as well as scalability for a whole fleet of Pure Storage arrays. Each time the OpenMetrics client scrapes metrics for a specific system, it should provide the hostname via GET parameter and the API token as Authorization token to this exporter.
 
 To monitor your Pure Storage appliances, you will need to create a new dedicated user on your array, and assign read-only permissions to it. Afterwards, you also have to create a new API key.
 
@@ -66,9 +66,6 @@ VERSION=<version>
 docker build -t pure-fa-ome:$VERSION .
 ```
 
-### Scraping endpoints
-
-The exporter uses a RESTful API schema to provide Prometheus scraping endpoints.
 
 **Authentication**
 
@@ -109,3 +106,47 @@ docker run -d -p 3000:3000 --name=grafana -v /tmp/grafana-data:/var/lib/grafana 
 Please have a look at the documentation of each image/application for adequate configuration examples.
 
 A simple but complete example to deploy a full monitoring stack on kubernetes can be found in the [examples](examples/config/k8s) directory
+
+### Metrics Collected
+
+|Metric Name                                 |Description                                          |
+|--------------------------------------------|-----------------------------------------------------|
+|purefa_info                                 |FlashArray system information                        |
+|purefa_alerts_open                          |FlashArray open alert events                         |
+|purefa_array_performance_average_bytes      |FlashArray array average operations size in bytes    |
+|purefa_array_performance_bandwidth_bytes    |FlashArray array throughput in bytes per second      |
+|purefa_array_performance_latency_usec       |FlashArray array latency in microseconds             |
+|purefa_array_performance_queue_depth_ops    |FlashArray array queue depth size                    |
+|purefa_array_performance_throughput_iops    |FlashArray array throughput in iops                  |
+|purefa_array_space_bytes                    |FlashArray array space in bytes                      |
+|purefa_array_space_data_reduction_ratio     |FlashArray array space data reduction                |
+|purefa_array_space_utilization              |FlashArray array space utilization in percent        |
+|purefa_directory_performance_average_bytes  |FlashArray directory average operations size in bytes|
+|purefa_directory_performance_bandwidth_bytes|FlashArray directory throughput in bytes per second  |
+|purefa_directory_performance_latency_usec   |FlashArray directory latency in microseconds         |
+|purefa_directory_performance_throughput_iops|FlashArray directory throughput in iops              |
+|purefa_directory_space_bytes                |FlashArray directory space in bytes                  |
+|purefa_directory_space_data_reduction_ratio |FlashArray directory space data reduction            |
+|purefa_host_connections_info                |FlashArray host volumes connections                  |
+|purefa_host_performance_average_bytes       |FlashArray host average operations size in bytes     |
+|purefa_host_performance_bandwidth_bytes     |FlashArray host bandwidth in bytes per second        |
+|purefa_host_performance_latency_usec        |FlashArray host latency in microseconds              |
+|purefa_host_performance_throughput_iops     |FlashArray host throughput in iops                   |
+|purefa_host_space_bytes                     |FlashArray host space in bytes                       |
+|purefa_host_space_data_reduction_ratio      |FlashArray host space data reduction                 |
+|purefa_host_space_size_bytes                |FlashArray host volumes size                         |
+|purefa_hw_component_status                  |FlashArray hardware component status                 |
+|purefa_hw_component_temperature_celsius     |FlashArray hardware component temperature in C       |
+|purefa_hw_component_voltage_volt            |FlashArray hardware component voltage                |
+|purefa_pod_performance_average_bytes        |FlashArray pod average operations size               |
+|purefa_pod_performance_bandwidth_bytes      |FlashArray pod throughput in bytes per second        |
+|purefa_pod_performance_latency_usec         |FlashArray pod latency in microseconds               |
+|purefa_pod_performance_throughput_iops      |FlashArray pod throughput in iops                    |
+|purefa_pod_space_bytes                      |FlashArray pod space in bytes                        |
+|purefa_pod_space_data_reduction_ratio       |FlashArray pod space data reduction                  |
+|purefa_volume_performance_average_bytes     |FlashArray volume average operations size in bytes   |
+|purefa_volume_performance_bandwidth_bytes   |FlashArray volume throughput in bytes per second     |
+|purefa_volume_performance_latency_usec      |FlashArray volume latency in microseconds            |
+|purefa_volume_performance_throughput_iops   |FlashArray volume throughput in iops                 |
+|purefa_volume_space_bytes                   |FlashArray volume space in bytes                     |
+|purefa_volume_space_data_reduction_ratio    |FlashArray volume space data reduction               |
