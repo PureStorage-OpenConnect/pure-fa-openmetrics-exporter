@@ -12,19 +12,19 @@ This exporter is provided under Best Efforts support by the Pure Portfolio Solut
 5. Check out the features and default values set in the [Pure Storage FlashArray Overview Grafana Dashboard](grafana-purefa-flasharray-overview.json)
 
 # Overview
-Take a holistic overview of your Pure Storage FlashArray estate on-premise with Prometheus and Grafana to summerise statistics such as:
+Take a holistic overview of your Pure Storage FlashArray estate on-premise with Prometheus and Grafana to summarize statistics such as:
   * Array Utilization
   * Purity OS version
   * Data Reduction Rate
   * Number and type of open alerts
 
-Drill down into specific arrays and identify top busy hosts while correlating read and write operations and throughput to quickly highlight or elimiate investigation equiries.
+Drill down into specific arrays and identify top busy hosts while correlating read and write operations and throughput to quickly highlight or eliminate investigation enquiries.
 <br>
 <img src="./images/grafana_purefa_overview_dash_1.png" width="66%" height="66%">
 <img src="./images/grafana_purefa_overview_dash_2.png" width="33%" height="33%">
 <br>
 
-These dashboards provide an overview of your fleet to give you early indications of potential issues and a look back in time to recent history. Once you are pulling the metrics, you can create your own dashboards bespoke to your environment, even correlating metrics from other technologies. 
+These dashboards provide an overview of your fleet to give you early indications of potential issues and a look back in time to recent history. Once you are pulling the metrics, you can create your own dashboards bespoke to your environment, even correlating metrics from other technologies.
 
 Would you like to collect metrics from your Pure Storage FlashArray fleet and monitor your environment on-premise? Let's walk through it.
 
@@ -48,14 +48,14 @@ Grafana can be configured to query all of the metrics available in the Prometheu
 <br>
 
 # Setup
-## Prerequisits and Dependencies
-This deployment assumes the [Pure Storage FlashArray OpenMetrics Exporter][1] is previously been setup and configured.
+## Prerequisites and Dependencies
+This deployment assumes the [Pure Storage FlashArray OpenMetrics Exporter][1] is previously setup and configured.
 Supported operating system platforms are available to install Prometheus and Grafana.
 
 The Grafana dashboards have been developed and tested using the following software versions:
-Prometheus v2.39.1
-Grafana v9.2.6
-Pure Storage OpenMetrics Exporter v1.0.1
+* Prometheus v2.39.1
+* Grafana v9.2.6
+* Pure Storage OpenMetrics Exporter v1.0.1
 
 Dashboards may have limited functionality with earlier versions and some modifications may be required.
 
@@ -150,13 +150,13 @@ Checking prometheus.yml
 Whilst this guide does not replace Prometheus and Grafana support and community portals, it should give you an insight on where we might look first and where to perform checks.
 
 ## No data is visible in dashboard
-Check the data is accessible at component in the stack. If at any on these points do not work, resolve them before moving on to the next component.
+Check the data is accessible to each component in the stack. If at any on these points do not work, resolve them before moving on to the next component.
   * Check Pure OpenMetrics Exporter
   * Check Prometheus
   * Check Grafana
 
 ### Check Pure OpenMetrics Exporter
-1. Start by querying the exporter to make sure it is returning results. Use an API query tool such as [Postman](https://www.postman.com/) to query the device direct and retrieve the raw API call.
+1. Start by querying the exporter to make sure it is returning results. Use an API query tool such as [Postman](https://www.postman.com/) to query the device directly and retrieve the raw API call.
   - GET: `http://<exporter_ip>:9490/metrics/array?endpoint=arrayname01.fqdn.com`.
   - Authorization > Type:Bearer Token: `a12345bc6-d78e-901f-23a4-56b07b89012`.
 <br>
@@ -173,7 +173,7 @@ Check the data is accessible at component in the stack. If at any on these point
 <br>
 <img src="./images/prometheus_purefa_target_status.png" width="40%" height="40%">
 <br>
-5. Run prometheus.yaml through the yaml checker. Check the configuration is correct and retsart Prometheus.
+5. Run prometheus.yaml through the yaml checker. Check the configuration is correct and restart Prometheus.
 ```console
 > promtool check config /etc/prometheus/prometheus.yml
 Checking prometheus.yml
@@ -189,7 +189,7 @@ Checking prometheus.yml
 
 # Troubleshooting Specific Errors
 ## Some panels have errors
-If the panels have errors then the query could be unsupported. Check the versions of Prometheus and Grafana are above the prerequsist tested versions above.
+If the panels have errors then the query could be unsupported. Check the versions of Prometheus and Grafana are above the prerequisite versions tested above.
 
 ## Selected graphs are not loading or taking a long time to load
 Volumes panels may take longer to load when a greater number of more FlashArray's are selected combined with longer time ranges are selected.
@@ -204,8 +204,8 @@ Try reducing the scope of the query and/or increase processing and memory resour
 
 # Pure Storage FlashArray Overview Grafana Dashboard
 
-## Dashboard Templating and Filters
-The dashboards are fully termplated which means they will work with your FlashArray confgiuration and allow you to filter by environemnt, array and how many top(k) metrics you wish to display on your dashboard.
+## Dashboard Template Variables and Filters
+The dashboards are fully templated which means they will work with your FlashArray configuration and allow you to filter by environment, array and how many top(k) metrics you wish to display on your dashboard.
 <br>
 <img src="./images/grafana_purefa_dashboard_template.png">
 <br>
@@ -220,7 +220,7 @@ Colors have been selected to work equally in both dark and light mode.
 
 ## Threshold Defaults
 ### Utilization
-Grafana dashboards are configured with utilization thresholds to pro-actively highlight potential capacity issues with plenty of time to address. These values can be adjusted to suit your own threashold policies.
+Grafana dashboards are configured with utilization thresholds to pro-actively highlight potential capacity issues with plenty of time to address. These values can be adjusted to suit your own threshold policies.
 
 The utilization bar and value text will change color according to the array utilization.
 
