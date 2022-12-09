@@ -117,9 +117,9 @@ Take a holistic overview of your Pure Storage FlashArray estate on-premise with 
   * Data Reduction Rate
   * Number and type of open alerts
 
-Drill down into specific arrays and identify top busy hosts while correlating read and write operations and throughput to quickly highlight or elimiate investigation equiries.
+Drill down into specific arrays and identify top busy hosts while correlating read and write operations and throughput to quickly highlight or eliminate investigation enquiries.
 <br>
 <img src="extra/grafana/images/grafana_purefa_overview_dash_1.png" width="66%" height="66%">
 <img src="extra/grafana/images/grafana_purefa_overview_dash_2.png" width="33%" height="33%">
 <br>
-For more information on dependancies and notes to deploy, take look at the files in the [extra/grafana/](extra/grafana/) folder and [README.md](extra/grafana/README.md)
+For more information on dependencies and notes to deploy, take look at the files in the [extra/grafana/](extra/grafana/) folder and [README.md](extra/grafana/README.md)
