@@ -150,7 +150,7 @@ A simple but complete example to deploy a full monitoring stack on kubernetes ca
 |purefa_volume_performance_throughput_iops   |FlashArray volume throughput in iops                 |
 |purefa_volume_space_bytes                   |FlashArray volume space in bytes                     |
 |purefa_volume_space_data_reduction_ratio    |FlashArray volume space data reduction               |
-=======
+
 ## Monitoring On-Premise with Prometheus and Grafana
 Take a holistic overview of your Pure Storage FlashArray estate on-premise with Prometheus and Grafana to summerise statistics such as:
   * FlashArray Utilization
