@@ -109,3 +109,17 @@ docker run -d -p 3000:3000 --name=grafana -v /tmp/grafana-data:/var/lib/grafana 
 Please have a look at the documentation of each image/application for adequate configuration examples.
 
 A simple but complete example to deploy a full monitoring stack on kubernetes can be found in the [examples](examples/config/k8s) directory
+
+## Monitoring On-Premise with Prometheus and Grafana
+Take a holistic overview of your Pure Storage FlashArray estate on-premise with Prometheus and Grafana to summerise statistics such as:
+  * FlashArray Utilization
+  * Purity OS version
+  * Data Reduction Rate
+  * Number and type of open alerts
+
+Drill down into specific arrays and identify top busy hosts while correlating read and write operations and throughput to quickly highlight or elimiate investigation equiries.
+<br>
+<img src="extra/grafana/images/grafana_purefa_overview_dash_1.png" width="66%" height="66%">
+<img src="extra/grafana/images/grafana_purefa_overview_dash_2.png" width="33%" height="33%">
+<br>
+For more information on dependancies and notes to deploy, take look at the files in the [extra/grafana/](extra/grafana/) folder and [README.md](extra/grafana/README.md)

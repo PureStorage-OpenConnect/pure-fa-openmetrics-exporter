@@ -1,0 +1,202 @@
+global:
+  scrape_interval:     30s # Set the scrape interval to every 30 seconds. Default is every 1 minute.
+  scrape_timeout:      30s # Set the scrape output to every 30 seconds. Default is every 1 minute.
+  # evaluation_interval: 60s # is set to the default every 1 minute.
+
+# Alertmanager configuration
+alerting:
+  alertmanagers:
+  - static_configs:
+    - targets:
+      # - alertmanager:9093
+
+# Load rules once and periodically evaluate them according to the global 'evaluation_interval'.
+rule_files:
+  # - "first_rules.yml"
+  # - "second_rules.yml"
+
+# A scrape configuration containing exactly one endpoint to scrape:
+# Here it's Prometheus itself
+scrape_configs:
+
+  - job_name: "prometheus"
+    static_configs:
+    - targets: ["localhost:9090"]
+
+# ################################ #
+# Pure Storage FlashArray Number 1 #
+# ################################ #
+# Create a single scrape job for each selected metric endpoint per FlashArray.
+# It is NOT recommended to scrape the root /metrics endpoint as it can be an expensive query.
+# Scrape job for Pure Storage FlashArray 1 scraping /metrics/array
+  - job_name: 'purefa_array_arrayname01'
+    metrics_path: /metrics/array
+    # Bearer authorization token
+    authorization:
+      credentials: a12345bc6-d78e-901f-23a4-56b07b89012
+    params:
+      endpoint: ['arrayname01.fqdn.com']
+
+    static_configs:
+    # purefa openmetrics exporter
+    - targets:
+      - 10.0.2.10:9490
+      labels:
+        location: uk
+        site: London
+        instance: arrayname01
+        env: production
+
+# Scrape job for Pure Storage FlashArray 1 scraping /metrics/volumes
+  - job_name: 'purefa_volumes_arrayname01'
+    metrics_path: /metrics/volumes
+    # Bearer authorization token
+    authorization:
+      credentials: a12345bc6-d78e-901f-23a4-56b07b89012
+    params:
+      endpoint: ['arrayname01.fqdn.com']
+
+# Scrape job for Pure Storage FlashArray 1 scraping /metrics/hosts
+  - job_name: 'purefa_hosts_arrayname01'
+    metrics_path: /metrics/hosts
+    # Bearer authorization token
+    authorization:
+      credentials: a12345bc6-d78e-901f-23a4-56b07b89012
+    params:
+      endpoint: ['arrayname01.fqdn.com']
+
+    static_configs:
+    # purefa openmetrics exporter
+    - targets:
+      - 10.0.2.10:9490
+      labels:
+        instance: arrayname01
+        location: uk
+        site: London
+        env: production
+
+# Scrape job for Pure Storage FlashArray 1 scraping /metrics/pods
+  - job_name: 'purefa_pods_arrayname01'
+    metrics_path: /metrics/pods
+    # Bearer authorization token
+    authorization:
+      credentials: a12345bc6-d78e-901f-23a4-56b07b89012
+    params:
+      endpoint: ['arrayname01.fqdn.com']
+
+    static_configs:
+    # purefa openmetrics exporter
+    - targets:
+      - 10.0.2.10:9490
+      labels:
+        instance: arrayname01
+        location: uk
+        site: London
+        env: production
+
+# Scrape job for Pure Storage FlashArray 1 scraping /metrics/directories
+  - job_name: 'purefa_directories_arrayname01'
+    metrics_path: /metrics/directories
+    # Bearer authorization token
+    authorization:
+      credentials: a12345bc6-d78e-901f-23a4-56b07b89012
+    params:
+      endpoint: ['arrayname01.fqdn.com']
+
+    static_configs:
+    # purefa openmetrics exporter
+    - targets:
+      - 10.0.2.10:9490
+      labels:
+        instance: arrayname01
+        location: uk
+        site: London
+        env: production
+
+# ################################ #
+# Pure Storage FlashArray Number 2 #
+# ################################ #
+# Scrape job for Pure Storage FlashArray 2 scraping /metrics/array
+  - job_name: 'purefa_array_arrayname02'
+    metrics_path: /metrics/array
+    # Bearer authorization token
+    authorization:
+      credentials: a12345bc6-d78e-901f-23a4-56b07b89012
+    params:
+      endpoint: ['arrayname02.fqdn.com']
+
+    static_configs:
+    # purefa openmetrics exporter
+    - targets:
+      - 10.0.2.10:9490
+      labels:
+        location: uk
+        site: London
+        instance: arrayname02
+        env: production
+
+# Scrape job for Pure Storage FlashArray 2 scraping /metrics/volumes
+  - job_name: 'purefa_volumes_arrayname02'
+    metrics_path: /metrics/volumes
+    # Bearer authorization token
+    authorization:
+      credentials: f65432ed1-d78e-901f-23a4-56b07b89012
+    params:
+      endpoint: ['arrayname02.fqdn.com']
+
+# Scrape job for Pure Storage FlashArray 2 scraping /metrics/hosts
+  - job_name: 'purefa_hosts_arrayname02'
+    metrics_path: /metrics/hosts
+    # Bearer authorization token
+    authorization:
+      credentials: f65432ed1-d78e-901f-23a4-56b07b89012
+    params:
+      endpoint: ['arrayname02.fqdn.com']
+
+    static_configs:
+    # purefa openmetrics exporter
+    - targets:
+      - 10.0.2.10:9490
+      labels:
+        instance: arrayname02
+        location: fr
+        site: Paris
+        env: test
+
+# Scrape job for Pure Storage FlashArray 2 scraping /metrics/pods
+  - job_name: 'purefa_pods_arrayname02'
+    metrics_path: /metrics/pods
+    # Bearer authorization token
+    authorization:
+      credentials: f65432ed1-d78e-901f-23a4-56b07b89012
+    params:
+      endpoint: ['arrayname02.fqdn.com']
+
+    static_configs:
+    # purefa openmetrics exporter
+    - targets:
+      - 10.0.2.10:9490
+      labels:
+        instance: arrayname02
+        location: fr
+        site: Paris
+        env: test
+
+# Scrape job for Pure Storage FlashArray 2 scraping /metrics/directories
+  - job_name: 'purefa_directories_arrayname02'
+    metrics_path: /metrics/directories
+    # Bearer authorization token
+    authorization:
+      credentials: f65432ed1-d78e-901f-23a4-56b07b89012
+    params:
+      endpoint: ['arrayname02.fqdn.com']
+
+    static_configs:
+    # purefa openmetrics exporter
+    - targets:
+      - 10.0.2.10:9490
+      labels:
+        instance: arrayname02
+        location: fr
+        site: Paris
+        env: test
