@@ -90,6 +90,7 @@ Depending on the target array, scraping for the whole set of metrics could resul
 
 ### Usage examples
 
+#### Docker 
 In a typical production scenario, it is recommended to use a visual frontend for your metrics, such as [Grafana](https://github.com/grafana/grafana). Grafana allows you to use your Prometheus instance as a datasource, and create Graphs and other visualizations from PromQL queries. Grafana, Prometheus, are all easy to run as docker containers.
 
 To spin up a very basic set of those containers, use the following commands:
@@ -105,7 +106,13 @@ docker run -d -p 3000:3000 --name=grafana -v /tmp/grafana-data:/var/lib/grafana 
 ```
 Please have a look at the documentation of each image/application for adequate configuration examples.
 
-A simple but complete example to deploy a full monitoring stack on kubernetes can be found in the [examples](examples/config/k8s) directory
+#### Kubernetes
+
+A simple but complete example to deploy a full monitoring stack on Kubernetes can be found in the [examples](examples/config/k8s) directory
+
+#### Docker Compose
+
+A complete example monitoring stack implemented in Docker Compose which can be found in the [examples](examples/config/docker) directory. 
 
 ### Metrics Collected
 
