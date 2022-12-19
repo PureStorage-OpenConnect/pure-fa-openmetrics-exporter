@@ -2,7 +2,7 @@ version: '3'
 
 services:
   pure-fa-om-exporter:
-    image: quay.io/purestorage/pure-fa-om-exporter:v1.0.2
+    image: quay.io/purestorage/pure-fa-om-exporter:latest
     command: 
       - '--host=0.0.0.0'
       - '--port=9490'
