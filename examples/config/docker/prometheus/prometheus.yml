@@ -5,9 +5,9 @@ scrape_configs:
   - job_name: 'purestorage-fa'
     metrics_path: /metrics/array
     authorization:
-      credentials: 64f736be-9b7c-d7a5-4f85-16716969c1b1
+      credentials: <YOUR_API_TOKEN>
     params:
-      endpoint: ['10.21.229.28']
+      endpoint: ['<YOUR_FLASHARRAY_IP>']
 
     static_configs:
     - targets:
@@ -21,9 +21,9 @@ scrape_configs:
   - job_name: 'purestorage-fa_volumes'
     metrics_path: /metrics/volumes
     authorization:
-      credentials: 64f736be-9b7c-d7a5-4f85-16716969c1b1
+      credentials: <YOUR_API_TOKEN>
     params:
-      endpoint: ['10.21.229.28']
+      endpoint: ['<YOUR_FLASHARRAY_IP>']
 
     static_configs:
     - targets:
@@ -37,9 +37,9 @@ scrape_configs:
   - job_name: 'purestorage-fa_hosts'
     metrics_path: /metrics/hosts
     authorization:
-      credentials: 64f736be-9b7c-d7a5-4f85-16716969c1b1
+      credentials: <YOUR_API_TOKEN>
     params:
-      endpoint: ['10.21.229.28']
+      endpoint: ['<YOUR_FLASHARRAY_IP>']
 
     static_configs:
     - targets:
