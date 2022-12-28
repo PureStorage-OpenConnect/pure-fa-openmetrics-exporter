@@ -37,4 +37,4 @@ data:
           labels:
             location: uk
             site: London
-            instance: fb-prod-01
+            instance: fa-prod-01
