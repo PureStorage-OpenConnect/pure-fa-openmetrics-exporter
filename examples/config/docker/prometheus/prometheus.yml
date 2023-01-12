@@ -7,7 +7,7 @@ scrape_configs:
     authorization:
       credentials: <YOUR_API_TOKEN>
     params:
-      endpoint: ['<YOUR_FLASHARRAY_IP>']
+      endpoint: YOUR_FLASHARRAY_IP
 
     static_configs:
     - targets:
@@ -23,7 +23,7 @@ scrape_configs:
     authorization:
       credentials: <YOUR_API_TOKEN>
     params:
-      endpoint: ['<YOUR_FLASHARRAY_IP>']
+      endpoint: YOUR_FLASHARRAY_IP
 
     static_configs:
     - targets:
@@ -39,7 +39,39 @@ scrape_configs:
     authorization:
       credentials: <YOUR_API_TOKEN>
     params:
-      endpoint: ['<YOUR_FLASHARRAY_IP>']
+      endpoint: YOUR_FLASHARRAY_IP
+
+    static_configs:
+    - targets:
+      - pure-fa-om-exporter:9490
+      labels:
+        location: US
+        site: TestSite
+        instance: FlashArray1
+        env: 'Test Lab'
+
+  - job_name: 'purestorage-fa_pods'
+    metrics_path: /metrics/pods
+    authorization:
+      credentials: <YOUR_API_TOKEN>
+    params:
+      endpoint: YOUR_FLASHARRAY_IP
+
+    static_configs:
+    - targets:
+      - pure-fa-om-exporter:9490
+      labels:
+        location: US
+        site: TestSite
+        instance: FlashArray1
+        env: 'Test Lab'
+ 
+  - job_name: 'purestorage-fa_directories'
+    metrics_path: /metrics/directories
+    authorization:
+      credentials: <YOUR_API_TOKEN>
+    params:
+      endpoint: YOUR_FLASHARRAY_IP
 
     static_configs:
     - targets:
