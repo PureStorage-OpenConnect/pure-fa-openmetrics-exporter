@@ -6,8 +6,7 @@ This exporter is provided under Best Efforts support by the Pure Portfolio Solut
 
 ## TL;DR
 1. Configure Pure Storage OpenMetrics Exporter ([pure-fa-openmetrics-exporter][1]).
-2. Deploy and configure Prometheus ([prometheus-docs][2]).
-  a. [prometheus.yaml](../prometheus/prometheus.yaml) example
+2. Deploy and configure Prometheus ([prometheus-docs][2]). Example [prometheus.yaml](../prometheus/prometheus.yaml) here.
 3. Deploy and configure Grafana ([grafana-docs][3]).
 4. Import [Pure Storage FlashArray Overview Grafana Dashboard](grafana-purefa-flasharray-overview.json) .json file into Grafana.
 
@@ -158,7 +157,7 @@ Check the data is accessible to each component in the stack. If at any on these 
 ### Check Pure OpenMetrics Exporter
 1. Run cURL against the exporter and pass is the bearer token and endpoint. 
 ```
-curl -H 'Authorization: Bearer a12345bc6-d78e-901f-23a4-56b07b89012' -X GET http://<exporter_ip>:9490/metrics/array?endpoint=arrayname01.fqdn.com
+curl -H 'Authorization: Bearer a12345bc6-d78e-901f-23a4-56b07b89012' -X GET 'http://<exporter_ip>:9490/metrics/array?endpoint=arrayname01.fqdn.com'
 ```
 
 ### Check Prometheus
