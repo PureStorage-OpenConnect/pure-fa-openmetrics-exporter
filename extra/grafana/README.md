@@ -6,9 +6,9 @@ This exporter is provided under Best Efforts support by the Pure Portfolio Solut
 
 ## TL;DR
 1. Configure Pure Storage OpenMetrics Exporter ([pure-fa-openmetrics-exporter][1]).
-2. Deploy and configure Prometheus ([prometheus-docs][2]). Example [prometheus.yaml](../prometheus/prometheus.yaml) here.
+2. Deploy and configure Prometheus ([prometheus-docs][2]). [Example prometheus.yaml here](../prometheus/prometheus.yaml).
 3. Deploy and configure Grafana ([grafana-docs][3]).
-4. Import [Pure Storage FlashArray Overview Grafana Dashboard](grafana-purefa-flasharray-overview.json) .json file into Grafana.
+4. Import [grafana-purefa-flasharray-overview.json](grafana-purefa-flasharray-overview.json) into Grafana.
 
 # Overview
 Take a holistic overview of your Pure Storage FlashArray estate on-premise with Prometheus and Grafana to summarize statistics such as:
@@ -73,7 +73,8 @@ svc-readonly  local  a12345bc6-d78e-901f-23a4-56b07b89012  2022-11-30 08:58:40 E
 ```
 
 3. Configure `/etc/prometheus/prometheus.yaml` to point use the OpenMetrics exporter to query the device endpoint.
-An example of configuring [prometheus.yaml](../prometheus/prometheus.yaml) for scraping FlashArray endpoints is here.
+
+[This is an example of configuring the prometheus.yaml](../prometheus/prometheus.yaml)
 
 Let's take a walkthrough an example of scraping the `/metrics/array` endpoint.
 
@@ -161,26 +162,26 @@ curl -H 'Authorization: Bearer a12345bc6-d78e-901f-23a4-56b07b89012' -X GET 'htt
 ```
 
 ### Check Prometheus
-3. Using the Prometheus UI, run a simple query to see if any results are returned.
+2. Using the Prometheus UI, run a simple query to see if any results are returned.
 <br>
 <img src="./images/prometheus_purefa_simple_query.png" width="40%" height="40%">
 <br>
 
-4. If the query does not return results, check the status of the targets for status errors.
+3. If the query does not return results, check the status of the targets for status errors.
 <br>
 <img src="./images/prometheus_purefa_target_status.png" width="40%" height="40%">
 <br>
-5. Run prometheus.yaml through the yaml checker. Check the configuration is correct and restart Prometheus.
+4. Run prometheus.yaml through the yaml checker. Check the configuration is correct and restart Prometheus.
 ```console
 > promtool check config /etc/prometheus/prometheus.yml
 Checking prometheus.yml
  SUCCESS: prometheus.yml is valid prometheus config file syntax
 ```
 
-6. Check messages log for Prometheus errors.
+5. Check messages log for Prometheus errors.
 
 ### Check Grafana
-7. Perform a simple test for Grafana by navigating to 'Explore' and entering a simple query.
+6. Perform a simple test for Grafana by navigating to 'Explore' and entering a simple query.
 <br>
 <img src="./images/grafana_purefa_simple_query.png" width="40%" height="40%">
 <br>
