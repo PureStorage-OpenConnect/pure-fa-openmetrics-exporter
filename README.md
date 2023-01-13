@@ -170,4 +170,8 @@ Drill down into specific arrays and identify top busy hosts while correlating re
 <img src="extra/grafana/images/grafana_purefa_overview_dash_1.png" width="66%" height="66%">
 <img src="extra/grafana/images/grafana_purefa_overview_dash_2.png" width="33%" height="33%">
 <br>
-For more information on dependencies and notes to deploy, take look at the files in the [extra/grafana/](extra/grafana/) folder and [README.md](extra/grafana/README.md) and an example of prometheus.yaml configuration can be found in [extra/prometheus/](extra/prometheus/) folder.
+For more information on dependencies, and notes to deploy -- take look at the examples for Grafana and Prometheus in the [extra/grafana/](extra/grafana/) and [extra/prometheus/](extra/prometheus/) folders respectively.
+
+# License
+
+This project is licensed under the Apache 2.0 License - see the [LICENSE](LICENSE) file for details
