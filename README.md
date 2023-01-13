@@ -159,7 +159,7 @@ A complete example monitoring stack implemented in Docker Compose which can be f
 |purefa_volume_space_data_reduction_ratio    |FlashArray volume space data reduction               |
 
 ## Monitoring On-Premise with Prometheus and Grafana
-Take a holistic overview of your Pure Storage FlashArray estate on-premise with Prometheus and Grafana to summerise statistics such as:
+Take a holistic overview of your Pure Storage FlashArray estate on-premise with Prometheus and Grafana to summarize statistics such as:
   * FlashArray Utilization
   * Purity OS version
   * Data Reduction Rate
@@ -170,4 +170,4 @@ Drill down into specific arrays and identify top busy hosts while correlating re
 <img src="extra/grafana/images/grafana_purefa_overview_dash_1.png" width="66%" height="66%">
 <img src="extra/grafana/images/grafana_purefa_overview_dash_2.png" width="33%" height="33%">
 <br>
-For more information on dependencies and notes to deploy, take look at the files in the [extra/grafana/](extra/grafana/) folder and [README.md](extra/grafana/README.md)
+For more information on dependencies and notes to deploy, take look at the files in the [extra/grafana/](extra/grafana/) folder and [README.md](extra/grafana/README.md) and an example of prometheus.yaml configuration can be found in [extra/prometheus/](extra/prometheus/) folder.
