@@ -16,15 +16,18 @@ import (
 
 var version string = "1.0.2"
 var debug bool = false
+var allow_secret_parameter bool = false
 
 func main() {
 
 	host := flag.String("host", "0.0.0.0", "Address of the exporter")
 	port := flag.Int("port", 9490, "Port of the exporter")
 	d := flag.Bool("debug", false, "Debug")
+	sp := flag.Bool("secret_parameter", false, "allows api key to be provided as GET parameter")
 	flag.Parse()
 	addr := fmt.Sprintf("%s:%d", *host, *port)
 	debug = *d
+	allow_secret_parameter = *sp
 	log.Printf("Start Pure FlashArray exporter v%s on %s", version, addr)
 
 	http.HandleFunc("/", index)
@@ -76,17 +79,27 @@ func metricsHandler(w http.ResponseWriter, r *http.Request) {
 	if apiver == "" {
 		apiver = "latest"
 	}
-	authHeader := r.Header.Get("Authorization")
-	authFields := strings.Fields(authHeader)
-	if len(authFields) != 2 || strings.ToLower(authFields[0]) != "bearer" {
-		http.Error(w, "Target authorization token is missing", http.StatusBadRequest)
-		return
+
+	apitoken := ""
+
+	if allow_secret_parameter {
+		apitoken = params.Get("api_token")
 	}
-	apitoken := authFields[1]
+
+	// if a get parameter is not supplied, use header
+	if apitoken == "" {
+		authHeader := r.Header.Get("Authorization")
+		authFields := strings.Fields(authHeader)
+		if len(authFields) != 2 || strings.ToLower(authFields[0]) != "bearer" {
+			http.Error(w, "Target authorization token is missing", http.StatusBadRequest)
+			return
+		}
+		apitoken = authFields[1]
+	}
 
 	registry := prometheus.NewRegistry()
 	faclient := client.NewRestClient(endpoint, apitoken, apiver, debug)
-        if faclient.Error != nil {
+	if faclient.Error != nil {
 		http.Error(w, "Error connecting to FlashArray. Check your management endpoint and/or api token are correct.", http.StatusBadRequest)
 		return
 	}
