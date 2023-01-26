@@ -24,8 +24,8 @@ This document describes the semantic conventions for Pure FlashArray Metrics.
 | -------------------- | ------------------------ | ----------------------------------------------------------- |
 | /metrics             | Full array metrics       | all                                                         |
 | /metrics/array       | Array only metrics       | `purefa_info`, `purefa_alerts`, `purefa_array`, `purefa_hw` |
-| /metrics/directories | Directories only metrics | `purefa_info`, `purefa_directory `                         |
-| /metrics/hosts       | Hosts only metrics       | `purefa_info`, `purefa_host `                              |
+| /metrics/directories | Directories only metrics | `purefa_info`, `purefa_directory`                         |
+| /metrics/hosts       | Hosts only metrics       | `purefa_info`, `purefa_host`                              |
 | /metrics/pods        | Pods only metrics        | `purefa_info`, `purefa_pod`                                 |
 | /metrics/volumes     | Volumes only metrics     | `purefa_info`, `purefa_volume`                              |
 
