@@ -78,7 +78,7 @@ This document describes the semantic conventions for Pure FlashArray Metrics.
 
 ### `purefa_hw` - Hardware metrics
 
-**Description:** TODO
+**Description:** FlashArray hardware metrics
 | Name                                    | Description                               | Units | Instrument Type ([*](README.md#instrument-types)) | Value Type | Attribute Key | Attribute Values                                 |
 | --------------------------------------- | ----------------------------------------- | ----- | ------------------------------------------------- | ---------- | ------------- | ------------------------------------------------ |
 | purefa_hw_component_status              | FlashArray hardware component status      | unit  | Gauge                                             | int        |               | component_name, component_type, component_status |
