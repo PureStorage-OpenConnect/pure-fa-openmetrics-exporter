@@ -114,6 +114,6 @@ func (fa *FAClient) RefreshSession() *FAClient {
 		return fa
 	}
 	fa.XAuthToken = res.Header().Get("x-auth-token")
-	fa.RestClient.SetHeader("x-auth-token", fa.XAuthToken)
+	fa.RestClient.R().SetHeader("x-auth-token", fa.XAuthToken)
 	return fa
 }
