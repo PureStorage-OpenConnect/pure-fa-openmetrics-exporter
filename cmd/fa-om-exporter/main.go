@@ -14,7 +14,7 @@ import (
 	"github.com/prometheus/client_golang/prometheus/promhttp"
 )
 
-var version string = "1.0.2"
+var version string = "1.0.3"
 var debug bool = false
 
 func main() {
@@ -86,7 +86,7 @@ func metricsHandler(w http.ResponseWriter, r *http.Request) {
 
 	registry := prometheus.NewRegistry()
 	faclient := client.NewRestClient(endpoint, apitoken, apiver, debug)
-        if faclient.Error != nil {
+	if faclient.Error != nil {
 		http.Error(w, "Error connecting to FlashArray. Check your management endpoint and/or api token are correct.", http.StatusBadRequest)
 		return
 	}
