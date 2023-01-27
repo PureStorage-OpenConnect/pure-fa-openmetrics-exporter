@@ -1,12 +1,11 @@
 package collectors
 
-
 import (
 	"fmt"
+	client "purestorage/fa-openmetrics-exporter/internal/rest-client"
 	"strings"
 
 	"github.com/prometheus/client_golang/prometheus"
-	"purestorage/fa-openmetrics-exporter/internal/rest-client"
 )
 
 type AlertsCollector struct {
@@ -25,7 +24,7 @@ func (c *AlertsCollector) Collect(ch chan<- prometheus.Metric) {
 	}
 	al := make(map[string]float64)
 	for _, alert := range alerts.Items {
-		al[fmt.Sprintf("%s,%s,%s", alert.Severity, alert.ComponentType, alert.ComponentName)] += 1
+		al[fmt.Sprintf("%s,%s,%s", alert.ComponentName, alert.ComponentType, alert.Severity)] += 1
 	}
 	for a, n := range al {
 		alert := strings.Split(a, ",")
