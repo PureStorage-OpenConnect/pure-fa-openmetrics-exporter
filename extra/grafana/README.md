@@ -6,10 +6,9 @@ This exporter is provided under Best Efforts support by the Pure Portfolio Solut
 
 ## TL;DR
 1. Configure Pure Storage OpenMetrics Exporter ([pure-fa-openmetrics-exporter][1]).
-2. Deploy and configure Prometheus ([prometheus-docs][2]).
+2. Deploy and configure Prometheus ([prometheus-docs][2]). [Example prometheus.yaml here](../prometheus/prometheus.yaml).
 3. Deploy and configure Grafana ([grafana-docs][3]).
-4. Import Pure Storage dashboards using .json files into Grafana.
-5. Check out the features and default values set in the [Pure Storage FlashArray Overview Grafana Dashboard](grafana-purefa-flasharray-overview.json)
+4. Import [grafana-purefa-flasharray-overview.json](grafana-purefa-flasharray-overview.json) into Grafana.
 
 # Overview
 Take a holistic overview of your Pure Storage FlashArray estate on-premise with Prometheus and Grafana to summarize statistics such as:
@@ -62,7 +61,7 @@ Dashboards may have limited functionality with earlier versions and some modific
 ## Prometheus
 1. Install Prometheus on your chosen OS platform ([prometheus-docs][2]).
 
-2. Generate API token from your chosen user account or create a new readonly user.
+2. Generate an API token from your chosen user account or create a new readonly user.
 ```console
 pureuser@arrayname01> pureadmin create --role readonly svc-readonly
  Name          Type   Role    
@@ -74,7 +73,8 @@ svc-readonly  local  a12345bc6-d78e-901f-23a4-56b07b89012  2022-11-30 08:58:40 E
 ```
 
 3. Configure `/etc/prometheus/prometheus.yaml` to point use the OpenMetrics exporter to query the device endpoint.
-An example of a single FlashArray device configuration is here: [](../prometheus/prometheus.yaml)
+
+[This is an example of configuring the prometheus.yaml](../prometheus/prometheus.yaml)
 
 Let's take a walkthrough an example of scraping the `/metrics/array` endpoint.
 
@@ -156,33 +156,32 @@ Check the data is accessible to each component in the stack. If at any on these 
   * Check Grafana
 
 ### Check Pure OpenMetrics Exporter
-1. Start by querying the exporter to make sure it is returning results. Use an API query tool such as [Postman](https://www.postman.com/) to query the device directly and retrieve the raw API call.
-  - GET: `http://<exporter_ip>:9490/metrics/array?endpoint=arrayname01.fqdn.com`.
-  - Authorization > Type:Bearer Token: `a12345bc6-d78e-901f-23a4-56b07b89012`.
-<br>
-<img src="./images/postman-purefa-openmetricsexporter-query.png" width="40%" height="40%">
-<br>
-2. Ensure the API authorization token is correct and correctly configured in prometheus.yaml.
+1. Run cURL against the exporter and pass is the bearer token and endpoint. 
+```
+curl -H 'Authorization: Bearer a12345bc6-d78e-901f-23a4-56b07b89012' -X GET 'http://<exporter_ip>:9490/metrics/array?endpoint=arrayname01.fqdn.com'
+```
+
 ### Check Prometheus
-3. Using the Prometheus UI, run a simple query to see if any results are returned.
+2. Using the Prometheus UI, run a simple query to see if any results are returned.
 <br>
 <img src="./images/prometheus_purefa_simple_query.png" width="40%" height="40%">
 <br>
 
-4. If the query does not return results, check the status of the targets for status errors.
+3. If the query does not return results, check the status of the targets for status errors.
 <br>
 <img src="./images/prometheus_purefa_target_status.png" width="40%" height="40%">
 <br>
-5. Run prometheus.yaml through the yaml checker. Check the configuration is correct and restart Prometheus.
+4. Run prometheus.yaml through the yaml checker. Check the configuration is correct and restart Prometheus.
 ```console
 > promtool check config /etc/prometheus/prometheus.yml
 Checking prometheus.yml
  SUCCESS: prometheus.yml is valid prometheus config file syntax
 ```
-6. Check messages log for Prometheus errors.
+
+5. Check messages log for Prometheus errors.
 
 ### Check Grafana
-7. Perform a simple test for Grafana by navigating to 'Explore' and entering a simple query.
+6. Perform a simple test for Grafana by navigating to 'Explore' and entering a simple query.
 <br>
 <img src="./images/grafana_purefa_simple_query.png" width="40%" height="40%">
 <br>
