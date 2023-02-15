@@ -36,9 +36,12 @@ This document describes the semantic conventions for Pure FlashArray Metrics.
 
 **Description:** FlashArray System Information
 
-| Name        | Description                   | Units | Metric Type ([*](https://github.com/OpenObservability/OpenMetrics/blob/main/specification/OpenMetrics.md#metric-types)) | Value Type | Attribute Key | Attribute Values                           |
-| ----------- | ----------------------------- | ----- | ----------------------------------------------------------------------------------------------------------------------- | ---------- | ------------- | ------------------------------------------ |
-| purefa_info | FlashArray system information |       | Gauge                                                                                                                   | Double     |               | `array_name`, `os`, `system_id`, `version` |
+| Name        | Description                   | Units | Metric Type ([*](https://github.com/OpenObservability/OpenMetrics/blob/main/specification/OpenMetrics.md#metric-types)) | Value Type | Attribute Key | Attribute Values       |
+| ----------- | ----------------------------- | ----- | ----------------------------------------------------------------------------------------------------------------------- | ---------- | ------------- | ---------------------- |
+| purefa_info | FlashArray system information |       | Gauge                                                                                                                   | Double     | `array_name`    | (name)                 |
+|             |                               |       |                                                                                                                         |            | `os`          | (array os name)        |
+|             |                               |       |                                                                                                                         |            | `system_id`   | (array system id)      |
+|             |                               |       |                                                                                                                         |            | `version`     | (array purity version) |
 
 
 ### `purefa_alerts` - FlashArray Alerts Information
