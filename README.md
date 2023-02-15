@@ -116,6 +116,8 @@ A complete example monitoring stack implemented in Docker Compose which can be f
 
 ### Metrics Collected
 
+Please refer to the [purefa metrics specification](specification/metrics/purefa-metrics.md) for full details about all metrics.
+
 | Metric Name                                  | Description                                           |
 | -------------------------------------------- | ----------------------------------------------------- |
 | purefa_info                                  | FlashArray system information                         |
@@ -141,7 +143,6 @@ A complete example monitoring stack implemented in Docker Compose which can be f
 | purefa_host_performance_throughput_iops      | FlashArray host throughput in iops                    |
 | purefa_host_space_bytes                      | FlashArray host space in bytes                        |
 | purefa_host_space_data_reduction_ratio       | FlashArray host space data reduction                  |
-| purefa_host_space_size_bytes                 | FlashArray host volumes size                          |
 | purefa_hw_component_status                   | FlashArray hardware component status                  |
 | purefa_hw_component_temperature_celsius      | FlashArray hardware component temperature in C        |
 | purefa_hw_component_voltage_volt             | FlashArray hardware component voltage                 |
