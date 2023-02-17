@@ -48,9 +48,13 @@ func Collector(ctx context.Context, metrics string, registry *prometheus.Registr
 	if metrics == "all" || metrics == "pods" {
 		podsperfcoll := NewPodsPerformanceCollector(faclient)
 		podsspacecoll := NewPodsSpaceCollector(faclient)
+		podreplinkperfcoll := NewPodReplicaLinksPerformanceCollector(faclient)
+		podreplinklagcoll := NewPodReplicaLinksLagCollector(faclient)
 		registry.MustRegister(
 		           podsperfcoll,
 		           podsspacecoll,
+		           podreplinkperfcoll,
+		           podreplinklagcoll,
 		         )
 	}
 	if metrics == "all" || metrics == "volumes" {

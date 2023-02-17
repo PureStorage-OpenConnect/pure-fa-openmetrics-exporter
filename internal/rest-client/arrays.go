@@ -17,6 +17,22 @@ type Array struct {
 	Version           string            `json:"version"`
 }
 
+type ArrayShort struct {
+        Id                string     `json:"id"`
+        Name              string     `json:"name"`
+        FrozenAt          int        `json:"frozen_at"`
+        MediatorStatus    string     `json:"mediator_status"`
+        PreElected        bool       `json:"pre_elected"`
+        Progress          float64    `json:"progress"`
+        Status            string     `json:"status"`
+}
+
+type ArrayTiny struct {
+        Id      string     `json:"id"`
+        Name    string     `json:"name"`
+}
+
+
 type Encryption struct {
 	DataAtRest    DataAtRest `json:"data_at_rest"`
 	ModuleVersion string     `json:"module_version"`

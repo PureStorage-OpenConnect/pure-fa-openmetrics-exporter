@@ -3,7 +3,7 @@ GOCMD=go
 GOTEST=$(GOCMD) test
 GOVET=$(GOCMD) vet
 BINARY_NAME=pure-fa-om-exporter
-MODULE_NAME=go mod init purestorage/fa-openmetrics-exporter
+MODULE_NAME=purestorage/fa-openmetrics-exporter
 VERSION?=1.0.3
 SERVICE_PORT?=9490
 DOCKER_REGISTRY?= quay.io/purestorage/
@@ -21,12 +21,12 @@ all: help
 
 ## Build:
 init:
-	$(GOCMD) init go mod init $(MODULE_NAME)
+	$(GOCMD) mod init $(MODULE_NAME)
 	$(GOCMD) mod tidy
 
 build: ## Build your project and put the output binary in out/bin/
 	mkdir -p out/bin
-	GO111MODULE=on $(GOCMD) build -o out/bin/$(BINARY_NAME) cmd/fa-om-exporter/main.go
+	CGO_ENABLED=0 GO111MODULE=on $(GOCMD) build -o out/bin/$(BINARY_NAME) cmd/fa-om-exporter/main.go
 
 clean: ## Remove build related file
 	rm -fr ./bin

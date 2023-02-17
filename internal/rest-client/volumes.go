@@ -11,11 +11,6 @@ type PriorityAdjustment struct {
 	PriorityAdjustmentValue      int  `json:"priority_adjustment_value"`
 }
 
-type PodShort struct {
-	Id      string     `json:"id"`
-	Name    string     `json:"name"`
-}
-
 type Source struct {
 	Id      string     `json:"id"`
 	Name    string     `json:"name"`

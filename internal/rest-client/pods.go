@@ -29,6 +29,11 @@ type PodsList struct {
         Total                []Pod    `json:"total"`
 }
 
+type PodShort struct {
+        Id      string     `json:"id"`
+        Name    string     `json:"name"`
+}
+
 func (fa *FAClient) GetPods() *PodsList {
         result := new(PodsList)
         res, err := fa.RestClient.R().
