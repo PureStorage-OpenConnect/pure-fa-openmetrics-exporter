@@ -95,7 +95,7 @@ Arguments:
   -t  --tokens   API token(s) map file
 ```
 
-The array token configuration file must have the following synthax:
+The array token configuration file must have to following syntax:
 
 ```shell
 <array_id1>:

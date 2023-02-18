@@ -26,7 +26,7 @@ func main() {
 
 	parser := argparse.NewParser("pure-fa-om-exporter", "Pure Storage FA OpenMetrics exporter")
 	host := parser.String("a", "address", &argparse.Options{Required: false, Help: "IP address for this exporter to bind to", Default: "0.0.0.0"})
-	port := parser.Int("p", "port", &argparse.Options{Required: false, Help: "Port for this exporter to listen", Default: 9491})
+	port := parser.Int("p", "port", &argparse.Options{Required: false, Help: "Port for this exporter to listen", Default: 9490})
 	d := parser.Flag("d", "debug", &argparse.Options{Required: false, Help: "Enable debug", Default: false})
 	at := parser.File("t", "tokens", os.O_RDONLY, 0600, &argparse.Options{Required: false, Help: "API token(s) map file"})
 	parser.Parse(os.Args)
