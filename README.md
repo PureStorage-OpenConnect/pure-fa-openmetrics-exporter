@@ -81,8 +81,7 @@ The second option allows to provide the FlashArray/api-token key-pair map for a 
 
 ```shell
 
-usage: pure-fa-om-exporter [-h|--help] [-a|--address "<value>"] [-p|--port
-                           <integer>] [-d|--debug] [-t|--tokens <file>]
+usage: pure-fa-om-exporter [-h|--help] [-a|--address "<value>"] [-p|--port <integer>] [-d|--debug] [-t|--tokens <file>]
 
                            Pure Storage FA OpenMetrics exporter
 
@@ -115,14 +114,14 @@ The array token configuration file must have to following syntax:
 The exporter uses a RESTful API schema to provide Prometheus scraping endpoints.
 
 
-URL | GET parameters | Description
----|---|---
-http://\<exporter-host\>:\<port\>/metrics | endpoint | Full array metrics
-http://\<exporter-host\>:\<port\>/metrics/array | endpoint | Array only metrics
-http://\<exporter-host\>:\<port\>/metrics/volumes | endpoint | Volumes only metrics
-http://\<exporter-host\>:\<port\>/metrics/hosts | endpoint | Hosts only metrics
-http://\<exporter-host\>:\<port\>/metrics/pods | endpoint | Pods only metrics
-http://\<exporter-host\>:\<port\>/metrics/directories| endpoint | Directories only metrics
+|URL                                                   |GET parameters |Description              |
+|------------------------------------------------------|---------------|-------------------------|
+|http://\<exporter-host\>:\<port\>/metrics             |endpoint       |Full array metrics       |
+|http://\<exporter-host\>:\<port\>/metrics/array       |endpoint       |Array only metrics       |
+|http://\<exporter-host\>:\<port\>/metrics/volumes     |endpoint       |Volumes only metrics     |
+|http://\<exporter-host\>:\<port\>/metrics/hosts       |endpoint       |Hosts only metrics       |
+|http://\<exporter-host\>:\<port\>/metrics/pods        |endpoint       |Pods only metrics        |
+|http://\<exporter-host\>:\<port\>/metrics/directories |endpoint       |Directories only metrics |
 
 Depending on the target array, scraping for the whole set of metrics could result into timeout issues, in which case it is suggested either to increase the scraping timeout or to scrape each single endpoint instead.
 
@@ -190,8 +189,9 @@ A complete example monitoring stack implemented in Docker Compose which can be f
 |purefa_pod_performance_throughput_iops               |FlashArray pod throughput in iops                           |
 |purefa_pod_space_bytes                               |FlashArray pod space in bytes                               |
 |purefa_pod_space_data_reduction_ratio                |FlashArray pod space data reduction                         |
+|purefa_pod_performance_replication_bandwidth_bytes   |FlashArray pod replication bandwidth in bytes per second    |
 |purefa_pod_replica_links_performance_bandwidth_bytes |FlashArray pod replica links throughput in bytes per second |
-|purefa_pod_replica_links_lag_avg_sec                 |FlashArray pod replica links average lag in seconds         |
+|purefa_pod_replica_links_lag_average_sec             |FlashArray pod replica links average lag in seconds         |
 |purefa_pod_replica_links_lag_max_sec                 |FlashArray pod replica links maximum lag in seconds         |
 |purefa_volume_performance_average_bytes              |FlashArray volume average operations size in bytes          |
 |purefa_volume_performance_bandwidth_bytes            |FlashArray volume throughput in bytes per second            |

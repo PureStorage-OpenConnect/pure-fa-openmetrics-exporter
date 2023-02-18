@@ -56,10 +56,11 @@ type ArraysList struct {
 }
 
 func (fa *FAClient) GetArrays() *ArraysList {
+	uri := "/arrays"
 	result := new(ArraysList)
 	res, err := fa.RestClient.R().
 		SetResult(&result).
-		Get("/arrays")
+		Get(uri)
 	if err != nil {
 		fa.Error = err
 	}
@@ -68,7 +69,7 @@ func (fa *FAClient) GetArrays() *ArraysList {
 	}
 	res, err = fa.RestClient.R().
 		SetResult(&result).
-		Get("/arrays")
+		Get(uri)
 	if err != nil {
 		fa.Error = err
 	}

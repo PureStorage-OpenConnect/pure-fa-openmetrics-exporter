@@ -42,10 +42,11 @@ type VolumesPerformanceList struct {
 }
 
 func (fa *FAClient) GetVolumesPerformance() *VolumesPerformanceList {
+	uri := "/volumes/performance"
         result := new(VolumesPerformanceList)
         res, err := fa.RestClient.R().
                 SetResult(&result).
-                Get("/volumes/performance")
+                Get(uri)
 
         if err != nil {
                 fa.Error = err
@@ -55,7 +56,7 @@ func (fa *FAClient) GetVolumesPerformance() *VolumesPerformanceList {
         }
         res, err = fa.RestClient.R().
                 SetResult(&result).
-                Get("/volumes/performance")
+                Get(uri)
         if err != nil {
                 fa.Error = err
         }

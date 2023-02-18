@@ -193,7 +193,7 @@ func NewPodsPerformanceCollector(fa *client.FAClient) *PodsPerformanceCollector 
 		),
 		BandwidthDesc: prometheus.NewDesc(
 			"purefa_pod_performance_bandwidth_bytes",
-			"FlashArray pod throughput",
+			"FlashArray pod bandwidth",
 			[]string{"name", "dimension"},
 			prometheus.Labels{},
 		),

@@ -26,10 +26,11 @@ type PodReplicaLinksLagList struct {
 }
 
 func (fa *FAClient) GetPodReplicaLinksLag() *PodReplicaLinksLagList {
+	uri := "/pod-replica-links/lag"
         result := new(PodReplicaLinksLagList)
         res, err := fa.RestClient.R().
                 SetResult(&result).
-                Get("/pod-replica-links/lag")
+                Get(uri)
 
         if err != nil {
                 fa.Error = err
@@ -39,7 +40,7 @@ func (fa *FAClient) GetPodReplicaLinksLag() *PodReplicaLinksLagList {
         }
         res, err = fa.RestClient.R().
                 SetResult(&result).
-                Get("/pod-replica-links/lag")
+                Get(uri)
         if err != nil {
                 fa.Error = err
         }

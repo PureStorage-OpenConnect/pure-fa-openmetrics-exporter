@@ -22,10 +22,11 @@ type PodReplicaLinksPerformanceList struct {
 }
 
 func (fa *FAClient) GetPodReplicaLinksPerformance() *PodReplicaLinksPerformanceList {
+	uri := "/pod-replica-links/performance/replication"
         result := new(PodReplicaLinksPerformanceList)
         res, err := fa.RestClient.R().
                 SetResult(&result).
-                Get("/pod-replica-links/performance/replication")
+                Get(uri)
 
         if err != nil {
                 fa.Error = err
@@ -35,7 +36,7 @@ func (fa *FAClient) GetPodReplicaLinksPerformance() *PodReplicaLinksPerformanceL
         }
         res, err = fa.RestClient.R().
                 SetResult(&result).
-                Get("/pod-replica-links/performance/replication")
+                Get(uri)
         if err != nil {
                 fa.Error = err
         }

@@ -24,10 +24,11 @@ type HardwareList struct {
 }
 
 func (fa *FAClient) GetHardware() *HardwareList {
+	uri := "/hardware"
 	result := new(HardwareList)
 	res, err := fa.RestClient.R().
 		SetResult(&result).
-		Get("/hardware")
+		Get(uri)
 	if err != nil {
 		fa.Error = err
 	}
@@ -36,7 +37,7 @@ func (fa *FAClient) GetHardware() *HardwareList {
         }
 	res, err = fa.RestClient.R().
 		SetResult(&result).
-		Get("/hardware")
+		Get(uri)
         if err != nil {
                 fa.Error = err
         }

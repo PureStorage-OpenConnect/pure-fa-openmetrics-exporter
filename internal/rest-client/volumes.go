@@ -51,10 +51,11 @@ type VolumesList struct {
 }
 
 func (fa *FAClient) GetVolumes() *VolumesList {
+	uri := "/volumes"
         result := new(VolumesList)
         res, err := fa.RestClient.R().
                 SetResult(&result).
-                Get("/volumes")
+                Get(uri)
 
         if err != nil {
                 fa.Error = err
@@ -64,7 +65,7 @@ func (fa *FAClient) GetVolumes() *VolumesList {
         }
         res, err = fa.RestClient.R().
                 SetResult(&result).
-                Get("/volumes")
+                Get(uri)
         if err != nil {
                 fa.Error = err
         }
