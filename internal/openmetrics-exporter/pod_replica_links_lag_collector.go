@@ -40,7 +40,7 @@ func (c *PodReplicaLinksLagCollector) Collect(ch chan<- prometheus.Metric) {
 func NewPodReplicaLinksLagCollector(fa *client.FAClient) *PodReplicaLinksLagCollector {
 	return &PodReplicaLinksLagCollector{
 		AvgLagDesc: prometheus.NewDesc(
-			"purefa_pod_replica_links_lag_avg_sec",
+			"purefa_pod_replica_links_lag_average_sec",
 			"FlashArray pod links average lag seconds",
 			[]string{"remote", "local_pod", "remote_pod", "direction", "status"},
 			prometheus.Labels{},
