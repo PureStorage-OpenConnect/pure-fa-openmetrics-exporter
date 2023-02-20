@@ -2,29 +2,66 @@ package main
 
 import (
 	"context"
-	"flag"
 	"fmt"
 	"log"
 	"net/http"
+	config "purestorage/fa-openmetrics-exporter/internal/config"
 	collectors "purestorage/fa-openmetrics-exporter/internal/openmetrics-exporter"
 	client "purestorage/fa-openmetrics-exporter/internal/rest-client"
 	"strings"
+	"os"
+	"io"
 
+	"gopkg.in/yaml.v3"
+	"github.com/akamensky/argparse"
 	"github.com/prometheus/client_golang/prometheus"
 	"github.com/prometheus/client_golang/prometheus/promhttp"
 )
 
-var version string = "1.0.3"
+var version string = "1.0.4"
 var debug bool = false
+var arraytokens config.FlashArrayList
+
+func FileExists(args []string) error {
+	_, err := os.Stat(args[0])
+	return err
+}
 
 func main() {
 
-	host := flag.String("host", "0.0.0.0", "Address of the exporter")
-	port := flag.Int("port", 9490, "Port of the exporter")
-	d := flag.Bool("debug", false, "Debug")
-	flag.Parse()
-	addr := fmt.Sprintf("%s:%d", *host, *port)
+	parser := argparse.NewParser("pure-fa-om-exporter", "Pure Storage FA OpenMetrics exporter")
+	host := parser.String("a", "address", &argparse.Options{Required: false, Help: "IP address for this exporter to bind to", Default: "0.0.0.0"})
+	port := parser.Int("p", "port", &argparse.Options{Required: false, Help: "Port for this exporter to listen", Default: 9490})
+	d := parser.Flag("d", "debug", &argparse.Options{Required: false, Help: "Enable debug", Default: false})
+	at := parser.File("t", "tokens", os.O_RDONLY, 0600, &argparse.Options{Required: false, Validate: FileExists, Help: "API token(s) map file"})
+	err := parser.Parse(os.Args)
+	if err != nil {
+		log.Fatalf("Error in token file: %v", err)
+	}
+	if !isNilFile(*at) {
+		defer at.Close()
+		buf := make([]byte, 1024)
+		arrlist := ""
+                for {
+			n, err := at.Read(buf)
+			if err == io.EOF {
+				break
+			}
+			if err != nil {
+				log.Fatalf("Reading token file: %v", err)
+			}
+			if n > 0 {	
+				arrlist = arrlist + string(buf[:n])
+			}
+		}
+		buf = []byte(arrlist)
+		err := yaml.Unmarshal(buf, &arraytokens)
+		if err != nil {
+			log.Fatalf("Unmarshalling token file: %v", err)
+		}
+	}
 	debug = *d
+	addr := fmt.Sprintf("%s:%d", *host, *port)
 	log.Printf("Start Pure FlashArray exporter v%s on %s", version, addr)
 
 	http.HandleFunc("/", index)
@@ -78,11 +115,15 @@ func metricsHandler(w http.ResponseWriter, r *http.Request) {
 	}
 	authHeader := r.Header.Get("Authorization")
 	authFields := strings.Fields(authHeader)
-	if len(authFields) != 2 || strings.ToLower(authFields[0]) != "bearer" {
+        
+	apitoken := arraytokens.GetApiToken(endpoint)
+	if len(authFields) == 2 && strings.ToLower(authFields[0]) == "bearer" {
+		apitoken = authFields[1]
+	}
+	if apitoken == "" {
 		http.Error(w, "Target authorization token is missing", http.StatusBadRequest)
 		return
 	}
-	apitoken := authFields[1]
 
 	registry := prometheus.NewRegistry()
 	faclient := client.NewRestClient(endpoint, apitoken, apiver, debug)
@@ -153,4 +194,9 @@ func index(w http.ResponseWriter, r *http.Request) {
 </html>`
 
 	fmt.Fprintf(w, "%s", msg)
+}
+
+func isNilFile(f os.File) bool {
+	var tf os.File
+	return f == tf
 }

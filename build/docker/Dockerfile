@@ -1,4 +1,4 @@
-FROM golang:alpine
+FROM golang:alpine as build
 
 WORKDIR /usr/src/app
 
@@ -7,8 +7,11 @@ COPY go.mod go.sum ./
 RUN go mod download && go mod verify
 
 COPY . .
-RUN go build -v -o /usr/local/bin/pure-fa-om-exporter cmd/fa-om-exporter/main.go
+RUN CGO_ENABLED=1 go build -a -tags 'netgo osusergo static_build' -v -o /usr/local/bin/pure-fa-om-exporter cmd/fa-om-exporter/main.go
 
+FROM scratch
+#FROM busybox:musl
+COPY --from=build  /usr/local/bin/pure-fa-om-exporter /pure-fa-om-exporter
 EXPOSE 9490
-ENTRYPOINT ["/usr/local/bin/pure-fa-om-exporter"]
+ENTRYPOINT ["/pure-fa-om-exporter"]
 CMD ["--host", "0.0.0.0", "--port", "9490"]
