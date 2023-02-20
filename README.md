@@ -75,7 +75,7 @@ Authentication is used by the exporter as the mechanism to cross authenticate to
 - via a configuration map in a specific configuration file.
 
 The first option requires to specify the api-token value as the authorization parameter of the specific job in the Prometheus configuration file.
-The second option allows to provide the FlashArray/api-token key-pair map for a list of arrays in a simple YAML configuration file that is passed as paramether to the exporter. This makes possible to write more concise Prometheus configuration files and also to configure other scrapers that cannot use the HTTP authentication header.
+The second option provides the FlashArray/api-token key-pair map for a list of arrays in a simple YAML configuration file that is passed as paramether to the exporter. This makes possible to write more concise Prometheus configuration files and also to configure other scrapers that cannot use the HTTP authentication header.
 
 ### Usage
 
