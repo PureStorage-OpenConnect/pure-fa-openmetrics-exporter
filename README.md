@@ -89,7 +89,7 @@ Arguments:
 
   -h  --help     Print help information
   -a  --address  IP address for this exporter to bind to. Default: 0.0.0.0
-  -p  --port     Port for this exporter to listen. Default: 9491
+  -p  --port     Port for this exporter to listen. Default: 9490
   -d  --debug    Enable debug. Default: false
   -t  --tokens   API token(s) map file
 ```
