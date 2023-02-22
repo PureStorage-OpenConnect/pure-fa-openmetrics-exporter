@@ -14,4 +14,4 @@ FROM scratch
 COPY --from=build  /usr/local/bin/pure-fa-om-exporter /pure-fa-om-exporter
 EXPOSE 9490
 ENTRYPOINT ["/pure-fa-om-exporter"]
-CMD ["--host", "0.0.0.0", "--port", "9490"]
+CMD ["--address", "0.0.0.0", "--port", "9490"]
