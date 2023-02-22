@@ -13,7 +13,7 @@ We will address these as soon as we can, but there are no specific SLAs.
 
 This application aims to help monitor Pure Storage FlashArrays by providing an "exporter", which means it extracts data from the Purity API and converts it to the OpenMetrics format, which is for instance consumable by Prometheus, or other observability platforms.
 
-The stateless design of the exporter allows for easy configuration management as well as scalability for a whole fleet of Pure Storage arrays. The design follows almost completely the [multi-target-exporter](https://prometheus.io/docs/guides/multi-target-exporter/) pattern described in the Prometheus documentation, so the tool can be used to scrape multiple FlashArrays from a single instance or just act the front-end for a single FlashArray. Each time the OpenMetrics client scrapes metrics for a specific system, it should provide the target array name or IP address via GET parameter to this exporter.
+The stateless design of the exporter allows for easy configuration management as well as scalability for a whole fleet of Pure Storage arrays. The design follows almost completely the [multi-target-exporter](https://prometheus.io/docs/guides/multi-target-exporter/) pattern described in the Prometheus documentation, so the tool can be used to scrape multiple FlashArrays from a single instance or just act the front-end for a single FlashArray.
 
 To monitor your Pure Storage appliances, you will need to create a new dedicated user on your array, and assign read-only permissions to it. Afterwards, you also have to create a new API key.
 
@@ -67,7 +67,7 @@ docker build -t pure-fa-ome:$VERSION .
 ```
 
 
-**Authentication**
+### Authentication
 
 Authentication is used by the exporter as the mechanism to cross authenticate to the scraped appliance, therefore for each array it is required to provide the REST API token for an account that has a 'readonly' role. The api-token can be provided in two ways
 
