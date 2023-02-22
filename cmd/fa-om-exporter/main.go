@@ -3,22 +3,22 @@ package main
 import (
 	"context"
 	"fmt"
+	"io"
 	"log"
 	"net/http"
+	"os"
 	config "purestorage/fa-openmetrics-exporter/internal/config"
 	collectors "purestorage/fa-openmetrics-exporter/internal/openmetrics-exporter"
 	client "purestorage/fa-openmetrics-exporter/internal/rest-client"
 	"strings"
-	"os"
-	"io"
 
-	"gopkg.in/yaml.v3"
 	"github.com/akamensky/argparse"
 	"github.com/prometheus/client_golang/prometheus"
 	"github.com/prometheus/client_golang/prometheus/promhttp"
+	"gopkg.in/yaml.v3"
 )
 
-var version string = "1.0.4"
+var version string = "1.0.4.hotfix1"
 var debug bool = false
 var arraytokens config.FlashArrayList
 
@@ -42,7 +42,7 @@ func main() {
 		defer at.Close()
 		buf := make([]byte, 1024)
 		arrlist := ""
-                for {
+		for {
 			n, err := at.Read(buf)
 			if err == io.EOF {
 				break
@@ -50,7 +50,7 @@ func main() {
 			if err != nil {
 				log.Fatalf("Reading token file: %v", err)
 			}
-			if n > 0 {	
+			if n > 0 {
 				arrlist = arrlist + string(buf[:n])
 			}
 		}
@@ -115,7 +115,7 @@ func metricsHandler(w http.ResponseWriter, r *http.Request) {
 	}
 	authHeader := r.Header.Get("Authorization")
 	authFields := strings.Fields(authHeader)
-        
+
 	apitoken := arraytokens.GetApiToken(endpoint)
 	if len(authFields) == 2 && strings.ToLower(authFields[0]) == "bearer" {
 		apitoken = authFields[1]
