@@ -13,7 +13,7 @@ We will address these as soon as we can, but there are no specific SLAs.
 
 This application aims to help monitor Pure Storage FlashArrays by providing an "exporter", which means it extracts data from the Purity API and converts it to the OpenMetrics format, which is for instance consumable by Prometheus, or other observability platforms.
 
-The stateless design of the exporter allows for easy configuration management as well as scalability for a whole fleet of Pure Storage arrays. Each time the OpenMetrics client scrapes metrics for a specific system, it should provide the hostname via GET parameter and the API token as Authorization token to this exporter.
+The stateless design of the exporter allows for easy configuration management as well as scalability for a whole fleet of Pure Storage arrays. The design follows almost completely the [multi-target-exporter](https://prometheus.io/docs/guides/multi-target-exporter/) pattern described in the Prometheus documentation, so the tool can be used to scrape multiple FlashArrays from a single instance or just act the front-end for a single FlashArray.
 
 To monitor your Pure Storage appliances, you will need to create a new dedicated user on your array, and assign read-only permissions to it. Afterwards, you also have to create a new API key.
 
@@ -67,7 +67,7 @@ docker build -t pure-fa-ome:$VERSION .
 ```
 
 
-**Authentication**
+### Authentication
 
 Authentication is used by the exporter as the mechanism to cross authenticate to the scraped appliance, therefore for each array it is required to provide the REST API token for an account that has a 'readonly' role. The api-token can be provided in two ways
 
@@ -125,6 +125,63 @@ The exporter uses a RESTful API schema to provide Prometheus scraping endpoints.
 
 Depending on the target array, scraping for the whole set of metrics could result into timeout issues, in which case it is suggested either to increase the scraping timeout or to scrape each single endpoint instead.
 
+### Prometheus configuration
+
+A sample of a basic configuration file for Prometheus is as follows.
+
+```shell
+
+global:
+  scrape_interval: 30s
+  scrape_timeout: 10s
+  evaluation_interval: 30s
+scrape_configs:
+- job_name: monitoring/pure-fa-probe
+  honor_timestamps: true
+  scrape_interval: 30s
+  scrape_timeout: 10s
+  metrics_path: /metrics/pods
+  scheme: http
+  follow_redirects: true
+  enable_http2: true
+  relabel_configs:
+  - source_labels: [job]
+    separator: ;
+    regex: (.*)
+    target_label: __tmp_prometheus_job_name
+    replacement: $1
+    action: replace
+  - separator: ;
+    regex: (.*)
+    target_label: job
+    replacement: pure-fa-probe
+    action: replace
+  - source_labels: [__address__]
+    separator: ;
+    regex: (.*)
+    target_label: __param_target
+    replacement: $1
+    action: replace
+  - source_labels: [__param_target]
+    separator: ;
+    regex: (.*)
+    target_label: instance
+    replacement: $1
+    action: replace
+  - separator: ;
+    regex: (.*)
+    target_label: __address__
+    replacement: pure-fa-exporter.your.domain:9490  #  <== your exporter address and port goes here
+    action: replace
+  static_configs:
+  - targets:           #  <== the list of your flasharrays goes here
+    - 10.11.12.80
+    - 10.11.12.82
+    - 10.11.12.90
+
+```
+
+See the kubernetes [examples](examples/config/k8s) for a similar configuration that uses a the additional config for a simple Prometheus kubernets deploymemt or the more interesting Prometheus operator.
 
 ### Usage examples
 

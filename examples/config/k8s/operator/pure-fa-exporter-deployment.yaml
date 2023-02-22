@@ -1,0 +1,58 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: pure-fa-om-exporter
+  namespace: monitoring
+  labels:
+    app: pure-fa-exporter
+spec:
+  replicas: 1
+  strategy:
+    rollingUpdate:
+      maxSurge: 1
+      maxUnavailable: 1
+    type: RollingUpdate
+  selector:
+    matchLabels:
+      app: pure-fa-exporter
+  template:
+    metadata:
+      labels:
+        app: pure-fa-exporter
+    spec:
+      containers:
+      - name: pure-fa-om-exporter
+        image: quay.io/purestorage/pure-fa-om-exporter/pure-fa-om-exporter:1.0.4
+        command: ["/pure-fa-om-exporter"]
+        imagePullPolicy: "Always"
+        args:
+        - '-t'
+        - '/var/pure-fa-om-exporter/api-tokens.yaml'
+        volumeMounts:
+          - mountPath: "/var/pure-fa-om-exporter"
+            name: pure-fa-secret
+            readOnly: true
+        ports:
+        - name: web
+          containerPort: 9490
+      restartPolicy: Always
+      volumes:
+        - name: pure-fa-secret
+          secret:
+            secretName: pure-fa-secret
+
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: pure-fa-exporter-svc
+  namespace: monitoring
+spec:
+  ports:
+  - port: 9490
+    protocol: TCP
+    targetPort: 9490
+  selector:
+    app: pure-fa-exporter
+  type: ClusterIP
