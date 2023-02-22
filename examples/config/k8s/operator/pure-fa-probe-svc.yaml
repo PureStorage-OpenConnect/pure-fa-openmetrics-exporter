@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: pure-fa-exporter-svc
+  namespace: monitoring
+spec:
+  ports:
+  - port: 9490
+    protocol: TCP
+    targetPort: 9490
+  selector:
+    app: pure-fa-exporter
+  type: ClusterIP

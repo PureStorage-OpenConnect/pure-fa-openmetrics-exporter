@@ -171,10 +171,10 @@ scrape_configs:
   - separator: ;
     regex: (.*)
     target_label: __address__
-    replacement: pure-fa-exporter:9490    <== your exporter address and port goes here
+    replacement: pure-fa-exporter.your.domain:9490  #  <== your exporter address and port goes here
     action: replace
   static_configs:
-  - targets:             <== the list of your flasharrays goes here
+  - targets:           #  <== the list of your flasharrays goes here
     - 10.11.12.80
     - 10.11.12.82
     - 10.11.12.90
