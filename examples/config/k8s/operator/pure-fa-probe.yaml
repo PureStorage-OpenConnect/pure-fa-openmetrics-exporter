@@ -3,7 +3,6 @@ kind: Probe
 metadata:
   name: pure-fa-probe
   namespace: monitoring
-
 spec:
   jobName: pure-fa-probe
   prober:
