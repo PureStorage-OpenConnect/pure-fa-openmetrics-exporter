@@ -25,7 +25,7 @@ func (c *PodsPerformanceReplicationCollector) Collect(ch chan<- prometheus.Metri
 			c.BandwidthDesc,
 			prometheus.GaugeValue,
 		        p.ContinuousBytesPerSec.FromRemoteBytesPerSec,
-			"continuos", "from_remote", p.Pod.Name,
+			"continuous", "from_remote", p.Pod.Name,
 		)
 		ch <- prometheus.MustNewConstMetric(
 			c.BandwidthDesc,
@@ -49,7 +49,7 @@ func (c *PodsPerformanceReplicationCollector) Collect(ch chan<- prometheus.Metri
 			c.BandwidthDesc,
 			prometheus.GaugeValue,
 		        p.ContinuousBytesPerSec.ToRemoteBytesPerSec,
-			"continuos", "to_remote", p.Pod.Name,
+			"continuous", "to_remote", p.Pod.Name,
 		)
 		ch <- prometheus.MustNewConstMetric(
 			c.BandwidthDesc,
@@ -73,7 +73,7 @@ func (c *PodsPerformanceReplicationCollector) Collect(ch chan<- prometheus.Metri
 			c.BandwidthDesc,
 			prometheus.GaugeValue,
 		        p.ContinuousBytesPerSec.TotalBytesPerSec,
-			"continuos", "total", p.Pod.Name,
+			"continuous", "total", p.Pod.Name,
 		)
 		ch <- prometheus.MustNewConstMetric(
 			c.BandwidthDesc,
