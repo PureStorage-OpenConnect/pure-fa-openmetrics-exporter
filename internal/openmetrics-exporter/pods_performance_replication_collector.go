@@ -25,73 +25,73 @@ func (c *PodsPerformanceReplicationCollector) Collect(ch chan<- prometheus.Metri
 			c.BandwidthDesc,
 			prometheus.GaugeValue,
 		        p.ContinuousBytesPerSec.FromRemoteBytesPerSec,
-			"from_remote", "continuos", p.Pod.Name,
+			"continuos", "from_remote", p.Pod.Name,
 		)
 		ch <- prometheus.MustNewConstMetric(
 			c.BandwidthDesc,
 			prometheus.GaugeValue,
 		        p.ResyncBytesPerSec.FromRemoteBytesPerSec,
-			"from_remote", "resync", p.Pod.Name,
+			"resync", "from_remote", p.Pod.Name,
 		)
 		ch <- prometheus.MustNewConstMetric(
 			c.BandwidthDesc,
 			prometheus.GaugeValue,
 		        p.SyncBytesPerSec.FromRemoteBytesPerSec,
-			"from_remote", "sync", p.Pod.Name,
+			"sync", "from_remote", p.Pod.Name,
 		)
 		ch <- prometheus.MustNewConstMetric(
 			c.BandwidthDesc,
 			prometheus.GaugeValue,
 		        p.PeriodicBytesPerSec.FromRemoteBytesPerSec,
-			"from_remote", "periodic", p.Pod.Name,
+			"periodic", "from_remote", p.Pod.Name,
 		)
 		ch <- prometheus.MustNewConstMetric(
 			c.BandwidthDesc,
 			prometheus.GaugeValue,
 		        p.ContinuousBytesPerSec.ToRemoteBytesPerSec,
-			"to_remote", "continuos", p.Pod.Name,
+			"continuos", "to_remote", p.Pod.Name,
 		)
 		ch <- prometheus.MustNewConstMetric(
 			c.BandwidthDesc,
 			prometheus.GaugeValue,
 		        p.ResyncBytesPerSec.ToRemoteBytesPerSec,
-			"to_remote", "resync", p.Pod.Name,
+			"resync", "to_remote", p.Pod.Name,
 		)
 		ch <- prometheus.MustNewConstMetric(
 			c.BandwidthDesc,
 			prometheus.GaugeValue,
 		        p.SyncBytesPerSec.ToRemoteBytesPerSec,
-			"to_remote", "sync", p.Pod.Name,
+			"sync", "to_remote", p.Pod.Name,
 		)
 		ch <- prometheus.MustNewConstMetric(
 			c.BandwidthDesc,
 			prometheus.GaugeValue,
 		        p.PeriodicBytesPerSec.ToRemoteBytesPerSec,
-			"to_remote", "periodic", p.Pod.Name,
+			"periodic", "to_remote", p.Pod.Name,
 		)
 		ch <- prometheus.MustNewConstMetric(
 			c.BandwidthDesc,
 			prometheus.GaugeValue,
 		        p.ContinuousBytesPerSec.TotalBytesPerSec,
-			"total", "continuos", p.Pod.Name,
+			"continuos", "total", p.Pod.Name,
 		)
 		ch <- prometheus.MustNewConstMetric(
 			c.BandwidthDesc,
 			prometheus.GaugeValue,
 		        p.ResyncBytesPerSec.TotalBytesPerSec,
-			"total", "resync", p.Pod.Name,
+			"resync", "total", p.Pod.Name,
 		)
 		ch <- prometheus.MustNewConstMetric(
 			c.BandwidthDesc,
 			prometheus.GaugeValue,
 		        p.SyncBytesPerSec.TotalBytesPerSec,
-			"total", "sync", p.Pod.Name,
+			"sync", "total", p.Pod.Name,
 		)
 		ch <- prometheus.MustNewConstMetric(
 			c.BandwidthDesc,
 			prometheus.GaugeValue,
 		        p.PeriodicBytesPerSec.TotalBytesPerSec,
-			"total", "periodic", p.Pod.Name,
+			"periodic", "total", p.Pod.Name,
 		)
 	}
 }

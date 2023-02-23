@@ -9,6 +9,7 @@ import (
 type PodsSpaceCollector struct {
 	ReductionDesc *prometheus.Desc
 	SpaceDesc     *prometheus.Desc
+	MediatorDesc  *prometheus.Desc
 	Client        *client.FAClient
 }
 
@@ -22,6 +23,7 @@ func (c *PodsSpaceCollector) Collect(ch chan<- prometheus.Metric) {
 		return
 	}
 	for _, h := range pods.Items {
+		var s float64
 		ch <- prometheus.MustNewConstMetric(
 			c.ReductionDesc,
 			prometheus.GaugeValue,
@@ -112,6 +114,19 @@ func (c *PodsSpaceCollector) Collect(ch chan<- prometheus.Metric) {
 			h.Space.TotalEffective,
 			h.Name, "total_effective",
 		)
+		for _, a := range h.Arrays {
+			if a.MediatorStatus == "online" {
+				s = 1
+			} else {
+				s = 0
+			}
+			ch <- prometheus.MustNewConstMetric(
+				c.MediatorDesc,
+				prometheus.GaugeValue,
+				s,
+				a.Name, h.Mediator, h.Name, a.MediatorStatus,
+			)
+		}
         }
 }
 
@@ -127,6 +142,12 @@ func NewPodsSpaceCollector(fa *client.FAClient) *PodsSpaceCollector {
 			"purefa_pod_space_bytes",
 			"FlashArray pod space in bytes",
 			[]string{"name", "space"},
+			prometheus.Labels{},
+		),
+		MediatorDesc: prometheus.NewDesc(
+			"purefa_pod_mediator_status",
+			"FlashArray pod space in bytes",
+			[]string{"array", "mediator", "pod", "status"},
 			prometheus.Labels{},
 		),
 		Client: fa,

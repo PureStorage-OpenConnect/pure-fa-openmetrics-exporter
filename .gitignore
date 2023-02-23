@@ -22,3 +22,4 @@ out/
 
 # Ignore macos DS_Store ghost files
 .DS_Store
+bin/

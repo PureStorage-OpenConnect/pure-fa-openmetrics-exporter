@@ -7,7 +7,7 @@ scrape_configs:
     authorization:
       credentials: <YOUR_API_TOKEN>
     params:
-      endpoint: YOUR_FLASHARRAY_IP
+      endpoint: [<YOUR_FLASHARRAY_IP>]
 
     static_configs:
     - targets:
@@ -23,7 +23,7 @@ scrape_configs:
     authorization:
       credentials: <YOUR_API_TOKEN>
     params:
-      endpoint: YOUR_FLASHARRAY_IP
+      endpoint: [<YOUR_FLASHARRAY_IP>]
 
     static_configs:
     - targets:
@@ -39,7 +39,7 @@ scrape_configs:
     authorization:
       credentials: <YOUR_API_TOKEN>
     params:
-      endpoint: YOUR_FLASHARRAY_IP
+      endpoint: [<YOUR_FLASHARRAY_IP>]
 
     static_configs:
     - targets:
@@ -55,7 +55,7 @@ scrape_configs:
     authorization:
       credentials: <YOUR_API_TOKEN>
     params:
-      endpoint: YOUR_FLASHARRAY_IP
+      endpoint: [<YOUR_FLASHARRAY_IP>]
 
     static_configs:
     - targets:
@@ -71,7 +71,7 @@ scrape_configs:
     authorization:
       credentials: <YOUR_API_TOKEN>
     params:
-      endpoint: YOUR_FLASHARRAY_IP
+      endpoint: [<YOUR_FLASHARRAY_IP>]
 
     static_configs:
     - targets:
