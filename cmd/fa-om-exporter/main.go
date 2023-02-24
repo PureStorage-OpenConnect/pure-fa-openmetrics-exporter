@@ -18,7 +18,7 @@ import (
 	"gopkg.in/yaml.v3"
 )
 
-var version string = "1.0.4.hotfix2"
+var version string = "1.0.5"
 var debug bool = false
 var arraytokens config.FlashArrayList
 

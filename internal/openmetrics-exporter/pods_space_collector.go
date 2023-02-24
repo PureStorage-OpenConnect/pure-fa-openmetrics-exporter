@@ -146,7 +146,7 @@ func NewPodsSpaceCollector(fa *client.FAClient) *PodsSpaceCollector {
 		),
 		MediatorDesc: prometheus.NewDesc(
 			"purefa_pod_mediator_status",
-			"FlashArray pod space in bytes",
+			"FlashArray pod mediator status",
 			[]string{"array", "mediator", "pod", "status"},
 			prometheus.Labels{},
 		),
