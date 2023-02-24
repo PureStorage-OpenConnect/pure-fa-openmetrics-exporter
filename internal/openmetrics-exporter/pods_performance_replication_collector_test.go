@@ -37,19 +37,18 @@ func TestPodsPerformanceReplicationCollector(t *testing.T) {
 	defer server.Close()
 	want := make(map[string]bool)
 	for _, p := range pods.Items {
-		want[fmt.Sprintf("label:<name:\"dimension\" value:\"from_remote\" > label:<name:\"direction\" value:\"continuos\" > label:<name:\"name\" value:\"%s\" > gauge:<value:%g > ", p.Pod.Name, p.ContinuousBytesPerSec.FromRemoteBytesPerSec)] = true
-		want[fmt.Sprintf("label:<name:\"dimension\" value:\"from_remote\" > label:<name:\"direction\" value:\"resync\" > label:<name:\"name\" value:\"%s\" > gauge:<value:%g > ", p.Pod.Name, p.ResyncBytesPerSec.FromRemoteBytesPerSec)] = true
-		want[fmt.Sprintf("label:<name:\"dimension\" value:\"from_remote\" > label:<name:\"direction\" value:\"sync\" > label:<name:\"name\" value:\"%s\" > gauge:<value:%g > ", p.Pod.Name, p.SyncBytesPerSec.FromRemoteBytesPerSec)] = true
-		want[fmt.Sprintf("label:<name:\"dimension\" value:\"from_remote\" > label:<name:\"direction\" value:\"periodic\" > label:<name:\"name\" value:\"%s\" > gauge:<value:%g > ", p.Pod.Name, p.PeriodicBytesPerSec.FromRemoteBytesPerSec)] = true
-		want[fmt.Sprintf("label:<name:\"dimension\" value:\"to_remote\" > label:<name:\"direction\" value:\"continuos\" > label:<name:\"name\" value:\"%s\" > gauge:<value:%g > ", p.Pod.Name, p.ContinuousBytesPerSec.ToRemoteBytesPerSec)] = true
-		want[fmt.Sprintf("label:<name:\"dimension\" value:\"to_remote\" > label:<name:\"direction\" value:\"resync\" > label:<name:\"name\" value:\"%s\" > gauge:<value:%g > ", p.Pod.Name, p.ResyncBytesPerSec.ToRemoteBytesPerSec)] = true
-		want[fmt.Sprintf("label:<name:\"dimension\" value:\"to_remote\" > label:<name:\"direction\" value:\"sync\" > label:<name:\"name\" value:\"%s\" > gauge:<value:%g > ", p.Pod.Name, p.SyncBytesPerSec.ToRemoteBytesPerSec)] = true
-		want[fmt.Sprintf("label:<name:\"dimension\" value:\"to_remote\" > label:<name:\"direction\" value:\"periodic\" > label:<name:\"name\" value:\"%s\" > gauge:<value:%g > ", p.Pod.Name, p.PeriodicBytesPerSec.ToRemoteBytesPerSec)] = true
-
-		want[fmt.Sprintf("label:<name:\"dimension\" value:\"total\" > label:<name:\"direction\" value:\"continuos\" > label:<name:\"name\" value:\"%s\" > gauge:<value:%g > ", p.Pod.Name, p.ContinuousBytesPerSec.TotalBytesPerSec)] = true
-		want[fmt.Sprintf("label:<name:\"dimension\" value:\"total\" > label:<name:\"direction\" value:\"resync\" > label:<name:\"name\" value:\"%s\" > gauge:<value:%g > ", p.Pod.Name, p.ResyncBytesPerSec.TotalBytesPerSec)] = true
-		want[fmt.Sprintf("label:<name:\"dimension\" value:\"total\" > label:<name:\"direction\" value:\"sync\" > label:<name:\"name\" value:\"%s\" > gauge:<value:%g > ", p.Pod.Name, p.SyncBytesPerSec.TotalBytesPerSec)] = true
-		want[fmt.Sprintf("label:<name:\"dimension\" value:\"total\" > label:<name:\"direction\" value:\"periodic\" > label:<name:\"name\" value:\"%s\" > gauge:<value:%g > ", p.Pod.Name, p.PeriodicBytesPerSec.TotalBytesPerSec)] = true
+		want[fmt.Sprintf("label:<name:\"dimension\" value:\"continuous\" > label:<name:\"direction\" value:\"from_remote\" > label:<name:\"name\" value:\"%s\" > gauge:<value:%g > ", p.Pod.Name, p.ContinuousBytesPerSec.FromRemoteBytesPerSec)] = true
+		want[fmt.Sprintf("label:<name:\"dimension\" value:\"resync\" > label:<name:\"direction\" value:\"from_remote\" > label:<name:\"name\" value:\"%s\" > gauge:<value:%g > ", p.Pod.Name, p.ResyncBytesPerSec.FromRemoteBytesPerSec)] = true
+		want[fmt.Sprintf("label:<name:\"dimension\" value:\"sync\" > label:<name:\"direction\" value:\"from_remote\" > label:<name:\"name\" value:\"%s\" > gauge:<value:%g > ", p.Pod.Name, p.SyncBytesPerSec.FromRemoteBytesPerSec)] = true
+		want[fmt.Sprintf("label:<name:\"dimension\" value:\"periodic\" > label:<name:\"direction\" value:\"from_remote\" > label:<name:\"name\" value:\"%s\" > gauge:<value:%g > ", p.Pod.Name, p.PeriodicBytesPerSec.FromRemoteBytesPerSec)] = true
+		want[fmt.Sprintf("label:<name:\"dimension\" value:\"continuous\" > label:<name:\"direction\" value:\"to_remote\" > label:<name:\"name\" value:\"%s\" > gauge:<value:%g > ", p.Pod.Name, p.ContinuousBytesPerSec.ToRemoteBytesPerSec)] = true
+		want[fmt.Sprintf("label:<name:\"dimension\" value:\"resync\" > label:<name:\"direction\" value:\"to_remote\" > label:<name:\"name\" value:\"%s\" > gauge:<value:%g > ", p.Pod.Name, p.ResyncBytesPerSec.ToRemoteBytesPerSec)] = true
+		want[fmt.Sprintf("label:<name:\"dimension\" value:\"sync\" > label:<name:\"direction\" value:\"to_remote\" > label:<name:\"name\" value:\"%s\" > gauge:<value:%g > ", p.Pod.Name, p.SyncBytesPerSec.ToRemoteBytesPerSec)] = true
+		want[fmt.Sprintf("label:<name:\"dimension\" value:\"periodic\" > label:<name:\"direction\" value:\"to_remote\" > label:<name:\"name\" value:\"%s\" > gauge:<value:%g > ", p.Pod.Name, p.PeriodicBytesPerSec.ToRemoteBytesPerSec)] = true
+		want[fmt.Sprintf("label:<name:\"dimension\" value:\"continuous\" > label:<name:\"direction\" value:\"total\" > label:<name:\"name\" value:\"%s\" > gauge:<value:%g > ", p.Pod.Name, p.ContinuousBytesPerSec.TotalBytesPerSec)] = true
+		want[fmt.Sprintf("label:<name:\"dimension\" value:\"resync\" > label:<name:\"direction\" value:\"total\" > label:<name:\"name\" value:\"%s\" > gauge:<value:%g > ", p.Pod.Name, p.ResyncBytesPerSec.TotalBytesPerSec)] = true
+		want[fmt.Sprintf("label:<name:\"dimension\" value:\"sync\" > label:<name:\"direction\" value:\"total\" > label:<name:\"name\" value:\"%s\" > gauge:<value:%g > ", p.Pod.Name, p.SyncBytesPerSec.TotalBytesPerSec)] = true
+		want[fmt.Sprintf("label:<name:\"dimension\" value:\"periodic\" > label:<name:\"direction\" value:\"total\" > label:<name:\"name\" value:\"%s\" > gauge:<value:%g > ", p.Pod.Name, p.PeriodicBytesPerSec.TotalBytesPerSec)] = true
 	}
 	c := client.NewRestClient(e, "fake-api-token", "latest", false)
 	pc := NewPodsPerformanceReplicationCollector(c)

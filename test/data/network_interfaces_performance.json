@@ -1,0 +1,850 @@
+{
+  "continuation_token": null,
+  "items": [
+    {
+      "eth": {
+        "other_errors_per_sec": 0,
+        "received_bytes_per_sec": 53350,
+        "received_crc_errors_per_sec": 0,
+        "received_frame_errors_per_sec": 0,
+        "received_packets_per_sec": 501,
+        "total_errors_per_sec": 0,
+        "transmitted_bytes_per_sec": 51332,
+        "transmitted_carrier_errors_per_sec": null,
+        "transmitted_dropped_errors_per_sec": 0,
+        "transmitted_packets_per_sec": 471
+      },
+      "fc": {
+        "received_bytes_per_sec": null,
+        "received_crc_errors_per_sec": null,
+        "total_errors_per_sec": null,
+        "transmitted_bytes_per_sec": null,
+        "received_frames_per_sec": null,
+        "received_link_failures_per_sec": null,
+        "received_loss_of_signal_per_sec": null,
+        "received_loss_of_sync_per_sec": null,
+        "transmitted_frames_per_sec": null,
+        "transmitted_invalid_words_per_sec": null
+      },
+      "time": 1677202089215,
+      "name": "ct1.eth3",
+      "interface_type": "eth"
+    },
+    {
+      "eth": {
+        "other_errors_per_sec": 0,
+        "received_bytes_per_sec": 715569,
+        "received_crc_errors_per_sec": 0,
+        "received_frame_errors_per_sec": 0,
+        "received_packets_per_sec": 511,
+        "total_errors_per_sec": 0,
+        "transmitted_bytes_per_sec": 11676,
+        "transmitted_carrier_errors_per_sec": null,
+        "transmitted_dropped_errors_per_sec": 0,
+        "transmitted_packets_per_sec": 124
+      },
+      "fc": {
+        "received_bytes_per_sec": null,
+        "received_crc_errors_per_sec": null,
+        "total_errors_per_sec": null,
+        "transmitted_bytes_per_sec": null,
+        "received_frames_per_sec": null,
+        "received_link_failures_per_sec": null,
+        "received_loss_of_signal_per_sec": null,
+        "received_loss_of_sync_per_sec": null,
+        "transmitted_frames_per_sec": null,
+        "transmitted_invalid_words_per_sec": null
+      },
+      "time": 1677202089215,
+      "name": "ct1.eth4",
+      "interface_type": "eth"
+    },
+    {
+      "eth": {
+        "other_errors_per_sec": 0,
+        "received_bytes_per_sec": 83332,
+        "received_crc_errors_per_sec": 0,
+        "received_frame_errors_per_sec": 0,
+        "received_packets_per_sec": 70,
+        "total_errors_per_sec": 0,
+        "transmitted_bytes_per_sec": 2369,
+        "transmitted_carrier_errors_per_sec": null,
+        "transmitted_dropped_errors_per_sec": 0,
+        "transmitted_packets_per_sec": 25
+      },
+      "fc": {
+        "received_bytes_per_sec": null,
+        "received_crc_errors_per_sec": null,
+        "total_errors_per_sec": null,
+        "transmitted_bytes_per_sec": null,
+        "received_frames_per_sec": null,
+        "received_link_failures_per_sec": null,
+        "received_loss_of_signal_per_sec": null,
+        "received_loss_of_sync_per_sec": null,
+        "transmitted_frames_per_sec": null,
+        "transmitted_invalid_words_per_sec": null
+      },
+      "time": 1677202089215,
+      "name": "ct1.eth5",
+      "interface_type": "eth"
+    },
+    {
+      "eth": {
+        "other_errors_per_sec": 0,
+        "received_bytes_per_sec": 2364,
+        "received_crc_errors_per_sec": 0,
+        "received_frame_errors_per_sec": 0,
+        "received_packets_per_sec": 24,
+        "total_errors_per_sec": 0,
+        "transmitted_bytes_per_sec": 3125,
+        "transmitted_carrier_errors_per_sec": 0,
+        "transmitted_dropped_errors_per_sec": 0,
+        "transmitted_packets_per_sec": 7
+      },
+      "fc": {
+        "received_bytes_per_sec": null,
+        "received_crc_errors_per_sec": null,
+        "total_errors_per_sec": null,
+        "transmitted_bytes_per_sec": null,
+        "received_frames_per_sec": null,
+        "received_link_failures_per_sec": null,
+        "received_loss_of_signal_per_sec": null,
+        "received_loss_of_sync_per_sec": null,
+        "transmitted_frames_per_sec": null,
+        "transmitted_invalid_words_per_sec": null
+      },
+      "time": 1677202089215,
+      "name": "ct1.eth0",
+      "interface_type": "eth"
+    },
+    {
+      "eth": {
+        "other_errors_per_sec": 0,
+        "received_bytes_per_sec": 0,
+        "received_crc_errors_per_sec": 0,
+        "received_frame_errors_per_sec": 0,
+        "received_packets_per_sec": 0,
+        "total_errors_per_sec": 0,
+        "transmitted_bytes_per_sec": 0,
+        "transmitted_carrier_errors_per_sec": 0,
+        "transmitted_dropped_errors_per_sec": 0,
+        "transmitted_packets_per_sec": 0
+      },
+      "fc": {
+        "received_bytes_per_sec": null,
+        "received_crc_errors_per_sec": null,
+        "total_errors_per_sec": null,
+        "transmitted_bytes_per_sec": null,
+        "received_frames_per_sec": null,
+        "received_link_failures_per_sec": null,
+        "received_loss_of_signal_per_sec": null,
+        "received_loss_of_sync_per_sec": null,
+        "transmitted_frames_per_sec": null,
+        "transmitted_invalid_words_per_sec": null
+      },
+      "time": 1677202089215,
+      "name": "ct1.eth1",
+      "interface_type": "eth"
+    },
+    {
+      "eth": {
+        "other_errors_per_sec": 0,
+        "received_bytes_per_sec": 67,
+        "received_crc_errors_per_sec": 0,
+        "received_frame_errors_per_sec": 0,
+        "received_packets_per_sec": 1,
+        "total_errors_per_sec": 0,
+        "transmitted_bytes_per_sec": 161,
+        "transmitted_carrier_errors_per_sec": null,
+        "transmitted_dropped_errors_per_sec": 0,
+        "transmitted_packets_per_sec": 1
+      },
+      "fc": {
+        "received_bytes_per_sec": null,
+        "received_crc_errors_per_sec": null,
+        "total_errors_per_sec": null,
+        "transmitted_bytes_per_sec": null,
+        "received_frames_per_sec": null,
+        "received_link_failures_per_sec": null,
+        "received_loss_of_signal_per_sec": null,
+        "received_loss_of_sync_per_sec": null,
+        "transmitted_frames_per_sec": null,
+        "transmitted_invalid_words_per_sec": null
+      },
+      "time": 1677202089215,
+      "name": "ct1.eth15",
+      "interface_type": "eth"
+    },
+    {
+      "eth": {
+        "other_errors_per_sec": 0,
+        "received_bytes_per_sec": 75,
+        "received_crc_errors_per_sec": 0,
+        "received_frame_errors_per_sec": 0,
+        "received_packets_per_sec": 1,
+        "total_errors_per_sec": 0,
+        "transmitted_bytes_per_sec": 161,
+        "transmitted_carrier_errors_per_sec": null,
+        "transmitted_dropped_errors_per_sec": 0,
+        "transmitted_packets_per_sec": 1
+      },
+      "fc": {
+        "received_bytes_per_sec": null,
+        "received_crc_errors_per_sec": null,
+        "total_errors_per_sec": null,
+        "transmitted_bytes_per_sec": null,
+        "received_frames_per_sec": null,
+        "received_link_failures_per_sec": null,
+        "received_loss_of_signal_per_sec": null,
+        "received_loss_of_sync_per_sec": null,
+        "transmitted_frames_per_sec": null,
+        "transmitted_invalid_words_per_sec": null
+      },
+      "time": 1677202089215,
+      "name": "ct1.eth14",
+      "interface_type": "eth"
+    },
+    {
+      "eth": {
+        "other_errors_per_sec": 0,
+        "received_bytes_per_sec": 61524,
+        "received_crc_errors_per_sec": 0,
+        "received_frame_errors_per_sec": 0,
+        "received_packets_per_sec": 568,
+        "total_errors_per_sec": 0,
+        "transmitted_bytes_per_sec": 61738,
+        "transmitted_carrier_errors_per_sec": null,
+        "transmitted_dropped_errors_per_sec": 0,
+        "transmitted_packets_per_sec": 494
+      },
+      "fc": {
+        "received_bytes_per_sec": null,
+        "received_crc_errors_per_sec": null,
+        "total_errors_per_sec": null,
+        "transmitted_bytes_per_sec": null,
+        "received_frames_per_sec": null,
+        "received_link_failures_per_sec": null,
+        "received_loss_of_signal_per_sec": null,
+        "received_loss_of_sync_per_sec": null,
+        "transmitted_frames_per_sec": null,
+        "transmitted_invalid_words_per_sec": null
+      },
+      "time": 1677202089215,
+      "name": "ct1.eth2",
+      "interface_type": "eth"
+    },
+    {
+      "eth": {
+        "other_errors_per_sec": 0,
+        "received_bytes_per_sec": 0,
+        "received_crc_errors_per_sec": 0,
+        "received_frame_errors_per_sec": 0,
+        "received_packets_per_sec": 0,
+        "total_errors_per_sec": 0,
+        "transmitted_bytes_per_sec": 0,
+        "transmitted_carrier_errors_per_sec": 0,
+        "transmitted_dropped_errors_per_sec": 0,
+        "transmitted_packets_per_sec": 0
+      },
+      "fc": {
+        "received_bytes_per_sec": null,
+        "received_crc_errors_per_sec": null,
+        "total_errors_per_sec": null,
+        "transmitted_bytes_per_sec": null,
+        "received_frames_per_sec": null,
+        "received_link_failures_per_sec": null,
+        "received_loss_of_signal_per_sec": null,
+        "received_loss_of_sync_per_sec": null,
+        "transmitted_frames_per_sec": null,
+        "transmitted_invalid_words_per_sec": null
+      },
+      "time": 1677202083472,
+      "name": "ct0.eth1",
+      "interface_type": "eth"
+    },
+    {
+      "eth": {
+        "other_errors_per_sec": 0,
+        "received_bytes_per_sec": 32,
+        "received_crc_errors_per_sec": 0,
+        "received_frame_errors_per_sec": 0,
+        "received_packets_per_sec": 1,
+        "total_errors_per_sec": 0,
+        "transmitted_bytes_per_sec": 174,
+        "transmitted_carrier_errors_per_sec": null,
+        "transmitted_dropped_errors_per_sec": 0,
+        "transmitted_packets_per_sec": 2
+      },
+      "fc": {
+        "received_bytes_per_sec": null,
+        "received_crc_errors_per_sec": null,
+        "total_errors_per_sec": null,
+        "transmitted_bytes_per_sec": null,
+        "received_frames_per_sec": null,
+        "received_link_failures_per_sec": null,
+        "received_loss_of_signal_per_sec": null,
+        "received_loss_of_sync_per_sec": null,
+        "transmitted_frames_per_sec": null,
+        "transmitted_invalid_words_per_sec": null
+      },
+      "time": 1677202083472,
+      "name": "ct0.eth15",
+      "interface_type": "eth"
+    },
+    {
+      "eth": {
+        "other_errors_per_sec": 0,
+        "received_bytes_per_sec": 1990,
+        "received_crc_errors_per_sec": 0,
+        "received_frame_errors_per_sec": 0,
+        "received_packets_per_sec": 23,
+        "total_errors_per_sec": 0,
+        "transmitted_bytes_per_sec": 2609,
+        "transmitted_carrier_errors_per_sec": 0,
+        "transmitted_dropped_errors_per_sec": 0,
+        "transmitted_packets_per_sec": 5
+      },
+      "fc": {
+        "received_bytes_per_sec": null,
+        "received_crc_errors_per_sec": null,
+        "total_errors_per_sec": null,
+        "transmitted_bytes_per_sec": null,
+        "received_frames_per_sec": null,
+        "received_link_failures_per_sec": null,
+        "received_loss_of_signal_per_sec": null,
+        "received_loss_of_sync_per_sec": null,
+        "transmitted_frames_per_sec": null,
+        "transmitted_invalid_words_per_sec": null
+      },
+      "time": 1677202083472,
+      "name": "ct0.eth0",
+      "interface_type": "eth"
+    },
+    {
+      "eth": {
+        "other_errors_per_sec": 0,
+        "received_bytes_per_sec": 32,
+        "received_crc_errors_per_sec": 0,
+        "received_frame_errors_per_sec": 0,
+        "received_packets_per_sec": 1,
+        "total_errors_per_sec": 0,
+        "transmitted_bytes_per_sec": 174,
+        "transmitted_carrier_errors_per_sec": null,
+        "transmitted_dropped_errors_per_sec": 0,
+        "transmitted_packets_per_sec": 2
+      },
+      "fc": {
+        "received_bytes_per_sec": null,
+        "received_crc_errors_per_sec": null,
+        "total_errors_per_sec": null,
+        "transmitted_bytes_per_sec": null,
+        "received_frames_per_sec": null,
+        "received_link_failures_per_sec": null,
+        "received_loss_of_signal_per_sec": null,
+        "received_loss_of_sync_per_sec": null,
+        "transmitted_frames_per_sec": null,
+        "transmitted_invalid_words_per_sec": null
+      },
+      "time": 1677202083472,
+      "name": "ct0.eth14",
+      "interface_type": "eth"
+    },
+    {
+      "eth": {
+        "other_errors_per_sec": 0,
+        "received_bytes_per_sec": 69570,
+        "received_crc_errors_per_sec": 0,
+        "received_frame_errors_per_sec": 0,
+        "received_packets_per_sec": 58,
+        "total_errors_per_sec": 0,
+        "transmitted_bytes_per_sec": 1837,
+        "transmitted_carrier_errors_per_sec": null,
+        "transmitted_dropped_errors_per_sec": 0,
+        "transmitted_packets_per_sec": 19
+      },
+      "fc": {
+        "received_bytes_per_sec": null,
+        "received_crc_errors_per_sec": null,
+        "total_errors_per_sec": null,
+        "transmitted_bytes_per_sec": null,
+        "received_frames_per_sec": null,
+        "received_link_failures_per_sec": null,
+        "received_loss_of_signal_per_sec": null,
+        "received_loss_of_sync_per_sec": null,
+        "transmitted_frames_per_sec": null,
+        "transmitted_invalid_words_per_sec": null
+      },
+      "time": 1677202083472,
+      "name": "ct0.eth5",
+      "interface_type": "eth"
+    },
+    {
+      "eth": {
+        "other_errors_per_sec": 0,
+        "received_bytes_per_sec": 33902,
+        "received_crc_errors_per_sec": 0,
+        "received_frame_errors_per_sec": 0,
+        "received_packets_per_sec": 31,
+        "total_errors_per_sec": 0,
+        "transmitted_bytes_per_sec": 1033,
+        "transmitted_carrier_errors_per_sec": null,
+        "transmitted_dropped_errors_per_sec": 0,
+        "transmitted_packets_per_sec": 10
+      },
+      "fc": {
+        "received_bytes_per_sec": null,
+        "received_crc_errors_per_sec": null,
+        "total_errors_per_sec": null,
+        "transmitted_bytes_per_sec": null,
+        "received_frames_per_sec": null,
+        "received_link_failures_per_sec": null,
+        "received_loss_of_signal_per_sec": null,
+        "received_loss_of_sync_per_sec": null,
+        "transmitted_frames_per_sec": null,
+        "transmitted_invalid_words_per_sec": null
+      },
+      "time": 1677202083472,
+      "name": "ct0.eth4",
+      "interface_type": "eth"
+    },
+    {
+      "eth": {
+        "other_errors_per_sec": 0,
+        "received_bytes_per_sec": 52096,
+        "received_crc_errors_per_sec": 0,
+        "received_frame_errors_per_sec": 0,
+        "received_packets_per_sec": 489,
+        "total_errors_per_sec": 0,
+        "transmitted_bytes_per_sec": 46999,
+        "transmitted_carrier_errors_per_sec": null,
+        "transmitted_dropped_errors_per_sec": 0,
+        "transmitted_packets_per_sec": 415
+      },
+      "fc": {
+        "received_bytes_per_sec": null,
+        "received_crc_errors_per_sec": null,
+        "total_errors_per_sec": null,
+        "transmitted_bytes_per_sec": null,
+        "received_frames_per_sec": null,
+        "received_link_failures_per_sec": null,
+        "received_loss_of_signal_per_sec": null,
+        "received_loss_of_sync_per_sec": null,
+        "transmitted_frames_per_sec": null,
+        "transmitted_invalid_words_per_sec": null
+      },
+      "time": 1677202083472,
+      "name": "ct0.eth3",
+      "interface_type": "eth"
+    },
+    {
+      "eth": {
+        "other_errors_per_sec": 0,
+        "received_bytes_per_sec": 52010,
+        "received_crc_errors_per_sec": 0,
+        "received_frame_errors_per_sec": 0,
+        "received_packets_per_sec": 488,
+        "total_errors_per_sec": 0,
+        "transmitted_bytes_per_sec": 48001,
+        "transmitted_carrier_errors_per_sec": null,
+        "transmitted_dropped_errors_per_sec": 0,
+        "transmitted_packets_per_sec": 430
+      },
+      "fc": {
+        "received_bytes_per_sec": null,
+        "received_crc_errors_per_sec": null,
+        "total_errors_per_sec": null,
+        "transmitted_bytes_per_sec": null,
+        "received_frames_per_sec": null,
+        "received_link_failures_per_sec": null,
+        "received_loss_of_signal_per_sec": null,
+        "received_loss_of_sync_per_sec": null,
+        "transmitted_frames_per_sec": null,
+        "transmitted_invalid_words_per_sec": null
+      },
+      "time": 1677202083472,
+      "name": "ct0.eth2",
+      "interface_type": "eth"
+    },
+    {
+      "eth": {
+        "other_errors_per_sec": null,
+        "received_bytes_per_sec": null,
+        "received_crc_errors_per_sec": null,
+        "received_frame_errors_per_sec": null,
+        "received_packets_per_sec": null,
+        "total_errors_per_sec": null,
+        "transmitted_bytes_per_sec": null,
+        "transmitted_carrier_errors_per_sec": null,
+        "transmitted_dropped_errors_per_sec": null,
+        "transmitted_packets_per_sec": null
+      },
+      "fc": {
+        "received_bytes_per_sec": 353896,
+        "received_crc_errors_per_sec": 0,
+        "total_errors_per_sec": 0,
+        "transmitted_bytes_per_sec": 316360,
+        "received_frames_per_sec": 2494,
+        "received_link_failures_per_sec": 0,
+        "received_loss_of_signal_per_sec": 0,
+        "received_loss_of_sync_per_sec": 0,
+        "transmitted_frames_per_sec": 2324,
+        "transmitted_invalid_words_per_sec": 0
+      },
+      "time": 1677202090825,
+      "name": "CT1.FC0",
+      "interface_type": "fc"
+    },
+    {
+      "eth": {
+        "other_errors_per_sec": null,
+        "received_bytes_per_sec": null,
+        "received_crc_errors_per_sec": null,
+        "received_frame_errors_per_sec": null,
+        "received_packets_per_sec": null,
+        "total_errors_per_sec": null,
+        "transmitted_bytes_per_sec": null,
+        "transmitted_carrier_errors_per_sec": null,
+        "transmitted_dropped_errors_per_sec": null,
+        "transmitted_packets_per_sec": null
+      },
+      "fc": {
+        "received_bytes_per_sec": 318832,
+        "received_crc_errors_per_sec": 0,
+        "total_errors_per_sec": 0,
+        "transmitted_bytes_per_sec": 309504,
+        "received_frames_per_sec": 2123,
+        "received_link_failures_per_sec": 0,
+        "received_loss_of_signal_per_sec": 0,
+        "received_loss_of_sync_per_sec": 0,
+        "transmitted_frames_per_sec": 1962,
+        "transmitted_invalid_words_per_sec": 0
+      },
+      "time": 1677202090825,
+      "name": "CT1.FC1",
+      "interface_type": "fc"
+    },
+    {
+      "eth": {
+        "other_errors_per_sec": null,
+        "received_bytes_per_sec": null,
+        "received_crc_errors_per_sec": null,
+        "received_frame_errors_per_sec": null,
+        "received_packets_per_sec": null,
+        "total_errors_per_sec": null,
+        "transmitted_bytes_per_sec": null,
+        "transmitted_carrier_errors_per_sec": null,
+        "transmitted_dropped_errors_per_sec": null,
+        "transmitted_packets_per_sec": null
+      },
+      "fc": {
+        "received_bytes_per_sec": 2983443,
+        "received_crc_errors_per_sec": 0,
+        "total_errors_per_sec": 0,
+        "transmitted_bytes_per_sec": 995605,
+        "received_frames_per_sec": 1779,
+        "received_link_failures_per_sec": 0,
+        "received_loss_of_signal_per_sec": 0,
+        "received_loss_of_sync_per_sec": 0,
+        "transmitted_frames_per_sec": 1204,
+        "transmitted_invalid_words_per_sec": 0
+      },
+      "time": 1677202090825,
+      "name": "CT1.FC2",
+      "interface_type": "fc"
+    },
+    {
+      "eth": {
+        "other_errors_per_sec": null,
+        "received_bytes_per_sec": null,
+        "received_crc_errors_per_sec": null,
+        "received_frame_errors_per_sec": null,
+        "received_packets_per_sec": null,
+        "total_errors_per_sec": null,
+        "transmitted_bytes_per_sec": null,
+        "transmitted_carrier_errors_per_sec": null,
+        "transmitted_dropped_errors_per_sec": null,
+        "transmitted_packets_per_sec": null
+      },
+      "fc": {
+        "received_bytes_per_sec": 153629,
+        "received_crc_errors_per_sec": 0,
+        "total_errors_per_sec": 0,
+        "transmitted_bytes_per_sec": 77208,
+        "received_frames_per_sec": 112,
+        "received_link_failures_per_sec": 0,
+        "received_loss_of_signal_per_sec": 0,
+        "received_loss_of_sync_per_sec": 0,
+        "transmitted_frames_per_sec": 102,
+        "transmitted_invalid_words_per_sec": 0
+      },
+      "time": 1677202090825,
+      "name": "CT1.FC8",
+      "interface_type": "fc"
+    },
+    {
+      "eth": {
+        "other_errors_per_sec": null,
+        "received_bytes_per_sec": null,
+        "received_crc_errors_per_sec": null,
+        "received_frame_errors_per_sec": null,
+        "received_packets_per_sec": null,
+        "total_errors_per_sec": null,
+        "transmitted_bytes_per_sec": null,
+        "transmitted_carrier_errors_per_sec": null,
+        "transmitted_dropped_errors_per_sec": null,
+        "transmitted_packets_per_sec": null
+      },
+      "fc": {
+        "received_bytes_per_sec": 672840,
+        "received_crc_errors_per_sec": 0,
+        "total_errors_per_sec": 0,
+        "transmitted_bytes_per_sec": 496960,
+        "received_frames_per_sec": 431,
+        "received_link_failures_per_sec": 0,
+        "received_loss_of_signal_per_sec": 0,
+        "received_loss_of_sync_per_sec": 0,
+        "transmitted_frames_per_sec": 435,
+        "transmitted_invalid_words_per_sec": 0
+      },
+      "time": 1677202090825,
+      "name": "CT1.FC9",
+      "interface_type": "fc"
+    },
+    {
+      "eth": {
+        "other_errors_per_sec": null,
+        "received_bytes_per_sec": null,
+        "received_crc_errors_per_sec": null,
+        "received_frame_errors_per_sec": null,
+        "received_packets_per_sec": null,
+        "total_errors_per_sec": null,
+        "transmitted_bytes_per_sec": null,
+        "transmitted_carrier_errors_per_sec": null,
+        "transmitted_dropped_errors_per_sec": null,
+        "transmitted_packets_per_sec": null
+      },
+      "fc": {
+        "received_bytes_per_sec": 1703621,
+        "received_crc_errors_per_sec": 0,
+        "total_errors_per_sec": 0,
+        "transmitted_bytes_per_sec": 588777,
+        "received_frames_per_sec": 1012,
+        "received_link_failures_per_sec": 0,
+        "received_loss_of_signal_per_sec": 0,
+        "received_loss_of_sync_per_sec": 0,
+        "transmitted_frames_per_sec": 698,
+        "transmitted_invalid_words_per_sec": 0
+      },
+      "time": 1677202090825,
+      "name": "CT1.FC3",
+      "interface_type": "fc"
+    },
+    {
+      "eth": {
+        "other_errors_per_sec": null,
+        "received_bytes_per_sec": null,
+        "received_crc_errors_per_sec": null,
+        "received_frame_errors_per_sec": null,
+        "received_packets_per_sec": null,
+        "total_errors_per_sec": null,
+        "transmitted_bytes_per_sec": null,
+        "transmitted_carrier_errors_per_sec": null,
+        "transmitted_dropped_errors_per_sec": null,
+        "transmitted_packets_per_sec": null
+      },
+      "fc": {
+        "received_bytes_per_sec": 50553,
+        "received_crc_errors_per_sec": 0,
+        "total_errors_per_sec": 0,
+        "transmitted_bytes_per_sec": 50441,
+        "received_frames_per_sec": 947,
+        "received_link_failures_per_sec": 0,
+        "received_loss_of_signal_per_sec": 0,
+        "received_loss_of_sync_per_sec": 0,
+        "transmitted_frames_per_sec": 946,
+        "transmitted_invalid_words_per_sec": 0
+      },
+      "time": 1677202083877,
+      "name": "CT0.FC1",
+      "interface_type": "fc"
+    },
+    {
+      "eth": {
+        "other_errors_per_sec": null,
+        "received_bytes_per_sec": null,
+        "received_crc_errors_per_sec": null,
+        "received_frame_errors_per_sec": null,
+        "received_packets_per_sec": null,
+        "total_errors_per_sec": null,
+        "transmitted_bytes_per_sec": null,
+        "transmitted_carrier_errors_per_sec": null,
+        "transmitted_dropped_errors_per_sec": null,
+        "transmitted_packets_per_sec": null
+      },
+      "fc": {
+        "received_bytes_per_sec": 50666,
+        "received_crc_errors_per_sec": 0,
+        "total_errors_per_sec": 0,
+        "transmitted_bytes_per_sec": 50666,
+        "received_frames_per_sec": 950,
+        "received_link_failures_per_sec": 0,
+        "received_loss_of_signal_per_sec": 0,
+        "received_loss_of_sync_per_sec": 0,
+        "transmitted_frames_per_sec": 949,
+        "transmitted_invalid_words_per_sec": 0
+      },
+      "time": 1677202083877,
+      "name": "CT0.FC0",
+      "interface_type": "fc"
+    },
+    {
+      "eth": {
+        "other_errors_per_sec": null,
+        "received_bytes_per_sec": null,
+        "received_crc_errors_per_sec": null,
+        "received_frame_errors_per_sec": null,
+        "received_packets_per_sec": null,
+        "total_errors_per_sec": null,
+        "transmitted_bytes_per_sec": null,
+        "transmitted_carrier_errors_per_sec": null,
+        "transmitted_dropped_errors_per_sec": null,
+        "transmitted_packets_per_sec": null
+      },
+      "fc": {
+        "received_bytes_per_sec": 2177368,
+        "received_crc_errors_per_sec": 0,
+        "total_errors_per_sec": 0,
+        "transmitted_bytes_per_sec": 12385,
+        "received_frames_per_sec": 1290,
+        "received_link_failures_per_sec": 0,
+        "received_loss_of_signal_per_sec": 0,
+        "received_loss_of_sync_per_sec": 0,
+        "transmitted_frames_per_sec": 445,
+        "transmitted_invalid_words_per_sec": 0
+      },
+      "time": 1677202083877,
+      "name": "CT0.FC3",
+      "interface_type": "fc"
+    },
+    {
+      "eth": {
+        "other_errors_per_sec": null,
+        "received_bytes_per_sec": null,
+        "received_crc_errors_per_sec": null,
+        "received_frame_errors_per_sec": null,
+        "received_packets_per_sec": null,
+        "total_errors_per_sec": null,
+        "transmitted_bytes_per_sec": null,
+        "transmitted_carrier_errors_per_sec": null,
+        "transmitted_dropped_errors_per_sec": null,
+        "transmitted_packets_per_sec": null
+      },
+      "fc": {
+        "received_bytes_per_sec": 1862342,
+        "received_crc_errors_per_sec": 0,
+        "total_errors_per_sec": 0,
+        "transmitted_bytes_per_sec": 15538,
+        "received_frames_per_sec": 1106,
+        "received_link_failures_per_sec": 0,
+        "received_loss_of_signal_per_sec": 0,
+        "received_loss_of_sync_per_sec": 0,
+        "transmitted_frames_per_sec": 390,
+        "transmitted_invalid_words_per_sec": 0
+      },
+      "time": 1677202083877,
+      "name": "CT0.FC2",
+      "interface_type": "fc"
+    },
+    {
+      "eth": {
+        "other_errors_per_sec": null,
+        "received_bytes_per_sec": null,
+        "received_crc_errors_per_sec": null,
+        "received_frame_errors_per_sec": null,
+        "received_packets_per_sec": null,
+        "total_errors_per_sec": null,
+        "transmitted_bytes_per_sec": null,
+        "transmitted_carrier_errors_per_sec": null,
+        "transmitted_dropped_errors_per_sec": null,
+        "transmitted_packets_per_sec": null
+      },
+      "fc": {
+        "received_bytes_per_sec": 234749,
+        "received_crc_errors_per_sec": 0,
+        "total_errors_per_sec": 0,
+        "transmitted_bytes_per_sec": 328987,
+        "received_frames_per_sec": 133,
+        "received_link_failures_per_sec": 0,
+        "received_loss_of_signal_per_sec": 0,
+        "received_loss_of_sync_per_sec": 0,
+        "transmitted_frames_per_sec": 217,
+        "transmitted_invalid_words_per_sec": 0
+      },
+      "time": 1677202083877,
+      "name": "CT0.FC9",
+      "interface_type": "fc"
+    },
+    {
+      "eth": {
+        "other_errors_per_sec": null,
+        "received_bytes_per_sec": null,
+        "received_crc_errors_per_sec": null,
+        "received_frame_errors_per_sec": null,
+        "received_packets_per_sec": null,
+        "total_errors_per_sec": null,
+        "transmitted_bytes_per_sec": null,
+        "transmitted_carrier_errors_per_sec": null,
+        "transmitted_dropped_errors_per_sec": null,
+        "transmitted_packets_per_sec": null
+      },
+      "fc": {
+        "received_bytes_per_sec": 0,
+        "received_crc_errors_per_sec": 0,
+        "total_errors_per_sec": 0,
+        "transmitted_bytes_per_sec": 0,
+        "received_frames_per_sec": 0,
+        "received_link_failures_per_sec": 0,
+        "received_loss_of_signal_per_sec": 0,
+        "received_loss_of_sync_per_sec": 0,
+        "transmitted_frames_per_sec": 0,
+        "transmitted_invalid_words_per_sec": 0
+      },
+      "time": 1677202083877,
+      "name": "CT0.FC8",
+      "interface_type": "fc"
+    }
+  ],
+  "more_items_remaining": false,
+  "total": [
+    {
+      "eth": {
+        "other_errors_per_sec": 0,
+        "received_bytes_per_sec": 11811231,
+        "received_crc_errors_per_sec": 0,
+        "received_frame_errors_per_sec": 0,
+        "received_packets_per_sec": 3036,
+        "total_errors_per_sec": 0,
+        "transmitted_bytes_per_sec": 3501943,
+        "transmitted_carrier_errors_per_sec": 0,
+        "transmitted_dropped_errors_per_sec": 0,
+        "transmitted_packets_per_sec": 2200
+      },
+      "fc": {
+        "received_bytes_per_sec": 11811231,
+        "received_crc_errors_per_sec": 0,
+        "total_errors_per_sec": 0,
+        "transmitted_bytes_per_sec": 3501943,
+        "received_frames_per_sec": 12386,
+        "received_link_failures_per_sec": 0,
+        "received_loss_of_signal_per_sec": 0,
+        "received_loss_of_sync_per_sec": 0,
+        "transmitted_frames_per_sec": 9681,
+        "transmitted_invalid_words_per_sec": 0
+      },
+      "time": 1677202083877,
+      "name": null,
+      "interface_type": ""
+    }
+  ],
+  "total_item_count": null
+}

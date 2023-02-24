@@ -20,11 +20,13 @@ func Collector(ctx context.Context, metrics string, registry *prometheus.Registr
 		arrayperfcoll := NewArraysPerformanceCollector(faclient)
 		arrayspacecoll := NewArraySpaceCollector(faclient)
 		hwcoll := NewHardwareCollector(faclient)
+		nicsperfcoll := NewNetworkInterfacesPerformanceCollector(faclient)
 		registry.MustRegister(
 		           alertscoll,
 		           arrayperfcoll,
 		           arrayspacecoll,
 		           hwcoll,
+		           nicsperfcoll,
 		         )
 	}
 	if metrics == "all" || metrics == "directories" {
