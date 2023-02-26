@@ -9,8 +9,8 @@ RUN go mod download && go mod verify
 COPY . .
 RUN CGO_ENABLED=1 go build -a -tags 'netgo osusergo static_build' -v -o /usr/local/bin/pure-fa-om-exporter cmd/fa-om-exporter/main.go
 
-FROM scratch
-#FROM busybox:musl
+# alpine is used here as it seems to be the minimal image that passes quay.io vulnerability scan
+FROM alpine
 COPY --from=build  /usr/local/bin/pure-fa-om-exporter /pure-fa-om-exporter
 EXPOSE 9490
 ENTRYPOINT ["/pure-fa-om-exporter"]
