@@ -20,11 +20,13 @@ func Collector(ctx context.Context, metrics string, registry *prometheus.Registr
 		arrayperfcoll := NewArraysPerformanceCollector(faclient)
 		arrayspacecoll := NewArraySpaceCollector(faclient)
 		hwcoll := NewHardwareCollector(faclient)
+		nicsperfcoll := NewNetworkInterfacesPerformanceCollector(faclient)
 		registry.MustRegister(
 		           alertscoll,
 		           arrayperfcoll,
 		           arrayspacecoll,
 		           hwcoll,
+		           nicsperfcoll,
 		         )
 	}
 	if metrics == "all" || metrics == "directories" {
@@ -48,9 +50,15 @@ func Collector(ctx context.Context, metrics string, registry *prometheus.Registr
 	if metrics == "all" || metrics == "pods" {
 		podsperfcoll := NewPodsPerformanceCollector(faclient)
 		podsspacecoll := NewPodsSpaceCollector(faclient)
+		podsperfrepl := NewPodsPerformanceReplicationCollector(faclient)
+		podreplinkperfcoll := NewPodReplicaLinksPerformanceCollector(faclient)
+		podreplinklagcoll := NewPodReplicaLinksLagCollector(faclient)
 		registry.MustRegister(
 		           podsperfcoll,
 		           podsspacecoll,
+		           podsperfrepl,
+		           podreplinkperfcoll,
+		           podreplinklagcoll,
 		         )
 	}
 	if metrics == "all" || metrics == "volumes" {

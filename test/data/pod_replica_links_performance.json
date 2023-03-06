@@ -1,0 +1,70 @@
+{
+  "continuation_token": null,
+  "items": [
+    {
+      "time": 1676117111389,
+      "remotes": [
+        {
+          "name": "z-x20-b",
+          "id": "bdebde62-c6f3-4258-8ab7-340ff736842e"
+        }
+      ],
+      "id": "fadf0713-6b4b-ebc5-5b2c-02be7bcc9896",
+      "bytes_per_sec_from_remote": 0,
+      "bytes_per_sec_to_remote": 253,
+      "bytes_per_sec_total": 253,
+      "local_pod": {
+        "name": "z-eg-ostack",
+        "id": "70a67b8b-4b65-75dc-27e0-e7a183d50059"
+      },
+      "remote_pod": {
+        "name": "z-eg-ostack-adr",
+        "id": "f82de7d5-c83f-5def-048c-6601d06d8a2e"
+      },
+      "direction": "outbound"
+    },
+    {
+      "time": 1676117111389,
+      "remotes": [
+        {
+          "name": "z-x20-b",
+          "id": "bdebde62-c6f3-4258-8ab7-340ff736842e"
+        }
+      ],
+      "id": "b1030853-ae09-7bae-adc2-a2d683c1f41a",
+      "bytes_per_sec_from_remote": 0,
+      "bytes_per_sec_to_remote": 253,
+      "bytes_per_sec_total": 253,
+      "local_pod": {
+        "name": "adrpod",
+        "id": "7d30be1a-2d9e-4e55-9934-45ea20f5c963"
+      },
+      "remote_pod": {
+        "name": "adrpod-dr",
+        "id": "fb001070-ab4b-5e97-fe0f-37d9aae57bdb"
+      },
+      "direction": "outbound"
+    }
+  ],
+  "more_items_remaining": false,
+  "total": [
+    {
+      "time": 1676117111389,
+      "remotes": [],
+      "id": null,
+      "bytes_per_sec_from_remote": 0,
+      "bytes_per_sec_to_remote": 506,
+      "bytes_per_sec_total": 506,
+      "local_pod": {
+        "name": null,
+        "id": null
+      },
+      "remote_pod": {
+        "name": null,
+        "id": null
+      },
+      "direction": null
+    }
+  ],
+  "total_item_count": null
+}

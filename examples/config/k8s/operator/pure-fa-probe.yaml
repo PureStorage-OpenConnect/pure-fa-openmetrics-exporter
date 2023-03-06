@@ -1,0 +1,17 @@
+apiVersion: monitoring.coreos.com/v1
+kind: Probe
+metadata:
+  name: pure-fa-probe
+  namespace: monitoring
+spec:
+  jobName: pure-fa-probe
+  prober:
+    url: pure-fa-exporter-svc:9490
+    path: /metrics/pods
+  interval: 15s
+  targets:
+    staticConfig:
+      static:
+        - 10.11.12.80
+        - 10.11.12.82
+        - 10.11.12.90

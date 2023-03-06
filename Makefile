@@ -3,8 +3,8 @@ GOCMD=go
 GOTEST=$(GOCMD) test
 GOVET=$(GOCMD) vet
 BINARY_NAME=pure-fa-om-exporter
-MODULE_NAME=go mod init purestorage/fa-openmetrics-exporter
-VERSION?=1.0.3
+MODULE_NAME=purestorage/fa-openmetrics-exporter
+VERSION?=1.0.5
 SERVICE_PORT?=9490
 DOCKER_REGISTRY?= quay.io/purestorage/
 EXPORT_RESULT?=false # for CI please set EXPORT_RESULT to true
@@ -21,12 +21,13 @@ all: help
 
 ## Build:
 init:
-	$(GOCMD) init go mod init $(MODULE_NAME)
+	$(GOCMD) mod init $(MODULE_NAME)
 	$(GOCMD) mod tidy
 
-build: ## Build your project and put the output binary in out/bin/
+build: ## Build project and put the output binary in out/bin/
 	mkdir -p out/bin
-	GO111MODULE=on $(GOCMD) build -o out/bin/$(BINARY_NAME) cmd/fa-om-exporter/main.go
+	CGO_ENABLED=0 GO111MODULE=on $(GOCMD) build -a -tags 'netgo osusergo static_build' -o out/bin/$(BINARY_NAME) cmd/fa-om-exporter/main.go
+#	CGO_ENABLED=1 GO111MODULE=on $(GOCMD) build -o out/bin/$(BINARY_NAME) cmd/fa-om-exporter/main.go
 
 clean: ## Remove build related file
 	rm -fr ./bin
