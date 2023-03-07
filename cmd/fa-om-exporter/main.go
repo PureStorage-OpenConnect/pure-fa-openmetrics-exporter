@@ -104,9 +104,9 @@ func metricsHandler(w http.ResponseWriter, r *http.Request) {
 			metrics = "all"
 		}
 	}
-	endpoint := params.Get("endpoint")
+	endpoint := params.Get("target")
 	if endpoint == "" {
-		http.Error(w, "Endpoint parameter is missing", http.StatusBadRequest)
+		http.Error(w, "Target parameter is missing", http.StatusBadRequest)
 		return
 	}
 	apiver := params.Get("api-version")
