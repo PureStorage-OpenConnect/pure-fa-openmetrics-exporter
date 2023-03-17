@@ -255,3 +255,8 @@ Data Reduction Rate also has a threshold set for informational purposes to highl
 [2]: https://prometheus.io/docs/introduction/overview/ "prometheus-docs"
 [3]: https://grafana.com/docs/grafana/latest/ "grafana-docs"
 [4]: https://grafana.com/docs/grafana/latest/administration/data-source-management/ "grafana-datasource"
+
+## Known Issues
+
+### Average Top Latent Volumes Array & IO Type Takes a Long Time to Load or Timesout
+This query is very expensive on Prometheus and the browser. For large environments it may be advisable to use a tabular view or create a recording rule. https://prometheus.io/docs/prometheus/latest/querying/basics/#avoiding-slow-queries-and-overloads
