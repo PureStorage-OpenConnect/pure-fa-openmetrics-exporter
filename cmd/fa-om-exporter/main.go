@@ -18,7 +18,7 @@ import (
 	"gopkg.in/yaml.v3"
 )
 
-var version string = "1.0.5"
+var version string = "development"
 var debug bool = false
 var arraytokens config.FlashArrayList
 
@@ -62,7 +62,7 @@ func main() {
 	}
 	debug = *d
 	addr := fmt.Sprintf("%s:%d", *host, *port)
-	log.Printf("Start Pure FlashArray exporter v%s on %s", version, addr)
+	log.Printf("Start Pure FlashArray exporter %s on %s", version, addr)
 
 	http.HandleFunc("/", index)
 	http.HandleFunc("/metrics/volumes", func(w http.ResponseWriter, r *http.Request) {
