@@ -4,7 +4,7 @@ services:
   pure-fa-om-exporter:
     image: quay.io/purestorage/pure-fa-om-exporter:latest
     command: 
-      - '--host=0.0.0.0'
+      - '--address=0.0.0.0' #latest version of exporter changes this from host to address
       - '--port=9490'
     depends_on: 
       - prometheus
