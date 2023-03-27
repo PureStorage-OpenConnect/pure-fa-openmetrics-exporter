@@ -14,6 +14,7 @@ alerting:
 rule_files:
   # - "first_rules.yml"
   # - "second_rules.yml"
+  # - "purefa_pods_rules.yml"
 
 # A scrape configuration containing exactly one endpoint to scrape:
 # Here it's Prometheus itself

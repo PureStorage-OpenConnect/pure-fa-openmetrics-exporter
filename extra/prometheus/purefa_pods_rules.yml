@@ -1,0 +1,35 @@
+groups:
+   # Rule name
+   - name: purefa_pod_madiator_status
+     # Run run at set interval
+     interval: 60s
+     rules:
+       # Define an alert name
+       - alert: purefa_pod_mediator_status
+         # Define alert expression to trigger alert
+         # If purefa_pod_mediator_status is not equal to '1', trigger rule alert
+         expr: purefa_pod_mediator_status != 1
+         # Define period of time rule must meet expression criteria to reduce multiple triggered alerts
+         for: 5m
+         # Define annotations for alert
+         annotations:
+           title: "Pure FlashArray ActiveCluster Pod Mediator Status Notification"
+           summary: "FlashArray ActiveCluster mediator is unreachable"
+           description: "FlashArray has reported ActiveCluster pod mediator status is unreachable. Check the network connectivity between array and mediator. Array maybe reporting Alert 122, if so see https://support.purestorage.com/FlashArray/PurityFA/PurityFA_Alerts/Self-Help_Alerts/Alert_0122"
+         # Define additional labels such as severity of alert
+         labels:
+           severity: 'critical'
+
+   - name: purefa_pod_performance_latency_usec
+     interval: 60s
+     rules:
+       - alert: purefa_pod_performance_latency_usec
+         # If purefa_pod_performance_latency_usec mirroed write operation is greater than 10ms (ActiveCluster requires maximum 11ms round trip), trigger rule alert
+         expr:  purefa_pod_performance_latency_usec{dimension="usec_per_mirrored_write_op"} > 10000
+         for: 5m
+         annotations:
+           title: "Pure FlashArray Pod Mirrored Write Latency Notification"
+           summary: "FlashArray pod latency threshold exceeded"
+           description: "FlashArray has reported mirrored write operation latency of {{ $value }} microseconds for more than 5 minutes. Check network connectivity health between arrays to prevent disruption to replicated pods."
+         labels:
+           severity: 'warning'

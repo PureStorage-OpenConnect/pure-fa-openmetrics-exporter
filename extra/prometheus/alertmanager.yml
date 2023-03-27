@@ -1,0 +1,30 @@
+global:
+  # Slack Workspace API URL
+  slack_api_url: 'https://hooks.slack.com/services/'
+
+route:
+  # Group Alerts by
+  group_by: ['alertname']
+  group_wait: 30s
+  group_interval: 5m
+  repeat_interval: 1h
+  receiver: 'slack-notifications'
+
+receivers:
+  - name: 'slack-notifications'
+    slack_configs:
+    # Slack Channel Name in Workspace
+    - channel: '#alerts'
+      send_resolved: true
+      icon_emoji: ':prometheus:'
+      # Slack Notification Formatting
+      title: '[{{ .Status | toUpper }}{{ if eq .Status "firing" }}:{{ .Alerts.Firing | len }}{{ end }}] {{ .CommonAnnotations.title }}'
+      text: >-
+        {{ range .Alerts }}
+           *Alert:* {{ .Annotations.summary }} - `{{ .Labels.severity }}`
+          *Description:* {{ .Annotations.description }}
+          *Graph:* <{{ .GeneratorURL }}|:chart_with_upwards_trend:>
+          *Details:*
+          {{ range .Labels.SortedPairs }} • *{{ .Name }}:* `{{ .Value }}`
+          {{ end }}
+        {{ end }}
