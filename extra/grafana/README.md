@@ -6,7 +6,7 @@ This exporter is provided under Best Efforts support by the Pure Portfolio Solut
 
 ## TL;DR
 1. Configure Pure Storage OpenMetrics Exporter ([pure-fa-openmetrics-exporter][1]).
-2. Deploy and configure Prometheus ([prometheus-docs][2]). [Example prometheus.yaml here](../prometheus/prometheus.yaml).
+2. Deploy and configure Prometheus ([prometheus-docs][2]). [Example prometheus.yml here](../prometheus/prometheus.yml).
 3. Deploy and configure Grafana ([grafana-docs][3]).
 4. Import [grafana-purefa-flasharray-overview.json](grafana-purefa-flasharray-overview.json) into Grafana.
 
@@ -72,9 +72,9 @@ Name          Type   API Token                             Created              
 svc-readonly  local  a12345bc6-d78e-901f-23a4-56b07b89012  2022-11-30 08:58:40 EST  -      
 ```
 
-3. Configure `/etc/prometheus/prometheus.yaml` to point use the OpenMetrics exporter to query the device endpoint.
+3. Configure `/etc/prometheus/prometheus.yml` to point use the OpenMetrics exporter to query the device endpoint.
 
-[This is an example of configuring the prometheus.yaml](../prometheus/prometheus.yaml)
+[This is an example of configuring the prometheus.yml](../prometheus/prometheus.yml)
 
 Let's take a walkthrough an example of scraping the `/metrics/array` endpoint.
 
@@ -112,7 +112,7 @@ Let's take a walkthrough an example of scraping the `/metrics/array` endpoint.
 
 # Repeat again for more Pure Storage FlashArrays
 ```
-4. Test the prometheus.yaml file is valid
+4. Test the prometheus.yml file is valid
 ```console
 > promtool check config /etc/prometheus/prometheus.yml
 Checking prometheus.yml
@@ -171,7 +171,7 @@ curl -H 'Authorization: Bearer a12345bc6-d78e-901f-23a4-56b07b89012' -X GET 'htt
 <br>
 <img src="./images/prometheus_purefa_target_status.png" width="40%" height="40%">
 <br>
-4. Run prometheus.yaml through the yaml checker. Check the configuration is correct and restart Prometheus.
+4. Run prometheus.yml through the yaml checker. Check the configuration is correct and restart Prometheus.
 ```console
 > promtool check config /etc/prometheus/prometheus.yml
 Checking prometheus.yml
