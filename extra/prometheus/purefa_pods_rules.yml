@@ -1,3 +1,4 @@
+# This example are for demonstration purposes only, ensure configurations are adjusted to meet the requirements of your solution.
 groups:
    # Rule name
    - name: purefa_pod_madiator_status
