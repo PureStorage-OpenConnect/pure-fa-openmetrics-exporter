@@ -7,11 +7,11 @@ type FlashArray struct {
 
 type FlashArrayList map[string]FlashArray
 
-func (f *FlashArrayList) GetApiToken(addr string) string {
-        for _, a := range *f {
-                if a.Address == addr {
-                        return a.ApiToken
-                }
-        }
-        return ""
+func (f *FlashArrayList) GetArrayParams(fa string) (string, string) {
+	for a_name, a := range *f {
+                if a_name == fa {
+			return a.Address, a.ApiToken
+		}
+	}
+	return "", ""
 }

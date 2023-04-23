@@ -116,9 +116,10 @@ func metricsHandler(w http.ResponseWriter, r *http.Request) {
 	authHeader := r.Header.Get("Authorization")
 	authFields := strings.Fields(authHeader)
 
-	apitoken := arraytokens.GetApiToken(endpoint)
+	address, apitoken := arraytokens.GetArrayParams(endpoint)
 	if len(authFields) == 2 && strings.ToLower(authFields[0]) == "bearer" {
 		apitoken = authFields[1]
+                address = endpoint
 	}
 	if apitoken == "" {
 		http.Error(w, "Target authorization token is missing", http.StatusBadRequest)
@@ -126,7 +127,7 @@ func metricsHandler(w http.ResponseWriter, r *http.Request) {
 	}
 
 	registry := prometheus.NewRegistry()
-	faclient := client.NewRestClient(endpoint, apitoken, apiver, debug)
+	faclient := client.NewRestClient(address, apitoken, apiver, debug)
 	if faclient.Error != nil {
 		http.Error(w, "Error connecting to FlashArray. Check your management endpoint and/or api token are correct.", http.StatusBadRequest)
 		return
