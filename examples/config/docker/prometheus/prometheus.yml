@@ -1,84 +1,50 @@
 global:
-  scrape_interval:     60s
-  scrape_timeout:      50s
+  scrape_interval: 30s
+  scrape_timeout: 10s
+  evaluation_interval: 30s
 scrape_configs:
-  - job_name: 'purestorage-fa'
-    metrics_path: /metrics/array
-    authorization:
-      credentials: <YOUR_API_TOKEN>
-    params:
-      endpoint: [<YOUR_FLASHARRAY_IP>]
-
-    static_configs:
-    - targets:
-      - pure-fa-om-exporter:9490
-      labels:
-        location: US
-        site: TestSite
-        instance: FlashArray1
-        env: 'Test Lab'
-
-  - job_name: 'purestorage-fa_volumes'
-    metrics_path: /metrics/volumes
-    authorization:
-      credentials: <YOUR_API_TOKEN>
-    params:
-      endpoint: [<YOUR_FLASHARRAY_IP>]
-
-    static_configs:
-    - targets:
-      - pure-fa-om-exporter:9490
-      labels:
-        location: US
-        site: TestSite
-        instance: FlashArray1
-        env: 'Test Lab'
-
-  - job_name: 'purestorage-fa_hosts'
-    metrics_path: /metrics/hosts
-    authorization:
-      credentials: <YOUR_API_TOKEN>
-    params:
-      endpoint: [<YOUR_FLASHARRAY_IP>]
-
-    static_configs:
-    - targets:
-      - pure-fa-om-exporter:9490
-      labels:
-        location: US
-        site: TestSite
-        instance: FlashArray1
-        env: 'Test Lab'
-
-  - job_name: 'purestorage-fa_pods'
-    metrics_path: /metrics/pods
-    authorization:
-      credentials: <YOUR_API_TOKEN>
-    params:
-      endpoint: [<YOUR_FLASHARRAY_IP>]
-
-    static_configs:
-    - targets:
-      - pure-fa-om-exporter:9490
-      labels:
-        location: US
-        site: TestSite
-        instance: FlashArray1
-        env: 'Test Lab'
- 
-  - job_name: 'purestorage-fa_directories'
-    metrics_path: /metrics/directories
-    authorization:
-      credentials: <YOUR_API_TOKEN>
-    params:
-      endpoint: [<YOUR_FLASHARRAY_IP>]
-
-    static_configs:
-    - targets:
-      - pure-fa-om-exporter:9490
-      labels:
-        location: US
-        site: TestSite
-        instance: FlashArray1
-        env: 'Test Lab'
- 
+- job_name: monitoring/pure-fa-probe
+  honor_timestamps: true
+  scrape_interval: 30s
+  scrape_timeout: 10s
+  metrics_path: /metrics/array
+  scheme: http
+  follow_redirects: true
+  enable_http2: true
+  relabel_configs:
+  - source_labels: [job]
+    separator: ;
+    regex: (.*)
+    target_label: __tmp_prometheus_job_name
+    replacement: $1
+    action: replace
+  - separator: ;
+    regex: (.*)
+    target_label: job
+    replacement: pure-fa-probe
+    action: replace
+  - source_labels: [__address__]
+    separator: ;
+    regex: (.*)
+    target_label: __param_endpoint
+    replacement: $1
+    action: replace
+  - source_labels: [__param_endpoint]
+    separator: ;
+    regex: (.*)
+    target_label: instance
+    replacement: $1
+    action: replace
+  - separator: ;
+    regex: (.*)
+    target_label: __address__
+    replacement: 10.225.113.63:9490
+    action: replace
+  static_configs:
+  - targets:
+    - x90a
+    - x90b
+    labels:
+      env: Demo Lab
+      location: UK
+      site: Staines
