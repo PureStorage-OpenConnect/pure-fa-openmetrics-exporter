@@ -13,7 +13,7 @@ spec:
     - observability-pure
   endpoints:
   - port: http-metrics
-    interval: 30s
+    interval: 60s
     path: /metrics/array
     bearerTokenSecret:
       name: x-90a-apitoken
@@ -34,7 +34,7 @@ spec:
       - action: labeldrop
         regex: container|endpoint|job|namespace|pod|service
   - port: http-metrics
-    interval: 30s
+    interval: 60s
     path: /metrics/array
     bearerTokenSecret:
       name: x-90b-apitoken

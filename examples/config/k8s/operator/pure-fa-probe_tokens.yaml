@@ -8,7 +8,7 @@ spec:
   prober:
     url: pure-fa-ome-svc:9490
     path: /metrics/array
-  interval: 30s
+  interval: 60s
   targets:
     staticConfig:
       static:
