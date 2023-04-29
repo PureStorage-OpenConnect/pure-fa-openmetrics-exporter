@@ -44,7 +44,6 @@ scrape_configs:
   - targets:
     - x90a
     - x90b
-    - x70a
     labels:
       env: Demo Lab
       location: UK
