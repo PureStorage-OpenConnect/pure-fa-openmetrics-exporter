@@ -6,9 +6,9 @@ metadata:
 spec:
   jobName: pure-fa-probe
   prober:
-    url: pure-fa-exporter-svc:9490
-    path: /metrics/pods
-  interval: 15s
+    url: pure-fa-ome-svc:9490
+    path: /metrics/array
+  interval: 30s
   targets:
     staticConfig:
       static:

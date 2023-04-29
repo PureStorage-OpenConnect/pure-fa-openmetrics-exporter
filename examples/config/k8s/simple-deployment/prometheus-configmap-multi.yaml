@@ -1,0 +1,51 @@
+global:
+  scrape_interval: 30s
+  scrape_timeout: 10s
+  evaluation_interval: 30s
+scrape_configs:
+- job_name: monitoring/pure-fa-probe
+  honor_timestamps: true
+  scrape_interval: 30s
+  scrape_timeout: 10s
+  metrics_path: /metrics/array
+  scheme: http
+  follow_redirects: true
+  enable_http2: true
+  relabel_configs:
+  - source_labels: [job]
+    separator: ;
+    regex: (.*)
+    target_label: __tmp_prometheus_job_name
+    replacement: $1
+    action: replace
+  - separator: ;
+    regex: (.*)
+    target_label: job
+    replacement: pure-fa-probe
+    action: replace
+  - source_labels: [__address__]
+    separator: ;
+    regex: (.*)
+    target_label: __param_endpoint
+    replacement: $1
+    action: replace
+  - source_labels: [__param_endpoint]
+    separator: ;
+    regex: (.*)
+    target_label: instance
+    replacement: $1
+    action: replace
+  - separator: ;
+    regex: (.*)
+    target_label: __address__
+    replacement: 10.225.113.63:9490
+    action: replace
+  static_configs:
+  - targets:
+    - x90a
+    - x90b
+    - x70a
+    labels:
+      env: Demo Lab
+      location: UK
+      site: Staines

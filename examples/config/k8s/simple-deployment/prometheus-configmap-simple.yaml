@@ -1,0 +1,35 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: prometheus-config
+  namespace: monitoring
+data:
+  prometheus.yml: |
+    # Here you may want to set the scrpa interval and timeout according
+    # to the time it takes to the exprter to succesfully return. 
+    global:
+      scrape_interval:     60s
+      scrape_timeout:      50s
+
+    # Alertmanager configuration
+    alerting:
+      alertmanagers:
+      - static_configs:
+        - targets:
+          # - alertmanager:9093
+
+    # A scrape configuration containing exactly one endpoint to scrape:
+    scrape_configs:
+      - job_name: 'purestorage-fa'
+        metrics_path: /metrics
+        authorization:
+          credentials: 2b74f9eb-a35f-40d9-a6a6-33c13775a53c
+        params:
+          endpoint: ['10.11.112.6']
+        static_configs:
+        - targets:
+          - pure-fa-exporter.monitoring.svc:9490
+          labels:
+            location: uk
+            site: London
+            instance: fa-prod-01
