@@ -22,7 +22,7 @@ spec:
     spec:
       containers:
       - name: pure-fa-om-exporter
-        image: quay.io/purestorage/pure-fa-om-exporter/pure-fa-om-exporter
+        image: quay.io/purestorage/pure-fa-om-exporter/pure-fa-om-exporter:latest
         command: ["/pure-fa-om-exporter"]
         imagePullPolicy: "Always"
         args:
