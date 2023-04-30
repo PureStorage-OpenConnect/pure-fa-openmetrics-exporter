@@ -12,7 +12,7 @@
       "name": "VAR_DASHBOARDVERSION",
       "type": "constant",
       "label": "DashboardVersion",
-      "value": "1.0.1",
+      "value": "1.0.3",
       "description": ""
     }
   ],
@@ -22,7 +22,7 @@
       "type": "grafana",
       "id": "grafana",
       "name": "Grafana",
-      "version": "9.4.1"
+      "version": "9.3.2"
     },
     {
       "type": "panel",
@@ -34,7 +34,7 @@
       "type": "datasource",
       "id": "prometheus",
       "name": "Prometheus",
-      "version": "1.0.0"
+      "version": "2.41.0"
     },
     {
       "type": "panel",
@@ -84,7 +84,7 @@
     ]
   },
   "description": "",
-  "editable": true,
+  "editable": false,
   "fiscalYearStartMonth": 0,
   "graphTooltip": 1,
   "id": null,
@@ -96,17 +96,30 @@
         "type": "prometheus",
         "uid": "${DS_PROMETHEUS}"
       },
+      "gridPos": {
+        "h": 4,
+        "w": 6,
+        "x": 0,
+        "y": 0
+      },
       "id": 121,
+      "links": [
+        {
+          "targetBlank": true,
+          "title": "Pure Storage",
+          "url": "http://www.purestorage.com"
+        }
+      ],
       "options": {
         "code": {
           "language": "plaintext",
           "showLineNumbers": false,
           "showMiniMap": false
         },
-        "content": "<img src=\"https://raw.githubusercontent.com/DataDog/integrations-extras/master/purefa/images/widget_logo.png\">",
+        "content": "<img src=\"https://www.purestorage.com/content/dam/purestorage/knowledge/pure-storage.png.imgo.png\" width=\"100%\">",
         "mode": "markdown"
       },
-      "pluginVersion": "9.4.1",
+      "pluginVersion": "9.3.2",
       "type": "text"
     },
     {
@@ -122,10 +135,7 @@
           },
           "custom": {
             "align": "center",
-            "cellOptions": {
-              "mode": "basic",
-              "type": "color-background"
-            },
+            "displayMode": "auto",
             "filterable": false,
             "inspect": false
           },
@@ -180,43 +190,60 @@
                 "value": 125
               },
               {
-                "id": "custom.cellOptions",
+                "id": "custom.displayMode",
+                "value": "color-background"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Capacity"
+            },
+            "properties": [
+              {
+                "id": "unit",
+                "value": "tbytes"
+              },
+              {
+                "id": "custom.width",
+                "value": 95
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Free Space"
+            },
+            "properties": [
+              {
+                "id": "unit",
+                "value": "tbytes"
+              },
+              {
+                "id": "custom.width",
+                "value": 95
+              },
+              {
+                "id": "thresholds",
                 "value": {
-                  "mode": "gradient",
-                  "type": "color-background"
+                  "mode": "absolute",
+                  "steps": [
+                    {
+                      "color": "#cd146d",
+                      "value": null
+                    },
+                    {
+                      "color": "#1a9ea7",
+                      "value": 1
+                    }
+                  ]
                 }
-              }
-            ]
-          },
-          {
-            "matcher": {
-              "id": "byName",
-              "options": "Array Capacity"
-            },
-            "properties": [
-              {
-                "id": "unit",
-                "value": "tbytes"
               },
               {
-                "id": "custom.width",
-                "value": 125
-              }
-            ]
-          },
-          {
-            "matcher": {
-              "id": "byName",
-              "options": "Array Free Space"
-            },
-            "properties": [
-              {
-                "id": "unit",
-                "value": "tbytes"
-              },
-              {
-                "id": "custom.width",
-                "value": 125
+                "id": "custom.displayMode",
+                "value": "color-background"
               }
             ]
           },
@@ -259,11 +286,12 @@
                 }
               },
               {
-                "id": "custom.cellOptions",
-                "value": {
-                  "mode": "gradient",
-                  "type": "gauge"
-                }
+                "id": "max",
+                "value": 100
+              },
+              {
+                "id": "custom.displayMode",
+                "value": "gradient-gauge"
               }
             ]
           },
@@ -334,11 +362,8 @@
                 "value": 0
               },
               {
-                "id": "custom.cellOptions",
-                "value": {
-                  "mode": "gradient",
-                  "type": "color-background"
-                }
+                "id": "custom.displayMode",
+                "value": "color-background"
               }
             ]
           }
@@ -364,7 +389,7 @@
         "showHeader": true,
         "sortBy": []
       },
-      "pluginVersion": "9.4.1",
+      "pluginVersion": "9.3.2",
       "targets": [
         {
           "datasource": {
@@ -490,9 +515,9 @@
             "indexByName": {},
             "renameByName": {
               "Value #Alerts": "Alerts",
-              "Value #Array Capacity": "Array Capacity",
+              "Value #Array Capacity": "Capacity",
               "Value #Array Capacity (TB)": "Array Capacity (",
-              "Value #Array Free Space": "Array Free Space",
+              "Value #Array Free Space": "Free Space",
               "Value #Array Free Space (TB)": "Array Free Space (TiB)",
               "Value #Data Reduction Ratio": "Data Reduction",
               "Value #Utilization %": "Utilization %",
@@ -511,10 +536,10 @@
         "uid": "${DS_PROMETHEUS}"
       },
       "gridPos": {
-        "h": 6,
+        "h": 5,
         "w": 6,
         "x": 0,
-        "y": 3
+        "y": 4
       },
       "id": 163,
       "options": {
@@ -523,10 +548,10 @@
           "showLineNumbers": false,
           "showMiniMap": false
         },
-        "content": "# <b>PURE</b> STORAGE\n\n## Overview\n\nThis dashboard provides performance and capacity details for Pure Storage FlashArrays.\nGroup arrays by customer defined environment, whole fleets, or view arrays individually.",
+        "content": "# **PURE** STORAGE\n\n## Overview\nThis dashboard provides performance and capacity details for Pure Storage FlashArrays.\nGroup arrays by customer defined environment, whole fleets, or view arrays individually.",
         "mode": "markdown"
       },
-      "pluginVersion": "9.4.1",
+      "pluginVersion": "9.3.2",
       "targets": [
         {
           "datasource": {
@@ -554,10 +579,7 @@
           },
           "custom": {
             "align": "center",
-            "cellOptions": {
-              "mode": "gradient",
-              "type": "color-background"
-            },
+            "displayMode": "auto",
             "inspect": false
           },
           "decimals": 0,
@@ -622,6 +644,10 @@
                     }
                   ]
                 }
+              },
+              {
+                "id": "custom.displayMode",
+                "value": "color-background"
               }
             ]
           },
@@ -650,6 +676,10 @@
                     }
                   ]
                 }
+              },
+              {
+                "id": "custom.displayMode",
+                "value": "color-background"
               }
             ]
           },
@@ -678,6 +708,10 @@
                     }
                   ]
                 }
+              },
+              {
+                "id": "custom.displayMode",
+                "value": "color-background"
               }
             ]
           },
@@ -706,6 +740,10 @@
                     }
                   ]
                 }
+              },
+              {
+                "id": "custom.displayMode",
+                "value": "color-background"
               }
             ]
           }
@@ -735,7 +773,7 @@
           }
         ]
       },
-      "pluginVersion": "9.4.1",
+      "pluginVersion": "9.3.2",
       "targets": [
         {
           "datasource": {
@@ -856,10 +894,10 @@
           "showLineNumbers": false,
           "showMiniMap": false
         },
-        "content": "## Metrics\n\nAll metrics are prefixed with purefa_\nBelow are the metrics names available\n```\n* alerts_open\n* array_performance_average_bytes\n* array_performance_bandwidth_bytes\n* array_performance_latency_usec\n* array_performance_queue_depth_ops\n* array_performance_throughput_iops\n* array_space_bytes\n* array_space_data_reduction_ratio\n* array_space_utilization\n* directory_performance_average_bytes\n* directory_performance_bandwidth_bytes\n* directory_performance_latency_usec\n* directory_performance_throughput_iops\n* directory_space_bytes\n* directory_space_data_reduction_ratio\n* host_connections_info\n* host_performance_average_bytes\n* host_performance_bandwidth_bytes\n* host_performance_latency_usec\n* host_performance_throughput_iops\n* host_space_bytes\n* host_space_data_reduction_ratio\n* host_space_size_bytes\n* hw_component_status\n* hw_component_temperature_celsius\n* hw_component_voltage_volt\n* info\n* pod_performance_average_bytes\n* pod_performance_bandwidth_bytes\n* pod_performance_latency_usec\n* pod_performance_throughput_iops\n* pod_space_bytes\n* pod_space_data_reduction_ratio\n* volume_performance_average_bytes\n* volume_performance_bandwidth_bytes\n* volume_performance_latency_usec\n* volume_performance_throughput_iops\n* volume_space_bytes\n* volume_space_data_reduction_ratio\n```",
+        "content": "## Metrics\n\nAll metrics are prefixed with purefa_\n\nBelow are the metrics names available\n```\n* alerts_open\n* array_performance_average_bytes\n* array_performance_bandwidth_bytes\n* array_performance_latency_usec\n* array_performance_queue_depth_ops\n* array_performance_throughput_iops\n* array_space_bytes\n* array_space_data_reduction_ratio\n* array_space_utilization\n* directory_performance_average_bytes\n* directory_performance_bandwidth_bytes\n* directory_performance_latency_usec\n* directory_performance_throughput_iops\n* directory_space_bytes\n* directory_space_data_reduction_ratio\n* host_connections_info\n* host_performance_average_bytes\n* host_performance_bandwidth_bytes\n* host_performance_latency_usec\n* host_performance_throughput_iops\n* host_space_bytes\n* host_space_data_reduction_ratio\n* host_space_size_bytes\n* hw_component_status\n* hw_component_temperature_celsius\n* hw_component_voltage_volt\n* info\n* pod_performance_average_bytes\n* pod_performance_bandwidth_bytes\n* pod_performance_latency_usec\n* pod_performance_throughput_iops\n* pod_space_bytes\n* pod_space_data_reduction_ratio\n* volume_performance_average_bytes\n* volume_performance_bandwidth_bytes\n* volume_performance_latency_usec\n* volume_performance_throughput_iops\n* volume_space_bytes\n* volume_space_data_reduction_ratio\n```",
         "mode": "markdown"
       },
-      "pluginVersion": "9.4.1",
+      "pluginVersion": "9.3.2",
       "type": "text"
     },
     {
@@ -925,7 +963,7 @@
         },
         "textMode": "auto"
       },
-      "pluginVersion": "9.4.1",
+      "pluginVersion": "9.3.2",
       "targets": [
         {
           "datasource": {
@@ -1011,7 +1049,7 @@
         },
         "textMode": "auto"
       },
-      "pluginVersion": "9.4.1",
+      "pluginVersion": "9.3.2",
       "targets": [
         {
           "datasource": {
@@ -1093,7 +1131,7 @@
         },
         "textMode": "auto"
       },
-      "pluginVersion": "9.4.1",
+      "pluginVersion": "9.3.2",
       "targets": [
         {
           "datasource": {
@@ -1520,7 +1558,7 @@
               "type": "linear"
             },
             "showPoints": "never",
-            "spanNulls": false,
+            "spanNulls": 300000,
             "stacking": {
               "group": "A",
               "mode": "none"
@@ -1621,7 +1659,7 @@
               "type": "linear"
             },
             "showPoints": "never",
-            "spanNulls": false,
+            "spanNulls": 300000,
             "stacking": {
               "group": "A",
               "mode": "none"
@@ -1723,7 +1761,7 @@
               "type": "linear"
             },
             "showPoints": "never",
-            "spanNulls": false,
+            "spanNulls": 300000,
             "stacking": {
               "group": "A",
               "mode": "none"
@@ -1827,7 +1865,7 @@
               "type": "linear"
             },
             "showPoints": "never",
-            "spanNulls": false,
+            "spanNulls": 300000,
             "stacking": {
               "group": "A",
               "mode": "none"
@@ -1928,7 +1966,7 @@
               "type": "linear"
             },
             "showPoints": "never",
-            "spanNulls": false,
+            "spanNulls": 300000,
             "stacking": {
               "group": "A",
               "mode": "none"
@@ -2034,7 +2072,7 @@
               "type": "linear"
             },
             "showPoints": "never",
-            "spanNulls": false,
+            "spanNulls": 300000,
             "stacking": {
               "group": "A",
               "mode": "none"
@@ -2131,14 +2169,14 @@
               "tooltip": false,
               "viz": false
             },
-            "lineInterpolation": "linear",
+            "lineInterpolation": "smooth",
             "lineWidth": 1,
             "pointSize": 5,
             "scaleDistribution": {
               "type": "linear"
             },
             "showPoints": "never",
-            "spanNulls": false,
+            "spanNulls": 300000,
             "stacking": {
               "group": "A",
               "mode": "none"
@@ -2173,73 +2211,13 @@
           {
             "matcher": {
               "id": "byName",
-              "options": "sum(avg_over_time(purefa_array_performance_bandwidth_bytes{instance=~\"^array09\",env=~\"^.+\",dimension=\"write_bytes_per_sec\"}[15m]))"
-            },
-            "properties": [
-              {
-                "id": "color",
-                "value": {
-                  "fixedColor": "#1F60C4",
-                  "mode": "fixed"
-                }
-              }
-            ]
-          },
-          {
-            "matcher": {
-              "id": "byName",
-              "options": "write_bytes_per_sec"
-            },
-            "properties": [
-              {
-                "id": "color",
-                "value": {
-                  "fixedColor": "#ff8316",
-                  "mode": "fixed"
-                }
-              }
-            ]
-          },
-          {
-            "matcher": {
-              "id": "byName",
-              "options": "mirrored_write_bytes_per_sec"
-            },
-            "properties": [
-              {
-                "id": "color",
-                "value": {
-                  "fixedColor": "#e05699",
-                  "mode": "fixed"
-                }
-              }
-            ]
-          },
-          {
-            "matcher": {
-              "id": "byName",
-              "options": "read_bytes_per_sec"
-            },
-            "properties": [
-              {
-                "id": "color",
-                "value": {
-                  "fixedColor": "#2ae5f2",
-                  "mode": "fixed"
-                }
-              }
-            ]
-          },
-          {
-            "matcher": {
-              "id": "byName",
               "options": "usec_per_write_op"
             },
             "properties": [
               {
                 "id": "color",
                 "value": {
-                  "fixedColor": "#2ae5f2",
+                  "fixedColor": "dark-orange",
                   "mode": "fixed"
                 }
               }
@@ -2270,6 +2248,21 @@
                 "id": "color",
                 "value": {
                   "fixedColor": "#662e9c",
+                  "mode": "fixed"
+                }
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "usec_per_read_op"
+            },
+            "properties": [
+              {
+                "id": "color",
+                "value": {
+                  "fixedColor": "#2ae5f2",
                   "mode": "fixed"
                 }
               }
@@ -2314,7 +2307,7 @@
           "interval": "",
           "legendFormat": "usec_per_read_op",
           "range": true,
-          "refId": "A"
+          "refId": "Read"
         },
         {
           "datasource": {
@@ -2330,7 +2323,7 @@
           "interval": "",
           "legendFormat": "usec_per_write_op",
           "range": true,
-          "refId": "B"
+          "refId": "Write"
         },
         {
           "datasource": {
@@ -2346,7 +2339,7 @@
           "interval": "",
           "legendFormat": "usec_per_mirrored_write_op",
           "range": true,
-          "refId": "C"
+          "refId": "Mirrored"
         },
         {
           "datasource": {
@@ -2362,7 +2355,7 @@
           "interval": "",
           "legendFormat": "usec_per_other_op",
           "range": true,
-          "refId": "D"
+          "refId": "Other"
         }
       ],
       "title": "Average Total Latency for $instance array(s)",
@@ -2394,14 +2387,14 @@
               "tooltip": false,
               "viz": false
             },
-            "lineInterpolation": "linear",
+            "lineInterpolation": "smooth",
             "lineWidth": 1,
             "pointSize": 5,
             "scaleDistribution": {
               "type": "linear"
             },
             "showPoints": "never",
-            "spanNulls": false,
+            "spanNulls": 300000,
             "stacking": {
               "group": "A",
               "mode": "none"
@@ -2425,59 +2418,13 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "white",
-                "value": null
+                "color": "white"
               }
             ]
           },
           "unit": "iops"
         },
         "overrides": [
-          {
-            "matcher": {
-              "id": "byName",
-              "options": "sum(avg_over_time(purefa_array_performance_bandwidth_bytes{instance=~\"^array09\",env=~\"^.+\",dimension=\"write_bytes_per_sec\"}[15m]))"
-            },
-            "properties": [
-              {
-                "id": "color",
-                "value": {
-                  "fixedColor": "#1F60C4",
-                  "mode": "fixed"
-                }
-              }
-            ]
-          },
-          {
-            "matcher": {
-              "id": "byName",
-              "options": "write_bytes_per_sec"
-            },
-            "properties": [
-              {
-                "id": "color",
-                "value": {
-                  "fixedColor": "#2ae5f2",
-                  "mode": "fixed"
-                }
-              }
-            ]
-          },
-          {
-            "matcher": {
-              "id": "byName",
-              "options": "mirrored_write_bytes_per_sec"
-            },
-            "properties": [
-              {
-                "id": "color",
-                "value": {
-                  "fixedColor": "#e05699",
-                  "mode": "fixed"
-                }
-              }
-            ]
-          },
           {
             "matcher": {
               "id": "byName",
@@ -2577,7 +2524,7 @@
           "interval": "",
           "legendFormat": "reads_per_sec",
           "range": true,
-          "refId": "A"
+          "refId": "Read"
         },
         {
           "datasource": {
@@ -2593,7 +2540,7 @@
           "interval": "",
           "legendFormat": "writes_per_sec",
           "range": true,
-          "refId": "B"
+          "refId": "Write"
         },
         {
           "datasource": {
@@ -2609,7 +2556,7 @@
           "interval": "",
           "legendFormat": "mirrored_per_sec",
           "range": true,
-          "refId": "C"
+          "refId": "Mirrored"
         },
         {
           "datasource": {
@@ -2625,7 +2572,7 @@
           "interval": "",
           "legendFormat": "others_per_sec",
           "range": true,
-          "refId": "D"
+          "refId": "Other"
         }
       ],
       "title": "Average Total IOPS for $instance array(s)",
@@ -2657,14 +2604,14 @@
               "tooltip": false,
               "viz": false
             },
-            "lineInterpolation": "linear",
+            "lineInterpolation": "smooth",
             "lineWidth": 1,
             "pointSize": 5,
             "scaleDistribution": {
               "type": "linear"
             },
             "showPoints": "never",
-            "spanNulls": false,
+            "spanNulls": 300000,
             "stacking": {
               "group": "A",
               "mode": "none"
@@ -2688,59 +2635,13 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "white",
-                "value": null
+                "color": "white"
               }
             ]
           },
           "unit": "bytes"
         },
         "overrides": [
-          {
-            "matcher": {
-              "id": "byName",
-              "options": "sum(avg_over_time(purefa_array_performance_bandwidth_bytes{instance=~\"^array09\",env=~\"^.+\",dimension=\"write_bytes_per_sec\"}[15m]))"
-            },
-            "properties": [
-              {
-                "id": "color",
-                "value": {
-                  "fixedColor": "#1F60C4",
-                  "mode": "fixed"
-                }
-              }
-            ]
-          },
-          {
-            "matcher": {
-              "id": "byName",
-              "options": "write_bytes_per_sec"
-            },
-            "properties": [
-              {
-                "id": "color",
-                "value": {
-                  "fixedColor": "#2ae5f2",
-                  "mode": "fixed"
-                }
-              }
-            ]
-          },
-          {
-            "matcher": {
-              "id": "byName",
-              "options": "mirrored_write_bytes_per_sec"
-            },
-            "properties": [
-              {
-                "id": "color",
-                "value": {
-                  "fixedColor": "#e05699",
-                  "mode": "fixed"
-                }
-              }
-            ]
-          },
           {
             "matcher": {
               "id": "byName",
@@ -2881,9 +2782,13 @@
   ],
   "refresh": "",
   "revision": 1,
-  "schemaVersion": 38,
+  "schemaVersion": 37,
   "style": "dark",
-  "tags": [],
+  "tags": [
+    "prometheus",
+    "flasharray",
+    "purestorage"
+  ],
   "templating": {
     "list": [
       {
@@ -3088,6 +2993,6 @@
   "timezone": "",
   "title": "Pure Storage FlashArray - Overview",
   "uid": "kq1L0kKVk",
-  "version": 27,
+  "version": 3,
   "weekStart": ""
 }

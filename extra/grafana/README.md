@@ -52,9 +52,9 @@ This deployment assumes the [Pure Storage FlashArray OpenMetrics Exporter][1] is
 Supported operating system platforms are available to install Prometheus and Grafana.
 
 The Grafana dashboards have been developed and tested using the following software versions:
-* Prometheus v2.39.1
-* Grafana v9.2.6
-* Pure Storage OpenMetrics Exporter v1.0.1
+* Prometheus v2.41.1
+* Grafana v9.3.2 & v9.4.1
+* Pure Storage OpenMetrics Exporter v1.0.5.hotfix1
 
 Dashboards may have limited functionality with earlier versions and some modifications may be required.
 
