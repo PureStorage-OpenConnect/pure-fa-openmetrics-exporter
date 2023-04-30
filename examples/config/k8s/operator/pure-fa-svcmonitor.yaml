@@ -1,0 +1,56 @@
+apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+metadata:
+  name: pure-fa-monitor
+  namespace: observability-pure
+spec:
+  jobLabel: pure-fa
+  selector:
+    matchLabels:
+      app: pure-fa-ome
+  namespaceSelector:
+    matchNames:
+    - observability-pure
+  endpoints:
+  - port: http-metrics
+    interval: 60s
+    path: /metrics/array
+    bearerTokenSecret:
+      name: x-90a-apitoken
+      key: token
+    params:
+      endpoint:
+        - 10.11.11.10
+    relabelings:
+      - replacement: z-x90a
+        targetLabel: instance
+        action: replace
+      - replacement: Staines
+        targetLabel: location
+        action: replace
+      - replacement: UK
+        targetLabel: country
+        action: replace
+      - action: labeldrop
+        regex: container|endpoint|job|namespace|pod|service
+  - port: http-metrics
+    interval: 60s
+    path: /metrics/array
+    bearerTokenSecret:
+      name: x-90b-apitoken
+      key: token
+    params:
+      endpoint:
+        - 10.11.11.11
+    relabelings:
+      - action: replace
+        replacement: z-x90b
+        targetLabel: instance
+      - replacement: UK
+        targetLabel: country
+        action: replace
+      - replacement: Staines
+        targetLabel: location
+        action: replace
+      - action: labeldrop
+        regex: container|endpoint|job|namespace|pod|service

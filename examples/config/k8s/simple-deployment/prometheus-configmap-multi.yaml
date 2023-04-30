@@ -1,6 +1,6 @@
 global:
-  scrape_interval: 60s
-  scrape_timeout: 50s
+  scrape_interval: 30s
+  scrape_timeout: 10s
   evaluation_interval: 30s
 scrape_configs:
 - job_name: monitoring/pure-fa-probe
@@ -44,6 +44,7 @@ scrape_configs:
   - targets:
     - x90a
     - x90b
+    - x70a
     labels:
       env: Demo Lab
       location: UK

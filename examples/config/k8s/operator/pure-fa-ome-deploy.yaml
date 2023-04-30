@@ -1,0 +1,46 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: pure-fa-ome
+  name: pure-fa-ome
+  namespace: observability-pure
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: pure-fa-ome
+  template:
+    metadata:
+      labels:
+        app: pure-fa-ome
+    spec:
+      containers:
+      - command:
+        - /pure-fa-om-exporter
+        image: quay.io/purestorage/pure-fa-om-exporter:latest
+        imagePullPolicy: Always
+        name: pure-fa-om-exporter
+        ports:
+        - containerPort: 9490
+          name: http-metrics
+          protocol: TCP
+      restartPolicy: Always
+
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: pure-fa-ome
+  name: pure-fa-ome-svc
+  namespace: observability-pure
+spec:
+  ports:
+  - name: http-metrics
+    port: 9490
+    protocol: TCP
+    targetPort: 9490
+  selector:
+    app: pure-fa-ome
