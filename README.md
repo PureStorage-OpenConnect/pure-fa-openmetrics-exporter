@@ -160,10 +160,10 @@ scrape_configs:
   - source_labels: [__address__]
     separator: ;
     regex: (.*)
-    target_label: __param_target
+    target_label: __param_endpoint
     replacement: $1
     action: replace
-  - source_labels: [__param_target]
+  - source_labels: [__param_endpoint]
     separator: ;
     regex: (.*)
     target_label: instance
