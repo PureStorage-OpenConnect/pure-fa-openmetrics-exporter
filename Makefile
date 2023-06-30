@@ -4,7 +4,7 @@ GOTEST=$(GOCMD) test
 GOVET=$(GOCMD) vet
 BINARY_NAME=pure-fa-om-exporter
 MODULE_NAME=purestorage/fa-openmetrics-exporter
-VERSION?=1.0.6
+VERSION?=1.0.7
 SERVICE_PORT?=9490
 DOCKER_REGISTRY?= quay.io/purestorage/
 EXPORT_RESULT?=false # for CI please set EXPORT_RESULT to true
@@ -80,7 +80,7 @@ endif
 
 ## Docker:
 docker-build: ## Use the dockerfile to build the container
-	docker build --rm --tag $(BINARY_NAME) --file build/docker/Dockerfile .
+	docker build --rm --tag $(BINARY_NAME) --build-arg VERSION=$(VERSION) --file build/docker/Dockerfile .
 
 docker-release: ## Release the container with tag latest and version
 	docker tag $(BINARY_NAME) $(DOCKER_REGISTRY)$(BINARY_NAME):latest
