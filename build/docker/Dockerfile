@@ -1,4 +1,6 @@
 FROM golang:alpine as build
+#version should set to development unless another build arg is passed
+ARG VERSION=development
 
 WORKDIR /usr/src/app
 
@@ -7,7 +9,7 @@ COPY go.mod go.sum ./
 RUN go mod download && go mod verify
 
 COPY . .
-RUN CGO_ENABLED=1 go build -a -tags 'netgo osusergo static_build' -v -o /usr/local/bin/pure-fa-om-exporter cmd/fa-om-exporter/main.go
+RUN CGO_ENABLED=1 go build -a -tags 'netgo osusergo static_build' -ldflags="-X main.version=v$VERSION" -v -o /usr/local/bin/pure-fa-om-exporter cmd/fa-om-exporter/main.go
 
 # alpine is used here as it seems to be the minimal image that passes quay.io vulnerability scan
 FROM alpine
