@@ -22,7 +22,7 @@ You can monitor multiple FlashArrays and aggregate these into a single dashboard
 
 https://www.dynatrace.com/hub/detail/pure-storage-flasharray
 
-Dynatrace extension 2.0 enables automates metrics ingestion and performance data corrolation. With 2x dashboards iuncluded in the bundle, users can drill down through array configurations items and monitor their fleet of arrays providing an overview of capacity utilization, data reduction and Purity version.
+Dynatrace extension 2.0 automates metric ingestion and performance data correlation. With 2x dashboards included in the bundle, users can drill down through array configuration items and monitor a fleet of arrays providing an overview of capacity utilization, data reduction and Purity version.
 
 <br>
 <img src="images/purefa_dynatrace_extension2.0.png" width="50%" height="50%">
