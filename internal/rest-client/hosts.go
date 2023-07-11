@@ -13,16 +13,6 @@ type PortConnectivity struct {
 	Status     string    `json:"status"`
 }
 
-type ArrayShort struct {
-        Id                string     `json:"id"`
-        Name              string     `json:"name"`
-	FrozenAt          int        `json:"frozen_at"`
-	MediatorStatus    string     `json:"mediator_status"`
-	PreElected        bool       `json:"pre_elected"`
-	Progress          float64    `json:"progress"`
-	Status            string     `json:"status"`
-}
-
 type Host struct {
 	Name                string              `json:"name"`
 	Chap                Chap                `json:"chap"`
@@ -46,10 +36,11 @@ type HostsList struct {
 }
 
 func (fa *FAClient) GetHosts() *HostsList {
+	uri := "/hosts"
         result := new(HostsList)
         res, err := fa.RestClient.R().
                 SetResult(&result).
-                Get("/hosts")
+                Get(uri)
 
         if err != nil {
                 fa.Error = err
@@ -59,7 +50,7 @@ func (fa *FAClient) GetHosts() *HostsList {
         }
         res, err = fa.RestClient.R().
                 SetResult(&result).
-                Get("/hosts")
+                Get(uri)
         if err != nil {
                 fa.Error = err
         }

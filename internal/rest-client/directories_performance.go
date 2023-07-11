@@ -27,10 +27,11 @@ type DirectoriesPerformanceList struct {
 }
 
 func (fa *FAClient) GetDirectoriesPerformance() *DirectoriesPerformanceList {
+	uri := "/directories/performance"
         result := new(DirectoriesPerformanceList)
         res, err := fa.RestClient.R().
                 SetResult(&result).
-                Get("/directories/performance")
+                Get(uri)
 
         if err != nil {
                 fa.Error = err
@@ -40,7 +41,7 @@ func (fa *FAClient) GetDirectoriesPerformance() *DirectoriesPerformanceList {
         }
         res, err = fa.RestClient.R().
                 SetResult(&result).
-                Get("/directories/performance")
+                Get(uri)
         if err != nil {
                 fa.Error = err
         }

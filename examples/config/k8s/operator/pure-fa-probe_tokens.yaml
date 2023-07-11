@@ -1,0 +1,17 @@
+apiVersion: monitoring.coreos.com/v1
+kind: Probe
+metadata:
+  name: pure-fa-probe
+  namespace: monitoring
+spec:
+  jobName: pure-fa-probe
+  prober:
+    url: pure-fa-ome-svc:9490
+    path: /metrics/array
+  interval: 60s
+  targets:
+    staticConfig:
+      static:
+        - x90a
+        - x90b
+        - x70a

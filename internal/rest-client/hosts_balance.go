@@ -34,10 +34,11 @@ type HostsBalanceList struct {
 }
 
 func (fa *FAClient) GetHostsBalance() *HostsBalanceList {
+	uri := "/hosts/performance/balance"
         result := new(HostsBalanceList)
         res, err := fa.RestClient.R().
                 SetResult(&result).
-                Get("/hosts/performance/balance")
+                Get(uri)
 
         if err != nil {
                 fa.Error = err
@@ -47,7 +48,7 @@ func (fa *FAClient) GetHostsBalance() *HostsBalanceList {
         }
         res, err = fa.RestClient.R().
                 SetResult(&result).
-                Get("/hosts/performance/balance")
+                Get(uri)
         if err != nil {
                 fa.Error = err
         }

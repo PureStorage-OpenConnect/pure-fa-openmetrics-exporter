@@ -108,7 +108,7 @@ func NewDirectoriesPerformanceCollector(fa *client.FAClient) *DirectoriesPerform
 		),
 		BandwidthDesc: prometheus.NewDesc(
 			"purefa_directory_performance_bandwidth_bytes",
-			"FlashArray directory throughput",
+			"FlashArray directory bandwidth",
 			[]string{"name", "dimension"},
 			prometheus.Labels{},
 		),

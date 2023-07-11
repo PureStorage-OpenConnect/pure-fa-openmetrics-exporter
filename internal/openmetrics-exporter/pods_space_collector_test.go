@@ -37,6 +37,7 @@ func TestPodsSpaceCollector(t *testing.T) {
 	e := endp[len(endp)-1]
 	want := make(map[string]bool)
 	for _, p := range pods.Items {
+		var s float64
 		want[fmt.Sprintf("label:<name:\"name\" value:\"%s\" > gauge:<value:%g > ", p.Name, p.Space.DataReduction)] = true
 		want[fmt.Sprintf("label:<name:\"name\" value:\"%s\" > label:<name:\"space\" value:\"shared\" > gauge:<value:%g > ", p.Name, p.Space.Shared)] = true
 		want[fmt.Sprintf("label:<name:\"name\" value:\"%s\" > label:<name:\"space\" value:\"snapshots\" > gauge:<value:%g > ", p.Name, p.Space.Snapshots)] = true
@@ -52,6 +53,14 @@ func TestPodsSpaceCollector(t *testing.T) {
 		want[fmt.Sprintf("label:<name:\"name\" value:\"%s\" > label:<name:\"space\" value:\"snapshots_effective\" > gauge:<value:%g > ", p.Name, p.Space.SnapshotsEffective)] = true
 		want[fmt.Sprintf("label:<name:\"name\" value:\"%s\" > label:<name:\"space\" value:\"unique_effective\" > gauge:<value:%g > ", p.Name, p.Space.UniqueEffective)] = true
 		want[fmt.Sprintf("label:<name:\"name\" value:\"%s\" > label:<name:\"space\" value:\"total_effective\" > gauge:<value:%g > ", p.Name, p.Space.TotalEffective)] = true
+		for _, a := range p.Arrays {
+                        if a.MediatorStatus == "online" {
+                                s = 1
+                        } else {
+                                s = 0
+                        }
+			want[fmt.Sprintf("label:<name:\"array\" value:\"%s\" > label:<name:\"mediator\" value:\"%s\" > label:<name:\"pod\" value:\"%s\" > label:<name:\"status\" value:\"%s\" > gauge:<value:%g > ", a.Name, p.Mediator, p.Name, a.MediatorStatus, s)] = true
+		}
 	}
 	defer server.Close()
 	c := client.NewRestClient(e, "fake-api-token", "latest", false)

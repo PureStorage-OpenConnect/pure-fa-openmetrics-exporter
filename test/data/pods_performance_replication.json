@@ -1,0 +1,289 @@
+{
+  "continuation_token": null,
+  "items": [
+    {
+      "time": 1676723341343,
+      "pod": {
+        "name": "z-ProdPod",
+        "id": "457f671e-b31f-c7e2-aeda-49a7d9d38d2c"
+      },
+      "continuous_bytes_per_sec": {
+        "from_remote_bytes_per_sec": 0,
+        "to_remote_bytes_per_sec": 0,
+        "total_bytes_per_sec": 0
+      },
+      "resync_bytes_per_sec": {
+        "from_remote_bytes_per_sec": 6012,
+        "to_remote_bytes_per_sec": 677811,
+        "total_bytes_per_sec": 683822
+      },
+      "sync_bytes_per_sec": {
+        "from_remote_bytes_per_sec": 1065271,
+        "to_remote_bytes_per_sec": 1318575,
+        "total_bytes_per_sec": 2383846
+      },
+      "periodic_bytes_per_sec": {
+        "from_remote_bytes_per_sec": 0,
+        "to_remote_bytes_per_sec": 0,
+        "total_bytes_per_sec": 0
+      },
+      "total_bytes_per_sec": 3067668
+    },
+    {
+      "time": 1676723341343,
+      "pod": {
+        "name": "z-InfrastructurePod",
+        "id": "fb1ea95f-5e79-3afe-200b-4bfec18ddf8f"
+      },
+      "continuous_bytes_per_sec": {
+        "from_remote_bytes_per_sec": 0,
+        "to_remote_bytes_per_sec": 0,
+        "total_bytes_per_sec": 0
+      },
+      "resync_bytes_per_sec": {
+        "from_remote_bytes_per_sec": 31925,
+        "to_remote_bytes_per_sec": 70,
+        "total_bytes_per_sec": 31995
+      },
+      "sync_bytes_per_sec": {
+        "from_remote_bytes_per_sec": 4814,
+        "to_remote_bytes_per_sec": 2866,
+        "total_bytes_per_sec": 7680
+      },
+      "periodic_bytes_per_sec": {
+        "from_remote_bytes_per_sec": 620,
+        "to_remote_bytes_per_sec": 384086,
+        "total_bytes_per_sec": 384707
+      },
+      "total_bytes_per_sec": 424382
+    },
+    {
+      "time": 1676723341343,
+      "pod": {
+        "name": "z-eg-ostack",
+        "id": "70a67b8b-4b65-75dc-27e0-e7a183d50059"
+      },
+      "continuous_bytes_per_sec": {
+        "from_remote_bytes_per_sec": 0,
+        "to_remote_bytes_per_sec": 248,
+        "total_bytes_per_sec": 248
+      },
+      "resync_bytes_per_sec": {
+        "from_remote_bytes_per_sec": 0,
+        "to_remote_bytes_per_sec": 0,
+        "total_bytes_per_sec": 0
+      },
+      "sync_bytes_per_sec": {
+        "from_remote_bytes_per_sec": 0,
+        "to_remote_bytes_per_sec": 0,
+        "total_bytes_per_sec": 0
+      },
+      "periodic_bytes_per_sec": {
+        "from_remote_bytes_per_sec": 0,
+        "to_remote_bytes_per_sec": 0,
+        "total_bytes_per_sec": 0
+      },
+      "total_bytes_per_sec": 248
+    },
+    {
+      "time": 1676723346504,
+      "pod": {
+        "name": "z-adrpod-postgres-from-adrpod-lon",
+        "id": "f3075bd0-b11d-d9cb-4f13-52c52a9ccaee"
+      },
+      "continuous_bytes_per_sec": {
+        "from_remote_bytes_per_sec": 0,
+        "to_remote_bytes_per_sec": 0,
+        "total_bytes_per_sec": 0
+      },
+      "resync_bytes_per_sec": {
+        "from_remote_bytes_per_sec": 0,
+        "to_remote_bytes_per_sec": 0,
+        "total_bytes_per_sec": 0
+      },
+      "sync_bytes_per_sec": {
+        "from_remote_bytes_per_sec": 0,
+        "to_remote_bytes_per_sec": 0,
+        "total_bytes_per_sec": 0
+      },
+      "periodic_bytes_per_sec": {
+        "from_remote_bytes_per_sec": 0,
+        "to_remote_bytes_per_sec": 0,
+        "total_bytes_per_sec": 0
+      },
+      "total_bytes_per_sec": 0
+    },
+    {
+      "time": 1676723341343,
+      "pod": {
+        "name": "adrpod",
+        "id": "7d30be1a-2d9e-4e55-9934-45ea20f5c963"
+      },
+      "continuous_bytes_per_sec": {
+        "from_remote_bytes_per_sec": 0,
+        "to_remote_bytes_per_sec": 248,
+        "total_bytes_per_sec": 248
+      },
+      "resync_bytes_per_sec": {
+        "from_remote_bytes_per_sec": 0,
+        "to_remote_bytes_per_sec": 0,
+        "total_bytes_per_sec": 0
+      },
+      "sync_bytes_per_sec": {
+        "from_remote_bytes_per_sec": 0,
+        "to_remote_bytes_per_sec": 0,
+        "total_bytes_per_sec": 0
+      },
+      "periodic_bytes_per_sec": {
+        "from_remote_bytes_per_sec": 0,
+        "to_remote_bytes_per_sec": 0,
+        "total_bytes_per_sec": 0
+      },
+      "total_bytes_per_sec": 248
+    },
+    {
+      "time": 1676723346504,
+      "pod": {
+        "name": "newpod",
+        "id": "1213b5de-521a-73bb-1c99-313912b0d21d"
+      },
+      "continuous_bytes_per_sec": {
+        "from_remote_bytes_per_sec": 0,
+        "to_remote_bytes_per_sec": 0,
+        "total_bytes_per_sec": 0
+      },
+      "resync_bytes_per_sec": {
+        "from_remote_bytes_per_sec": 0,
+        "to_remote_bytes_per_sec": 0,
+        "total_bytes_per_sec": 0
+      },
+      "sync_bytes_per_sec": {
+        "from_remote_bytes_per_sec": 0,
+        "to_remote_bytes_per_sec": 0,
+        "total_bytes_per_sec": 0
+      },
+      "periodic_bytes_per_sec": {
+        "from_remote_bytes_per_sec": 0,
+        "to_remote_bytes_per_sec": 0,
+        "total_bytes_per_sec": 0
+      },
+      "total_bytes_per_sec": 0
+    },
+    {
+      "time": 1676723341343,
+      "pod": {
+        "name": "z-racpod",
+        "id": "1046c7ba-9496-97fd-3d23-24e741883458"
+      },
+      "continuous_bytes_per_sec": {
+        "from_remote_bytes_per_sec": 0,
+        "to_remote_bytes_per_sec": 0,
+        "total_bytes_per_sec": 0
+      },
+      "resync_bytes_per_sec": {
+        "from_remote_bytes_per_sec": 13471,
+        "to_remote_bytes_per_sec": 244,
+        "total_bytes_per_sec": 13715
+      },
+      "sync_bytes_per_sec": {
+        "from_remote_bytes_per_sec": 4234,
+        "to_remote_bytes_per_sec": 2425,
+        "total_bytes_per_sec": 6658
+      },
+      "periodic_bytes_per_sec": {
+        "from_remote_bytes_per_sec": 0,
+        "to_remote_bytes_per_sec": 0,
+        "total_bytes_per_sec": 0
+      },
+      "total_bytes_per_sec": 20373
+    },
+    {
+      "time": 1676723341343,
+      "pod": {
+        "name": "MellingPod",
+        "id": "d6880902-4b52-3243-b645-a25361727a0c"
+      },
+      "continuous_bytes_per_sec": {
+        "from_remote_bytes_per_sec": 0,
+        "to_remote_bytes_per_sec": 0,
+        "total_bytes_per_sec": 0
+      },
+      "resync_bytes_per_sec": {
+        "from_remote_bytes_per_sec": 19,
+        "to_remote_bytes_per_sec": 48,
+        "total_bytes_per_sec": 67
+      },
+      "sync_bytes_per_sec": {
+        "from_remote_bytes_per_sec": 956,
+        "to_remote_bytes_per_sec": 1437,
+        "total_bytes_per_sec": 2393
+      },
+      "periodic_bytes_per_sec": {
+        "from_remote_bytes_per_sec": 6,
+        "to_remote_bytes_per_sec": 16,
+        "total_bytes_per_sec": 22
+      },
+      "total_bytes_per_sec": 2482
+    },
+    {
+      "time": 1676723341343,
+      "pod": {
+        "name": "jspod1",
+        "id": "0addfb34-fb85-5481-47a1-ac3f36952fb0"
+      },
+      "continuous_bytes_per_sec": {
+        "from_remote_bytes_per_sec": 0,
+        "to_remote_bytes_per_sec": 0,
+        "total_bytes_per_sec": 0
+      },
+      "resync_bytes_per_sec": {
+        "from_remote_bytes_per_sec": 0,
+        "to_remote_bytes_per_sec": 0,
+        "total_bytes_per_sec": 0
+      },
+      "sync_bytes_per_sec": {
+        "from_remote_bytes_per_sec": 1526,
+        "to_remote_bytes_per_sec": 2307,
+        "total_bytes_per_sec": 3834
+      },
+      "periodic_bytes_per_sec": {
+        "from_remote_bytes_per_sec": 0,
+        "to_remote_bytes_per_sec": 0,
+        "total_bytes_per_sec": 0
+      },
+      "total_bytes_per_sec": 3834
+    }
+  ],
+  "more_items_remaining": false,
+  "total": [
+    {
+      "time": 1676723346504,
+      "pod": {
+        "name": null,
+        "id": null
+      },
+      "continuous_bytes_per_sec": {
+        "from_remote_bytes_per_sec": 0,
+        "to_remote_bytes_per_sec": 496,
+        "total_bytes_per_sec": 496
+      },
+      "resync_bytes_per_sec": {
+        "from_remote_bytes_per_sec": 51427,
+        "to_remote_bytes_per_sec": 678173,
+        "total_bytes_per_sec": 729599
+      },
+      "sync_bytes_per_sec": {
+        "from_remote_bytes_per_sec": 1076801,
+        "to_remote_bytes_per_sec": 1327610,
+        "total_bytes_per_sec": 2404411
+      },
+      "periodic_bytes_per_sec": {
+        "from_remote_bytes_per_sec": 626,
+        "to_remote_bytes_per_sec": 384102,
+        "total_bytes_per_sec": 384729
+      },
+      "total_bytes_per_sec": 3519235
+    }
+  ],
+  "total_item_count": null
+}

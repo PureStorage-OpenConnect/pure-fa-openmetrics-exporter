@@ -35,10 +35,11 @@ type ConnectionsList struct {
 }
 
 func (fa *FAClient) GetConnections() *ConnectionsList {
+	uri := "/connections"
         result := new(ConnectionsList)
         res, err := fa.RestClient.R().
                 SetResult(&result).
-                Get("/connections")
+                Get(uri)
 
         if err != nil {
                 fa.Error = err
@@ -48,7 +49,7 @@ func (fa *FAClient) GetConnections() *ConnectionsList {
         }
         res, err = fa.RestClient.R().
                 SetResult(&result).
-                Get("/connections")
+                Get(uri)
         if err != nil {
                 fa.Error = err
         }

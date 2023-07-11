@@ -203,7 +203,7 @@ func NewArraysPerformanceCollector(fa *client.FAClient) *ArrayPerformanceCollect
 		),
 		BandwidthDesc: prometheus.NewDesc(
 			"purefa_array_performance_bandwidth_bytes",
-			"FlashArray array throughput",
+			"FlashArray array bandwidth",
 			[]string{"dimension"},
 			prometheus.Labels{},
 		),

@@ -44,9 +44,14 @@ func TestAlertsCollector(t *testing.T) {
 	   }))
         endp := strings.Split(server.URL, "/")
         e := endp[len(endp)-1]
+        al := make(map[string]float64)
+        for _, a := range aopen.Items {
+                al[fmt.Sprintf("%s,%s", a.ComponentType, a.Severity)] += 1
+        }
 	want := make(map[string]bool)
-	for _, a := range aopen.Items {
-		want[fmt.Sprintf("label:<name:\"component_name\" value:\"%s\" > label:<name:\"component_type\" value:\"%s\" > label:<name:\"severity\" value:\"%s\" > gauge:<value:1 > ", a.ComponentName, a.ComponentType, a.Severity)] = true
+        for a, n := range al {
+                alert := strings.Split(a, ",")
+		want[fmt.Sprintf("label:<name:\"component_type\" value:\"%s\" > label:<name:\"severity\" value:\"%s\" > gauge:<value:%g > ", alert[0], alert[1], n)] = true
 	}
         c := client.NewRestClient(e, "fake-api-token", "latest", false)
 	ac := NewAlertsCollector(c)

@@ -31,19 +31,20 @@ type AlertsList struct {
 }
 
 func (fa *FAClient) GetAlerts(filter string) *AlertsList {
+	uri := "/alerts"
 	result := new(AlertsList)
 	req := fa.RestClient.R().SetResult(&result)
 	if filter != "" {
 		req = req.SetQueryParam("filter", filter)
 	}
-	res, err := req.Get("/alerts")
+	res, err := req.Get(uri)
 	if err != nil {
 		fa.Error = err
 	}
 	if res.StatusCode() == 401 {
 		fa.RefreshSession()
 	}
-	res, err = req.Get("/alerts")
+	res, err = req.Get(uri)
 	if err != nil {
 		fa.Error = err
 	}

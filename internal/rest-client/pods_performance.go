@@ -44,10 +44,11 @@ type PodsPerformanceList struct {
 }
 
 func (fa *FAClient) GetPodsPerformance() *PodsPerformanceList {
+	uri := "/pods/performance"
         result := new(PodsPerformanceList)
         res, err := fa.RestClient.R().
                 SetResult(&result).
-                Get("/pods/performance")
+                Get(uri)
 
         if err != nil {
                 fa.Error = err
@@ -57,7 +58,7 @@ func (fa *FAClient) GetPodsPerformance() *PodsPerformanceList {
         }
         res, err = fa.RestClient.R().
                 SetResult(&result).
-                Get("/pods/performance")
+                Get(uri)
         if err != nil {
                 fa.Error = err
         }

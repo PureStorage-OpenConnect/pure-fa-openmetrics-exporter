@@ -11,11 +11,6 @@ type PriorityAdjustment struct {
 	PriorityAdjustmentValue      int  `json:"priority_adjustment_value"`
 }
 
-type PodShort struct {
-	Id      string     `json:"id"`
-	Name    string     `json:"name"`
-}
-
 type Source struct {
 	Id      string     `json:"id"`
 	Name    string     `json:"name"`
@@ -56,10 +51,11 @@ type VolumesList struct {
 }
 
 func (fa *FAClient) GetVolumes() *VolumesList {
+	uri := "/volumes"
         result := new(VolumesList)
         res, err := fa.RestClient.R().
                 SetResult(&result).
-                Get("/volumes")
+                Get(uri)
 
         if err != nil {
                 fa.Error = err
@@ -69,7 +65,7 @@ func (fa *FAClient) GetVolumes() *VolumesList {
         }
         res, err = fa.RestClient.R().
                 SetResult(&result).
-                Get("/volumes")
+                Get(uri)
         if err != nil {
                 fa.Error = err
         }

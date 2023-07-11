@@ -45,10 +45,11 @@ type DirectoriesList struct {
 }
 
 func (fa *FAClient) GetDirectories() *DirectoriesList {
+	uri := "/directories"
         result := new(DirectoriesList)
         res, err := fa.RestClient.R().
                 SetResult(&result).
-                Get("/directories")
+                Get(uri)
 
         if err != nil {
                 fa.Error = err
@@ -58,7 +59,7 @@ func (fa *FAClient) GetDirectories() *DirectoriesList {
         }
         res, err = fa.RestClient.R().
                 SetResult(&result).
-                Get("/directories")
+                Get(uri)
         if err != nil {
                 fa.Error = err
         }

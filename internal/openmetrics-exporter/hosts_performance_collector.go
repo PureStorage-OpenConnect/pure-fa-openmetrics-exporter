@@ -169,25 +169,25 @@ func NewHostsPerformanceCollector(fa *client.FAClient) *HostsPerformanceCollecto
 	return &HostsPerformanceCollector{
 		LatencyDesc: prometheus.NewDesc(
 			"purefa_host_performance_latency_usec",
-			"FlashArray host latency",
+			"FlashArray host latency in microseconds",
 			[]string{"host", "dimension"},
 			prometheus.Labels{},
 		),
 		ThroughputDesc: prometheus.NewDesc(
 			"purefa_host_performance_throughput_iops",
-			"FlashArray host throughput",
+			"FlashArray host throughput in iops",
 			[]string{"host", "dimension"},
 			prometheus.Labels{},
 		),
 		BandwidthDesc: prometheus.NewDesc(
 			"purefa_host_performance_bandwidth_bytes",
-			"FlashArray host throughput",
+			"FlashArray host bandwidth in bytes per second",
 			[]string{"host", "dimension"},
 			prometheus.Labels{},
 		),
 		AverageSizeDesc: prometheus.NewDesc(
 			"purefa_host_performance_average_bytes",
-			"FlashArray host average operations size",
+			"FlashArray host average operations size in bytes",
 			[]string{"host", "dimension"},
 			prometheus.Labels{},
 		),
