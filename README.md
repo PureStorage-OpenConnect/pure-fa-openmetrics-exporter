@@ -158,19 +158,16 @@ A complete example monitoring stack implemented in Docker Compose which can be f
 |purefa_volume_space_bytes                   |FlashArray volume space in bytes                     |
 |purefa_volume_space_data_reduction_ratio    |FlashArray volume space data reduction               |
 
-## Monitoring On-Premise with Prometheus and Grafana
-Take a holistic overview of your Pure Storage FlashArray estate on-premise with Prometheus and Grafana to summarize statistics such as:
-  * FlashArray Utilization
-  * Purity OS version
-  * Data Reduction Rate
-  * Number and type of open alerts
+## Integrating with Observability Platforms
 
-Drill down into specific arrays and identify top busy hosts while correlating read and write operations and throughput to quickly highlight or eliminate investigation enquiries.
+While most monitoring and observability platforms should be able to utilize the OpenMetrics standard, some platforms may require some form of minor config or development to integrate. This is normal for any device providing metrics, not just Pure Storage.
+
+Pure Storage are working with observability platform vendors to ensure products work out of the box including a fleet wide overview dashboard.
 <br>
-<img src="extra/grafana/images/grafana_purefa_overview_dash_1.png" width="66%" height="66%">
-<img src="extra/grafana/images/grafana_purefa_overview_dash_2.png" width="33%" height="33%">
+<img src="extra/grafana/images/grafana_purefa_overview_dash_1.png" width="40%" height="40%">
 <br>
-For more information on dependencies, and notes to deploy -- take look at the examples for Grafana and Prometheus in the [extra/grafana/](extra/grafana/) and [extra/prometheus/](extra/prometheus/) folders respectively.
+
+For more information on developed observability platform integrations such as Datadog, Dynatrace, Grafana & Prometheus, take a look at [extra/o11y_platforms.md](extra/o11y_platforms.md).
 
 # License
 
