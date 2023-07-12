@@ -108,6 +108,7 @@ The array token configuration file must have to following syntax:
   address: <ip-addressN>|<hostnameN>
   api_token: <api-tokenN>
 ```  
+When the array token configuration file is used, the <kbd>array_id</kbd> key must be used as the <kbd>endpoint</kbd> argument for the scraped URL.
 
 ### Scraping endpoints
 
