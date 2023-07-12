@@ -1,5 +1,5 @@
 FROM golang:alpine as build
-#version should set to development unless another build arg is passed
+# version should set to development unless another build arg is passed
 ARG VERSION=development
 
 WORKDIR /usr/src/app
@@ -11,9 +11,14 @@ RUN go mod download && go mod verify
 COPY . .
 RUN CGO_ENABLED=1 go build -a -tags 'netgo osusergo static_build' -ldflags="-X main.version=v$VERSION" -v -o /usr/local/bin/pure-fa-om-exporter cmd/fa-om-exporter/main.go
 
+
 # alpine is used here as it seems to be the minimal image that passes quay.io vulnerability scan
 FROM alpine
 COPY --from=build  /usr/local/bin/pure-fa-om-exporter /pure-fa-om-exporter
+
+# create an empty tokens file for use with volumes if required. You can use a mounted volume to /etc/pure-fa-om-exporter/ to pass the `tokens.yaml` file. File must be named `tokens.yaml` -- could add as an env arg.
+RUN mkdir /etc/pure-fa-om-exporter && touch /etc/pure-fa-om-exporter/tokens.yaml
+
 EXPOSE 9490
 ENTRYPOINT ["/pure-fa-om-exporter"]
-CMD ["--address", "0.0.0.0", "--port", "9490"]
+CMD ["--address", "0.0.0.0", "--port", "9490", "--tokens", "/etc/pure-fa-om-exporter/tokens.yaml"]
