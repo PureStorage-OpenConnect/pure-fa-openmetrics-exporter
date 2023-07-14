@@ -51,17 +51,15 @@ git clone git@github.com:PureStorage-OpenConnect/pure-fa-openmetrics-exporter.gi
 cd pure-fa-openmetrics-exporter
 ...
 make build
-
 ```
 
 The newly built exporter executable can be found in the <kbd>./out/bin</kbd> directory.
 
-### Docker image
+### Docker Image
 
 The provided dockerfile can be used to generate a docker image of the exporter. The image can be built using docker as follows
 
 ```shell
-
 VERSION=<version>
 docker build -t pure-fa-ome:$VERSION .
 ```
@@ -109,6 +107,8 @@ The array token configuration file must have to following syntax:
   api_token: <api-tokenN>
 ```  
 When the array token configuration file is used, the <kbd>array_id</kbd> key must be used as the <kbd>endpoint</kbd> argument for the scraped URL.
+
+For usage a usage example of how to use this feature with a Docker container, see Docker Usage Examples below.
 
 ### Scraping endpoints
 
@@ -192,8 +192,11 @@ In a typical production scenario, it is recommended to use a visual frontend for
 
 To spin up a very basic set of those containers, use the following commands:
 ```bash
-# Pure exporter
+# Pure Storage OpenMetrics Exporter
 docker run -d -p 9490:9490 --name pure-fa-om-exporter quay.io/purestorage/pure-fa-om-exporter:<version>
+
+# Pure Storage OpenMetrics Exporter container with authentication tokens
+docker run -d -p 9490:9490 --name pure-fa-om-exporter --volume /pathtofile/tokens.yaml:/etc/pure-fa-om-exporter/tokens.yaml quay.io/purestorage/pure-fa-om-exporter:<version>
 
 # Prometheus with config via bind-volume (create config first!)
 docker run -d -p 9090:9090 --name=prometheus -v /tmp/prometheus-pure.yml:/etc/prometheus/prometheus.yml -v /tmp/prometheus-data:/prometheus prom/prometheus:latest
