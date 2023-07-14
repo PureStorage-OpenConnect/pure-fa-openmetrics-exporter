@@ -195,15 +195,21 @@ To spin up a very basic set of those containers, use the following commands:
 # Pure Storage OpenMetrics Exporter
 docker run -d -p 9490:9490 --name pure-fa-om-exporter quay.io/purestorage/pure-fa-om-exporter:<version>
 
-# Pure Storage OpenMetrics Exporter container with authentication tokens
-docker run -d -p 9490:9490 --name pure-fa-om-exporter --volume /pathtofile/tokens.yaml:/etc/pure-fa-om-exporter/tokens.yaml quay.io/purestorage/pure-fa-om-exporter:<version>
-
 # Prometheus with config via bind-volume (create config first!)
 docker run -d -p 9090:9090 --name=prometheus -v /tmp/prometheus-pure.yml:/etc/prometheus/prometheus.yml -v /tmp/prometheus-data:/prometheus prom/prometheus:latest
 
 # Grafana
 docker run -d -p 3000:3000 --name=grafana -v /tmp/grafana-data:/var/lib/grafana grafana/grafana
 ```
+
+#### Docker: Passing tokens.yaml file to the container
+On starting the container, Docker will create an empty `/etc/pure-fa-om-exporter/tokens.yaml` file whether the users requires it or not. If the file is blank, the container will successfully start. If the container has a volume attached containing a valid tokens.yaml file the image will utilize the contents.
+When passing a tokens.yaml file with the bearer tokens 
+```bash
+# Pure Storage OpenMetrics Exporter container with authentication tokens
+docker run -d -p 9490:9490 --name pure-fa-om-exporter --volume /hostpathtofile/tokens.yaml:/etc/pure-fa-om-exporter/tokens.yaml pure-fa-om-exporter:<version>
+```
+
 Please have a look at the documentation of each image/application for adequate configuration examples.
 
 #### Kubernetes
