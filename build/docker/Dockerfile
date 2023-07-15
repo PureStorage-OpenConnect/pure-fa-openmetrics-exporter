@@ -16,7 +16,7 @@ RUN CGO_ENABLED=1 go build -a -tags 'netgo osusergo static_build' -ldflags="-X m
 FROM alpine
 COPY --from=build  /usr/local/bin/pure-fa-om-exporter /pure-fa-om-exporter
 
-# create an empty tokens file for use with volumes if required. You can use a mounted volume to /etc/pure-fa-om-exporter/ to pass the `tokens.yaml` file. File must be named `tokens.yaml` -- could add as an env arg.
+# create an empty tokens file for use with volumes if required. You can use a mounted volume to /etc/pure-fa-om-exporter/ to pass the `tokens.yaml` file. File must be named `tokens.yaml`.
 RUN mkdir /etc/pure-fa-om-exporter && touch /etc/pure-fa-om-exporter/tokens.yaml
 
 EXPOSE 9490
