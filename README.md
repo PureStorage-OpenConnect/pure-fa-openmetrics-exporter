@@ -7,7 +7,6 @@ OpenMetrics exporter for Pure Storage FlashArray.
 This exporter is provided under Best Efforts support by the Pure Portfolio Solutions Group, Open Source Integrations team.
 For feature requests and bugs please use GitHub Issues.
 We will address these as soon as we can, but there are no specific SLAs.
-##
 
 ### Overview
 
@@ -62,6 +61,12 @@ The provided dockerfile can be used to generate a docker image of the exporter. 
 ```shell
 VERSION=<version>
 docker build -t pure-fa-ome:$VERSION .
+
+# You can also use the make file to build a docker-image
+
+cd pure-fa-openmetrics-exporter
+...
+make docker-build
 ```
 
 
@@ -203,11 +208,17 @@ docker run -d -p 3000:3000 --name=grafana -v /tmp/grafana-data:/var/lib/grafana 
 ```
 
 #### Docker: Passing tokens.yaml file to the container
-On starting the container, Docker will create an empty `/etc/pure-fa-om-exporter/tokens.yaml` file whether the users requires it or not. If the file is blank, the container will successfully start. If the container has a volume attached containing a valid tokens.yaml file the image will utilize the contents.
-When passing a tokens.yaml file with the bearer tokens 
+On starting the container, the Dockerfile will create an empty `/etc/pure-fa-om-exporter/tokens.yaml` file whether the users requires it or not. If the file is blank, the container will successfully start. If the container has a volume attached to the `/etc/pure-fa-om-exporter/` directory containing a valid `tokens.yaml` file the container will utilize the contents.
+
 ```bash
 # Pure Storage OpenMetrics Exporter container with authentication tokens
-docker run -d -p 9490:9490 --name pure-fa-om-exporter --volume /hostpathtofile/tokens.yaml:/etc/pure-fa-om-exporter/tokens.yaml pure-fa-om-exporter:<version>
+docker run -d -p 9490:9490 --name pure-fa-om-exporter --volume /hostpathtofile/tokens.yaml:/etc/pure-fa-om-exporter/tokens.yaml  quay.io/purestorage/pure-fa-om-exporter:<version>
+```
+
+Changes to the tokens.yaml file can be reloaded by restarting the Docker container.
+
+```bash
+docker restart pure-fa-om-exporter
 ```
 
 Please have a look at the documentation of each image/application for adequate configuration examples.
