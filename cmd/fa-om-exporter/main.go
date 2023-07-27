@@ -22,9 +22,17 @@ var version string = "development"
 var debug bool = false
 var arraytokens config.FlashArrayList
 
-func FileExists(args []string) error {
+func fileExists(args []string) error {
 	_, err := os.Stat(args[0])
 	return err
+}
+
+func isFile(filename string) bool {
+   info, err := os.Stat(filename)
+   if os.IsNotExist(err) {
+      return false
+   }
+   return !info.IsDir()
 }
 
 func main() {
@@ -33,7 +41,9 @@ func main() {
 	host := parser.String("a", "address", &argparse.Options{Required: false, Help: "IP address for this exporter to bind to", Default: "0.0.0.0"})
 	port := parser.Int("p", "port", &argparse.Options{Required: false, Help: "Port for this exporter to listen", Default: 9490})
 	d := parser.Flag("d", "debug", &argparse.Options{Required: false, Help: "Enable debug", Default: false})
-	at := parser.File("t", "tokens", os.O_RDONLY, 0600, &argparse.Options{Required: false, Validate: FileExists, Help: "API token(s) map file"})
+	at := parser.File("t", "tokens", os.O_RDONLY, 0600, &argparse.Options{Required: false, Validate: fileExists, Help: "API token(s) map file"})
+	cert := parser.String("c", "cert", &argparse.Options{Required: false, Help: "TLS certificate file"})
+	key := parser.String("k", "key", &argparse.Options{Required: false, Help: "TLS key file"})
 	err := parser.Parse(os.Args)
 	if err != nil {
 		log.Fatalf("Error in token file: %v", err)
@@ -60,6 +70,16 @@ func main() {
 			log.Fatalf("Unmarshalling token file: %v", err)
 		}
 	}
+	if (len(*cert) > 0 && len(*key) == 0) || (len(*cert) == 0 && len(*key) > 0) {
+		log.Fatal("Both certificate and key must be specified to enable TLS")
+        }
+	if (len(*cert) > 0 && len(*key) > 0) {
+		if !isFile(*cert) {
+			log.Fatal("TLS cert file not found")
+        	} else if !isFile (*key) {
+			log.Fatal("TLS key file not found")
+		}
+        }
 	debug = *d
 	addr := fmt.Sprintf("%s:%d", *host, *port)
 	log.Printf("Start Pure FlashArray exporter %s on %s", version, addr)
@@ -83,7 +103,11 @@ func main() {
 	http.HandleFunc("/metrics", func(w http.ResponseWriter, r *http.Request) {
 		metricsHandler(w, r)
 	})
-	log.Fatal(http.ListenAndServe(addr, nil))
+	if isFile(*cert) && isFile(*key) {
+		log.Fatal(http.ListenAndServeTLS(addr, *cert, *key, nil))
+	} else {
+		log.Fatal(http.ListenAndServe(addr, nil))
+	}
 }
 
 func metricsHandler(w http.ResponseWriter, r *http.Request) {
