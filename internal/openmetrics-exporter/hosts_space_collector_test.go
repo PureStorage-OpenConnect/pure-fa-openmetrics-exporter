@@ -37,21 +37,21 @@ func TestHostsSpaceCollector(t *testing.T) {
 	e := endp[len(endp)-1]
 	want := make(map[string]bool)
 	for _, h := range hosts.Items {
-		want[fmt.Sprintf("label:<name:\"host\" value:\"%s\" > gauge:<value:%g > ", h.Name, h.Space.DataReduction)] = true
-		want[fmt.Sprintf("label:<name:\"host\" value:\"%s\" > label:<name:\"space\" value:\"shared\" > gauge:<value:%g > ", h.Name, h.Space.Shared)] = true
-		want[fmt.Sprintf("label:<name:\"host\" value:\"%s\" > label:<name:\"space\" value:\"snapshots\" > gauge:<value:%g > ", h.Name, h.Space.Snapshots)] = true
-		want[fmt.Sprintf("label:<name:\"host\" value:\"%s\" > label:<name:\"space\" value:\"system\" > gauge:<value:%g > ", h.Name, h.Space.System)] = true
-		want[fmt.Sprintf("label:<name:\"host\" value:\"%s\" > label:<name:\"space\" value:\"thin_provisioning\" > gauge:<value:%g > ", h.Name, h.Space.ThinProvisioning)] = true
-		want[fmt.Sprintf("label:<name:\"host\" value:\"%s\" > label:<name:\"space\" value:\"total_physical\" > gauge:<value:%g > ", h.Name, h.Space.TotalPhysical)] = true
-		want[fmt.Sprintf("label:<name:\"host\" value:\"%s\" > label:<name:\"space\" value:\"total_provisioned\" > gauge:<value:%g > ", h.Name, h.Space.TotalProvisioned)] = true
-		want[fmt.Sprintf("label:<name:\"host\" value:\"%s\" > label:<name:\"space\" value:\"total_reduction\" > gauge:<value:%g > ", h.Name, h.Space.TotalReduction)] = true
-		want[fmt.Sprintf("label:<name:\"host\" value:\"%s\" > label:<name:\"space\" value:\"unique\" > gauge:<value:%g > ", h.Name, h.Space.Unique)] = true
-		want[fmt.Sprintf("label:<name:\"host\" value:\"%s\" > label:<name:\"space\" value:\"virtual\" > gauge:<value:%g > ", h.Name, h.Space.Virtual)] = true
-		want[fmt.Sprintf("label:<name:\"host\" value:\"%s\" > label:<name:\"space\" value:\"replication\" > gauge:<value:%g > ", h.Name, h.Space.Replication)] = true
-		want[fmt.Sprintf("label:<name:\"host\" value:\"%s\" > label:<name:\"space\" value:\"shared_effective\" > gauge:<value:%g > ", h.Name, h.Space.SharedEffective)] = true
-		want[fmt.Sprintf("label:<name:\"host\" value:\"%s\" > label:<name:\"space\" value:\"snapshots_effective\" > gauge:<value:%g > ", h.Name, h.Space.SnapshotsEffective)] = true
-		want[fmt.Sprintf("label:<name:\"host\" value:\"%s\" > label:<name:\"space\" value:\"unique_effective\" > gauge:<value:%g > ", h.Name, h.Space.UniqueEffective)] = true
-		want[fmt.Sprintf("label:<name:\"host\" value:\"%s\" > label:<name:\"space\" value:\"total_effective\" > gauge:<value:%g > ", h.Name, h.Space.TotalEffective)] = true
+		want[fmt.Sprintf("label:{name:\"host\" value:\"%s\"} gauge:{value:%g}", h.Name, h.Space.DataReduction)] = true
+		want[fmt.Sprintf("label:{name:\"host\" value:\"%s\"} label:{name:\"space\" value:\"shared\"} gauge:{value:%g}", h.Name, h.Space.Shared)] = true
+		want[fmt.Sprintf("label:{name:\"host\" value:\"%s\"} label:{name:\"space\" value:\"snapshots\"} gauge:{value:%g}", h.Name, h.Space.Snapshots)] = true
+		want[fmt.Sprintf("label:{name:\"host\" value:\"%s\"} label:{name:\"space\" value:\"system\"} gauge:{value:%g}", h.Name, h.Space.System)] = true
+		want[fmt.Sprintf("label:{name:\"host\" value:\"%s\"} label:{name:\"space\" value:\"thin_provisioning\"} gauge:{value:%g}", h.Name, h.Space.ThinProvisioning)] = true
+		want[fmt.Sprintf("label:{name:\"host\" value:\"%s\"} label:{name:\"space\" value:\"total_physical\"} gauge:{value:%g}", h.Name, h.Space.TotalPhysical)] = true
+		want[fmt.Sprintf("label:{name:\"host\" value:\"%s\"} label:{name:\"space\" value:\"total_provisioned\"} gauge:{value:%g}", h.Name, h.Space.TotalProvisioned)] = true
+		want[fmt.Sprintf("label:{name:\"host\" value:\"%s\"} label:{name:\"space\" value:\"total_reduction\"} gauge:{value:%g}", h.Name, h.Space.TotalReduction)] = true
+		want[fmt.Sprintf("label:{name:\"host\" value:\"%s\"} label:{name:\"space\" value:\"unique\"} gauge:{value:%g}", h.Name, h.Space.Unique)] = true
+		want[fmt.Sprintf("label:{name:\"host\" value:\"%s\"} label:{name:\"space\" value:\"virtual\"} gauge:{value:%g}", h.Name, h.Space.Virtual)] = true
+		want[fmt.Sprintf("label:{name:\"host\" value:\"%s\"} label:{name:\"space\" value:\"replication\"} gauge:{value:%g}", h.Name, h.Space.Replication)] = true
+		want[fmt.Sprintf("label:{name:\"host\" value:\"%s\"} label:{name:\"space\" value:\"shared_effective\"} gauge:{value:%g}", h.Name, h.Space.SharedEffective)] = true
+		want[fmt.Sprintf("label:{name:\"host\" value:\"%s\"} label:{name:\"space\" value:\"snapshots_effective\"} gauge:{value:%g}", h.Name, h.Space.SnapshotsEffective)] = true
+		want[fmt.Sprintf("label:{name:\"host\" value:\"%s\"} label:{name:\"space\" value:\"unique_effective\"} gauge:{value:%g}", h.Name, h.Space.UniqueEffective)] = true
+		want[fmt.Sprintf("label:{name:\"host\" value:\"%s\"} label:{name:\"space\" value:\"total_effective\"} gauge:{value:%g}", h.Name, h.Space.TotalEffective)] = true
 	}
 	defer server.Close()
 	c := client.NewRestClient(e, "fake-api-token", "latest", false)

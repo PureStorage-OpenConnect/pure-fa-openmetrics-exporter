@@ -38,17 +38,17 @@ func TestDirectoriesPerformanceCollector(t *testing.T) {
 	defer server.Close()
 	want := make(map[string]bool)
 	for _, p := range dirs.Items {
-		want[fmt.Sprintf("label:<name:\"dimension\" value:\"usec_per_other_op\" > label:<name:\"name\" value:\"%s\" > gauge:<value:%g > ", p.Name, p.UsecPerOtherOp)] = true
-		want[fmt.Sprintf("label:<name:\"dimension\" value:\"usec_per_read_op\" > label:<name:\"name\" value:\"%s\" > gauge:<value:%g > ", p.Name, p.UsecPerReadOp)] = true
-		want[fmt.Sprintf("label:<name:\"dimension\" value:\"usec_per_write_op\" > label:<name:\"name\" value:\"%s\" > gauge:<value:%g > ", p.Name, p.UsecPerWriteOp)] = true
-		want[fmt.Sprintf("label:<name:\"dimension\" value:\"read_bytes_per_sec\" > label:<name:\"name\" value:\"%s\" > gauge:<value:%g > ", p.Name, p.ReadBytesPerSec)] = true
-		want[fmt.Sprintf("label:<name:\"dimension\" value:\"write_bytes_per_sec\" > label:<name:\"name\" value:\"%s\" > gauge:<value:%g > ", p.Name, p.WriteBytesPerSec)] = true
-		want[fmt.Sprintf("label:<name:\"dimension\" value:\"others_per_sec\" > label:<name:\"name\" value:\"%s\" > gauge:<value:%g > ", p.Name, p.OthersPerSec)] = true
-		want[fmt.Sprintf("label:<name:\"dimension\" value:\"reads_per_sec\" > label:<name:\"name\" value:\"%s\" > gauge:<value:%g > ", p.Name, p.ReadsPerSec)] = true
-		want[fmt.Sprintf("label:<name:\"dimension\" value:\"writes_per_sec\" > label:<name:\"name\" value:\"%s\" > gauge:<value:%g > ", p.Name, p.WritesPerSec)] = true
-		want[fmt.Sprintf("label:<name:\"dimension\" value:\"bytes_per_op\" > label:<name:\"name\" value:\"%s\" > gauge:<value:%g > ", p.Name, p.BytesPerOp)] = true
-		want[fmt.Sprintf("label:<name:\"dimension\" value:\"bytes_per_read\" > label:<name:\"name\" value:\"%s\" > gauge:<value:%g > ", p.Name, p.BytesPerRead)] = true
-		want[fmt.Sprintf("label:<name:\"dimension\" value:\"bytes_per_write\" > label:<name:\"name\" value:\"%s\" > gauge:<value:%g > ", p.Name, p.BytesPerWrite)] = true
+		want[fmt.Sprintf("label:{name:\"dimension\" value:\"usec_per_other_op\"} label:{name:\"name\" value:\"%s\"} gauge:{value:%g}", p.Name, p.UsecPerOtherOp)] = true
+		want[fmt.Sprintf("label:{name:\"dimension\" value:\"usec_per_read_op\"} label:{name:\"name\" value:\"%s\"} gauge:{value:%g}", p.Name, p.UsecPerReadOp)] = true
+		want[fmt.Sprintf("label:{name:\"dimension\" value:\"usec_per_write_op\"} label:{name:\"name\" value:\"%s\"} gauge:{value:%g}", p.Name, p.UsecPerWriteOp)] = true
+		want[fmt.Sprintf("label:{name:\"dimension\" value:\"read_bytes_per_sec\"} label:{name:\"name\" value:\"%s\"} gauge:{value:%g}", p.Name, p.ReadBytesPerSec)] = true
+		want[fmt.Sprintf("label:{name:\"dimension\" value:\"write_bytes_per_sec\"} label:{name:\"name\" value:\"%s\"} gauge:{value:%g}", p.Name, p.WriteBytesPerSec)] = true
+		want[fmt.Sprintf("label:{name:\"dimension\" value:\"others_per_sec\"} label:{name:\"name\" value:\"%s\"} gauge:{value:%g}", p.Name, p.OthersPerSec)] = true
+		want[fmt.Sprintf("label:{name:\"dimension\" value:\"reads_per_sec\"} label:{name:\"name\" value:\"%s\"} gauge:{value:%g}", p.Name, p.ReadsPerSec)] = true
+		want[fmt.Sprintf("label:{name:\"dimension\" value:\"writes_per_sec\"} label:{name:\"name\" value:\"%s\"} gauge:{value:%g}", p.Name, p.WritesPerSec)] = true
+		want[fmt.Sprintf("label:{name:\"dimension\" value:\"bytes_per_op\"} label:{name:\"name\" value:\"%s\"} gauge:{value:%g}", p.Name, p.BytesPerOp)] = true
+		want[fmt.Sprintf("label:{name:\"dimension\" value:\"bytes_per_read\"} label:{name:\"name\" value:\"%s\"} gauge:{value:%g}", p.Name, p.BytesPerRead)] = true
+		want[fmt.Sprintf("label:{name:\"dimension\" value:\"bytes_per_write\"} label:{name:\"name\" value:\"%s\"} gauge:{value:%g}", p.Name, p.BytesPerWrite)] = true
 	}
 	c := client.NewRestClient(e, "fake-api-token", "latest", false)
 	pc := NewDirectoriesPerformanceCollector(c)

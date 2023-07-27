@@ -37,8 +37,8 @@ func TestPodReplicaLinksLagCollector(t *testing.T) {
 	defer server.Close()
 	want := make(map[string]bool)
 	for _, p := range prlpl.Items {
-                want[fmt.Sprintf("label:<name:\"direction\" value:\"%s\" > label:<name:\"local_pod\" value:\"%s\" > label:<name:\"remote\" value:\"%s\" > label:<name:\"remote_pod\" value:\"%s\" > label:<name:\"status\" value:\"%s\" > gauge:<value:%g > ", p.Direction, p.LocalPod.Name, p.Remotes[0].Name, p.RemotePod.Name, p.Status, p.Lag.Avg)] = true
-                want[fmt.Sprintf("label:<name:\"direction\" value:\"%s\" > label:<name:\"local_pod\" value:\"%s\" > label:<name:\"remote\" value:\"%s\" > label:<name:\"remote_pod\" value:\"%s\" > label:<name:\"status\" value:\"%s\" > gauge:<value:%g > ", p.Direction, p.LocalPod.Name, p.Remotes[0].Name, p.RemotePod.Name, p.Status, p.Lag.Max)] = true
+                want[fmt.Sprintf("label:{name:\"direction\" value:\"%s\"} label:{name:\"local_pod\" value:\"%s\"} label:{name:\"remote\" value:\"%s\"} label:{name:\"remote_pod\" value:\"%s\"} label:{name:\"status\" value:\"%s\"} gauge:{value:%g}", p.Direction, p.LocalPod.Name, p.Remotes[0].Name, p.RemotePod.Name, p.Status, p.Lag.Avg)] = true
+                want[fmt.Sprintf("label:{name:\"direction\" value:\"%s\"} label:{name:\"local_pod\" value:\"%s\"} label:{name:\"remote\" value:\"%s\"} label:{name:\"remote_pod\" value:\"%s\"} label:{name:\"status\" value:\"%s\"} gauge:{value:%g}", p.Direction, p.LocalPod.Name, p.Remotes[0].Name, p.RemotePod.Name, p.Status, p.Lag.Max)] = true
 
 	}
 	c := client.NewRestClient(e, "fake-api-token", "latest", false)

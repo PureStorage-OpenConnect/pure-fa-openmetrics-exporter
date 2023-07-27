@@ -38,28 +38,28 @@ func TestPodsSpaceCollector(t *testing.T) {
 	want := make(map[string]bool)
 	for _, p := range pods.Items {
 		var s float64
-		want[fmt.Sprintf("label:<name:\"name\" value:\"%s\" > gauge:<value:%g > ", p.Name, p.Space.DataReduction)] = true
-		want[fmt.Sprintf("label:<name:\"name\" value:\"%s\" > label:<name:\"space\" value:\"shared\" > gauge:<value:%g > ", p.Name, p.Space.Shared)] = true
-		want[fmt.Sprintf("label:<name:\"name\" value:\"%s\" > label:<name:\"space\" value:\"snapshots\" > gauge:<value:%g > ", p.Name, p.Space.Snapshots)] = true
-		want[fmt.Sprintf("label:<name:\"name\" value:\"%s\" > label:<name:\"space\" value:\"system\" > gauge:<value:%g > ", p.Name, p.Space.System)] = true
-		want[fmt.Sprintf("label:<name:\"name\" value:\"%s\" > label:<name:\"space\" value:\"thin_provisioning\" > gauge:<value:%g > ", p.Name, p.Space.ThinProvisioning)] = true
-		want[fmt.Sprintf("label:<name:\"name\" value:\"%s\" > label:<name:\"space\" value:\"total_physical\" > gauge:<value:%g > ", p.Name, p.Space.TotalPhysical)] = true
-		want[fmt.Sprintf("label:<name:\"name\" value:\"%s\" > label:<name:\"space\" value:\"total_provisioned\" > gauge:<value:%g > ", p.Name, p.Space.TotalProvisioned)] = true
-		want[fmt.Sprintf("label:<name:\"name\" value:\"%s\" > label:<name:\"space\" value:\"total_reduction\" > gauge:<value:%g > ", p.Name, p.Space.TotalReduction)] = true
-		want[fmt.Sprintf("label:<name:\"name\" value:\"%s\" > label:<name:\"space\" value:\"unique\" > gauge:<value:%g > ", p.Name, p.Space.Unique)] = true
-		want[fmt.Sprintf("label:<name:\"name\" value:\"%s\" > label:<name:\"space\" value:\"virtual\" > gauge:<value:%g > ", p.Name, p.Space.Virtual)] = true
-		want[fmt.Sprintf("label:<name:\"name\" value:\"%s\" > label:<name:\"space\" value:\"replication\" > gauge:<value:%g > ", p.Name, p.Space.Replication)] = true
-		want[fmt.Sprintf("label:<name:\"name\" value:\"%s\" > label:<name:\"space\" value:\"shared_effective\" > gauge:<value:%g > ", p.Name, p.Space.SharedEffective)] = true
-		want[fmt.Sprintf("label:<name:\"name\" value:\"%s\" > label:<name:\"space\" value:\"snapshots_effective\" > gauge:<value:%g > ", p.Name, p.Space.SnapshotsEffective)] = true
-		want[fmt.Sprintf("label:<name:\"name\" value:\"%s\" > label:<name:\"space\" value:\"unique_effective\" > gauge:<value:%g > ", p.Name, p.Space.UniqueEffective)] = true
-		want[fmt.Sprintf("label:<name:\"name\" value:\"%s\" > label:<name:\"space\" value:\"total_effective\" > gauge:<value:%g > ", p.Name, p.Space.TotalEffective)] = true
+		want[fmt.Sprintf("label:{name:\"name\" value:\"%s\"} gauge:{value:%g}", p.Name, p.Space.DataReduction)] = true
+		want[fmt.Sprintf("label:{name:\"name\" value:\"%s\"} label:{name:\"space\" value:\"shared\"} gauge:{value:%g}", p.Name, p.Space.Shared)] = true
+		want[fmt.Sprintf("label:{name:\"name\" value:\"%s\"} label:{name:\"space\" value:\"snapshots\"} gauge:{value:%g}", p.Name, p.Space.Snapshots)] = true
+		want[fmt.Sprintf("label:{name:\"name\" value:\"%s\"} label:{name:\"space\" value:\"system\"} gauge:{value:%g}", p.Name, p.Space.System)] = true
+		want[fmt.Sprintf("label:{name:\"name\" value:\"%s\"} label:{name:\"space\" value:\"thin_provisioning\"} gauge:{value:%g}", p.Name, p.Space.ThinProvisioning)] = true
+		want[fmt.Sprintf("label:{name:\"name\" value:\"%s\"} label:{name:\"space\" value:\"total_physical\"} gauge:{value:%g}", p.Name, p.Space.TotalPhysical)] = true
+		want[fmt.Sprintf("label:{name:\"name\" value:\"%s\"} label:{name:\"space\" value:\"total_provisioned\"} gauge:{value:%g}", p.Name, p.Space.TotalProvisioned)] = true
+		want[fmt.Sprintf("label:{name:\"name\" value:\"%s\"} label:{name:\"space\" value:\"total_reduction\"} gauge:{value:%g}", p.Name, p.Space.TotalReduction)] = true
+		want[fmt.Sprintf("label:{name:\"name\" value:\"%s\"} label:{name:\"space\" value:\"unique\"} gauge:{value:%g}", p.Name, p.Space.Unique)] = true
+		want[fmt.Sprintf("label:{name:\"name\" value:\"%s\"} label:{name:\"space\" value:\"virtual\"} gauge:{value:%g}", p.Name, p.Space.Virtual)] = true
+		want[fmt.Sprintf("label:{name:\"name\" value:\"%s\"} label:{name:\"space\" value:\"replication\"} gauge:{value:%g}", p.Name, p.Space.Replication)] = true
+		want[fmt.Sprintf("label:{name:\"name\" value:\"%s\"} label:{name:\"space\" value:\"shared_effective\"} gauge:{value:%g}", p.Name, p.Space.SharedEffective)] = true
+		want[fmt.Sprintf("label:{name:\"name\" value:\"%s\"} label:{name:\"space\" value:\"snapshots_effective\"} gauge:{value:%g}", p.Name, p.Space.SnapshotsEffective)] = true
+		want[fmt.Sprintf("label:{name:\"name\" value:\"%s\"} label:{name:\"space\" value:\"unique_effective\"} gauge:{value:%g}", p.Name, p.Space.UniqueEffective)] = true
+		want[fmt.Sprintf("label:{name:\"name\" value:\"%s\"} label:{name:\"space\" value:\"total_effective\"} gauge:{value:%g}", p.Name, p.Space.TotalEffective)] = true
 		for _, a := range p.Arrays {
                         if a.MediatorStatus == "online" {
                                 s = 1
                         } else {
                                 s = 0
                         }
-			want[fmt.Sprintf("label:<name:\"array\" value:\"%s\" > label:<name:\"mediator\" value:\"%s\" > label:<name:\"pod\" value:\"%s\" > label:<name:\"status\" value:\"%s\" > gauge:<value:%g > ", a.Name, p.Mediator, p.Name, a.MediatorStatus, s)] = true
+			want[fmt.Sprintf("label:{name:\"array\" value:\"%s\"} label:{name:\"mediator\" value:\"%s\"} label:{name:\"pod\" value:\"%s\"} label:{name:\"status\" value:\"%s\"} gauge:{value:%g}", a.Name, p.Mediator, p.Name, a.MediatorStatus, s)] = true
 		}
 	}
 	defer server.Close()

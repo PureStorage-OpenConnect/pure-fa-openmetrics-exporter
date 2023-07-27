@@ -37,12 +37,12 @@ func TestHardwareCollector(t *testing.T) {
         e := endp[len(endp)-1]
 	want := make(map[string]bool)
 	for _, h := range hwl.Items {
-		want[fmt.Sprintf("label:<name:\"component_name\" value:\"%s\" > label:<name:\"component_status\" value:\"%s\" > label:<name:\"component_type\" value:\"%s\" > gauge:<value:1 > ", h.Name, h.Status, h.Type)] = true
+		want[fmt.Sprintf("label:{name:\"component_name\" value:\"%s\"} label:{name:\"component_status\" value:\"%s\"} label:{name:\"component_type\" value:\"%s\"} gauge:{value:1}", h.Name, h.Status, h.Type)] = true
 		if h.Temperature > 0 {
-			want[fmt.Sprintf("label:<name:\"component_name\" value:\"%s\" > label:<name:\"component_type\" value:\"%s\" > gauge:<value:%g > ", h.Name, h.Type, float64(h.Temperature))] = true
+			want[fmt.Sprintf("label:{name:\"component_name\" value:\"%s\"} label:{name:\"component_type\" value:\"%s\"} gauge:{value:%g}", h.Name, h.Type, float64(h.Temperature))] = true
 		}
 		if h.Voltage > 0 {
-			want[fmt.Sprintf("label:<name:\"component_name\" value:\"%s\" > label:<name:\"component_type\" value:\"%s\" > gauge:<value:%g > ", h.Name, h.Type, float64(h.Voltage))] = true
+			want[fmt.Sprintf("label:{name:\"component_name\" value:\"%s\"} label:{name:\"component_type\" value:\"%s\"} gauge:{value:%g}", h.Name, h.Type, float64(h.Voltage))] = true
 		}
 	}
         c := client.NewRestClient(e, "fake-api-token", "latest", false)
