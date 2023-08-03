@@ -1,6 +1,5 @@
 FROM golang:alpine as build
-# version should set to development unless another build arg is passed
-ARG VERSION=development
+ARG VERSION=1.0.8
 
 WORKDIR /usr/src/app
 
