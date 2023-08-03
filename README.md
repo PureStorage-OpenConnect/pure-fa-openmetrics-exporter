@@ -7,7 +7,6 @@ OpenMetrics exporter for Pure Storage FlashArray.
 This exporter is provided under Best Efforts support by the Pure Portfolio Solutions Group, Open Source Integrations team.
 For feature requests and bugs please use GitHub Issues.
 We will address these as soon as we can, but there are no specific SLAs.
-##
 
 ### Overview
 
@@ -51,19 +50,23 @@ git clone git@github.com:PureStorage-OpenConnect/pure-fa-openmetrics-exporter.gi
 cd pure-fa-openmetrics-exporter
 ...
 make build
-
 ```
 
 The newly built exporter executable can be found in the <kbd>./out/bin</kbd> directory.
 
-### Docker image
+### Docker Image
 
 The provided dockerfile can be used to generate a docker image of the exporter. The image can be built using docker as follows
 
 ```shell
-
 VERSION=<version>
 docker build -t pure-fa-ome:$VERSION .
+
+# You can also use the make file to build a docker-image
+
+cd pure-fa-openmetrics-exporter
+...
+make docker-build
 ```
 
 
@@ -109,6 +112,8 @@ The array token configuration file must have to following syntax:
   api_token: <api-tokenN>
 ```  
 When the array token configuration file is used, the <kbd>array_id</kbd> key must be used as the <kbd>endpoint</kbd> argument for the scraped URL.
+
+For usage a usage example of how to use this feature with a Docker container, see Docker Usage Examples below.
 
 ### Scraping endpoints
 
@@ -192,7 +197,7 @@ In a typical production scenario, it is recommended to use a visual frontend for
 
 To spin up a very basic set of those containers, use the following commands:
 ```bash
-# Pure exporter
+# Pure Storage OpenMetrics Exporter
 docker run -d -p 9490:9490 --name pure-fa-om-exporter quay.io/purestorage/pure-fa-om-exporter:<version>
 
 # Prometheus with config via bind-volume (create config first!)
@@ -201,6 +206,21 @@ docker run -d -p 9090:9090 --name=prometheus -v /tmp/prometheus-pure.yml:/etc/pr
 # Grafana
 docker run -d -p 3000:3000 --name=grafana -v /tmp/grafana-data:/var/lib/grafana grafana/grafana
 ```
+
+#### Docker: Passing tokens.yaml file to the container
+On starting the container, the Dockerfile will create an empty `/etc/pure-fa-om-exporter/tokens.yaml` file whether the users requires it or not. If the file is blank, the container will successfully start. If the container has a volume attached to the `/etc/pure-fa-om-exporter/` directory containing a valid `tokens.yaml` file the container will utilize the contents.
+
+```bash
+# Pure Storage OpenMetrics Exporter container with authentication tokens
+docker run -d -p 9490:9490 --name pure-fa-om-exporter --volume /hostpathtofile/tokens.yaml:/etc/pure-fa-om-exporter/tokens.yaml  quay.io/purestorage/pure-fa-om-exporter:<version>
+```
+
+Changes to the tokens.yaml file can be reloaded by restarting the Docker container.
+
+```bash
+docker restart pure-fa-om-exporter
+```
+
 Please have a look at the documentation of each image/application for adequate configuration examples.
 
 #### Kubernetes
