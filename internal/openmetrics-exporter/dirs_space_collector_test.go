@@ -37,21 +37,21 @@ func TestDirectoriesSpaceCollector(t *testing.T) {
 	e := endp[len(endp)-1]
 	want := make(map[string]bool)
 	for _, d := range directories.Items {
-		want[fmt.Sprintf("label:<name:\"name\" value:\"%s\" > gauge:<value:%g > ", d.Name, d.Space.DataReduction)] = true
-		want[fmt.Sprintf("label:<name:\"name\" value:\"%s\" > label:<name:\"space\" value:\"shared\" > gauge:<value:%g > ", d.Name, d.Space.Shared)] = true
-		want[fmt.Sprintf("label:<name:\"name\" value:\"%s\" > label:<name:\"space\" value:\"snapshots\" > gauge:<value:%g > ", d.Name, d.Space.Snapshots)] = true
-		want[fmt.Sprintf("label:<name:\"name\" value:\"%s\" > label:<name:\"space\" value:\"system\" > gauge:<value:%g > ", d.Name, d.Space.System)] = true
-		want[fmt.Sprintf("label:<name:\"name\" value:\"%s\" > label:<name:\"space\" value:\"thin_provisioning\" > gauge:<value:%g > ", d.Name, d.Space.ThinProvisioning)] = true
-		want[fmt.Sprintf("label:<name:\"name\" value:\"%s\" > label:<name:\"space\" value:\"total_physical\" > gauge:<value:%g > ", d.Name, d.Space.TotalPhysical)] = true
-		want[fmt.Sprintf("label:<name:\"name\" value:\"%s\" > label:<name:\"space\" value:\"total_provisioned\" > gauge:<value:%g > ", d.Name, d.Space.TotalProvisioned)] = true
-		want[fmt.Sprintf("label:<name:\"name\" value:\"%s\" > label:<name:\"space\" value:\"total_reduction\" > gauge:<value:%g > ", d.Name, d.Space.TotalReduction)] = true
-		want[fmt.Sprintf("label:<name:\"name\" value:\"%s\" > label:<name:\"space\" value:\"unique\" > gauge:<value:%g > ", d.Name, d.Space.Unique)] = true
-		want[fmt.Sprintf("label:<name:\"name\" value:\"%s\" > label:<name:\"space\" value:\"virtual\" > gauge:<value:%g > ", d.Name, d.Space.Virtual)] = true
-		want[fmt.Sprintf("label:<name:\"name\" value:\"%s\" > label:<name:\"space\" value:\"replication\" > gauge:<value:%g > ", d.Name, d.Space.Replication)] = true
-		want[fmt.Sprintf("label:<name:\"name\" value:\"%s\" > label:<name:\"space\" value:\"shared_effective\" > gauge:<value:%g > ", d.Name, d.Space.SharedEffective)] = true
-		want[fmt.Sprintf("label:<name:\"name\" value:\"%s\" > label:<name:\"space\" value:\"snapshots_effective\" > gauge:<value:%g > ", d.Name, d.Space.SnapshotsEffective)] = true
-		want[fmt.Sprintf("label:<name:\"name\" value:\"%s\" > label:<name:\"space\" value:\"unique_effective\" > gauge:<value:%g > ", d.Name, d.Space.UniqueEffective)] = true
-		want[fmt.Sprintf("label:<name:\"name\" value:\"%s\" > label:<name:\"space\" value:\"total_effective\" > gauge:<value:%g > ", d.Name, d.Space.TotalEffective)] = true
+		want[fmt.Sprintf("label:{name:\"name\" value:\"%s\"} gauge:{value:%g}", d.Name, d.Space.DataReduction)] = true
+		want[fmt.Sprintf("label:{name:\"name\" value:\"%s\"} label:{name:\"space\" value:\"shared\"} gauge:{value:%g}", d.Name, d.Space.Shared)] = true
+		want[fmt.Sprintf("label:{name:\"name\" value:\"%s\"} label:{name:\"space\" value:\"snapshots\"} gauge:{value:%g}", d.Name, d.Space.Snapshots)] = true
+		want[fmt.Sprintf("label:{name:\"name\" value:\"%s\"} label:{name:\"space\" value:\"system\"} gauge:{value:%g}", d.Name, d.Space.System)] = true
+		want[fmt.Sprintf("label:{name:\"name\" value:\"%s\"} label:{name:\"space\" value:\"thin_provisioning\"} gauge:{value:%g}", d.Name, d.Space.ThinProvisioning)] = true
+		want[fmt.Sprintf("label:{name:\"name\" value:\"%s\"} label:{name:\"space\" value:\"total_physical\"} gauge:{value:%g}", d.Name, d.Space.TotalPhysical)] = true
+		want[fmt.Sprintf("label:{name:\"name\" value:\"%s\"} label:{name:\"space\" value:\"total_provisioned\"} gauge:{value:%g}", d.Name, d.Space.TotalProvisioned)] = true
+		want[fmt.Sprintf("label:{name:\"name\" value:\"%s\"} label:{name:\"space\" value:\"total_reduction\"} gauge:{value:%g}", d.Name, d.Space.TotalReduction)] = true
+		want[fmt.Sprintf("label:{name:\"name\" value:\"%s\"} label:{name:\"space\" value:\"unique\"} gauge:{value:%g}", d.Name, d.Space.Unique)] = true
+		want[fmt.Sprintf("label:{name:\"name\" value:\"%s\"} label:{name:\"space\" value:\"virtual\"} gauge:{value:%g}", d.Name, d.Space.Virtual)] = true
+		want[fmt.Sprintf("label:{name:\"name\" value:\"%s\"} label:{name:\"space\" value:\"replication\"} gauge:{value:%g}", d.Name, d.Space.Replication)] = true
+		want[fmt.Sprintf("label:{name:\"name\" value:\"%s\"} label:{name:\"space\" value:\"shared_effective\"} gauge:{value:%g}", d.Name, d.Space.SharedEffective)] = true
+		want[fmt.Sprintf("label:{name:\"name\" value:\"%s\"} label:{name:\"space\" value:\"snapshots_effective\"} gauge:{value:%g}", d.Name, d.Space.SnapshotsEffective)] = true
+		want[fmt.Sprintf("label:{name:\"name\" value:\"%s\"} label:{name:\"space\" value:\"unique_effective\"} gauge:{value:%g}", d.Name, d.Space.UniqueEffective)] = true
+		want[fmt.Sprintf("label:{name:\"name\" value:\"%s\"} label:{name:\"space\" value:\"total_effective\"} gauge:{value:%g}", d.Name, d.Space.TotalEffective)] = true
 	}
 	defer server.Close()
 	c := client.NewRestClient(e, "fake-api-token", "latest", false)

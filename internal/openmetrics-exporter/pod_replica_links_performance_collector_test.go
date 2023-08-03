@@ -37,9 +37,9 @@ func TestPodReplicaLinksPerformanceCollector(t *testing.T) {
 	defer server.Close()
 	want := make(map[string]bool)
 	for _, p := range prlpl.Items {
-                want[fmt.Sprintf("label:<name:\"dimension\" value:\"bytes_per_sec_to_remote\" > label:<name:\"direction\" value:\"%s\" > label:<name:\"local_pod\" value:\"%s\" > label:<name:\"remote\" value:\"%s\" > label:<name:\"remote_pod\" value:\"%s\" > gauge:<value:%g > ", p.Direction, p.LocalPod.Name, p.Remotes[0].Name, p.RemotePod.Name, p.BytesPerSecToRemote)] = true
-                want[fmt.Sprintf("label:<name:\"dimension\" value:\"bytes_per_sec_from_remote\" > label:<name:\"direction\" value:\"%s\" > label:<name:\"local_pod\" value:\"%s\" > label:<name:\"remote\" value:\"%s\" > label:<name:\"remote_pod\" value:\"%s\" > gauge:<value:%g > ", p.Direction, p.LocalPod.Name, p.Remotes[0].Name, p.RemotePod.Name, p.BytesPerSecFromRemote)] = true
-                want[fmt.Sprintf("label:<name:\"dimension\" value:\"bytes_per_sec_total\" > label:<name:\"direction\" value:\"%s\" > label:<name:\"local_pod\" value:\"%s\" > label:<name:\"remote\" value:\"%s\" > label:<name:\"remote_pod\" value:\"%s\" > gauge:<value:%g > ", p.Direction, p.LocalPod.Name, p.Remotes[0].Name, p.RemotePod.Name, p.BytesPerSecTotal)] = true
+                want[fmt.Sprintf("label:{name:\"dimension\" value:\"bytes_per_sec_to_remote\"} label:{name:\"direction\" value:\"%s\"} label:{name:\"local_pod\" value:\"%s\"} label:{name:\"remote\" value:\"%s\"} label:{name:\"remote_pod\" value:\"%s\"} gauge:{value:%g}", p.Direction, p.LocalPod.Name, p.Remotes[0].Name, p.RemotePod.Name, p.BytesPerSecToRemote)] = true
+                want[fmt.Sprintf("label:{name:\"dimension\" value:\"bytes_per_sec_from_remote\"} label:{name:\"direction\" value:\"%s\"} label:{name:\"local_pod\" value:\"%s\"} label:{name:\"remote\" value:\"%s\"} label:{name:\"remote_pod\" value:\"%s\"} gauge:{value:%g}", p.Direction, p.LocalPod.Name, p.Remotes[0].Name, p.RemotePod.Name, p.BytesPerSecFromRemote)] = true
+                want[fmt.Sprintf("label:{name:\"dimension\" value:\"bytes_per_sec_total\"} label:{name:\"direction\" value:\"%s\"} label:{name:\"local_pod\" value:\"%s\"} label:{name:\"remote\" value:\"%s\"} label:{name:\"remote_pod\" value:\"%s\"} gauge:{value:%g}", p.Direction, p.LocalPod.Name, p.Remotes[0].Name, p.RemotePod.Name, p.BytesPerSecTotal)] = true
 
 	}
 	c := client.NewRestClient(e, "fake-api-token", "latest", false)
