@@ -7,6 +7,7 @@ import (
 	"github.com/go-resty/resty/v2"
 )
 
+const FARestUserAgent = "Pure_FA_OpenMetrics_exporter/1.0"
 
 type Client interface {
 	GetAlerts(filter string) *AlertsList
@@ -89,6 +90,7 @@ func NewRestClient(endpoint string, apitoken string, apiversion string, debug bo
 	}
 	fa.XAuthToken = res.Header().Get("x-auth-token")
 	fa.RestClient.SetHeader("x-auth-token", fa.XAuthToken)
+	fa.RestClient.SetHeader("User-Agent", FARestUserAgent)
 	return fa
 }
 
