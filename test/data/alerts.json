@@ -23,27 +23,6 @@
       "summary": "(directory_service:Service: active_directory_domain_catalog_ldap, IpAddress: 172.29.10.252, Port: 636, Filter: (&(gidNumber=65534)(objectClass=group))): Directory service lookup failed."
     },
     {
-      "description": "(directory_service:Service: active_directory_domain_catalog_ldap, IpAddress: 172.29.10.252, Port: 636, Filter: (&(gidNumber=65534)(objectClass=group))): Directory service lookup failed. Expected: , Actual: ",
-      "created": 1678287765779,
-      "state": "open",
-      "component_type": "directory_service",
-      "name": "10911317",
-      "id": "98ff1eeff201461bbc468d6f0c0019b2",
-      "code": 231,
-      "category": "array",
-      "severity": "info",
-      "flagged": false,
-      "updated": 1678287765779,
-      "closed": null,
-      "notified": null,
-      "component_name": "Service: active_directory_domain_catalog_ldap, IpAddress: 172.29.10.252, Port: 636, Filter: (&(gidNumber=65534)(objectClass=group))",
-      "expected": "",
-      "actual": "",
-      "issue": "Directory service lookup failed.",
-      "knowledge_base_url": "https://support.purestorage.com/?cid=Alert_0231",
-      "summary": "(directory_service:Service: active_directory_domain_catalog_ldap, IpAddress: 172.29.10.252, Port: 636, Filter: (&(gidNumber=65534)(objectClass=group))): Directory service lookup failed."
-    },
-    {
       "description": "(directory_service:Service: active_directory_domain_catalog_ldap, IpAddress: 172.29.10.252, Port: 636, Filter: (&(gidNumber=1002)(objectClass=group))): Directory service lookup failed. Expected: , Actual: ",
       "created": 1678288118892,
       "state": "open",
