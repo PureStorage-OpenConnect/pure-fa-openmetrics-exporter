@@ -80,11 +80,15 @@ Authentication is used by the exporter as the mechanism to cross authenticate to
 The first option requires specifying the api-token value as the authorization parameter of the specific job in the Prometheus configuration file.
 The second option provides the FlashArray/api-token key-pair map for a list of arrays in a simple YAML configuration file that is passed as parameter to the exporter. This makes possible to write more concise Prometheus configuration files and also to configure other scrapers that cannot use the HTTP authentication header.
 
+### TLS Support
+
+The exporter can be started in TLS mode (HTTPS, mutually exclusive with the HTTP mode) by providing the X.509 certificate and key files in the command parameters. Self-signed certificates are also accepted.
+
 ### Usage
 
 ```shell
 
-usage: pure-fa-om-exporter [-h|--help] [-a|--address "<value>"] [-p|--port <integer>] [-d|--debug] [-t|--tokens <file>]
+usage: pure-fa-om-exporter [-h|--help] [-a|--address "<value>"] [-p|--port <integer>] [-d|--debug] [-t|--tokens <file>] [-k|--key <file>] [-c|--cert <file>]
 
                            Pure Storage FA OpenMetrics exporter
 
@@ -95,6 +99,8 @@ Arguments:
   -p  --port     Port for this exporter to listen. Default: 9490
   -d  --debug    Enable debug. Default: false
   -t  --tokens   API token(s) map file
+  -c  --cert     SSL/TLS certificate file. Required only for TLS
+  -k  --key      SSL/TLS private key file. Required only for TLS
 ```
 
 The array token configuration file must have to following syntax:
