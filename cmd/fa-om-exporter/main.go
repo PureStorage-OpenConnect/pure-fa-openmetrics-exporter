@@ -42,8 +42,8 @@ func main() {
 	port := parser.Int("p", "port", &argparse.Options{Required: false, Help: "Port for this exporter to listen", Default: 9490})
 	d := parser.Flag("d", "debug", &argparse.Options{Required: false, Help: "Enable debug", Default: false})
 	at := parser.File("t", "tokens", os.O_RDONLY, 0600, &argparse.Options{Required: false, Validate: fileExists, Help: "API token(s) map file"})
-	cert := parser.String("c", "cert", &argparse.Options{Required: false, Help: "TLS certificate file"})
-	key := parser.String("k", "key", &argparse.Options{Required: false, Help: "TLS key file"})
+	cert := parser.String("c", "cert", &argparse.Options{Required: false, Help: "SSL/TLS certificate file. Required only for TLS"})
+	key := parser.String("k", "key", &argparse.Options{Required: false, Help: "SSL/TLS private key file. Required only for TLS"})
 	err := parser.Parse(os.Args)
 	if err != nil {
 		log.Fatalf("Error in token file: %v", err)
