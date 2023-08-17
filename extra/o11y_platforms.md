@@ -42,7 +42,7 @@ Take a holistic overview of your Pure Storage FlashArray estate on-premise with 
 
 Drill down into specific arrays and identify top busy hosts while correlating read and write operations and throughput to quickly highlight or eliminate investigation enquiries.
 
-For more information on dependencies, and notes to deploy -- take look at the examples for Grafana and Prometheus in the [extra/grafana/](extra/grafana/) and [extra/prometheus/](extra/prometheus/) folders respectively.
+For more information on dependencies, and notes to deploy -- take look at the examples for Grafana and Prometheus in the [extra/grafana/](grafana/) and [extra/prometheus/](prometheus/) folders respectively.
 
 <br>
 <img src="images/purefa_grafana_dashboard.png" width="50%">
