@@ -187,16 +187,16 @@ scrape_configs:
     replacement: pure-fa-exporter.your.domain:9490  #  <== your exporter address and port goes here
     action: replace
   static_configs:
-  - targets:           #  <== the list of your flasharrays goes here
+  - targets:           #  <== the list of your FlashArrays goes here
     - 10.11.12.80
     - 10.11.12.82
     - 10.11.12.90
 
 ```
 
-See the kubernetes [examples](examples/config/k8s) for a similar configuration that uses a the additional config for a simple Prometheus kubernets deploymemt or the more interesting Prometheus operator.
+See the Kubernetes [examples](examples/config/k8s) for a similar configuration that uses a the additional config for a simple Prometheus Kubernets deployment or the more interesting Prometheus operator.
 
-### Usage examples
+### Usage Examples
 
 #### Docker 
 In a typical production scenario, it is recommended to use a visual frontend for your metrics, such as [Grafana](https://github.com/grafana/grafana). Grafana allows you to use your Prometheus instance as a datasource, and create Graphs and other visualizations from PromQL queries. Grafana, Prometheus, are all easy to run as docker containers.
@@ -236,6 +236,23 @@ A simple but complete example to deploy a full monitoring stack on Kubernetes ca
 #### Docker Compose
 
 A complete example monitoring stack implemented in Docker Compose which can be found in the [examples](examples/config/docker) directory. 
+
+#### TLS HTTPS Support
+
+An usage example of how to deploy the exporter with TLS.
+
+Deployment:
+```shell
+$ pure-fa-openmetrics-exporter/out/bin/pure-fa-om-exporter -c cert.crt -k cert.key
+2023/08/01 12:00:00 Start Pure FlashArray exporter v1.0.9 on 0.0.0.0:9490
+```
+Testing:
+```shell
+$ cURL --header 'Authorization: Bearer xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx' --request GET 'https://pure-fa-exporter.your.domain:9490/metrics/array?endpoint=arrayname.your.domain' --insecure --silent | grep purefa_info
+# HELP purefa_info FlashArray system information
+# TYPE purefa_info gauge
+purefa_info{array_name="arrayname",os="Purity//FA",system_id="xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",version="6.4.5"} 1
+```
 
 ### Metrics Collected
 
