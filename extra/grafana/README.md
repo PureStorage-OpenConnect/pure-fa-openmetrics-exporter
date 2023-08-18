@@ -49,7 +49,8 @@ Grafana can be configured to query all of the metrics available in the Prometheu
 # Setup
 ## Prerequisites and Dependencies
 This deployment assumes the [Pure Storage FlashArray OpenMetrics Exporter][1] is previously setup and configured.
-Supported operating system platforms are available to install Prometheus and Grafana.
+Prometheus and Grafana are open source platforms which are under constant development, therefore updates to our overview dashboard cannot be tested with every version. When new versions of the dashboard is released we endeavor to test between current and previous tested versions.
+We have tested our dashboard with the following versions:
 
 The Grafana dashboards have been developed and tested using the following software versions:
 | OME            | Prometheus  | Grafana        |
