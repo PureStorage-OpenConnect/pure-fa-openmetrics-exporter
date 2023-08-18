@@ -239,7 +239,7 @@ A complete example monitoring stack implemented in Docker Compose which can be f
 
 #### TLS HTTPS Support
 
-An usage example of how to deploy the exporter with TLS.
+Usage example of how to deploy the exporter with TLS using the `pure-fa-om-exporter` binary.
 
 Deployment:
 ```shell
