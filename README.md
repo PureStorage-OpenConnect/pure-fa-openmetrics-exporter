@@ -194,7 +194,7 @@ scrape_configs:
 
 ```
 
-See the Kubernetes [examples](examples/config/k8s) for a similar configuration that uses a the additional config for a simple Prometheus Kubernets deployment or the more interesting Prometheus operator.
+See the Kubernetes [examples](examples/config/k8s) for a similar configuration that uses additional configuration items for a simple Prometheus+Kubernetes deployment, or for the more interesting Prometheus operator.
 
 ### Usage Examples
 
