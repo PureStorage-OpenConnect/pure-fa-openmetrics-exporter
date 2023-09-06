@@ -243,7 +243,7 @@ Usage example of how to deploy the exporter with TLS using the `pure-fa-om-expor
 
 Deployment:
 ```shell
-$ pure-fa-openmetrics-exporter/out/bin/pure-fa-om-exporter -c cert.crt -k cert.key
+$ ./pure-fa-om-exporter -c cert.crt -k cert.key
 2023/08/01 12:00:00 Start Pure FlashArray exporter v1.0.9 on 0.0.0.0:9490
 ```
 Testing:
