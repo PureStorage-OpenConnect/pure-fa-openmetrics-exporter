@@ -49,13 +49,16 @@ Grafana can be configured to query all of the metrics available in the Prometheu
 # Setup
 ## Prerequisites and Dependencies
 This deployment assumes the [Pure Storage FlashArray OpenMetrics Exporter][1] is previously setup and configured.
-Supported operating system platforms are available to install Prometheus and Grafana.
+Prometheus and Grafana are open source platforms which are under constant development, therefore updates to our overview dashboard cannot be tested with every version. When new versions of the dashboard is released we endeavor to test between current and previous tested versions.
+We have tested our dashboard with the following versions:
 
 The Grafana dashboards have been developed and tested using the following software versions:
-* Prometheus v2.41.1
-* Grafana v9.3.2 & v9.4.1
-* Pure Storage OpenMetrics Exporter v1.0.5.hotfix1
+| OME            | Prometheus  | Grafana        |
+| -------------- | ----------- |--------------- |
+| v1.0.9         | 2.45.0      | 9.3.2 & 10.0.1 |
+| v1.0.5.hotfix1 | 2.41.1      | 9.3.2 & 9.4.1  |
 
+Purity 6.1.0 and above (REST API 2.x continues to be developed in later Purity versions)
 Dashboards may have limited functionality with earlier versions and some modifications may be required.
 
 ## Prometheus
