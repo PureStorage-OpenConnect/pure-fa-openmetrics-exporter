@@ -1,6 +1,15 @@
 version: '3.8'
 
 services:
+  pure-fb-om-exporter:
+    image: quay.io/purestorage/pure-fb-om-exporter:latest
+    command:
+      - '--port=9491'
+    depends_on:
+      - prometheus
+    ports:
+      - 9491:9491
+    restart: on-failure
   pure-fa-om-exporter:
     image: quay.io/purestorage/pure-fa-om-exporter:latest
     command: 
