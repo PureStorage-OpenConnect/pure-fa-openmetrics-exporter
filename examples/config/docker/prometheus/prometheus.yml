@@ -2,164 +2,659 @@ global:
   scrape_interval:     60s
   scrape_timeout:      50s
 scrape_configs:
+  - job_name: 'purestorage-fb'
+    metrics_path: /metrics/array
+    authorization:
+      credentials: T-c19221ef-b362-4cba-83dc-83c175078abd
+    params:
+      endpoint: ['10.21.200.19']
+
+    static_configs:
+    - targets:
+      - pure-fb-om-exporter:9491
+      labels:
+        location: US
+        site: PureTEC
+        instance: sn1-fb-c07-19
+        env: 'FSA Lab'
+
+  - job_name: 'purestorage-fb_clients'
+    metrics_path: /metrics/clients
+    authorization:
+      credentials: T-c19221ef-b362-4cba-83dc-83c175078abd
+    params:
+      endpoint: ['10.21.200.19']
+
+    static_configs:
+    - targets:
+      - pure-fb-om-exporter:9491
+      labels:
+        location: US
+        site: PureTEC
+        instance: sn1-fb-c07-19
+        env: 'FSA Lab'
+
+  - job_name: 'purestorage-fb_usage'
+    metrics_path: /metrics/usage
+    authorization:
+      credentials: T-c19221ef-b362-4cba-83dc-83c175078abd
+    params:
+      endpoint: ['10.21.200.19']
+
+    static_configs:
+    - targets:
+      - pure-fb-om-exporter:9491
+      labels:
+        location: US
+        site: PureTEC
+        instance: sn1-fb-c07-19
+        env: 'FSA Lab'
+
+  - job_name: 'purestorage-fb2'
+    metrics_path: /metrics/array
+    authorization:
+      credentials: T-51a0e14d-0135-425a-9ca1-96798c2ee945
+    params:
+      endpoint: ['10.21.200.5']
+
+    static_configs:
+    - targets:
+      - pure-fb-om-exporter:9491
+      labels:
+        location: US
+        site: PureTEC
+        instance: sn1-fb-c07-17
+        env: 'FSA Lab'
+
+  - job_name: 'purestorage-fb2_clients'
+    metrics_path: /metrics/clients
+    authorization:
+      credentials: T-51a0e14d-0135-425a-9ca1-96798c2ee945
+    params:
+      endpoint: ['10.21.200.5']
+
+    static_configs:
+    - targets:
+      - pure-fb-om-exporter:9491
+      labels:
+        location: US
+        site: PureTEC
+        instance: sn1-fb-c07-17
+        env: 'FSA Lab'
+
+  - job_name: 'purestorage-fb2_usage'
+    metrics_path: /metrics/usage
+    authorization:
+      credentials: T-51a0e14d-0135-425a-9ca1-96798c2ee945
+    params:
+      endpoint: ['10.21.200.5']
+
+    static_configs:
+    - targets:
+      - pure-fb-om-exporter:9491
+      labels:
+        location: US
+        site: PureTEC
+        instance: sn1-fb-c07-17
+        env: 'FSA Lab'
+
   - job_name: 'purestorage-fa'
     metrics_path: /metrics/array
     authorization:
-      credentials: <YOUR_API_TOKEN>
+      credentials: 64f736be-9b7c-d7a5-4f85-16716969c1b1
     params:
-      endpoint: [<YOUR_FLASHARRAY_IP>]
+      endpoint: ['10.21.229.28']
 
     static_configs:
     - targets:
       - pure-fa-om-exporter:9490
       labels:
         location: US
-        site: TestSite
-        instance: FlashArray1
-        env: 'Test Lab'
+        site: PureTEC
+        instance: sn1-m70-f06-33
+        env: 'FSA Lab'
 
   - job_name: 'purestorage-fa_volumes'
     metrics_path: /metrics/volumes
     authorization:
-      credentials: <YOUR_API_TOKEN>
+      credentials: 64f736be-9b7c-d7a5-4f85-16716969c1b1
     params:
-      endpoint: [<YOUR_FLASHARRAY_IP>]
+      endpoint: ['10.21.229.28']
 
     static_configs:
     - targets:
       - pure-fa-om-exporter:9490
       labels:
         location: US
-        site: TestSite
-        instance: FlashArray1
-        env: 'Test Lab'
+        site: PureTEC
+        instance: sn1-m70-f06-33
+        env: 'FSA Lab'
 
   - job_name: 'purestorage-fa_hosts'
     metrics_path: /metrics/hosts
     authorization:
-      credentials: <YOUR_API_TOKEN>
+      credentials: 64f736be-9b7c-d7a5-4f85-16716969c1b1
     params:
-      endpoint: [<YOUR_FLASHARRAY_IP>]
+      endpoint: ['10.21.229.28']
 
     static_configs:
     - targets:
       - pure-fa-om-exporter:9490
       labels:
         location: US
-        site: TestSite
-        instance: FlashArray1
-        env: 'Test Lab'
-        
+        site: PureTEC
+        instance: sn1-m70-f06-33
+        env: 'FSA Lab'
+
   - job_name: 'purestorage-fa_pods'
     metrics_path: /metrics/pods
     authorization:
-      credentials: <YOUR_API_TOKEN>
+      credentials: 64f736be-9b7c-d7a5-4f85-16716969c1b1
     params:
-      endpoint: [<YOUR_FLASHARRAY_IP>]
+      endpoint: ['10.21.229.28']
 
     static_configs:
     - targets:
       - pure-fa-om-exporter:9490
       labels:
         location: US
-        site: TestSite
-        instance: FlashArray1
-        env: 'Test Lab'
- 
+        site: PureTEC
+        instance: sn1-m70-f06-33
+        env: 'FSA Lab'
+
   - job_name: 'purestorage-fa_directories'
     metrics_path: /metrics/directories
     authorization:
-      credentials: <YOUR_API_TOKEN>
+      credentials: 64f736be-9b7c-d7a5-4f85-16716969c1b1
     params:
-      endpoint: [<YOUR_FLASHARRAY_IP>]
+      endpoint: ['10.21.229.28']
 
     static_configs:
     - targets:
       - pure-fa-om-exporter:9490
       labels:
         location: US
-        site: TestSite
-        instance: FlashArray1
-        env: 'Test Lab'
- 
+        site: PureTEC
+        instance: sn1-m70-f06-33
+        env: 'FSA Lab'
 
   - job_name: 'purestorage-fa2'
     metrics_path: /metrics/array
     authorization:
-      credentials: <YOUR_API_TOKEN>
+      credentials: dd1d5e40-b598-6afe-172c-498f23bb36ad
     params:
-      endpoint: [<YOUR_FLASHARRAY_IP>]
+      endpoint: ['10.21.229.24']
 
     static_configs:
     - targets:
       - pure-fa-om-exporter:9490
       labels:
         location: US
-        site: TestSite
-        instance: FlashArray2
-        env: 'Test Lab'
+        site: PureTEC
+        instance: sn1-x70-f06-27
+        env: 'FSA Lab'
 
   - job_name: 'purestorage-fa2_volumes'
     metrics_path: /metrics/volumes
     authorization:
-      credentials: <YOUR_API_TOKEN>
+      credentials: dd1d5e40-b598-6afe-172c-498f23bb36ad
     params:
-      endpoint: [<YOUR_FLASHARRAY_IP>]
+      endpoint: ['10.21.229.24']
 
     static_configs:
     - targets:
       - pure-fa-om-exporter:9490
       labels:
         location: US
-        site: TestSite
-        instance: FlashArray2
-        env: 'Test Lab'
+        site: PureTEC
+        instance: sn1-x70-f06-27
+        env: 'FSA Lab'
 
   - job_name: 'purestorage-fa2_hosts'
     metrics_path: /metrics/hosts
     authorization:
-      credentials: <YOUR_API_TOKEN>
+      credentials: dd1d5e40-b598-6afe-172c-498f23bb36ad
     params:
-      endpoint: [<YOUR_FLASHARRAY_IP>]
+      endpoint: ['10.21.229.24']
 
     static_configs:
     - targets:
       - pure-fa-om-exporter:9490
       labels:
         location: US
-        site: TestSite
-        instance: FlashArray2
-        env: 'Test Lab'
-        
+        site: PureTEC
+        instance: sn1-x70-f06-27
+        env: 'FSA Lab'
+
   - job_name: 'purestorage-fa2_pods'
     metrics_path: /metrics/pods
     authorization:
-      credentials: <YOUR_API_TOKEN>
+      credentials: dd1d5e40-b598-6afe-172c-498f23bb36ad
     params:
-      endpoint: [<YOUR_FLASHARRAY_IP>]
+      endpoint: ['10.21.229.24']
 
     static_configs:
     - targets:
       - pure-fa-om-exporter:9490
       labels:
         location: US
-        site: TestSite
-        instance: FlashArray2
-        env: 'Test Lab'
- 
+        site: PureTEC
+        instance: sn1-x70-f06-27
+        env: 'FSA Lab'
+
   - job_name: 'purestorage-fa2_directories'
     metrics_path: /metrics/directories
     authorization:
-      credentials: <YOUR_API_TOKEN>
+      credentials: dd1d5e40-b598-6afe-172c-498f23bb36ad
     params:
-      endpoint: [<YOUR_FLASHARRAY_IP>]
+      endpoint: ['10.21.229.24']
 
     static_configs:
     - targets:
       - pure-fa-om-exporter:9490
       labels:
         location: US
-        site: TestSite
-        instance: FlashArray2
-        env: 'Test Lab'
+        site: PureTEC
+        instance: sn1-x70-f06-27
+        env: 'FSA Lab'
+
+  - job_name: 'purestorage-fa4'
+    metrics_path: /metrics/array
+    authorization:
+      credentials: 41238831-2b9d-89e2-b4f2-936e0a03ffb6
+    params:
+      endpoint: ['10.21.200.190']
+
+    static_configs:
+    - targets:
+      - pure-fa-om-exporter:9490
+      labels:
+        location: US
+        site: PureTEC
+        instance: sn1-c60-e12-16
+        env: 'FSA Lab'
+
+  - job_name: 'purestorage-fa4_volumes'
+    metrics_path: /metrics/volumes
+    authorization:
+      credentials: 41238831-2b9d-89e2-b4f2-936e0a03ffb6
+    params:
+      endpoint: ['10.21.200.190']
+
+    static_configs:
+    - targets:
+      - pure-fa-om-exporter:9490
+      labels:
+        location: US
+        site: PureTEC
+        instance: sn1-c60-e12-16
+        env: 'FSA Lab'
+
+  - job_name: 'purestorage-fa4_hosts'
+    metrics_path: /metrics/hosts
+    authorization:
+      credentials: 41238831-2b9d-89e2-b4f2-936e0a03ffb6
+    params:
+      endpoint: ['10.21.200.190']
+
+    static_configs:
+    - targets:
+      - pure-fa-om-exporter:9490
+      labels:
+        location: US
+        site: PureTEC
+        instance: sn1-c60-e12-16
+        env: 'FSA Lab'
+
+  - job_name: 'purestorage-fa4_pods'
+    metrics_path: /metrics/pods
+    authorization:
+      credentials: 41238831-2b9d-89e2-b4f2-936e0a03ffb6
+    params:
+      endpoint: ['10.21.200.190']
+
+    static_configs:
+    - targets:
+      - pure-fa-om-exporter:9490
+      labels:
+        location: US
+        site: PureTEC
+        instance: sn1-c60-e12-16
+        env: 'FSA Lab'
+
+  - job_name: 'purestorage-fa4_directories'
+    metrics_path: /metrics/directories
+    authorization:
+      credentials: 41238831-2b9d-89e2-b4f2-936e0a03ffb6
+    params:
+      endpoint: ['10.21.200.190']
+
+    static_configs:
+    - targets:
+      - pure-fa-om-exporter:9490
+      labels:
+        location: US
+        site: PureTEC
+        instance: sn1-c60-e12-16
+        env: 'FSA Lab'
+
+  - job_name: 'purestorage-fa5'
+    metrics_path: /metrics/array
+    authorization:
+      credentials: 9d1fb279-5a90-1960-8af6-d0554118b85c
+    params:
+      endpoint: ['10.21.230.28']
+
+    static_configs:
+    - targets:
+      - pure-fa-om-exporter:9490
+      labels:
+        location: US
+        site: PureTEC
+        instance: sn1-m70r-f07-27
+        env: 'FSA Lab'
+
+  - job_name: 'purestorage-fa5_volumes'
+    metrics_path: /metrics/volumes
+    authorization:
+      credentials: 9d1fb279-5a90-1960-8af6-d0554118b85c
+    params:
+      endpoint: ['10.21.230.28']
+
+    static_configs:
+    - targets:
+      - pure-fa-om-exporter:9490
+      labels:
+        location: US
+        site: PureTEC
+        instance: sn1-m70r-f07-27
+        env: 'FSA Lab'
+
+  - job_name: 'purestorage-fa5_hosts'
+    metrics_path: /metrics/hosts
+    authorization:
+      credentials: 9d1fb279-5a90-1960-8af6-d0554118b85c
+    params:
+      endpoint: ['10.21.230.28']
+
+    static_configs:
+    - targets:
+      - pure-fa-om-exporter:9490
+      labels:
+        location: US
+        site: PureTEC
+        instance: sn1-m70r-f07-27
+        env: 'FSA Lab'
+
+  - job_name: 'purestorage-fa5_pods'
+    metrics_path: /metrics/pods
+    authorization:
+      credentials: 9d1fb279-5a90-1960-8af6-d0554118b85c
+    params:
+      endpoint: ['10.21.230.28']
+
+    static_configs:
+    - targets:
+      - pure-fa-om-exporter:9490
+      labels:
+        location: US
+        site: PureTEC
+        instance: sn1-m70r-f07-27
+        env: 'FSA Lab'
+
+  - job_name: 'purestorage-fa5_directories'
+    metrics_path: /metrics/directories
+    authorization:
+      credentials: 9d1fb279-5a90-1960-8af6-d0554118b85c
+    params:
+      endpoint: ['10.21.230.28']
+
+    static_configs:
+    - targets:
+      - pure-fa-om-exporter:9490
+      labels:
+        location: US
+        site: PureTEC
+        instance: sn1-m70r-f07-27
+        env: 'FSA Lab'
+
+  - job_name: 'purestorage-fa6'
+    metrics_path: /metrics/array
+    authorization:
+      credentials: 24ab1d69-526d-52cb-0f69-37020641a927
+    params:
+      endpoint: ['10.21.230.24']
+
+    static_configs:
+    - targets:
+      - pure-fa-om-exporter:9490
+      labels:
+        location: US
+        site: PureTEC
+        instance: sn1-x50r2-f07-30
+        env: 'FSA Lab'
+
+  - job_name: 'purestorage-fa6_volumes'
+    metrics_path: /metrics/volumes
+    authorization:
+      credentials: 24ab1d69-526d-52cb-0f69-37020641a927
+    params:
+      endpoint: ['10.21.230.24']
+
+    static_configs:
+    - targets:
+      - pure-fa-om-exporter:9490
+      labels:
+        location: US
+        site: PureTEC
+        instance: sn1-x50r2-f07-30
+        env: 'FSA Lab'
+
+  - job_name: 'purestorage-fa6_hosts'
+    metrics_path: /metrics/hosts
+    authorization:
+      credentials: 24ab1d69-526d-52cb-0f69-37020641a927
+    params:
+      endpoint: ['10.21.230.24']
+
+    static_configs:
+    - targets:
+      - pure-fa-om-exporter:9490
+      labels:
+        location: US
+        site: PureTEC
+        instance: sn1-x50r2-f07-30
+        env: 'FSA Lab'
+
+  - job_name: 'purestorage-fa6_pods'
+    metrics_path: /metrics/pods
+    authorization:
+      credentials: 24ab1d69-526d-52cb-0f69-37020641a927
+    params:
+      endpoint: ['10.21.230.24']
+
+    static_configs:
+    - targets:
+      - pure-fa-om-exporter:9490
+      labels:
+        location: US
+        site: PureTEC
+        instance: sn1-x50r2-f07-30
+        env: 'FSA Lab'
+
+  - job_name: 'purestorage-fa6_directories'
+    metrics_path: /metrics/directories
+    authorization:
+      credentials: 24ab1d69-526d-52cb-0f69-37020641a927
+    params:
+      endpoint: ['10.21.230.24']
+
+    static_configs:
+    - targets:
+      - pure-fa-om-exporter:9490
+      labels:
+        location: US
+        site: PureTEC
+        instance: sn1-x50r2-f07-30
+        env: 'FSA Lab'
+
+  - job_name: 'purestorage-fa7'
+    metrics_path: /metrics/array
+    authorization:
+      credentials: 6c926e94-5a02-292a-d761-088d92e5133e
+    params:
+      endpoint: ['10.21.228.24']
+
+    static_configs:
+    - targets:
+      - pure-fa-om-exporter:9490
+      labels:
+        location: US
+        site: PureTEC
+        instance: sn1-x70-f05-27
+        env: 'FSA Lab'
+
+  - job_name: 'purestorage-fa7_volumes'
+    metrics_path: /metrics/volumes
+    authorization:
+      credentials: 6c926e94-5a02-292a-d761-088d92e5133e
+    params:
+      endpoint: ['10.21.228.24']
+
+    static_configs:
+    - targets:
+      - pure-fa-om-exporter:9490
+      labels:
+        location: US
+        site: PureTEC
+        instance: sn1-x70-f05-27
+        env: 'FSA Lab'
+
+  - job_name: 'purestorage-fa7_hosts'
+    metrics_path: /metrics/hosts
+    authorization:
+      credentials: 6c926e94-5a02-292a-d761-088d92e5133e
+    params:
+      endpoint: ['10.21.228.24']
+
+    static_configs:
+    - targets:
+      - pure-fa-om-exporter:9490
+      labels:
+        location: US
+        site: PureTEC
+        instance: sn1-x70-f05-27
+        env: 'FSA Lab'
+
+  - job_name: 'purestorage-fa7_pods'
+    metrics_path: /metrics/pods
+    authorization:
+      credentials: 6c926e94-5a02-292a-d761-088d92e5133e
+    params:
+      endpoint: ['10.21.228.24']
+
+    static_configs:
+    - targets:
+      - pure-fa-om-exporter:9490
+      labels:
+        location: US
+        site: PureTEC
+        instance: sn1-x70-f05-27
+        env: 'FSA Lab'
+
+  - job_name: 'purestorage-fa7_directories'
+    metrics_path: /metrics/directories
+    authorization:
+      credentials: 6c926e94-5a02-292a-d761-088d92e5133e
+    params:
+      endpoint: ['10.21.228.24']
+
+    static_configs:
+    - targets:
+      - pure-fa-om-exporter:9490
+      labels:
+        location: US
+        site: PureTEC
+        instance: sn1-x70-f05-27
+        env: 'FSA Lab'
+
+  - job_name: 'purestorage-fa8'
+    metrics_path: /metrics/array
+    authorization:
+      credentials: c891bc3a-a658-eb46-c74f-273dfb211e7d
+    params:
+      endpoint: ['10.21.228.28']
+
+    static_configs:
+    - targets:
+      - pure-fa-om-exporter:9490
+      labels:
+        location: US
+        site: PureTEC
+        instance: sn1-x70-f05-33
+        env: 'FSA Lab'
+
+  - job_name: 'purestorage-fa8_volumes'
+    metrics_path: /metrics/volumes
+    authorization:
+      credentials: c891bc3a-a658-eb46-c74f-273dfb211e7d
+    params:
+      endpoint: ['10.21.228.28']
+
+    static_configs:
+    - targets:
+      - pure-fa-om-exporter:9490
+      labels:
+        location: US
+        site: PureTEC
+        instance: sn1-x70-f05-33
+        env: 'FSA Lab'
+
+  - job_name: 'purestorage-fa8_hosts'
+    metrics_path: /metrics/hosts
+    authorization:
+      credentials: c891bc3a-a658-eb46-c74f-273dfb211e7d
+    params:
+      endpoint: ['10.21.228.28']
+
+    static_configs:
+    - targets:
+      - pure-fa-om-exporter:9490
+      labels:
+        location: US
+        site: PureTEC
+        instance: sn1-x70-f05-33
+        env: 'FSA Lab'
+
+  - job_name: 'purestorage-fa8_pods'
+    metrics_path: /metrics/pods
+    authorization:
+      credentials: c891bc3a-a658-eb46-c74f-273dfb211e7d
+    params:
+      endpoint: ['10.21.228.28']
+
+    static_configs:
+    - targets:
+      - pure-fa-om-exporter:9490
+      labels:
+        location: US
+        site: PureTEC
+        instance: sn1-x70-f05-33
+        env: 'FSA Lab'
+
+  - job_name: 'purestorage-fa8_directories'
+    metrics_path: /metrics/directories
+    authorization:
+      credentials: c891bc3a-a658-eb46-c74f-273dfb211e7d
+    params:
+      endpoint: ['10.21.228.28']
+
+    static_configs:
+    - targets:
+      - pure-fa-om-exporter:9490
+      labels:
+        location: US
+        site: PureTEC
+        instance: sn1-x70-f05-33
+        env: 'FSA Lab'
  
