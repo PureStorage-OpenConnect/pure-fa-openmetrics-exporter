@@ -11,7 +11,7 @@ services:
       - 9490:9490
     restart: on-failure
   prometheus:
-    image: prom/prometheus
+    image: prom/prometheus:latest
     command:
       - '--storage.tsdb.retention=60d'
       - '--storage.tsdb.path=/prometheus'
@@ -23,7 +23,7 @@ services:
       - 9090:9090
     restart: on-failure
   grafana:
-    image: grafana/grafana
+    image: grafana/grafana:latest
     environment:
       - GF_SECURITY_ADMIN_USER=admin
       - GF_SECURITY_ADMIN_PASSWORD=admin!

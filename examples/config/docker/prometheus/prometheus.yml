@@ -1,13 +1,7 @@
 global:
-  scrape_interval:     30s
-  scrape_timeout:      15s
+  scrape_interval:     60s
+  scrape_timeout:      50s
 scrape_configs:
-  - job_name: telegraf
-    metrics_path: /metrics
-    static_configs:
-    - targets:
-      - "telegraf:9273"
-
   - job_name: 'purestorage-fa'
     metrics_path: /metrics/array
     authorization:

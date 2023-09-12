@@ -22,7 +22,7 @@
     ]
   },
   "description": "",
-  "editable": false,
+  "editable": true,
   "fiscalYearStartMonth": 0,
   "graphTooltip": 1,
   "id": 2,
@@ -44,7 +44,7 @@
         "content": "<img src=\"https://raw.githubusercontent.com/DataDog/integrations-extras/master/purefa/images/widget_logo.png\">",
         "mode": "markdown"
       },
-      "pluginVersion": "9.3.1",
+      "pluginVersion": "9.3.2",
       "type": "text"
     },
     {
@@ -289,7 +289,7 @@
         "showHeader": true,
         "sortBy": []
       },
-      "pluginVersion": "9.3.1",
+      "pluginVersion": "9.3.2",
       "targets": [
         {
           "datasource": {
@@ -451,7 +451,7 @@
         "content": "# <b>PURE</b> STORAGE\n\n## Overview\n\nThis dashboard provides performance and capacity details for Pure Storage FlashArrays.\nGroup arrays by customer defined environment, whole fleets, or view arrays individually.",
         "mode": "markdown"
       },
-      "pluginVersion": "9.3.1",
+      "pluginVersion": "9.3.2",
       "targets": [
         {
           "datasource": {
@@ -656,7 +656,7 @@
           }
         ]
       },
-      "pluginVersion": "9.3.1",
+      "pluginVersion": "9.3.2",
       "targets": [
         {
           "datasource": {
@@ -828,7 +828,7 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "9.3.1",
+      "pluginVersion": "9.3.2",
       "targets": [
         {
           "datasource": {
@@ -915,7 +915,7 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "9.3.1",
+      "pluginVersion": "9.3.2",
       "targets": [
         {
           "datasource": {
@@ -944,7 +944,7 @@
             "fixedColor": "#1a9ea7",
             "mode": "fixed"
           },
-          "decimals": 1,
+          "decimals": 2,
           "mappings": [
             {
               "options": {
@@ -996,7 +996,7 @@
         },
         "textMode": "auto"
       },
-      "pluginVersion": "9.3.1",
+      "pluginVersion": "9.3.2",
       "targets": [
         {
           "datasource": {
@@ -1034,7 +1034,7 @@
         "content": "## Metrics\n\nAll metrics are prefixed with purefa_\nBelow are the metrics names available\n```\n* alerts_open\n* array_performance_average_bytes\n* array_performance_bandwidth_bytes\n* array_performance_latency_usec\n* array_performance_queue_depth_ops\n* array_performance_throughput_iops\n* array_space_bytes\n* array_space_data_reduction_ratio\n* array_space_utilization\n* directory_performance_average_bytes\n* directory_performance_bandwidth_bytes\n* directory_performance_latency_usec\n* directory_performance_throughput_iops\n* directory_space_bytes\n* directory_space_data_reduction_ratio\n* host_connections_info\n* host_performance_average_bytes\n* host_performance_bandwidth_bytes\n* host_performance_latency_usec\n* host_performance_throughput_iops\n* host_space_bytes\n* host_space_data_reduction_ratio\n* host_space_size_bytes\n* hw_component_status\n* hw_component_temperature_celsius\n* hw_component_voltage_volt\n* info\n* pod_performance_average_bytes\n* pod_performance_bandwidth_bytes\n* pod_performance_latency_usec\n* pod_performance_throughput_iops\n* pod_space_bytes\n* pod_space_data_reduction_ratio\n* volume_performance_average_bytes\n* volume_performance_bandwidth_bytes\n* volume_performance_latency_usec\n* volume_performance_throughput_iops\n* volume_space_bytes\n* volume_space_data_reduction_ratio\n```",
         "mode": "markdown"
       },
-      "pluginVersion": "9.3.1",
+      "pluginVersion": "9.3.2",
       "type": "text"
     },
     {
@@ -2457,6 +2457,17 @@
         "queryValue": "",
         "skipUrlSync": false,
         "type": "custom"
+      },
+      {
+        "datasource": {
+          "type": "prometheus",
+          "uid": "PBFA97CFB590B2093"
+        },
+        "filters": [],
+        "hide": 0,
+        "name": "Filters",
+        "skipUrlSync": false,
+        "type": "adhoc"
       }
     ]
   },
@@ -2489,3 +2500,4 @@
   "version": 1,
   "weekStart": ""
 }
+
