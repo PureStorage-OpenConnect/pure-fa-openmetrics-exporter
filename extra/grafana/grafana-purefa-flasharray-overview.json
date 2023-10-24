@@ -12,7 +12,7 @@
       "name": "VAR_DASHBOARDVERSION",
       "type": "constant",
       "label": "DashboardVersion",
-      "value": "1.0.3",
+      "value": "1.0.4",
       "description": ""
     }
   ],
@@ -22,7 +22,7 @@
       "type": "grafana",
       "id": "grafana",
       "name": "Grafana",
-      "version": "9.3.2"
+      "version": "10.1.5"
     },
     {
       "type": "panel",
@@ -34,7 +34,7 @@
       "type": "datasource",
       "id": "prometheus",
       "name": "Prometheus",
-      "version": "2.41.0"
+      "version": "2.45.1"
     },
     {
       "type": "panel",
@@ -96,6 +96,7 @@
         "type": "prometheus",
         "uid": "${DS_PROMETHEUS}"
       },
+      "description": "",
       "gridPos": {
         "h": 4,
         "w": 6,
@@ -116,10 +117,10 @@
           "showLineNumbers": false,
           "showMiniMap": false
         },
-        "content": "<img src=\"https://www.purestorage.com/content/dam/purestorage/knowledge/pure-storage.png.imgo.png\" width=\"100%\">",
+        "content": "<img src=\"https://www.purestorage.com/content/dam/pure/logos/pure_storage/primary/pure-logo.png\" width=\"100%\">",
         "mode": "markdown"
       },
-      "pluginVersion": "9.3.2",
+      "pluginVersion": "10.1.5",
       "type": "text"
     },
     {
@@ -135,7 +136,10 @@
           },
           "custom": {
             "align": "center",
-            "displayMode": "auto",
+            "cellOptions": {
+              "mode": "basic",
+              "type": "color-background"
+            },
             "filterable": false,
             "inspect": false
           },
@@ -190,8 +194,11 @@
                 "value": 125
               },
               {
-                "id": "custom.displayMode",
-                "value": "color-background"
+                "id": "custom.cellOptions",
+                "value": {
+                  "mode": "gradient",
+                  "type": "color-background"
+                }
               }
             ]
           },
@@ -242,8 +249,11 @@
                 }
               },
               {
-                "id": "custom.displayMode",
-                "value": "color-background"
+                "id": "custom.cellOptions",
+                "value": {
+                  "mode": "gradient",
+                  "type": "color-background"
+                }
               }
             ]
           },
@@ -286,12 +296,15 @@
                 }
               },
               {
-                "id": "max",
-                "value": 100
+                "id": "custom.cellOptions",
+                "value": {
+                  "mode": "gradient",
+                  "type": "gauge"
+                }
               },
               {
-                "id": "custom.displayMode",
-                "value": "gradient-gauge"
+                "id": "max",
+                "value": 100
               }
             ]
           },
@@ -362,8 +375,11 @@
                 "value": 0
               },
               {
-                "id": "custom.displayMode",
-                "value": "color-background"
+                "id": "custom.cellOptions",
+                "value": {
+                  "mode": "gradient",
+                  "type": "color-background"
+                }
               }
             ]
           }
@@ -377,6 +393,7 @@
       },
       "id": 125,
       "options": {
+        "cellHeight": "sm",
         "footer": {
           "countRows": false,
           "fields": "",
@@ -389,7 +406,7 @@
         "showHeader": true,
         "sortBy": []
       },
-      "pluginVersion": "9.3.2",
+      "pluginVersion": "10.1.5",
       "targets": [
         {
           "datasource": {
@@ -397,11 +414,13 @@
             "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
+          "exemplar": false,
           "expr": "sum(purefa_info{instance=~\"$instance\",env=~\"$env\"}) by (instance,os,version)",
           "format": "table",
           "hide": false,
+          "instant": true,
           "legendFormat": "Version",
-          "range": true,
+          "range": false,
           "refId": "Version"
         },
         {
@@ -536,7 +555,7 @@
         "uid": "${DS_PROMETHEUS}"
       },
       "gridPos": {
-        "h": 5,
+        "h": 6,
         "w": 6,
         "x": 0,
         "y": 4
@@ -551,7 +570,7 @@
         "content": "# **PURE** STORAGE\n\n## Overview\nThis dashboard provides performance and capacity details for Pure Storage FlashArrays.\nGroup arrays by customer defined environment, whole fleets, or view arrays individually.",
         "mode": "markdown"
       },
-      "pluginVersion": "9.3.2",
+      "pluginVersion": "10.1.5",
       "targets": [
         {
           "datasource": {
@@ -579,7 +598,10 @@
           },
           "custom": {
             "align": "center",
-            "displayMode": "auto",
+            "cellOptions": {
+              "mode": "gradient",
+              "type": "color-background"
+            },
             "inspect": false
           },
           "decimals": 0,
@@ -644,10 +666,6 @@
                     }
                   ]
                 }
-              },
-              {
-                "id": "custom.displayMode",
-                "value": "color-background"
               }
             ]
           },
@@ -676,10 +694,6 @@
                     }
                   ]
                 }
-              },
-              {
-                "id": "custom.displayMode",
-                "value": "color-background"
               }
             ]
           },
@@ -708,10 +722,6 @@
                     }
                   ]
                 }
-              },
-              {
-                "id": "custom.displayMode",
-                "value": "color-background"
               }
             ]
           },
@@ -740,23 +750,20 @@
                     }
                   ]
                 }
-              },
-              {
-                "id": "custom.displayMode",
-                "value": "color-background"
               }
             ]
           }
         ]
       },
       "gridPos": {
-        "h": 4,
+        "h": 5,
         "w": 18,
         "x": 6,
         "y": 5
       },
       "id": 172,
       "options": {
+        "cellHeight": "sm",
         "footer": {
           "countRows": false,
           "fields": "",
@@ -773,7 +780,7 @@
           }
         ]
       },
-      "pluginVersion": "9.3.2",
+      "pluginVersion": "10.1.5",
       "targets": [
         {
           "datasource": {
@@ -885,7 +892,7 @@
         "h": 26,
         "w": 6,
         "x": 0,
-        "y": 9
+        "y": 10
       },
       "id": 165,
       "options": {
@@ -894,10 +901,10 @@
           "showLineNumbers": false,
           "showMiniMap": false
         },
-        "content": "## Metrics\n\nAll metrics are prefixed with purefa_\n\nBelow are the metrics names available\n```\n* alerts_open\n* array_performance_average_bytes\n* array_performance_bandwidth_bytes\n* array_performance_latency_usec\n* array_performance_queue_depth_ops\n* array_performance_throughput_iops\n* array_space_bytes\n* array_space_data_reduction_ratio\n* array_space_utilization\n* directory_performance_average_bytes\n* directory_performance_bandwidth_bytes\n* directory_performance_latency_usec\n* directory_performance_throughput_iops\n* directory_space_bytes\n* directory_space_data_reduction_ratio\n* host_connections_info\n* host_performance_average_bytes\n* host_performance_bandwidth_bytes\n* host_performance_latency_usec\n* host_performance_throughput_iops\n* host_space_bytes\n* host_space_data_reduction_ratio\n* host_space_size_bytes\n* hw_component_status\n* hw_component_temperature_celsius\n* hw_component_voltage_volt\n* info\n* pod_performance_average_bytes\n* pod_performance_bandwidth_bytes\n* pod_performance_latency_usec\n* pod_performance_throughput_iops\n* pod_space_bytes\n* pod_space_data_reduction_ratio\n* volume_performance_average_bytes\n* volume_performance_bandwidth_bytes\n* volume_performance_latency_usec\n* volume_performance_throughput_iops\n* volume_space_bytes\n* volume_space_data_reduction_ratio\n```",
+        "content": "## Metrics\n\nAll metrics are prefixed with purefa_\nBelow are the metrics names available\n```\n* alerts_open\n* array_performance_average_bytes\n* array_performance_bandwidth_bytes\n* array_performance_latency_usec\n* array_performance_queue_depth_ops\n* array_performance_throughput_iops\n* array_space_bytes\n* array_space_data_reduction_ratio\n* array_space_utilization\n* directory_performance_average_bytes\n* directory_performance_bandwidth_bytes\n* directory_performance_latency_usec\n* directory_performance_throughput_iops\n* directory_space_bytes\n* directory_space_data_reduction_ratio\n* host_connections_info\n* host_performance_average_bytes\n* host_performance_bandwidth_bytes\n* host_performance_latency_usec\n* host_performance_throughput_iops\n* host_space_bytes\n* host_space_data_reduction_ratio\n* host_space_size_bytes\n* hw_component_status\n* hw_component_temperature_celsius\n* hw_component_voltage_volt\n* info\n* pod_performance_average_bytes\n* pod_performance_bandwidth_bytes\n* pod_performance_latency_usec\n* pod_performance_throughput_iops\n* pod_space_bytes\n* pod_space_data_reduction_ratio\n* volume_performance_average_bytes\n* volume_performance_bandwidth_bytes\n* volume_performance_latency_usec\n* volume_performance_throughput_iops\n* volume_space_bytes\n* volume_space_data_reduction_ratio\n```",
         "mode": "markdown"
       },
-      "pluginVersion": "9.3.2",
+      "pluginVersion": "10.1.5",
       "type": "text"
     },
     {
@@ -940,7 +947,7 @@
         "h": 5,
         "w": 6,
         "x": 6,
-        "y": 9
+        "y": 10
       },
       "id": 97,
       "interval": "1m",
@@ -963,7 +970,7 @@
         },
         "textMode": "auto"
       },
-      "pluginVersion": "9.3.2",
+      "pluginVersion": "10.1.5",
       "targets": [
         {
           "datasource": {
@@ -1025,7 +1032,7 @@
         "h": 5,
         "w": 6,
         "x": 12,
-        "y": 9
+        "y": 10
       },
       "id": 108,
       "links": [],
@@ -1049,7 +1056,7 @@
         },
         "textMode": "auto"
       },
-      "pluginVersion": "9.3.2",
+      "pluginVersion": "10.1.5",
       "targets": [
         {
           "datasource": {
@@ -1109,7 +1116,7 @@
         "h": 5,
         "w": 6,
         "x": 18,
-        "y": 9
+        "y": 10
       },
       "id": 30,
       "links": [],
@@ -1131,7 +1138,7 @@
         },
         "textMode": "auto"
       },
-      "pluginVersion": "9.3.2",
+      "pluginVersion": "10.1.5",
       "targets": [
         {
           "datasource": {
@@ -1267,7 +1274,7 @@
         "h": 7,
         "w": 9,
         "x": 6,
-        "y": 14
+        "y": 15
       },
       "id": 127,
       "options": {
@@ -1476,7 +1483,7 @@
         "h": 7,
         "w": 9,
         "x": 15,
-        "y": 14
+        "y": 15
       },
       "id": 128,
       "options": {
@@ -1548,6 +1555,7 @@
               "tooltip": false,
               "viz": false
             },
+            "insertNulls": false,
             "lineInterpolation": "smooth",
             "lineStyle": {
               "fill": "solid"
@@ -1586,7 +1594,7 @@
         "h": 8,
         "w": 9,
         "x": 6,
-        "y": 21
+        "y": 22
       },
       "id": 143,
       "interval": "1m",
@@ -1649,6 +1657,7 @@
               "tooltip": false,
               "viz": false
             },
+            "insertNulls": false,
             "lineInterpolation": "smooth",
             "lineStyle": {
               "fill": "solid"
@@ -1687,7 +1696,7 @@
         "h": 8,
         "w": 9,
         "x": 15,
-        "y": 21
+        "y": 22
       },
       "id": 131,
       "interval": "1m",
@@ -1731,7 +1740,7 @@
         "type": "prometheus",
         "uid": "${DS_PROMETHEUS}"
       },
-      "description": "This query is very expensive on Prometheus and the browser. For large environments it may be advisable to use a tabular view or create a recording rule.\n\nhttps://prometheus.io/docs/prometheus/latest/querying/basics/#avoiding-slow-queries-and-overloads",
+      "description": "This query is very expensive on Prometheus and the browser. For large environments it may be advisable to reduce scope by using the filter and narrower time frame, use a tabular view or create a recording rule.\n\nhttps://prometheus.io/docs/prometheus/latest/querying/basics/#avoiding-slow-queries-and-overloads",
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -1751,6 +1760,7 @@
               "tooltip": false,
               "viz": false
             },
+            "insertNulls": false,
             "lineInterpolation": "smooth",
             "lineStyle": {
               "fill": "solid"
@@ -1789,7 +1799,7 @@
         "h": 8,
         "w": 9,
         "x": 6,
-        "y": 29
+        "y": 30
       },
       "id": 173,
       "options": {
@@ -1855,6 +1865,7 @@
               "tooltip": false,
               "viz": false
             },
+            "insertNulls": false,
             "lineInterpolation": "smooth",
             "lineStyle": {
               "fill": "solid"
@@ -1893,7 +1904,7 @@
         "h": 8,
         "w": 9,
         "x": 15,
-        "y": 29
+        "y": 30
       },
       "id": 133,
       "options": {
@@ -1956,6 +1967,7 @@
               "tooltip": false,
               "viz": false
             },
+            "insertNulls": false,
             "lineInterpolation": "smooth",
             "lineStyle": {
               "fill": "solid"
@@ -1994,7 +2006,7 @@
         "h": 8,
         "w": 9,
         "x": 6,
-        "y": 37
+        "y": 38
       },
       "id": 160,
       "options": {
@@ -2062,6 +2074,7 @@
               "tooltip": false,
               "viz": false
             },
+            "insertNulls": false,
             "lineInterpolation": "smooth",
             "lineStyle": {
               "fill": "solid"
@@ -2100,7 +2113,7 @@
         "h": 8,
         "w": 9,
         "x": 15,
-        "y": 37
+        "y": 38
       },
       "id": 153,
       "options": {
@@ -2169,6 +2182,7 @@
               "tooltip": false,
               "viz": false
             },
+            "insertNulls": false,
             "lineInterpolation": "smooth",
             "lineWidth": 1,
             "pointSize": 5,
@@ -2274,7 +2288,7 @@
         "h": 7,
         "w": 18,
         "x": 6,
-        "y": 45
+        "y": 46
       },
       "id": 191,
       "interval": "1m",
@@ -2387,6 +2401,7 @@
               "tooltip": false,
               "viz": false
             },
+            "insertNulls": false,
             "lineInterpolation": "smooth",
             "lineWidth": 1,
             "pointSize": 5,
@@ -2418,7 +2433,8 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "white"
+                "color": "white",
+                "value": null
               }
             ]
           },
@@ -2491,7 +2507,7 @@
         "h": 7,
         "w": 18,
         "x": 6,
-        "y": 52
+        "y": 53
       },
       "id": 192,
       "interval": "1m",
@@ -2604,6 +2620,7 @@
               "tooltip": false,
               "viz": false
             },
+            "insertNulls": false,
             "lineInterpolation": "smooth",
             "lineWidth": 1,
             "pointSize": 5,
@@ -2635,7 +2652,8 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "white"
+                "color": "white",
+                "value": null
               }
             ]
           },
@@ -2708,7 +2726,7 @@
         "h": 8,
         "w": 18,
         "x": 6,
-        "y": 59
+        "y": 60
       },
       "id": 193,
       "interval": "1m",
@@ -2782,7 +2800,7 @@
   ],
   "refresh": "",
   "revision": 1,
-  "schemaVersion": 37,
+  "schemaVersion": 38,
   "style": "dark",
   "tags": [
     "prometheus",
@@ -2993,6 +3011,6 @@
   "timezone": "",
   "title": "Pure Storage FlashArray - Overview",
   "uid": "kq1L0kKVk",
-  "version": 3,
+  "version": 48,
   "weekStart": ""
 }
