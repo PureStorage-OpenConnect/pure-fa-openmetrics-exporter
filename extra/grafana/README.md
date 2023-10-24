@@ -55,6 +55,7 @@ We have tested our dashboard with the following versions:
 The Grafana dashboards have been developed and tested using the following software versions:
 | OME            | Prometheus  | Grafana        |
 | -------------- | ----------- |--------------- |
+| v1.0.9         | 2.45.1      | 9.3.2 & 10.1.15|
 | v1.0.9         | 2.45.0      | 9.3.2 & 10.0.1 |
 | v1.0.5.hotfix1 | 2.41.1      | 9.3.2 & 9.4.1  |
 
