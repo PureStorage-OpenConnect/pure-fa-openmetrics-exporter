@@ -2,7 +2,8 @@ package client
 
 
 type HostShort struct {
-	Name            string     `json:"name"`
+	Name             string     `json:"name"`
+	PortConnectivity string     `json:"port_connectivity"`
 }
 
 type HostGroupShort struct {

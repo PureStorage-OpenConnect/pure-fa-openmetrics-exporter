@@ -37,7 +37,7 @@ func TestHostConnectionsCollector(t *testing.T) {
         e := endp[len(endp)-1]
 	want := make(map[string]bool)
 	for _, hc := range conn.Items {
-		want[fmt.Sprintf("label:{name:\"host\" value:\"%s\"} label:{name:\"hostgroup\" value:\"%s\"} label:{name:\"volume\" value:\"%s\"} gauge:{value:1}", hc.Host.Name, hc.HostGroup.Name, hc.Volume.Name)] = true
+		want[fmt.Sprintf("label:{name:\"host\" value:\"%s\"} label:{name:\"hostgroup\" value:\"%s\"} label:{name:\"volume\" value:\"%s\"} label:{name:\"connectivity\" value:\"%s\"} gauge:{value:1}", hc.Host.Name, hc.HostGroup.Name, hc.Volume.Name, hc.Host.PortConnectivity)] = true
 	}
         c := client.NewRestClient(e, "fake-api-token", "latest", false)
 	hc := NewHostConnectionsCollector(c)

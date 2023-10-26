@@ -25,7 +25,8 @@ func (c *HostConnectionsCollector) Collect(ch chan<- prometheus.Metric) {
 			c.HostConnectionsDesc,
 			prometheus.GaugeValue,
 			1.0,
-			hc.Host.Name, hc.HostGroup.Name, hc.Volume.Name,
+			hc.Host.Name, hc.HostGroup.Name,
+			hc.Volume.Name, hc.Host.PortConnectivity,
 		)
 	}
 }
@@ -35,7 +36,7 @@ func NewHostConnectionsCollector(fa *client.FAClient) *HostConnectionsCollector 
 		HostConnectionsDesc: prometheus.NewDesc(
 			"purefa_host_connections_info",
 			"FlashArray host volumes connections",
-			[]string{"host", "hostgroup", "volume"},
+			[]string{"host", "hostgroup", "volume", "connectivity"},
 			prometheus.Labels{},
 		),
 		Client: fa,
