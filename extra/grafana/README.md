@@ -189,6 +189,10 @@ Checking prometheus.yml
 <img src="./images/grafana_purefa_simple_query.png" width="40%" height="40%">
 <br>
 
+### Check Docker container is running
+7. Ensure that the docker image is running, if for any reason the container is unexpectedly halting while running you may add `--restart unless-stopped` to the `docker run` command to ensure the container is restarted automatically on failure.
+   
+
 # Troubleshooting Specific Errors
 ## Some panels have errors
 If the panels have errors then the query could be unsupported. Check the versions of Prometheus and Grafana are above the prerequisite versions tested above.
