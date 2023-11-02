@@ -1,14 +1,17 @@
-# Example deployment methods
+# Example Deployment Methods
+There are a number of methods to deploy the OpenMetrics exporter depending on your environment. In this document we explore some of the common features and deployment methods and by providing walk through examples.
 
-There are a number of methods to deploy the OpenMetrics exporter depending on your environment.
-- Container Deployment (such as Docker)
-    - Default - http passing API token with query
-    - Tokens - http with API tokens file embedded in exporter
-    - TLS - https passing API token with query
-- Executable Binary Deployment
-    - Default - http passing API token with query
-    - Tokens - http with API tokens file embedded in exporter
-    - TLS - https passing API token with query
+## Contents
+ - [Prerequisites](#prerequisites)
+ - [Container Deployment](#container-deployment)
+    - [Container - default - http passing API token with query](#container---default---http-passing-api-token-with-query)
+    - [Container - Tokens File - http with API tokens file embedded in exporter](#container---tokens-file---http-with-api-tokens-file-embedded-in-exporter)
+    - [Container - TLS - https passing API token with query](#container---tls---https-passing-api-token-with-query)
+ - [Executable Binary Deployment](#executable-binary-deployment)
+    - [Binary Specific Prerequisites](#binary-specific-prerequisites)
+    - [Binary - default - http passing API token with query](#binary---default---http-passing-api-token-with-query)
+    - [Binary - Tokens File - http with API tokens file embedded in exporter](#binary---tokens-file---http-with-api-tokens-file-embedded-in-exporter)
+    - [Binary - TLS - https passing API token with query](#binary---tls---https-passing-api-token-with-query)
 
 # Prerequisites
 All deployments will require an API token to authenticate with the array. Read-only only user access is recommended.
@@ -27,6 +30,7 @@ All deployments will require an API token to authenticate with the array. Read-o
     ```
 
 # Container Deployment
+## Container - default - http passing API token with query
 We build container images and publish them to RedHat quay.io. Here they can be continually scanned for vulnerabilities and updated as soon as a new version are available.
 You can navigate to [https://quay.io/repository/purestorage/pure-fa-om-exporter](https://quay.io/repository/purestorage/pure-fa-om-exporter) to view the available versions. In this example we will pull a container down using Docker.
 
@@ -55,9 +59,8 @@ In this example we will use the default port 9490, set the name as pure-fa-om-ex
     We expect to return a single line displaying `purefa_info` returning the name, Purity OS, system ID and the Purity version.
     You can remove the `-silent | grep ^purefa_info` from the command to see a list of all results.
 
-## Other deployment examples
+## Container - Tokens File - http with API tokens file embedded in exporter
 
-### Conatiner with Tokens File
 1. Create a tokens.yaml file to pass to the exporter.
     ```console
     > cat /directorypath/tokens.yaml
@@ -94,11 +97,13 @@ In this example we will use the default port 9490, set the name as pure-fa-om-ex
     > curl -X GET 'http://localhost:9490/metrics/array?endpoint=array01 ' -silent | grep ^purefa_info
     purefa_info{array_name="ARRAY01",os="Purity//FA",system_id="12345678-abcd-abcd-abcd-abcdef123456",version="6.5.0"} 1
     ```
-### Container with TLS
+
+## Container - TLS - https passing API token with query
 TLS with Docker image is currently not supported. Please use executable binary only for this feature.
 
-
 # Executable Binary Deployment
+## Binary Specific Prerequisites
+
 Deploying the binary requires [go](https://go.dev) to compile the code and running the binary in a Linux environment.
 1. **Install go**: Go is required: to compile the build into an executable binary
 
