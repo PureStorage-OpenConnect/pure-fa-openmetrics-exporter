@@ -38,13 +38,13 @@ In this example we will use the default port 9490, set the name as pure-fa-om-ex
 
 1. **Run and pull the image**
     ```console
-    > docker run --detach --publish 9490:9490 --name pure-fa-om-exporter --restart unless-stopped quay.io/purestorage/pure-fa-om-exporter:latest
+    $ docker run --detach --publish 9490:9490 --name pure-fa-om-exporter --restart unless-stopped quay.io/purestorage/pure-fa-om-exporter:latest
     ```
     In this guide we will not be covering Docker troubleshooting.
 
 2. **Check the container is running**
     ```console
-    > docker ps
+    $ docker ps
     CONTAINER ID   IMAGE                                            COMMAND                  CREATED         STATUS         PORTS                                       NAMES
     0076ded8a073   quay.io/purestorage/pure-fa-om-exporter:latest   "/pure-fa-om-exporte…"   10 seconds ago   Up 10 seconds   0.0.0.0:9490->9490/tcp, :::9490->9490/tcp   pure-fa-om-exporter
     ```
@@ -52,7 +52,7 @@ In this example we will use the default port 9490, set the name as pure-fa-om-ex
 3. **Test the exporter**
     Use `curl` to test the exporter returns results.
     ```console
-    > curl -H 'Authorization: Bearer a1b2c3d4-e5f6-1234-5678-a1b2c3d4e5f6' -X GET 'http://localhost:9490/metrics/array?endpoint=array01' -silent | grep ^purefa_info
+    $ curl -H 'Authorization: Bearer a1b2c3d4-e5f6-1234-5678-a1b2c3d4e5f6' -X GET 'http://localhost:9490/metrics/array?endpoint=array01' -silent | grep ^purefa_info
     purefa_info{array_name="ARRAY01",os="Purity//FA",system_id="12345678-abcd-abcd-abcd-abcdef123456",version="6.5.0"} 1
     ```
 
@@ -63,7 +63,7 @@ In this example we will use the default port 9490, set the name as pure-fa-om-ex
 
 1. Create a tokens.yaml file to pass to the exporter.
     ```console
-    > cat /directorypath/tokens.yaml
+    $ cat /directorypath/tokens.yaml
     # alias: of the array to be used in the exporter query
     array01:
       # FQDN or IP address of the array
@@ -82,11 +82,11 @@ In this example we will use the default port 9490, set the name as pure-fa-om-ex
     The container expects to see the file here: `/etc/pure-fa-om-exporter/tokens.yaml`
 
     ```console
-    > docker run -d -p 9490:9490 --name pure-fa-om-exporter --volume /directorypath/tokens.yaml:/etc/pure-fa-om-exporter/tokens.yaml quay.io/purestorage/pure-fa-om-exporter:latest
+    $ docker run -d -p 9490:9490 --name pure-fa-om-exporter --volume /directorypath/tokens.yaml:/etc/pure-fa-om-exporter/tokens.yaml quay.io/purestorage/pure-fa-om-exporter:latest
     ```
 3. **Check the container is running**
     ```console
-    > docker ps
+    $ docker ps
     CONTAINER ID   IMAGE                                            COMMAND                  CREATED         STATUS         PORTS                                       NAMES
     0076ded8a073   quay.io/purestorage/pure-fa-om-exporter:latest   "/pure-fa-om-exporte…"   10 seconds ago   Up 10 seconds   0.0.0.0:9490->9490/tcp, :::9490->9490/tcp   pure-fa-om-exporter
     ```
@@ -94,7 +94,7 @@ In this example we will use the default port 9490, set the name as pure-fa-om-ex
 4. **Test the exporter**
     Use `curl` to test the exporter returns results. We don't need to pass the bearer (API) token for authorization as the exporter has a record of these which makes queries simpler.
     ```console
-    > curl -X GET 'http://localhost:9490/metrics/array?endpoint=array01 ' -silent | grep ^purefa_info
+    $ curl -X GET 'http://localhost:9490/metrics/array?endpoint=array01 ' -silent | grep ^purefa_info
     purefa_info{array_name="ARRAY01",os="Purity//FA",system_id="12345678-abcd-abcd-abcd-abcdef123456",version="6.5.0"} 1
     ```
 
@@ -112,35 +112,35 @@ Deploying the binary requires [go](https://go.dev) to compile the code and runni
 2. **Install git**
  
     ```console
-    > yum install git
+    $ yum install git
     ```
 
 3. **Clone git repo**
  
     ```console
-    > git clone git@github.com:PureStorage-OpenConnect/pure-fa-openmetrics-exporter.git
+    $ git clone git@github.com:PureStorage-OpenConnect/pure-fa-openmetrics-exporter.git
     ```
 
 4. **Build the package**
 
     ```console
-    > cd pure-fa-openmetrics-exporter
-    > make build .
+    $ cd pure-fa-openmetrics-exporter
+    $ make build .
     ```
 
 ## Binary - Default - http passing API token with query
 
 5. **Binary - Default - http passing API token with query**
     ```console
-    > ls out/bin
-    > .out/bin/pure-fa-openmetrics-exporter
+    $ ls out/bin
+    $ .out/bin/pure-fa-openmetrics-exporter
     Start Pure FlashArray exporter v1.0.9 on 0.0.0.0:9490
     ```
 
 6. **Test the exporter**
     Use `curl` to test the exporter returns results.
     ```console
-    > curl -H 'Authorization: Bearer a1b2c3d4-e5f6-1234-5678-a1b2c3d4e5f6' -X GET 'http://localhost:9490/metrics/array?endpoint=array01' -silent | grep ^purefa_info
+    $ curl -H 'Authorization: Bearer a1b2c3d4-e5f6-1234-5678-a1b2c3d4e5f6' -X GET 'http://localhost:9490/metrics/array?endpoint=array01' -silent | grep ^purefa_info
     purefa_info{array_name="ARRAY01",os="Purity//FA",system_id="12345678-abcd-abcd-abcd-abcdef123456",version="6.5.0"} 1
     ```
 
@@ -151,12 +151,12 @@ Deploying the binary requires [go](https://go.dev) to compile the code and runni
 
     Copy binary to `/usr/bin`
     ```console
-    > cp .out/bin/pure-fa-openmetrics-exporter /usr/bin
+    $ cp .out/bin/pure-fa-openmetrics-exporter /usr/bin
     ```
 
     Create a `.servicefile` in `/etc/systemd/system/`
     ```console
-    > cat /etc/systemd/system/purefa-ome.service
+    $ cat /etc/systemd/system/purefa-ome.service
     ```
 
     Example:
@@ -184,19 +184,19 @@ Deploying the binary requires [go](https://go.dev) to compile the code and runni
     Reload the system daemon to read in changes to services
 
     ```console
-    > systemctl daemon-reload
+    $ systemctl daemon-reload
     ```
 
     Start the service and check the status is successful
     
-    ```
-    > systemctl start purefa-ome
-    > systemctl status purefa-ome
+    ```console
+    $ systemctl start purefa-ome
+    $ systemctl status purefa-ome
     ```
     
     Enable the service to start on OS startup
     ```console
-    > systemctl enable purefa-ome
+    $ systemctl enable purefa-ome
     ```
 
 ## Binary - Tokens File - http with API tokens file embedded in exporter
@@ -206,7 +206,7 @@ Follow steps 1-4 and 7-8 of the default binary deployment, but substitute the fo
 4. **Create a tokens.yaml file to pass to the exporter**
 
     ```console
-    > cat /directorypath/tokens.yaml
+    $ cat /directorypath/tokens.yaml
     # alias: of the array to be used in the exporter query
     array01:
       # FQDN or IP address of the array
@@ -222,15 +222,15 @@ Follow steps 1-4 and 7-8 of the default binary deployment, but substitute the fo
 
 5. **Run the binary**
     ```console
-    > ls out/bin
-    > .out/bin/pure-fa-openmetrics-exporter --tokens /directorypath/tokens.yaml
+    $ ls out/bin
+    $ .out/bin/pure-fa-openmetrics-exporter --tokens /directorypath/tokens.yaml
     Start Pure FlashArray exporter v1.0.9 on 0.0.0.0:9490
     ```
 
 6. **Test the exporter**
     Use `curl` to test the exporter returns results.
     ```console
-    > curl -X GET 'http://localhost:9490/metrics/array?endpoint=gse-array01' -silent | grep ^purefa_info
+    $ curl -X GET 'http://localhost:9490/metrics/array?endpoint=gse-array01' -silent | grep ^purefa_info
     purefa_info{array_name="ARRAY01",os="Purity//FA",system_id="12345678-abcd-abcd-abcd-abcdef123456",version="6.5.0"} 1
     ```
 
@@ -263,7 +263,7 @@ pure-fa-om-exporter --port 9490 -c /etc/pki/tls/certs/purefa-ome/pure-ome.crt -k
 
     A basic check of the certificate is installed and the exporter is responding correctly.
     ```console
-    > curl https://pure-ome.fqdn.com:9490
+    $ curl https://pure-ome.fqdn.com:9490
     <html>
     <body>
     <h1>Pure Storage FlashArray OpenMetrics Exporter</h1>
@@ -320,7 +320,7 @@ pure-fa-om-exporter --port 9490 -c /etc/pki/tls/certs/purefa-ome/pure-ome.crt -k
 
     Full check using certificate.
     ```console
-    > curl --cacert pure-ome.crt -H 'Authorization: Bearer 12345678-abcd-abcd-abcd-abcdef123456' -X GET 'http://pure-ome.fqdn.com:9490/metrics/array?endpoint=array01'
+    $ curl --cacert pure-ome.crt -H 'Authorization: Bearer 12345678-abcd-abcd-abcd-abcdef123456' -X GET 'http://pure-ome.fqdn.com:9490/metrics/array?endpoint=array01'
     ```
 
 
