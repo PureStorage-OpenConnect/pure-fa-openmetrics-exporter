@@ -165,11 +165,11 @@ Deploying the binary requires [go](https://go.dev) to compile the code and runni
     Restart=always
     RestartSec=1
 
-    > Start OME
+    # Start OME
     ExecStart=/usr/bin/pure-fa-om-exporter --port 9490
 
-    > Start OME with TLS
-    > ExecStart=/usr/bin/pure-fa-om-exporter --port 9490 -c /etc/pki/tls/certs/purefa-ome/pure-ome.crt -k /etc/pki/tls/private/pure-ome.key
+    # Start OME with TLS
+    # ExecStart=/usr/bin/pure-fa-om-exporter --port 9490 -c /etc/pki/tls/certs/purefa-ome/pure-ome.crt -k /etc/pki/tls/private/pure-ome.key
 
     [Install]
     WantedBy=multi-user.target 
