@@ -49,7 +49,7 @@ git clone git@github.com:PureStorage-OpenConnect/pure-fa-openmetrics-exporter.gi
 # modify the code and build the package
 cd pure-fa-openmetrics-exporter
 ...
-make build
+make build .
 ```
 
 The newly built exporter executable can be found in the <kbd>./out/bin</kbd> directory.
@@ -197,6 +197,7 @@ scrape_configs:
 See the Kubernetes [examples](examples/config/k8s) for a similar configuration that uses additional configuration items for a simple Prometheus+Kubernetes deployment, or for the more interesting Prometheus operator.
 
 ### Usage Examples
+Detailed examples of how to deploy several configurations either using Docker or an executable binary can be in [deployment examples](extra/deployment.md).
 
 #### Docker 
 In a typical production scenario, it is recommended to use a visual frontend for your metrics, such as [Grafana](https://github.com/grafana/grafana). Grafana allows you to use your Prometheus instance as a datasource, and create Graphs and other visualizations from PromQL queries. Grafana, Prometheus, are all easy to run as docker containers.
