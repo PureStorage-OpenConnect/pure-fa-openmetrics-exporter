@@ -128,7 +128,7 @@ Deploying the binary requires [go](https://go.dev) to compile the code and runni
     > make build .
     ```
 
-### Binary - Default - http passing API token with query
+## Binary - Default - http passing API token with query
 
 5. **Binary - Default - http passing API token with query**
     ```console
