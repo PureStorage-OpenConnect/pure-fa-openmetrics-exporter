@@ -21,6 +21,8 @@ To monitor your Pure Storage appliances, you will need to create a new dedicated
 
 The exporter is a Go application based on the Prometheus Go client library and [Resty](https://github.com/go-resty/resty), a simple but reliable HTTP and REST client library for Go . It is preferably built and launched via Docker. You can also scale the exporter deployment to multiple containers on Kubernetes thanks to the stateless nature of the application.
 
+Detailed examples of how to deploy several configurations either using Docker or an executable binary can be in [docs/deployment-examples.md](docs/deployment-examples.md).
+
 ---
 
 #### The official docker images are available at Quay.io
@@ -197,7 +199,6 @@ scrape_configs:
 See the Kubernetes [examples](examples/config/k8s) for a similar configuration that uses additional configuration items for a simple Prometheus+Kubernetes deployment, or for the more interesting Prometheus operator.
 
 ### Usage Examples
-Detailed examples of how to deploy several configurations either using Docker or an executable binary can be in [deployment examples](extra/deployment.md).
 
 #### Docker 
 In a typical production scenario, it is recommended to use a visual frontend for your metrics, such as [Grafana](https://github.com/grafana/grafana). Grafana allows you to use your Prometheus instance as a datasource, and create Graphs and other visualizations from PromQL queries. Grafana, Prometheus, are all easy to run as docker containers.
