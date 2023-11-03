@@ -65,71 +65,75 @@ Dashboards may have limited functionality with earlier versions and some modific
 1. Install Prometheus on your chosen OS platform ([prometheus-docs][2]).
 
 2. Generate an API token from your chosen user account or create a new readonly user.
-```console
-pureuser@arrayname01> pureadmin create --role readonly svc-readonly
- Name          Type   Role    
-svc-readonly  local  readonly
 
-pureuser@arrayname01> pureadmin create --api-token svc-readonly
-Name          Type   API Token                             Created                  Expires
-svc-readonly  local  a12345bc6-d78e-901f-23a4-56b07b89012  2022-11-30 08:58:40 EST  -      
-```
+    ```console
+    pureuser@arrayname01> pureadmin create --role readonly svc-readonly
+    Name          Type   Role    
+    svc-readonly  local  readonly
+
+    pureuser@arrayname01> pureadmin create --api-token svc-readonly
+    Name          Type   API Token                             Created                  Expires
+    svc-readonly  local  11111111-1111-1111-1111-111111111111  2022-11-30 08:58:40 EST  -      
+    ```
 
 3. Configure `/etc/prometheus/prometheus.yml` to point use the OpenMetrics exporter to query the device endpoint.
 
-[This is an example of configuring the prometheus.yml](../prometheus/prometheus.yml)
+    This is an example [prometheus.yml](../prometheus/prometheus.yml) file.
 
-Let's take a walkthrough an example of scraping the `/metrics/array` endpoint.
+    Let's take a walkthrough an example of scraping the `/metrics/array` endpoint.
 
-```yaml
-# Scrape job for one Pure Storage FlashArray scraping /metrics/array
-# Each Prometheus scrape requires a job name. In this example we have structures the name `exporter_endpoint_arrayname`
-  - job_name: 'purefa_array_arrayname01'
-    # Specify the array endpoint from /metrics/array
-    metrics_path: /metrics/array
-    # Provide FlashArray authorization API token
-    authorization:
-      credentials: a12345bc6-d78e-901f-23a4-56b07b89012
-    # Provide parameters to pass the exporter the device to connect to. Provide FQDN or IP address
-    params:
-      endpoint: ['arrayname01.fqdn.com']
+    ```yaml
+    # Scrape job for one Pure Storage FlashArray scraping /metrics/array
+    # Each Prometheus scrape requires a job name. In this example we have structures the name `exporter_endpoint_arrayname`
+      - job_name: 'purefa_array_arrayname01'
+        # Specify the array endpoint from /metrics/array
+        metrics_path: /metrics/array
+        # Provide FlashArray authorization API token
+        authorization:
+          credentials: 11111111-1111-1111-1111-111111111111
+        # Provide parameters to pass the exporter the device to connect to. Provide FQDN or IP address
+        params:
+          endpoint: ['arrayname01.fqdn.com']
 
-    static_configs:
-    # Tell Prometheus which exporter to make the request
-    - targets:
-      - 10.0.2.10:9490
-      # Finally provide labels to the device.
-      labels:
-        # Instance should be the device name and is used to correlate metrics between different endpoints in Prometheus and Grafana. Ensure this is the same for each endpoint for the same device.
-        instance: arrayname01
-        # location, site and env are specific to your environment. Feel free to add more labels but maintain these three to minimize changes to Grafana which is expecting to use location, site and env as filter variables. 
-        location: uk
-        site: London
-        env: production
+        static_configs:
+        # Tell Prometheus which exporter to make the request
+        - targets:
+          - 10.0.2.10:9490
+          # Finally provide labels to the device.
+          labels:
+            # Instance should be the device name and is used to correlate metrics between different endpoints in Prometheus and Grafana. Ensure this is the same for each endpoint for the same device.
+            instance: arrayname01
+            # location, site and env are specific to your environment. Feel free to add more labels but maintain these three to minimize changes to Grafana which is expecting to use location, site and env as filter variables. 
+            location: uk
+            site: London
+            env: production
 
-# Repeat for the above for end points:
-# /metrics/volumes
-# /metrics/hosts
-# /metrics/pods
-# /metrics/directories
+      # Repeat for the above for end points:
+      # /metrics/volumes
+      # /metrics/hosts
+      # /metrics/pods
+      # /metrics/directories
 
-# Repeat again for more Pure Storage FlashArrays
-```
+      # Repeat again for more Pure Storage FlashArrays
+      ```
+
 4. Test the prometheus.yml file is valid
-```console
-> promtool check config /etc/prometheus/prometheus.yml
-Checking prometheus.yml
- SUCCESS: prometheus.yml is valid prometheus config file syntax
-```
+
+    ```console
+    > promtool check config /etc/prometheus/prometheus.yml
+    Checking prometheus.yml
+    SUCCESS: prometheus.yml is valid prometheus config file syntax
+    ```
+
 5. Restart Prometheus to ensure changes take effect
 
 6. Navigate to your Prometheus instance via web browser http://prometheus:9090
   -  Type `purefa_info` in the query box and hit return
   
 7. All going well, you will see your device listed:
-  ```
-  purefa_info{array_name="ARRAYNAME01", env="production", instance="arrayname01", job="purefa_array_arrayname01", location="uk", os="Purity//FA", site="London", system_id="a1234bc5-a111-b222-c333-123456abcdef", version="6.3.3"}
-  ```
+    ```
+    purefa_info{array_name="ARRAYNAME01", env="production", instance="arrayname01", job="purefa_array_arrayname01", location="uk", os="Purity//FA", site="London", system_id="11111111-1111-1111-1111-111111111111", version="6.5.0"}
+    ```
 
 ## Grafana
 
@@ -160,9 +164,9 @@ Check the data is accessible to each component in the stack. If at any on these 
 
 ### Check Pure OpenMetrics Exporter
 1. Run cURL against the exporter and pass is the bearer token and endpoint. 
-```
-curl -H 'Authorization: Bearer a12345bc6-d78e-901f-23a4-56b07b89012' -X GET 'http://<exporter_ip>:9490/metrics/array?endpoint=arrayname01.fqdn.com'
-```
+    ```
+    curl -H 'Authorization: Bearer 11111111-1111-1111-1111-111111111111' -X GET 'http://<exporter_ip>:9490/metrics/array?endpoint=arrayname01.fqdn.com'
+    ```
 
 ### Check Prometheus
 2. Using the Prometheus UI, run a simple query to see if any results are returned.
@@ -174,12 +178,13 @@ curl -H 'Authorization: Bearer a12345bc6-d78e-901f-23a4-56b07b89012' -X GET 'htt
 <br>
 <img src="./images/prometheus_purefa_target_status.png" width="40%" height="40%">
 <br>
+
 4. Run prometheus.yml through the yaml checker. Check the configuration is correct and restart Prometheus.
-```console
-> promtool check config /etc/prometheus/prometheus.yml
-Checking prometheus.yml
- SUCCESS: prometheus.yml is valid prometheus config file syntax
-```
+    ```console
+    > promtool check config /etc/prometheus/prometheus.yml
+    Checking prometheus.yml
+    SUCCESS: prometheus.yml is valid prometheus config file syntax
+    ```
 
 5. Check messages log for Prometheus errors.
 
