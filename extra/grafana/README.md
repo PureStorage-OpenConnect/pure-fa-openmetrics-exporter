@@ -115,7 +115,7 @@ Dashboards may have limited functionality with earlier versions and some modific
       # /metrics/directories
       # It is recommended to collect expensive queries less frequently such as /metrics/directories.
       scrape_interval:     15m # Set the scrape interval to every 15min. Default is every 1 minute. This overrides the global setting.
-      scrape_timeout:      15m # Set the scrape timeout to shorter or match. Default is every 1 minute.
+      scrape_timeout:      15m # Set the scrape timeout to shorter than or equal to scrape_interval. Default is every 1 minute.
 
       # Repeat again for more Pure Storage FlashArrays
       ```
