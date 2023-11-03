@@ -1,6 +1,6 @@
 global:
   scrape_interval:     30s # Set the scrape interval to every 30 seconds. Default is every 1 minute.
-  scrape_timeout:      30s # Set the scrape timeout to shorter or match or match scrape_interval. Default is every 1 minute.
+  scrape_timeout:      30s # Set the scrape timeout to shorter or match scrape_interval. Default is every 1 minute.
   # evaluation_interval: 60s # is set to the default every 1 minute.
 
 # A scrape configuration containing exactly one endpoint to scrape:
