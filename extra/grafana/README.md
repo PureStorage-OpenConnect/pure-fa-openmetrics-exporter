@@ -55,6 +55,7 @@ We have tested our dashboard with the following versions:
 The Grafana dashboards have been developed and tested using the following software versions:
 | OME            | Prometheus  | Grafana        |
 | -------------- | ----------- |--------------- |
+| v1.0.9         | 2.45.1      | 9.3.2 & 10.1.15|
 | v1.0.9         | 2.45.0      | 9.3.2 & 10.0.1 |
 | v1.0.5.hotfix1 | 2.41.1      | 9.3.2 & 9.4.1  |
 
@@ -196,6 +197,10 @@ Check the data is accessible to each component in the stack. If at any on these 
 <br>
 <img src="./images/grafana_purefa_simple_query.png" width="40%" height="40%">
 <br>
+
+### Check Docker container is running
+7. Ensure that the docker image is running, if for any reason the container is unexpectedly halting while running you may add `--restart unless-stopped` to the `docker run` command to ensure the container is restarted automatically on failure.
+   
 
 # Troubleshooting Specific Errors
 ## Some panels have errors

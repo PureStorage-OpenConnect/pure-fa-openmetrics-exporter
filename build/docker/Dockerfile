@@ -1,5 +1,5 @@
 FROM golang:alpine as build
-ARG VERSION=1.0.9
+ARG VERSION=1.0.10
 
 WORKDIR /usr/src/app
 
