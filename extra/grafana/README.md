@@ -67,15 +67,26 @@ Dashboards may have limited functionality with earlier versions and some modific
 
 2. Generate an API token from your chosen user account or create a new readonly user.
 
-    ```console
-    pureuser@arrayname01> pureadmin create --role readonly svc-readonly
-    Name          Type   Role    
-    svc-readonly  local  readonly
+    <details>
+    <summary>Expand for CLI example</summary>
 
-    pureuser@arrayname01> pureadmin create --api-token svc-readonly
-    Name          Type   API Token                             Created                  Expires
-    svc-readonly  local  11111111-1111-1111-1111-111111111111  2022-11-30 08:58:40 EST  -      
-    ```
+      ```console
+      pureuser@arrayname01> pureadmin create --role readonly o11y-readonly
+      Name           Type   Role    
+      o11y-readonly  local  readonly
+
+      pureuser@arrayname01> pureadmin create --api-token o11y-readonly
+      Name           Type   API Token                             Created                  Expires
+      o11y-readonly  local  11111111-1111-1111-1111-111111111111  2022-11-30 08:58:40 EST  -      
+      ```
+
+    </details>
+
+    <details>
+    <summary>Expand for GUI example</summary>
+
+    ![Alt text](../images/purefa_create_api_token.png)
+    </details>
 
 3. Configure `/etc/prometheus/prometheus.yml` to point use the OpenMetrics exporter to query the device endpoint.
 
