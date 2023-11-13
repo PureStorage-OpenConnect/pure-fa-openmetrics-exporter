@@ -12,8 +12,8 @@ This document describes the semantic conventions for Pure FlashArray Metrics.
   - [`purefa_alerts` - FlashArray Alerts Information](#purefa_alerts---flasharray-alerts-information)
   - [`purefa_array` - FlashArray metrics](#purefa_array---flasharray-metrics)
   - [`purefa_directory` - FlashArray File Directory metrics](#purefa_directory---flasharray-file-directory-metrics)
-  - [`purefa_drive` - FlashArray Drive Metrics](#purefa_drive---flasharray-drive-metrics)
   - [`purefa_host` - Host metrics](#purefa_host---host-metrics)
+  - [`purefa_drive` - FlashArray Drive metrics](#purefa_drive---flasharray-drive-metrics)
   - [`purefa_hw` - Hardware metrics](#purefa_hw---hardware-metrics)
   - [`purefa_network` - Network metrics](#purefa_network---network-metrics)
   - [`purefa_pod` - Pod metrics](#purefa_pod---pod-metrics)
@@ -119,12 +119,12 @@ This document describes the semantic conventions for Pure FlashArray Metrics.
 
 **Description:** FlashArray drive metrics
 
-| Status    | Name                          | Description                        | Units  | Metric Type ([*](https://github.com/OpenObservability/OpenMetrics/blob/main/specification/OpenMetrics.md#metric-types)) | Value Type | Attribute Key        | Attribute Values                                                                                                            |
-| ---------------------------------------------------------------------------------------------------------- | ----------------------------- | ---------------------------------- | ------ | ----------------------------------------------------------------------------------------------------------------------- | ---------- | -------------------- | --------------------------------------------------------------------------------------------------------------------------- |
-| Available | purefa_drive_capacity_bytes   | FlashArray drive capacity in bytes | bytes  | Gauge                                                                                                                   | Double     | `component_name`     | (name)                                                                                                                      |
-|                                                                                                            |                               |                                    |        |                                                                                                                         |            | `component_protocol` | `NVMe`, `SAS`                                                                                                               |
-|           |                               |                                    |        |                                                                                                                         |            | `component_type`     | `cache`, `NVRAM`, `SSD`, `virtual`                                                                                          |
-|           |                               |                                    |        |                                                                                                                         |            | `component_status`   | `empty`, `failed`, `healthy`, `identifying`, `missing`, `recovering`, `unadmitted`, `unhealthy`, `unrecognized`, `updating` |
+| Status    | Name                        | Description                        | Units | Metric Type ([*](https://github.com/OpenObservability/OpenMetrics/blob/main/specification/OpenMetrics.md#metric-types)) | Value Type | Attribute Key        | Attribute Values                                                                                                            |
+| --------- | --------------------------- | ---------------------------------- | ----- | ----------------------------------------------------------------------------------------------------------------------- | ---------- | -------------------- | --------------------------------------------------------------------------------------------------------------------------- |
+| Available | purefa_drive_capacity_bytes | FlashArray drive capacity in bytes | bytes | Gauge                                                                                                                   | Double     | `component_name`     | (name)                                                                                                                      |
+|           |                             |                                    |       |                                                                                                                         |            | `component_protocol` | `NVMe`, `SAS`                                                                                                               |
+|           |                             |                                    |       |                                                                                                                         |            | `component_type`     | `cache`, `NVRAM`, `SSD`, `virtual`                                                                                          |
+|           |                             |                                    |       |                                                                                                                         |            | `component_status`   | `empty`, `failed`, `healthy`, `identifying`, `missing`, `recovering`, `unadmitted`, `unhealthy`, `unrecognized`, `updating` |
 
 
 ### `purefa_hw` - Hardware metrics
