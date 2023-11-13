@@ -13,6 +13,7 @@ This document describes the semantic conventions for Pure FlashArray Metrics.
   - [`purefa_array` - FlashArray metrics](#purefa_array---flasharray-metrics)
   - [`purefa_directory` - FlashArray File Directory metrics](#purefa_directory---flasharray-file-directory-metrics)
   - [`purefa_host` - Host metrics](#purefa_host---host-metrics)
+  - [`purefa_drive` - FlashArray Drive metrics](#purefa_drive---flasharray-drive-metrics)
   - [`purefa_hw` - Hardware metrics](#purefa_hw---hardware-metrics)
   - [`purefa_network` - Network metrics](#purefa_network---network-metrics)
   - [`purefa_pod` - Pod metrics](#purefa_pod---pod-metrics)
@@ -22,14 +23,14 @@ This document describes the semantic conventions for Pure FlashArray Metrics.
 
 ## Collections by Endpoint
 
-| Endpoint             | Description              | Metrics Instruments collected                                                 |
-| -------------------- | ------------------------ | ----------------------------------------------------------------------------- |
-| /metrics             | Full array metrics       | all                                                                           |
-| /metrics/array       | Array only metrics       | `purefa_info`, `purefa_alerts`, `purefa_array`, `purefa_hw`, `purefa_network` |
-| /metrics/directories | Directories only metrics | `purefa_info`, `purefa_directory`                                             |
-| /metrics/hosts       | Hosts only metrics       | `purefa_info`, `purefa_host`                                                  |
-| /metrics/pods        | Pods only metrics        | `purefa_info`, `purefa_pod`                                                   |
-| /metrics/volumes     | Volumes only metrics     | `purefa_info`, `purefa_volume`                                                |
+| Endpoint             | Description              | Metrics Instruments collected                                                                 |
+| -------------------- | ------------------------ | --------------------------------------------------------------------------------------------- |
+| /metrics             | Full array metrics       | all                                                                                           |
+| /metrics/array       | Array only metrics       | `purefa_info`, `purefa_alerts`, `purefa_array`, `purefa_hw`, `purefa_network`, `purefa_drive` |
+| /metrics/directories | Directories only metrics | `purefa_info`, `purefa_directory`                                                             |
+| /metrics/hosts       | Hosts only metrics       | `purefa_info`, `purefa_host`                                                                  |
+| /metrics/pods        | Pods only metrics        | `purefa_info`, `purefa_pod`                                                                   |
+| /metrics/volumes     | Volumes only metrics     | `purefa_info`, `purefa_volume`                                                                |
 
 ## Metric Statuses
 
@@ -112,6 +113,18 @@ This document describes the semantic conventions for Pure FlashArray Metrics.
 | Available | purefa_host_space_bytes                 | FlashArray host space in bytess                     | bytes             | Gauge                                                                                                                   | Double     | `host`        | (host name)                                                                                                                                                                                                                                                                                                                                                                                  |
 |           |                                         |                                                     |                   |                                                                                                                         |            | `space`       | `shared`, `snapshots`, `system`, `thin_provisioning`, `total_physical`, `total_provisioned`, `total_reduction`, `unique`, `virtual`, `replication`, `shared_effective`, `snapshots_effective`, `unique_effective`, `total_effective`                                                                                                                                                         |
 | Available | purefa_host_space_data_reduction_ratio  | FlashArray host space data reduction                | ratio             | Gauge                                                                                                                   | Double     | `host`        | (host name)                                                                                                                                                                                                                                                                                                                                                                                  |
+
+
+### `purefa_drive` - FlashArray Drive metrics
+
+**Description:** FlashArray drive metrics
+
+| Status    | Name                        | Description                        | Units | Metric Type ([*](https://github.com/OpenObservability/OpenMetrics/blob/main/specification/OpenMetrics.md#metric-types)) | Value Type | Attribute Key        | Attribute Values                                                                                                            |
+| --------- | --------------------------- | ---------------------------------- | ----- | ----------------------------------------------------------------------------------------------------------------------- | ---------- | -------------------- | --------------------------------------------------------------------------------------------------------------------------- |
+| Available | purefa_drive_capacity_bytes | FlashArray drive capacity in bytes | bytes | Gauge                                                                                                                   | Double     | `component_name`     | (name)                                                                                                                      |
+|           |                             |                                    |       |                                                                                                                         |            | `component_protocol` | `NVMe`, `SAS`                                                                                                               |
+|           |                             |                                    |       |                                                                                                                         |            | `component_type`     | `cache`, `NVRAM`, `SSD`, `virtual`                                                                                          |
+|           |                             |                                    |       |                                                                                                                         |            | `component_status`   | `empty`, `failed`, `healthy`, `identifying`, `missing`, `recovering`, `unadmitted`, `unhealthy`, `unrecognized`, `updating` |
 
 
 ### `purefa_hw` - Hardware metrics

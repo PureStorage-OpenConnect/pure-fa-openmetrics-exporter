@@ -1,0 +1,15 @@
+{
+  "continuation_token": null,
+  "items": [
+    {
+      "name": "SH0.BAY10",
+      "capacity": 1099511627776,
+      "details": null,
+      "protocol": "SAS",
+      "status": "healthy",
+      "type": "SSD"
+    }
+  ],
+  "more_items_remaining": false,
+  "total_item_count": null
+}
