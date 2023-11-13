@@ -20,6 +20,7 @@ type Client interface {
 	GetHostsPerformance() *HostsPerformanceList
 	GetHostsBalance() *HostsBalanceList
 	GetHardware() *HardwareList
+	GetDrive() *DriveList
 	GetPods() *PodsList
 	GetPodsPerformance() *PodsPerformanceList
 	GetVolumes() *VolumesList
