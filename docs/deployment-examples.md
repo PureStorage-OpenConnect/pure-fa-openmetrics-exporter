@@ -1,5 +1,5 @@
 # Example Deployment Methods
-There are a number of methods to deploy the OpenMetrics exporter depending on your environment. In this document we explore some of the common features and deployment methods and by providing walk through examples.
+There are a number of methods to deploy the OpenMetrics exporter. In this document we explore some of the common features and deployment methods by providing walk through examples.
 
 ## Contents
  - [Prerequisites](#prerequisites)
@@ -16,18 +16,29 @@ There are a number of methods to deploy the OpenMetrics exporter depending on yo
 # Prerequisites
 All deployments will require an API token to authenticate with the array. Read-only only user access is recommended.
 
-1. Generate an API token from your chosen user account or create a new readonly user.
-    API token can be retrieved from either Purity GUI ot CLI.
+Generate an API token from your chosen user account or create a new readonly user.
+API token can be retrieved from either Purity GUI ot CLI.
 
-    ```console
-    pureuser@array01> pureadmin create --role readonly svc-readonly
-    Name          Type   Role    
-    svc-readonly  local  readonly
+<details>
+<summary>Expand for CLI example</summary>
 
-    pureuser@array01> pureadmin create --api-token svc-readonly
-    Name          Type   API Token                             Created                  Expires
-    svc-readonly  local  a1b2c3d4-e5f6-1234-5678-a1b2c3d4e5f6  2023-11-02 12:00:00 EST  -      
-    ```
+```console
+pureuser@arrayname01> pureadmin create --role readonly o11y-readonly
+Name           Type   Role    
+o11y-readonly  local  readonly
+
+pureuser@arrayname01> pureadmin create --api-token o11y-readonly
+Name           Type   API Token                             Created                  Expires
+o11y-readonly  local  11111111-1111-1111-1111-111111111111  2022-11-30 08:58:40 EST  -      
+```
+
+</details>
+
+<details>
+<summary>Expand for GUI example</summary>
+
+![Alt text](../extra/images/purefa_create_api_token.png)
+</details>
 
 # Container Deployment
 ## Container - default - http passing API token with query
@@ -53,7 +64,7 @@ In this example we will use the default port 9490, set the name as pure-fa-om-ex
     Use `curl` to test the exporter returns results.
     ```console
     $ curl -H 'Authorization: Bearer a1b2c3d4-e5f6-1234-5678-a1b2c3d4e5f6' -X GET 'http://localhost:9490/metrics/array?endpoint=array01' -silent | grep ^purefa_info
-    purefa_info{array_name="ARRAY01",os="Purity//FA",system_id="12345678-abcd-abcd-abcd-abcdef123456",version="6.5.0"} 1
+    purefa_info{array_name="ARRAY01",os="Purity//FA",system_id="11111111-1111-1111-1111-111111111111",version="6.5.0"} 1
     ```
 
     We expect to return a single line displaying `purefa_info` returning the name, Purity OS, system ID and the Purity version.
@@ -74,7 +85,7 @@ In this example we will use the default port 9490, set the name as pure-fa-om-ex
     # Example of a second array
     array02:
       address: 'array02.fqdn.com'
-      api_token: 'a1b2c3d4-e5f6-1234-5678-a1b2c3d4e5f7'
+      api_token: '11111111-1111-1111-1111-111111111111'
     ```
 
 2. **Run the container**
@@ -95,7 +106,7 @@ In this example we will use the default port 9490, set the name as pure-fa-om-ex
     Use `curl` to test the exporter returns results. We don't need to pass the bearer (API) token for authorization as the exporter has a record of these which makes queries simpler.
     ```console
     $ curl -X GET 'http://localhost:9490/metrics/array?endpoint=array01 ' -silent | grep ^purefa_info
-    purefa_info{array_name="ARRAY01",os="Purity//FA",system_id="12345678-abcd-abcd-abcd-abcdef123456",version="6.5.0"} 1
+    purefa_info{array_name="ARRAY01",os="Purity//FA",system_id="11111111-1111-1111-1111-111111111111",version="6.5.0"} 1
     ```
 
 ## Container - TLS - https passing API token with query
@@ -118,7 +129,7 @@ Deploying the binary requires [go](https://go.dev) to compile the code and runni
 3. **Clone git repo**
  
     ```console
-    $ git clone git@github.com:PureStorage-OpenConnect/pure-fa-openmetrics-exporter.git
+    $ git clone https://github.com/PureStorage-OpenConnect/pure-fa-openmetrics-exporter.git
     ```
 
 4. **Build the package**
@@ -134,14 +145,14 @@ Deploying the binary requires [go](https://go.dev) to compile the code and runni
     ```console
     $ ls out/bin
     $ .out/bin/pure-fa-openmetrics-exporter
-    Start Pure FlashArray exporter v1.0.9 on 0.0.0.0:9490
+    Start Pure FlashArray exporter v1.0.10 on 0.0.0.0:9490
     ```
 
 6. **Test the exporter**
     Use `curl` to test the exporter returns results.
     ```console
     $ curl -H 'Authorization: Bearer a1b2c3d4-e5f6-1234-5678-a1b2c3d4e5f6' -X GET 'http://localhost:9490/metrics/array?endpoint=array01' -silent | grep ^purefa_info
-    purefa_info{array_name="ARRAY01",os="Purity//FA",system_id="12345678-abcd-abcd-abcd-abcdef123456",version="6.5.0"} 1
+    purefa_info{array_name="ARRAY01",os="Purity//FA",system_id="11111111-1111-1111-1111-111111111111",version="6.5.0"} 1
     ```
 
     We expect to return a single line displaying `purefa_info` returning the name, Purity OS, system ID and the Purity version.
@@ -217,21 +228,21 @@ Follow steps 1-4 and 7-8 of the default binary deployment, but substitute the fo
     # Example of a second array
     array02:
       address: 'array02.fqdn.com'
-      api_token: 'a1b2c3d4-e5f6-1234-5678-a1b2c3d4e5f7'
+      api_token: '11111111-1111-1111-1111-111111111111'
     ```
 
 5. **Run the binary**
     ```console
     $ ls out/bin
     $ .out/bin/pure-fa-openmetrics-exporter --tokens /directorypath/tokens.yaml
-    Start Pure FlashArray exporter v1.0.9 on 0.0.0.0:9490
+    Start Pure FlashArray exporter v1.0.10 on 0.0.0.0:9490
     ```
 
 6. **Test the exporter**
     Use `curl` to test the exporter returns results.
     ```console
     $ curl -X GET 'http://localhost:9490/metrics/array?endpoint=gse-array01' -silent | grep ^purefa_info
-    purefa_info{array_name="ARRAY01",os="Purity//FA",system_id="12345678-abcd-abcd-abcd-abcdef123456",version="6.5.0"} 1
+    purefa_info{array_name="ARRAY01",os="Purity//FA",system_id="11111111-1111-1111-1111-111111111111",version="6.5.0"} 1
     ```
 
 ## Binary - TLS - https passing API token with query
@@ -241,9 +252,11 @@ Follow steps 1-4 and 7-8 of the default binary deployment, but substitute the fo
 Create the certificate and key and pass the exporter the files. There are many different methods of generating certificates which we won't discuss here as each organizations has different standards and requirements.
 
 5. **Pass the certificate and private key to the exporter**
-```console
-pure-fa-om-exporter --port 9490 -c /etc/pki/tls/certs/purefa-ome/pure-ome.crt -k /etc/pki/tls/private/pure-ome.key
-```
+
+    ```console
+    $ pure-fa-om-exporter --port 9490 -c /etc/pki/tls/certs/purefa-ome/pure-ome.crt -k /etc/pki/tls/private/pure-ome.key
+    ```
+
 6. **Test the exporter**
 
     Use `curl` to test the exporter returns results.
@@ -254,7 +267,7 @@ pure-fa-om-exporter --port 9490 -c /etc/pki/tls/certs/purefa-ome/pure-ome.crt -k
 
     cURL with -k skips SSL verification.
     ```console
-    >curl -k -H 'Authorization: Bearer 12345678-abcd-abcd-abcd-abcdef123456' -X GET 'https://localhost:9490/metrics/array?endpoint=array01'  --silent | grep ^purefa_info
+    $ curl -k -H 'Authorization: Bearer 11111111-1111-1111-1111-111111111111' -X GET 'https://localhost:9490/metrics/array?endpoint=array01'  --silent | grep ^purefa_info
     ```
 
     **TLS https - with SSL verification**
@@ -320,7 +333,7 @@ pure-fa-om-exporter --port 9490 -c /etc/pki/tls/certs/purefa-ome/pure-ome.crt -k
 
     Full check using certificate.
     ```console
-    $ curl --cacert pure-ome.crt -H 'Authorization: Bearer 12345678-abcd-abcd-abcd-abcdef123456' -X GET 'http://pure-ome.fqdn.com:9490/metrics/array?endpoint=array01'
+    $ curl --cacert pure-ome.crt -H 'Authorization: Bearer 11111111-1111-1111-1111-111111111111' -X GET 'http://pure-ome.fqdn.com:9490/metrics/array?endpoint=array01'
     ```
 
 
