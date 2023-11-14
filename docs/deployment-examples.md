@@ -40,6 +40,8 @@ o11y-readonly  local  11111111-1111-1111-1111-111111111111  2022-11-30 08:58:40 
 ![Alt text](../extra/images/purefa_create_api_token.png)
 </details>
 
+---
+
 # Container Deployment
 ## Container - default - http passing API token with query
 We build container images and publish them to RedHat quay.io. Here they can be continually scanned for vulnerabilities and updated as soon as a new version are available.
@@ -63,7 +65,7 @@ In this example we will use the default port 9490, set the name as pure-fa-om-ex
 3. **Test the exporter**
     Use `curl` to test the exporter returns results.
     ```console
-    $ curl -H 'Authorization: Bearer a1b2c3d4-e5f6-1234-5678-a1b2c3d4e5f6' -X GET 'http://localhost:9490/metrics/array?endpoint=array01' -silent | grep ^purefa_info
+    $ curl -H 'Authorization: Bearer 11111111-1111-1111-1111-111111111111' -X GET 'http://localhost:9490/metrics/array?endpoint=array01' -silent | grep ^purefa_info
     purefa_info{array_name="ARRAY01",os="Purity//FA",system_id="11111111-1111-1111-1111-111111111111",version="6.5.0"} 1
     ```
 
@@ -80,12 +82,12 @@ In this example we will use the default port 9490, set the name as pure-fa-om-ex
       # FQDN or IP address of the array
       address: 'array01.fqdn.com'
       # API token of a user on the array
-      api_token: 'a1b2c3d4-e5f6-1234-5678-a1b2c3d4e5f6'
+      api_token: '11111111-1111-1111-1111-111111111111'
 
     # Example of a second array
     array02:
       address: 'array02.fqdn.com'
-      api_token: '11111111-1111-1111-1111-111111111111'
+      api_token: '22222222-2222-2222-2222-222222222222'
     ```
 
 2. **Run the container**
@@ -121,10 +123,7 @@ Deploying the binary requires [go](https://go.dev) to compile the code and runni
     Clear instructions: can be found here: [https://go.dev/doc/install](https://go.dev/doc/install)
 
 2. **Install git**
- 
-    ```console
-    $ yum install git
-    ```
+    Install git for your specific operating system [https://github.com/git-guides/install-git](https://github.com/git-guides/install-git).
 
 3. **Clone git repo**
  
@@ -141,24 +140,24 @@ Deploying the binary requires [go](https://go.dev) to compile the code and runni
 
 ## Binary - Default - http passing API token with query
 
-5. **Binary - Default - http passing API token with query**
+1. **Binary - Default - http passing API token with query**
     ```console
     $ ls out/bin
     $ .out/bin/pure-fa-openmetrics-exporter
-    Start Pure FlashArray exporter v1.0.10 on 0.0.0.0:9490
+    Start Pure FlashArray exporter v1.0.11 on 0.0.0.0:9490
     ```
 
-6. **Test the exporter**
+2. **Test the exporter**
     Use `curl` to test the exporter returns results.
     ```console
-    $ curl -H 'Authorization: Bearer a1b2c3d4-e5f6-1234-5678-a1b2c3d4e5f6' -X GET 'http://localhost:9490/metrics/array?endpoint=array01' -silent | grep ^purefa_info
+    $ curl -H 'Authorization: Bearer 11111111-1111-1111-1111-111111111111' -X GET 'http://localhost:9490/metrics/array?endpoint=array01' -silent | grep ^purefa_info
     purefa_info{array_name="ARRAY01",os="Purity//FA",system_id="11111111-1111-1111-1111-111111111111",version="6.5.0"} 1
     ```
 
     We expect to return a single line displaying `purefa_info` returning the name, Purity OS, system ID and the Purity version.
     You can remove the `' -silent | grep ^purefa_info` from the command to see a list of all results.
 
-7. **Build it as a service**
+3. **Build it as a service**
 
     Copy binary to `/usr/bin`
     ```console
@@ -191,7 +190,7 @@ Deploying the binary requires [go](https://go.dev) to compile the code and runni
     WantedBy=multi-user.target 
     ```
 
-8. **Start, enable and test the service**
+4. **Start, enable and test the service**
     Reload the system daemon to read in changes to services
 
     ```console
@@ -214,7 +213,7 @@ Deploying the binary requires [go](https://go.dev) to compile the code and runni
 Similar steps as basic but we just need to cover a couple of minor changes to running and testing the deployment
 Follow steps 1-4 and 7-8 of the default binary deployment, but substitute the following steps for executing and testing.
 
-4. **Create a tokens.yaml file to pass to the exporter**
+1. **Create a tokens.yaml file to pass to the exporter**
 
     ```console
     $ cat /directorypath/tokens.yaml
@@ -223,22 +222,22 @@ Follow steps 1-4 and 7-8 of the default binary deployment, but substitute the fo
       # FQDN or IP address of the array
       address: 'array01.fqdn.com'
       # API token of a user on the array
-      api_token: 'a1b2c3d4-e5f6-1234-5678-a1b2c3d4e5f6'
+      api_token: '11111111-1111-1111-1111-111111111111'
 
     # Example of a second array
     array02:
       address: 'array02.fqdn.com'
-      api_token: '11111111-1111-1111-1111-111111111111'
+      api_token: '22222222-2222-2222-2222-222222222222'
     ```
 
-5. **Run the binary**
+2. **Run the binary**
     ```console
     $ ls out/bin
     $ .out/bin/pure-fa-openmetrics-exporter --tokens /directorypath/tokens.yaml
-    Start Pure FlashArray exporter v1.0.10 on 0.0.0.0:9490
+    Start Pure FlashArray exporter v1.0.11 on 0.0.0.0:9490
     ```
 
-6. **Test the exporter**
+3. **Test the exporter**
     Use `curl` to test the exporter returns results.
     ```console
     $ curl -X GET 'http://localhost:9490/metrics/array?endpoint=gse-array01' -silent | grep ^purefa_info
@@ -251,13 +250,13 @@ Follow steps 1-4 and 7-8 of the default binary deployment, but substitute the fo
 
 Create the certificate and key and pass the exporter the files. There are many different methods of generating certificates which we won't discuss here as each organizations has different standards and requirements.
 
-5. **Pass the certificate and private key to the exporter**
+1. **Pass the certificate and private key to the exporter**
 
     ```console
     $ pure-fa-om-exporter --port 9490 -c /etc/pki/tls/certs/purefa-ome/pure-ome.crt -k /etc/pki/tls/private/pure-ome.key
     ```
 
-6. **Test the exporter**
+2. **Test the exporter**
 
     Use `curl` to test the exporter returns results.
 
@@ -335,10 +334,3 @@ Create the certificate and key and pass the exporter the files. There are many d
     ```console
     $ curl --cacert pure-ome.crt -H 'Authorization: Bearer 11111111-1111-1111-1111-111111111111' -X GET 'http://pure-ome.fqdn.com:9490/metrics/array?endpoint=array01'
     ```
-
-
-
-
-
-
-
