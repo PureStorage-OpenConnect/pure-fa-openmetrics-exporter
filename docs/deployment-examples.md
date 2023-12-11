@@ -144,7 +144,7 @@ Deploying the binary requires [go](https://go.dev) to compile the code and runni
     ```console
     $ ls out/bin
     $ .out/bin/pure-fa-openmetrics-exporter
-    Start Pure FlashArray exporter v1.0.11 on 0.0.0.0:9490
+    Start Pure FlashArray exporter v1.0.12 on 0.0.0.0:9490
     ```
 
 2. **Test the exporter**
@@ -234,7 +234,7 @@ Follow steps 1-4 and 7-8 of the default binary deployment, but substitute the fo
     ```console
     $ ls out/bin
     $ .out/bin/pure-fa-openmetrics-exporter --tokens /directorypath/tokens.yaml
-    Start Pure FlashArray exporter v1.0.11 on 0.0.0.0:9490
+    Start Pure FlashArray exporter v1.0.12 on 0.0.0.0:9490
     ```
 
 3. **Test the exporter**
