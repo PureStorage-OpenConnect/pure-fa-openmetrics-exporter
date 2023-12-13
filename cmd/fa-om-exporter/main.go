@@ -1,7 +1,6 @@
 package main
 
 import (
-	"context"
 	"fmt"
 	"io"
 	"log"
@@ -156,7 +155,7 @@ func metricsHandler(w http.ResponseWriter, r *http.Request) {
 		http.Error(w, "Error connecting to FlashArray. Check your management endpoint and/or api token are correct.", http.StatusBadRequest)
 		return
 	}
-	collectors.Collector(context.TODO(), metrics, registry, faclient)
+	collectors.Collector(r.Context(), metrics, registry, faclient)
 
 	h := promhttp.HandlerFor(registry, promhttp.HandlerOpts{})
 	h.ServeHTTP(w, r)
