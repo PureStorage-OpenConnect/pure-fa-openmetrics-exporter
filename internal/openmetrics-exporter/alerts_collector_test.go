@@ -44,14 +44,13 @@ func TestAlertsCollector(t *testing.T) {
 	e := endp[len(endp)-1]
 	al := make(map[string]float64)
 	for _, a := range aopen.Items {
-		al[fmt.Sprintf("%s,%s", a.ComponentType, a.Severity, a.Created, a.Name, a.Code, a.Summary, a.Issue)] += 1
+		al[fmt.Sprintf("%s,%d,%s,%d,%s,%s,%s,%s", a.Category, a.Code, a.ComponentType, a.Created, a.Issue, a.Name, a.Severity, a.Summary)] += 1
 	}
 	want := make(map[string]bool)
 	for a, n := range al {
 		alert := strings.Split(a, ",")
-		//		want[fmt.Sprintf("label:{name:\"component_type\" value:\"%s\"} label:{name:\"severity\" value:\"%s\"} gauge:{value:%g}", alert[0], alert[1], n)] = true
-		//      want[fmt.Sprintf("label:{name:\"component_type\" value:\"%s\"} label:{name:\"severity\" value:\"%s\"} gauge:{value:%g}", alert[0], alert[1], n)] = true
-		want[fmt.Sprintf("label:{name:\"component_type\" value:\"%s\"} label:{name:\"severity\" value:\"%s\"} gauge:{value:%g}", alert[0], alert[1], alert[2], alert[3], alert[4], alert[5], alert[6], n)] = true
+
+		want[fmt.Sprintf("label:{name:\"category\" value:\"%s\"} label:{name:\"code\" value:\"%s\"} label:{name:\"component_type\" value:\"%s\"} label:{name:\"created\" value:\"%s\"} label:{name:\"issue\" value:\"%s\"} label:{name:\"name\" value:\"%s\"} label:{name:\"severity\" value:\"%s\"} label:{name:\"summary\" value:\"%s\"} gauge:{value:%g}", alert[0], alert[1], alert[2], alert[3], alert[4], alert[5], alert[6], alert[7], n)] = true
 	}
 	c := client.NewRestClient(e, "fake-api-token", "latest", false)
 	ac := NewAlertsCollector(c)
