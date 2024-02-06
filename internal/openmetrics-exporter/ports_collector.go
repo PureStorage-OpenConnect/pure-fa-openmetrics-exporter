@@ -7,10 +7,11 @@ import (
 )
 
 type PortsCollector struct {
-	PortiSCSIInfoDesc  *prometheus.Desc
-	PortNVMeoFInfoDesc *prometheus.Desc
-	PortFCInfoDesc     *prometheus.Desc
-	Client             *client.FAClient
+	PortiSCSIInfoDesc   *prometheus.Desc
+	PortNVMeTCPInfoDesc *prometheus.Desc
+	PortNVMeFCInfoDesc  *prometheus.Desc
+	PortFCInfoDesc      *prometheus.Desc
+	Client              *client.FAClient
 }
 
 func (c *PortsCollector) Describe(ch chan<- *prometheus.Desc) {
@@ -31,12 +32,20 @@ func (c *PortsCollector) Collect(ch chan<- prometheus.Metric) {
 				h.Name, h.Iqn, h.Portal,
 			)
 		}
-		if h.Nqn != "" {
+		if h.Nqn != "" && h.Portal != "" {
 			ch <- prometheus.MustNewConstMetric(
-				c.PortNVMeoFInfoDesc,
+				c.PortNVMeTCPInfoDesc,
 				prometheus.GaugeValue,
 				1,
 				h.Name, h.Nqn, h.Portal,
+			)
+		}
+		if h.Nqn != "" && h.Wwn != "" {
+			ch <- prometheus.MustNewConstMetric(
+				c.PortNVMeFCInfoDesc,
+				prometheus.GaugeValue,
+				1,
+				h.Name, h.Nqn, h.Wwn,
 			)
 		}
 		if h.Wwn != "" {
@@ -58,10 +67,16 @@ func NewPortsCollector(fa *client.FAClient) *PortsCollector {
 			[]string{"name", "iqn", "portal"},
 			prometheus.Labels{},
 		),
-		PortNVMeoFInfoDesc: prometheus.NewDesc(
-			"purefa_ports_nvmeof_info",
-			"FlashArray ports nvmeof info",
+		PortNVMeTCPInfoDesc: prometheus.NewDesc(
+			"purefa_ports_nvmetcp_info",
+			"FlashArray ports NVMe/TCP info",
 			[]string{"name", "nqn", "portal"},
+			prometheus.Labels{},
+		),
+		PortNVMeFCInfoDesc: prometheus.NewDesc(
+			"purefa_ports_nvmefc_info",
+			"FlashArray ports NVMe/FC info",
+			[]string{"name", "nqn", "wwn"},
 			prometheus.Labels{},
 		),
 		PortFCInfoDesc: prometheus.NewDesc(
