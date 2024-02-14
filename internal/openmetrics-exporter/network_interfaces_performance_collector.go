@@ -147,6 +147,7 @@ func (c *NetworkInterfacesPerformanceCollector) Collect(ch chan<- prometheus.Met
 				n.Name, "transmitted_invalid_words_per_sec", n.InterfaceType,
 			)
 		}
+
 	}
 }
 
