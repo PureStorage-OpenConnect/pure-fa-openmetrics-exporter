@@ -24,7 +24,7 @@ func (c *AlertsCollector) Collect(ch chan<- prometheus.Metric) {
 	}
 	al := make(map[string]float64)
 	for _, alert := range alerts.Items {
-		al[fmt.Sprintf("%s,%d,%s,%d,%s,%s,%s,%s",
+		al[fmt.Sprintf("%s\n%d\n%s\n%d\n%s\n%s\n%s\n%s",
 			alert.Category,
 			alert.Code,
 			alert.ComponentType,
@@ -36,7 +36,7 @@ func (c *AlertsCollector) Collect(ch chan<- prometheus.Metric) {
 		)] += 1
 	}
 	for a, n := range al {
-		alert := strings.Split(a, ",")
+		alert := strings.Split(a, "\n")
 		ch <- prometheus.MustNewConstMetric(
 			c.AlertsDesc,
 			prometheus.GaugeValue,
