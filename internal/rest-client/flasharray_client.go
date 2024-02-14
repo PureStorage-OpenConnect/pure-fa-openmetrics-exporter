@@ -1,9 +1,10 @@
 package client
 
 import (
-//	"log"
+	//	"log"
 	"crypto/tls"
 	"errors"
+
 	"github.com/go-resty/resty/v2"
 )
 
@@ -44,7 +45,7 @@ func NewRestClient(endpoint string, apitoken string, apiversion string, debug bo
 		EndPoint:   endpoint,
 		ApiToken:   apitoken,
 		RestClient: resty.New(),
-	        XAuthToken: "",
+		XAuthToken: "",
 	}
 	fa.RestClient.SetBaseURL("https://" + endpoint + "/api")
 	fa.RestClient.SetTLSClientConfig(&tls.Config{InsecureSkipVerify: true})
@@ -55,10 +56,10 @@ func NewRestClient(endpoint string, apitoken string, apiversion string, debug bo
 	if debug {
 		fa.RestClient.SetDebug(true)
 	}
-//	fa.RestClient.OnRequestLog(func(rl *resty.RequestLog) error {
-//		fmt.Fprintln(os.Stderr, rl)
-//		return nil
-//	})
+	//	fa.RestClient.OnRequestLog(func(rl *resty.RequestLog) error {
+	//		fmt.Fprintln(os.Stderr, rl)
+	//		return nil
+	//	})
 
 	result := new(ApiVersions)
 	res, err := fa.RestClient.R().
@@ -69,11 +70,11 @@ func NewRestClient(endpoint string, apitoken string, apiversion string, debug bo
 		return fa
 	}
 	if res.StatusCode() != 200 {
-		fa.Error = errors.New("Not a valid FlashArray REST API server")
+		fa.Error = errors.New("not a valid FlashArray REST API server")
 		return fa
 	}
 	if len(result.Versions) == 0 {
-		fa.Error = errors.New("Not a valid FlashArray REST API version")
+		fa.Error = errors.New("not a valid FlashArray REST API version")
 		return fa
 	}
 	if apiversion == "latest" {

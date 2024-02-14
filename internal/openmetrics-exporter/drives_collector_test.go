@@ -1,17 +1,16 @@
 package collectors
 
-
 import (
+	"encoding/json"
 	"fmt"
-	"testing"
-        "regexp"
-        "strings"
 	"net/http"
 	"net/http/httptest"
-	"encoding/json"
 	"os"
+	"regexp"
+	"strings"
+	"testing"
 
-	"purestorage/fa-openmetrics-exporter/internal/rest-client"
+	client "purestorage/fa-openmetrics-exporter/internal/rest-client"
 )
 
 func TestDriveCollector(t *testing.T) {
@@ -21,27 +20,27 @@ func TestDriveCollector(t *testing.T) {
 	var drl client.DriveList
 	json.Unmarshal(rdr, &drl)
 	server := httptest.NewTLSServer(http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
-	        url := regexp.MustCompile(`^/api/([0-9]+.[0-9]+)?/drive$`)
-                if r.URL.Path == "/api/api_version" {
-                        w.Header().Set("Content-Type", "application/json")
-                        w.WriteHeader(http.StatusOK)
+		url := regexp.MustCompile(`^/api/([0-9]+.[0-9]+)?/drive$`)
+		if r.URL.Path == "/api/api_version" {
+			w.Header().Set("Content-Type", "application/json")
+			w.WriteHeader(http.StatusOK)
 			w.Write([]byte(vers))
-                } else if url.MatchString(r.URL.Path) {
+		} else if url.MatchString(r.URL.Path) {
 			w.Header().Set("x-auth-token", "faketoken")
 			w.Header().Set("Content-Type", "application/json")
 			w.WriteHeader(http.StatusOK)
 			w.Write([]byte(rdr))
 		}
-	   }))
-        endp := strings.Split(server.URL, "/")
-        e := endp[len(endp)-1]
+	}))
+	endp := strings.Split(server.URL, "/")
+	e := endp[len(endp)-1]
 	want := make(map[string]bool)
 	for _, d := range drl.Items {
-		want[fmt.Sprintf("label:{name:\"component_name\" value:\"%s\"} label:{name:\"component_status\" value:\"%s\"} label:{name:\"component_type\" value:\"%s\"} label:{name:\"component_type\" value:\"%s\"} gauge:{value:\"%s\"}", d.Name, d.Type, d.Status, d.Protocol, d.Capacity)] = true
-		}
+		want[fmt.Sprintf("label:{name:\"component_name\" value:\"%s\"} label:{name:\"component_status\" value:\"%s\"} label:{name:\"component_type\" value:\"%s\"} label:{name:\"component_type\" value:\"%s\"} gauge:{value:\"%g\"}", d.Name, d.Type, d.Status, d.Protocol, d.Capacity)] = true
 	}
-        c := client.NewRestClient(e, "fake-api-token", "latest", false)
+
+	c := client.NewRestClient(e, "fake-api-token", "latest", false)
 	dc := NewDriveCollector(c)
-        metricsCheck(t, dc, want)
-        server.Close()
+	metricsCheck(t, dc, want)
+	server.Close()
 }
