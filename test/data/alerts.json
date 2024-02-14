@@ -399,6 +399,27 @@
       "issue": "Directory service lookup failed.",
       "knowledge_base_url": "https://support.purestorage.com/?cid=Alert_0231",
       "summary": "(directory_service:Service: active_directory_domain_catalog_ldap, IpAddress: 172.31.50.19, Port: 389, Filter: (&(uidNumber=1000)(objectClass=user))): Directory service lookup failed."
+    },
+    {
+      "description": "(directory_service:Service: active_directory_domain_catalog_ldap, IpAddress: 172.31.50.19, Port: 389, Filter: (&(uidNumber=1000)(objectClass=user))): Directory service lookup failed. Expected: , Actual: ",
+      "created": 1678460265500,
+      "state": "open",
+      "component_type": "directory_service",
+      "name": "10999254",
+      "id": "1cb99f01d2754294a1d7eb3b6e61abdf",
+      "code": 231,
+      "category": "array",
+      "severity": "info",
+      "flagged": false,
+      "updated": 1678460265500,
+      "closed": null,
+      "notified": null,
+      "component_name": "Service: active_directory_domain_catalog_ldap, IpAddress: 172.31.50.19, Port: 389, Filter: (&(uidNumber=1000)(objectClass=user))",
+      "expected": "",
+      "actual": "",
+      "issue": "Directory, service, lookup failed.",
+      "knowledge_base_url": "https://support.purestorage.com/?cid=Alert_0231",
+      "summary": "(directory_service:Service: active_directory_domain_catalog_ldap, IpAddress: 172.31.50.19, Port: 389, Filter: (&(uidNumber=1000)(objectClass=user))): Directory service lookup failed."
     }
   ],
   "more_items_remaining": false,
