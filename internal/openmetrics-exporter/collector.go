@@ -24,6 +24,7 @@ func Collector(ctx context.Context, metrics string, registry *prometheus.Registr
 		drcoll := NewDriveCollector(faclient)
 		nicsperfcoll := NewNetworkInterfacesPerformanceCollector(faclient)
 		portscoll := NewPortsCollector(faclient)
+		interfacecoll := NewNetworkInterfacesCollector(faclient)
 		registry.MustRegister(
 			alertscoll,
 			arrayperfcoll,
@@ -32,6 +33,7 @@ func Collector(ctx context.Context, metrics string, registry *prometheus.Registr
 			drcoll,
 			nicsperfcoll,
 			portscoll,
+			interfacecoll,
 		)
 	}
 	if metrics == "all" || metrics == "directories" {

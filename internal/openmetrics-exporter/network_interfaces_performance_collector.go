@@ -1,16 +1,16 @@
 package collectors
 
-
 import (
+	client "purestorage/fa-openmetrics-exporter/internal/rest-client"
+
 	"github.com/prometheus/client_golang/prometheus"
-	"purestorage/fa-openmetrics-exporter/internal/rest-client"
 )
 
 type NetworkInterfacesPerformanceCollector struct {
-	BandwidthDesc   *prometheus.Desc
-	ThroughputDesc  *prometheus.Desc
-        ErrorsDesc      *prometheus.Desc
-	Client          *client.FAClient
+	BandwidthDesc  *prometheus.Desc
+	ThroughputDesc *prometheus.Desc
+	ErrorsDesc     *prometheus.Desc
+	Client         *client.FAClient
 }
 
 func (c *NetworkInterfacesPerformanceCollector) Describe(ch chan<- *prometheus.Desc) {
@@ -147,30 +147,29 @@ func (c *NetworkInterfacesPerformanceCollector) Collect(ch chan<- prometheus.Met
 				n.Name, "transmitted_invalid_words_per_sec", n.InterfaceType,
 			)
 		}
-
 	}
 }
 
 func NewNetworkInterfacesPerformanceCollector(fa *client.FAClient) *NetworkInterfacesPerformanceCollector {
 	return &NetworkInterfacesPerformanceCollector{
-                BandwidthDesc: prometheus.NewDesc(
-                        "purefa_network_interface_performance_bandwidth_bytes",
-                        "FlashArray network interface bandwidth",
-                        []string{"name", "dimension", "type"},
-                        prometheus.Labels{},
-                ),
-                ThroughputDesc: prometheus.NewDesc(
-                        "purefa_network_interface_performance_throughput_pkts",
-                        "FlashArray network interface throughput",
-                        []string{"name", "dimension", "type"},
-                        prometheus.Labels{},
-                ),
-                ErrorsDesc: prometheus.NewDesc(
-                        "purefa_network_interface_performance_errors",
-                        "FlashArray network interface errors",
-                        []string{"name", "dimension", "type"},
-                        prometheus.Labels{},
-                ),
+		BandwidthDesc: prometheus.NewDesc(
+			"purefa_network_interface_performance_bandwidth_bytes",
+			"FlashArray network interface bandwidth",
+			[]string{"name", "dimension", "type"},
+			prometheus.Labels{},
+		),
+		ThroughputDesc: prometheus.NewDesc(
+			"purefa_network_interface_performance_throughput_pkts",
+			"FlashArray network interface throughput",
+			[]string{"name", "dimension", "type"},
+			prometheus.Labels{},
+		),
+		ErrorsDesc: prometheus.NewDesc(
+			"purefa_network_interface_performance_errors",
+			"FlashArray network interface errors",
+			[]string{"name", "dimension", "type"},
+			prometheus.Labels{},
+		),
 		Client: fa,
 	}
 }
