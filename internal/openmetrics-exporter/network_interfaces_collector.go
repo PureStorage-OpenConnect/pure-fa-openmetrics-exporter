@@ -27,7 +27,7 @@ func (c *NetworkInterfacesCollector) Collect(ch chan<- prometheus.Metric) {
 			c.NetworkInterfaceInfoDesc,
 			prometheus.GaugeValue,
 			float64(h.Speed),
-			h.Name, strconv.FormatBool(h.Enabled), strings.Join(h.Services, ", "), h.InterfaceType, h.Eth.Subtype,
+			strconv.FormatBool(h.Enabled), h.Eth.Subtype, h.Name, strings.Join(h.Services, ", "), h.InterfaceType,
 		)
 	}
 }
@@ -37,7 +37,7 @@ func NewNetworkInterfacesCollector(fa *client.FAClient) *NetworkInterfacesCollec
 		NetworkInterfaceInfoDesc: prometheus.NewDesc(
 			"purefa_network_interface_speed_bandwidth_bytes",
 			"FlashArray network interface speed in bytes per second",
-			[]string{"name", "enabled", "services", "type", "ethsubtype"},
+			[]string{"enabled", "ethsubtype", "name", "services", "type"},
 			prometheus.Labels{},
 		),
 		Client: fa,

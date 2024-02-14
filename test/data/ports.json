@@ -1,0 +1,167 @@
+{
+    "continuation_token": null,
+    "items": [
+        {
+            "wwn": null,
+            "name": "CT0.ETH14",
+            "nqn": "nqn.2010-06.com.purestorage:flasharray.7b1b42b9580af8aa",
+            "iqn": null,
+            "portal": "192.168.27.140:4420",
+            "failover": null
+        },
+        {
+            "wwn": null,
+            "name": "CT0.ETH15",
+            "nqn": "nqn.2010-06.com.purestorage:flasharray.7b1b42b9580af8aa",
+            "iqn": null,
+            "portal": "192.168.27.141:4420",
+            "failover": null
+        },
+        {
+            "wwn": null,
+            "name": "CT0.ETH4",
+            "nqn": null,
+            "iqn": "iqn.2010-06.com.purestorage:flasharray.7b1b42b9580af8aa",
+            "portal": "192.168.29.133:3260",
+            "failover": null
+        },
+        {
+            "wwn": null,
+            "name": "CT0.ETH5",
+            "nqn": null,
+            "iqn": "iqn.2010-06.com.purestorage:flasharray.7b1b42b9580af8aa",
+            "portal": "192.168.29.134:3260",
+            "failover": null
+        },
+        {
+            "wwn": "52:4A:93:71:AF:4E:82:00",
+            "name": "CT0.FC0",
+            "nqn": null,
+            "iqn": null,
+            "portal": null,
+            "failover": null
+        },
+        {
+            "wwn": "52:4A:93:71:AF:4E:82:01",
+            "name": "CT0.FC1",
+            "nqn": null,
+            "iqn": null,
+            "portal": null,
+            "failover": null
+        },
+        {
+            "wwn": "52:4A:93:71:AF:4E:82:02",
+            "name": "CT0.FC2",
+            "nqn": null,
+            "iqn": null,
+            "portal": null,
+            "failover": null
+        },
+        {
+            "wwn": "52:4A:93:71:AF:4E:82:03",
+            "name": "CT0.FC3",
+            "nqn": null,
+            "iqn": null,
+            "portal": null,
+            "failover": null
+        },
+        {
+            "wwn": "52:4A:93:71:AF:4E:82:08",
+            "name": "CT0.FC8",
+            "nqn": null,
+            "iqn": null,
+            "portal": null,
+            "failover": null
+        },
+        {
+            "wwn": "52:4A:93:71:AF:4E:82:09",
+            "name": "CT0.FC9",
+            "nqn": null,
+            "iqn": null,
+            "portal": null,
+            "failover": null
+        },
+        {
+            "wwn": null,
+            "name": "CT1.ETH14",
+            "nqn": "nqn.2010-06.com.purestorage:flasharray.7b1b42b9580af8aa",
+            "iqn": null,
+            "portal": "192.168.27.142:4420",
+            "failover": null
+        },
+        {
+            "wwn": null,
+            "name": "CT1.ETH15",
+            "nqn": "nqn.2010-06.com.purestorage:flasharray.7b1b42b9580af8aa",
+            "iqn": null,
+            "portal": "192.168.27.143:4420",
+            "failover": null
+        },
+        {
+            "wwn": null,
+            "name": "CT1.ETH4",
+            "nqn": null,
+            "iqn": "iqn.2010-06.com.purestorage:flasharray.7b1b42b9580af8aa",
+            "portal": "192.168.29.135:3260",
+            "failover": null
+        },
+        {
+            "wwn": null,
+            "name": "CT1.ETH5",
+            "nqn": null,
+            "iqn": "iqn.2010-06.com.purestorage:flasharray.7b1b42b9580af8aa",
+            "portal": "192.168.29.136:3260",
+            "failover": null
+        },
+        {
+            "wwn": "52:4A:93:71:AF:4E:82:10",
+            "name": "CT1.FC0",
+            "nqn": null,
+            "iqn": null,
+            "portal": null,
+            "failover": null
+        },
+        {
+            "wwn": "52:4A:93:71:AF:4E:82:11",
+            "name": "CT1.FC1",
+            "nqn": null,
+            "iqn": null,
+            "portal": null,
+            "failover": null
+        },
+        {
+            "wwn": "52:4A:93:71:AF:4E:82:12",
+            "name": "CT1.FC2",
+            "nqn": null,
+            "iqn": null,
+            "portal": null,
+            "failover": null
+        },
+        {
+            "wwn": "52:4A:93:71:AF:4E:82:13",
+            "name": "CT1.FC3",
+            "nqn": null,
+            "iqn": null,
+            "portal": null,
+            "failover": null
+        },
+        {
+            "wwn": "52:4A:93:71:AF:4E:82:18",
+            "name": "CT1.FC8",
+            "nqn": null,
+            "iqn": null,
+            "portal": null,
+            "failover": null
+        },
+        {
+            "wwn": "52:4A:93:71:AF:4E:82:19",
+            "name": "CT1.FC9",
+            "nqn": null,
+            "iqn": null,
+            "portal": null,
+            "failover": null
+        }
+    ],
+    "more_items_remaining": false,
+    "total_item_count": null
+}
