@@ -9,9 +9,8 @@ import (
 )
 
 type NetworkInterfacesCollector struct {
-	NetworkInterfaceEthInfoDesc *prometheus.Desc
-	NetworkInterfaceFcInfoDesc  *prometheus.Desc
-	Client                      *client.FAClient
+	NetworkInterfaceInfoDesc *prometheus.Desc
+	Client                   *client.FAClient
 }
 
 func (c *NetworkInterfacesCollector) Describe(ch chan<- *prometheus.Desc) {
@@ -24,40 +23,23 @@ func (c *NetworkInterfacesCollector) Collect(ch chan<- prometheus.Metric) {
 		return
 	}
 	for _, h := range nwl.Items {
-		//		if h.InterfaceType == "eth" {
 		ch <- prometheus.MustNewConstMetric(
-			c.NetworkInterfaceEthInfoDesc,
+			c.NetworkInterfaceInfoDesc,
 			prometheus.GaugeValue,
-			1,
+			float64(h.Speed),
 			h.Name, strconv.FormatBool(h.Enabled), strings.Join(h.Services, ", "), h.InterfaceType, h.Eth.Subtype,
 		)
-		//		}
-		//		if h.InterfaceType == "fc" {
-		//			ch <- prometheus.MustNewConstMetric(
-		//				c.NetworkInterfaceFcInfoDesc,
-		//				prometheus.GaugeValue,
-		//				1,
-		//				h.Name, strconv.FormatBool(h.Enabled), strings.Join(h.Services, ", "), h.InterfaceType,
-		//			)
-		//		}
 	}
 }
 
 func NewNetworkInterfacesCollector(fa *client.FAClient) *NetworkInterfacesCollector {
 	return &NetworkInterfacesCollector{
-		NetworkInterfaceEthInfoDesc: prometheus.NewDesc(
-			//			"purefa_network_interface_eth_info",
-			"purefa_network_interface_info",
-			"FlashArray network interface ethernet info",
-			[]string{"name", "enabled", "services", "interfacetype", "ethernetinterfacesubtype"},
+		NetworkInterfaceInfoDesc: prometheus.NewDesc(
+			"purefa_network_interface_speed_bandwidth_bytes",
+			"FlashArray network interface speed in bytes per second",
+			[]string{"name", "enabled", "services", "type", "ethsubtype"},
 			prometheus.Labels{},
 		),
-		//		NetworkInterfaceFcInfoDesc: prometheus.NewDesc(
-		//			"purefa_network_interface_fc_info",
-		//			"FlashArray network interface fc info",
-		//			[]string{"name", "enabled", "services", "interfacetype"},
-		//			prometheus.Labels{},
-		//		),
 		Client: fa,
 	}
 }
