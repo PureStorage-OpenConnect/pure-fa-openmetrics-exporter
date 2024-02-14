@@ -1,14 +1,14 @@
 package collectors
 
-
 import (
+	client "purestorage/fa-openmetrics-exporter/internal/rest-client"
+
 	"github.com/prometheus/client_golang/prometheus"
-	"purestorage/fa-openmetrics-exporter/internal/rest-client"
 )
 
 type DriveCollector struct {
-	CapacityDesc     *prometheus.Desc
-	Client		 *client.FAClient
+	CapacityDesc *prometheus.Desc
+	Client       *client.FAClient
 }
 
 func (c *DriveCollector) Describe(ch chan<- *prometheus.Desc) {
@@ -27,7 +27,7 @@ func (c *DriveCollector) Collect(ch chan<- prometheus.Metric) {
 			d.Capacity,
 			d.Name, d.Type, d.Status, d.Protocol,
 		)
-		}
+	}
 }
 
 func NewDriveCollector(fa *client.FAClient) *DriveCollector {
