@@ -37,7 +37,7 @@ type FAClient struct {
 	Error      error
 }
 
-func NewRestClient(endpoint string, apitoken string, apiversion string, debug bool) *FAClient {
+func NewRestClient(endpoint string, apitoken string, apiversion string, uagent string, debug bool) *FAClient {
 	type ApiVersions struct {
 		Versions []string `json:"version"`
 	}
@@ -92,7 +92,7 @@ func NewRestClient(endpoint string, apitoken string, apiversion string, debug bo
 	}
 	fa.XAuthToken = res.Header().Get("x-auth-token")
 	fa.RestClient.SetHeader("x-auth-token", fa.XAuthToken)
-	fa.RestClient.SetHeader("User-Agent", FARestUserAgent)
+	fa.RestClient.SetHeader("User-Agent", FARestUserAgent + " (" + uagent + ")")
 	return fa
 }
 
