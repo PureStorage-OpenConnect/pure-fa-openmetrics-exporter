@@ -24,15 +24,24 @@ func (c *AlertsCollector) Collect(ch chan<- prometheus.Metric) {
 	}
 	al := make(map[string]float64)
 	for _, alert := range alerts.Items {
-		al[fmt.Sprintf("%s,%s", alert.ComponentType, alert.Severity)] += 1
+		al[fmt.Sprintf("%s\n%d\n%s\n%d\n%s\n%s\n%s\n%s",
+			alert.Category,
+			alert.Code,
+			alert.ComponentType,
+			alert.Created,
+			alert.Issue,
+			alert.Name,
+			alert.Severity,
+			alert.Summary,
+		)] += 1
 	}
 	for a, n := range al {
-		alert := strings.Split(a, ",")
+		alert := strings.Split(a, "\n")
 		ch <- prometheus.MustNewConstMetric(
 			c.AlertsDesc,
 			prometheus.GaugeValue,
 			n,
-			alert[0], alert[1],
+			alert[0], alert[1], alert[2], alert[3], alert[4], alert[5], alert[6], alert[7],
 		)
 	}
 }
@@ -42,7 +51,7 @@ func NewAlertsCollector(fa *client.FAClient) *AlertsCollector {
 		AlertsDesc: prometheus.NewDesc(
 			"purefa_alerts_open",
 			"FlashArray open alert events",
-			[]string{"component_type", "severity"},
+			[]string{"category", "code", "component_type", "created", "issue", "name", "severity", "summary"},
 			prometheus.Labels{},
 		),
 		Client: fa,

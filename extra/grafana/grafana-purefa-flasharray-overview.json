@@ -12,7 +12,7 @@
       "name": "VAR_DASHBOARDVERSION",
       "type": "constant",
       "label": "DashboardVersion",
-      "value": "1.0.3",
+      "value": "1.0.5",
       "description": ""
     }
   ],
@@ -22,7 +22,7 @@
       "type": "grafana",
       "id": "grafana",
       "name": "Grafana",
-      "version": "9.3.2"
+      "version": "10.1.5"
     },
     {
       "type": "panel",
@@ -34,7 +34,7 @@
       "type": "datasource",
       "id": "prometheus",
       "name": "Prometheus",
-      "version": "2.41.0"
+      "version": "2.45.1"
     },
     {
       "type": "panel",
@@ -83,7 +83,7 @@
       }
     ]
   },
-  "description": "",
+  "description": "This dashboard provides an overview of your fleet to give you early indications of potential issues and a look back in time to recent history. Once you are pulling the metrics, you can create your own dashboards bespoke to your environment, even correlating metrics from other technologies.",
   "editable": false,
   "fiscalYearStartMonth": 0,
   "graphTooltip": 1,
@@ -96,6 +96,7 @@
         "type": "prometheus",
         "uid": "${DS_PROMETHEUS}"
       },
+      "description": "",
       "gridPos": {
         "h": 4,
         "w": 6,
@@ -116,10 +117,10 @@
           "showLineNumbers": false,
           "showMiniMap": false
         },
-        "content": "<img src=\"https://www.purestorage.com/content/dam/purestorage/knowledge/pure-storage.png.imgo.png\" width=\"100%\">",
+        "content": "<img src=\"https://www.purestorage.com/content/dam/pure/logos/pure_storage/primary/pure-logo.png\" width=\"100%\">",
         "mode": "markdown"
       },
-      "pluginVersion": "9.3.2",
+      "pluginVersion": "10.1.5",
       "type": "text"
     },
     {
@@ -135,7 +136,10 @@
           },
           "custom": {
             "align": "center",
-            "displayMode": "auto",
+            "cellOptions": {
+              "mode": "basic",
+              "type": "color-background"
+            },
             "filterable": false,
             "inspect": false
           },
@@ -190,8 +194,11 @@
                 "value": 125
               },
               {
-                "id": "custom.displayMode",
-                "value": "color-background"
+                "id": "custom.cellOptions",
+                "value": {
+                  "mode": "gradient",
+                  "type": "color-background"
+                }
               }
             ]
           },
@@ -242,8 +249,11 @@
                 }
               },
               {
-                "id": "custom.displayMode",
-                "value": "color-background"
+                "id": "custom.cellOptions",
+                "value": {
+                  "mode": "gradient",
+                  "type": "color-background"
+                }
               }
             ]
           },
@@ -286,12 +296,15 @@
                 }
               },
               {
-                "id": "max",
-                "value": 100
+                "id": "custom.cellOptions",
+                "value": {
+                  "mode": "gradient",
+                  "type": "gauge"
+                }
               },
               {
-                "id": "custom.displayMode",
-                "value": "gradient-gauge"
+                "id": "max",
+                "value": 100
               }
             ]
           },
@@ -362,8 +375,11 @@
                 "value": 0
               },
               {
-                "id": "custom.displayMode",
-                "value": "color-background"
+                "id": "custom.cellOptions",
+                "value": {
+                  "mode": "gradient",
+                  "type": "color-background"
+                }
               }
             ]
           }
@@ -377,6 +393,7 @@
       },
       "id": 125,
       "options": {
+        "cellHeight": "sm",
         "footer": {
           "countRows": false,
           "fields": "",
@@ -389,7 +406,7 @@
         "showHeader": true,
         "sortBy": []
       },
-      "pluginVersion": "9.3.2",
+      "pluginVersion": "10.1.5",
       "targets": [
         {
           "datasource": {
@@ -397,11 +414,13 @@
             "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
+          "exemplar": false,
           "expr": "sum(purefa_info{instance=~\"$instance\",env=~\"$env\"}) by (instance,os,version)",
           "format": "table",
           "hide": false,
+          "instant": true,
           "legendFormat": "Version",
-          "range": true,
+          "range": false,
           "refId": "Version"
         },
         {
@@ -536,7 +555,7 @@
         "uid": "${DS_PROMETHEUS}"
       },
       "gridPos": {
-        "h": 5,
+        "h": 6,
         "w": 6,
         "x": 0,
         "y": 4
@@ -551,7 +570,7 @@
         "content": "# **PURE** STORAGE\n\n## Overview\nThis dashboard provides performance and capacity details for Pure Storage FlashArrays.\nGroup arrays by customer defined environment, whole fleets, or view arrays individually.",
         "mode": "markdown"
       },
-      "pluginVersion": "9.3.2",
+      "pluginVersion": "10.1.5",
       "targets": [
         {
           "datasource": {
@@ -579,7 +598,10 @@
           },
           "custom": {
             "align": "center",
-            "displayMode": "auto",
+            "cellOptions": {
+              "mode": "gradient",
+              "type": "color-background"
+            },
             "inspect": false
           },
           "decimals": 0,
@@ -644,10 +666,6 @@
                     }
                   ]
                 }
-              },
-              {
-                "id": "custom.displayMode",
-                "value": "color-background"
               }
             ]
           },
@@ -676,10 +694,6 @@
                     }
                   ]
                 }
-              },
-              {
-                "id": "custom.displayMode",
-                "value": "color-background"
               }
             ]
           },
@@ -708,10 +722,6 @@
                     }
                   ]
                 }
-              },
-              {
-                "id": "custom.displayMode",
-                "value": "color-background"
               }
             ]
           },
@@ -740,23 +750,20 @@
                     }
                   ]
                 }
-              },
-              {
-                "id": "custom.displayMode",
-                "value": "color-background"
               }
             ]
           }
         ]
       },
       "gridPos": {
-        "h": 4,
+        "h": 5,
         "w": 18,
         "x": 6,
         "y": 5
       },
       "id": 172,
       "options": {
+        "cellHeight": "sm",
         "footer": {
           "countRows": false,
           "fields": "",
@@ -773,7 +780,7 @@
           }
         ]
       },
-      "pluginVersion": "9.3.2",
+      "pluginVersion": "10.1.5",
       "targets": [
         {
           "datasource": {
@@ -885,7 +892,7 @@
         "h": 26,
         "w": 6,
         "x": 0,
-        "y": 9
+        "y": 10
       },
       "id": 165,
       "options": {
@@ -894,10 +901,10 @@
           "showLineNumbers": false,
           "showMiniMap": false
         },
-        "content": "## Metrics\n\nAll metrics are prefixed with purefa_\n\nBelow are the metrics names available\n```\n* alerts_open\n* array_performance_average_bytes\n* array_performance_bandwidth_bytes\n* array_performance_latency_usec\n* array_performance_queue_depth_ops\n* array_performance_throughput_iops\n* array_space_bytes\n* array_space_data_reduction_ratio\n* array_space_utilization\n* directory_performance_average_bytes\n* directory_performance_bandwidth_bytes\n* directory_performance_latency_usec\n* directory_performance_throughput_iops\n* directory_space_bytes\n* directory_space_data_reduction_ratio\n* host_connections_info\n* host_performance_average_bytes\n* host_performance_bandwidth_bytes\n* host_performance_latency_usec\n* host_performance_throughput_iops\n* host_space_bytes\n* host_space_data_reduction_ratio\n* host_space_size_bytes\n* hw_component_status\n* hw_component_temperature_celsius\n* hw_component_voltage_volt\n* info\n* pod_performance_average_bytes\n* pod_performance_bandwidth_bytes\n* pod_performance_latency_usec\n* pod_performance_throughput_iops\n* pod_space_bytes\n* pod_space_data_reduction_ratio\n* volume_performance_average_bytes\n* volume_performance_bandwidth_bytes\n* volume_performance_latency_usec\n* volume_performance_throughput_iops\n* volume_space_bytes\n* volume_space_data_reduction_ratio\n```",
+        "content": "## Metrics\n\nAll metrics are prefixed with purefa_\nBelow are the metrics names available\n```\n* alerts_open\n* array_performance_average_bytes\n* array_performance_bandwidth_bytes\n* array_performance_latency_usec\n* array_performance_queue_depth_ops\n* array_performance_throughput_iops\n* array_space_bytes\n* array_space_data_reduction_ratio\n* array_space_utilization\n* directory_performance_average_bytes\n* directory_performance_bandwidth_bytes\n* directory_performance_latency_usec\n* directory_performance_throughput_iops\n* directory_space_bytes\n* directory_space_data_reduction_ratio\n* host_connections_info\n* host_performance_average_bytes\n* host_performance_bandwidth_bytes\n* host_performance_latency_usec\n* host_performance_throughput_iops\n* host_space_bytes\n* host_space_data_reduction_ratio\n* host_space_size_bytes\n* hw_component_status\n* hw_component_temperature_celsius\n* hw_component_voltage_volt\n* info\n* pod_performance_average_bytes\n* pod_performance_bandwidth_bytes\n* pod_performance_latency_usec\n* pod_performance_throughput_iops\n* pod_space_bytes\n* pod_space_data_reduction_ratio\n* volume_performance_average_bytes\n* volume_performance_bandwidth_bytes\n* volume_performance_latency_usec\n* volume_performance_throughput_iops\n* volume_space_bytes\n* volume_space_data_reduction_ratio\n```",
         "mode": "markdown"
       },
-      "pluginVersion": "9.3.2",
+      "pluginVersion": "10.1.5",
       "type": "text"
     },
     {
@@ -940,7 +947,7 @@
         "h": 5,
         "w": 6,
         "x": 6,
-        "y": 9
+        "y": 10
       },
       "id": 97,
       "interval": "1m",
@@ -963,7 +970,7 @@
         },
         "textMode": "auto"
       },
-      "pluginVersion": "9.3.2",
+      "pluginVersion": "10.1.5",
       "targets": [
         {
           "datasource": {
@@ -1025,7 +1032,7 @@
         "h": 5,
         "w": 6,
         "x": 12,
-        "y": 9
+        "y": 10
       },
       "id": 108,
       "links": [],
@@ -1049,7 +1056,7 @@
         },
         "textMode": "auto"
       },
-      "pluginVersion": "9.3.2",
+      "pluginVersion": "10.1.5",
       "targets": [
         {
           "datasource": {
@@ -1109,7 +1116,7 @@
         "h": 5,
         "w": 6,
         "x": 18,
-        "y": 9
+        "y": 10
       },
       "id": 30,
       "links": [],
@@ -1131,7 +1138,7 @@
         },
         "textMode": "auto"
       },
-      "pluginVersion": "9.3.2",
+      "pluginVersion": "10.1.5",
       "targets": [
         {
           "datasource": {
@@ -1267,7 +1274,7 @@
         "h": 7,
         "w": 9,
         "x": 6,
-        "y": 14
+        "y": 15
       },
       "id": 127,
       "options": {
@@ -1303,7 +1310,7 @@
             "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
-          "expr": "sum (purefa_array_space_bytes{instance=~\"^$instance\",env=~\"^$env\",space=~\"system|replication|shared|snapshots|unique|empty\"}) by(space)",
+          "expr": "sum (purefa_array_space_bytes{instance=~\"^$instance\",env=~\"^$env\",space=~\"system|replication|shared|snapshots|unique|empty\"}) by (space)",
           "format": "time_series",
           "legendFormat": "__auto",
           "range": true,
@@ -1476,9 +1483,9 @@
         "h": 7,
         "w": 9,
         "x": 15,
-        "y": 14
+        "y": 15
       },
-      "id": 128,
+      "id": 196,
       "options": {
         "displayLabels": [
           "name"
@@ -1513,7 +1520,7 @@
             "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
-          "expr": "sum(avg_over_time(purefa_array_performance_throughput_iops{instance=~\"^$instance\",env=~\"^$env\"}[$__range])) by (dimension)",
+          "expr": "avg(purefa_array_performance_throughput_iops{instance=~\"^$instance\",env=~\"^$env\"}) by (dimension)",
           "format": "time_series",
           "legendFormat": "__auto",
           "range": true,
@@ -1548,17 +1555,18 @@
               "tooltip": false,
               "viz": false
             },
+            "insertNulls": false,
             "lineInterpolation": "smooth",
             "lineStyle": {
               "fill": "solid"
             },
             "lineWidth": 1,
-            "pointSize": 5,
+            "pointSize": 3,
             "scaleDistribution": {
               "type": "linear"
             },
             "showPoints": "never",
-            "spanNulls": 300000,
+            "spanNulls": true,
             "stacking": {
               "group": "A",
               "mode": "none"
@@ -1586,7 +1594,7 @@
         "h": 8,
         "w": 9,
         "x": 6,
-        "y": 21
+        "y": 22
       },
       "id": 143,
       "interval": "1m",
@@ -1649,6 +1657,7 @@
               "tooltip": false,
               "viz": false
             },
+            "insertNulls": false,
             "lineInterpolation": "smooth",
             "lineStyle": {
               "fill": "solid"
@@ -1659,7 +1668,7 @@
               "type": "linear"
             },
             "showPoints": "never",
-            "spanNulls": 300000,
+            "spanNulls": true,
             "stacking": {
               "group": "A",
               "mode": "none"
@@ -1687,7 +1696,7 @@
         "h": 8,
         "w": 9,
         "x": 15,
-        "y": 21
+        "y": 22
       },
       "id": 131,
       "interval": "1m",
@@ -1731,7 +1740,7 @@
         "type": "prometheus",
         "uid": "${DS_PROMETHEUS}"
       },
-      "description": "This query is very expensive on Prometheus and the browser. For large environments it may be advisable to use a tabular view or create a recording rule.\n\nhttps://prometheus.io/docs/prometheus/latest/querying/basics/#avoiding-slow-queries-and-overloads",
+      "description": "This query is very expensive on Prometheus and the browser. For large environments it may be advisable to reduce scope by using the filter and narrower time frame, use a tabular view or create a recording rule.\n\nhttps://prometheus.io/docs/prometheus/latest/querying/basics/#avoiding-slow-queries-and-overloads",
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -1751,6 +1760,7 @@
               "tooltip": false,
               "viz": false
             },
+            "insertNulls": false,
             "lineInterpolation": "smooth",
             "lineStyle": {
               "fill": "solid"
@@ -1761,7 +1771,7 @@
               "type": "linear"
             },
             "showPoints": "never",
-            "spanNulls": 300000,
+            "spanNulls": true,
             "stacking": {
               "group": "A",
               "mode": "none"
@@ -1789,7 +1799,7 @@
         "h": 8,
         "w": 9,
         "x": 6,
-        "y": 29
+        "y": 30
       },
       "id": 173,
       "options": {
@@ -1855,6 +1865,7 @@
               "tooltip": false,
               "viz": false
             },
+            "insertNulls": false,
             "lineInterpolation": "smooth",
             "lineStyle": {
               "fill": "solid"
@@ -1865,7 +1876,7 @@
               "type": "linear"
             },
             "showPoints": "never",
-            "spanNulls": 300000,
+            "spanNulls": true,
             "stacking": {
               "group": "A",
               "mode": "none"
@@ -1893,7 +1904,7 @@
         "h": 8,
         "w": 9,
         "x": 15,
-        "y": 29
+        "y": 30
       },
       "id": 133,
       "options": {
@@ -1956,6 +1967,7 @@
               "tooltip": false,
               "viz": false
             },
+            "insertNulls": false,
             "lineInterpolation": "smooth",
             "lineStyle": {
               "fill": "solid"
@@ -1966,7 +1978,7 @@
               "type": "linear"
             },
             "showPoints": "never",
-            "spanNulls": 300000,
+            "spanNulls": true,
             "stacking": {
               "group": "A",
               "mode": "none"
@@ -1994,7 +2006,7 @@
         "h": 8,
         "w": 9,
         "x": 6,
-        "y": 37
+        "y": 38
       },
       "id": 160,
       "options": {
@@ -2062,6 +2074,7 @@
               "tooltip": false,
               "viz": false
             },
+            "insertNulls": false,
             "lineInterpolation": "smooth",
             "lineStyle": {
               "fill": "solid"
@@ -2072,7 +2085,7 @@
               "type": "linear"
             },
             "showPoints": "never",
-            "spanNulls": 300000,
+            "spanNulls": true,
             "stacking": {
               "group": "A",
               "mode": "none"
@@ -2100,7 +2113,7 @@
         "h": 8,
         "w": 9,
         "x": 15,
-        "y": 37
+        "y": 38
       },
       "id": 153,
       "options": {
@@ -2169,6 +2182,7 @@
               "tooltip": false,
               "viz": false
             },
+            "insertNulls": false,
             "lineInterpolation": "smooth",
             "lineWidth": 1,
             "pointSize": 5,
@@ -2176,7 +2190,7 @@
               "type": "linear"
             },
             "showPoints": "never",
-            "spanNulls": 300000,
+            "spanNulls": true,
             "stacking": {
               "group": "A",
               "mode": "none"
@@ -2274,9 +2288,9 @@
         "h": 7,
         "w": 18,
         "x": 6,
-        "y": 45
+        "y": 46
       },
-      "id": 191,
+      "id": 195,
       "interval": "1m",
       "links": [],
       "maxDataPoints": 100,
@@ -2301,7 +2315,7 @@
           },
           "editorMode": "code",
           "exemplar": false,
-          "expr": "sum(avg_over_time(purefa_array_performance_latency_usec{instance=~\"^$instance\",env=~\"^$env\",dimension=\"usec_per_read_op\"}[$__interval]))",
+          "expr": "avg(purefa_array_performance_latency_usec{instance=~\"^$instance\",env=~\"^$env\",dimension=\"usec_per_read_op\"})",
           "format": "time_series",
           "instant": false,
           "interval": "",
@@ -2316,7 +2330,7 @@
           },
           "editorMode": "code",
           "exemplar": false,
-          "expr": "sum(avg_over_time(purefa_array_performance_latency_usec{instance=~\"^$instance\",env=~\"^$env\",dimension=\"usec_per_write_op\"}[$__interval]))",
+          "expr": "avg(purefa_array_performance_latency_usec{instance=~\"^$instance\",env=~\"^$env\",dimension=\"usec_per_write_op\"})",
           "format": "time_series",
           "hide": false,
           "instant": false,
@@ -2332,7 +2346,7 @@
           },
           "editorMode": "code",
           "exemplar": false,
-          "expr": "sum(avg_over_time(purefa_array_performance_latency_usec{instance=~\"^$instance\",env=~\"^$env\",dimension=\"usec_per_mirrored_write_op\"}[$__interval]))",
+          "expr": "avg(purefa_array_performance_latency_usec{instance=~\"^$instance\",env=~\"^$env\",dimension=\"usec_per_mirrored_write_op\"})",
           "format": "time_series",
           "hide": false,
           "instant": false,
@@ -2348,7 +2362,7 @@
           },
           "editorMode": "code",
           "exemplar": false,
-          "expr": "sum(avg_over_time(purefa_array_performance_latency_usec{instance=~\"^$instance\",env=~\"^$env\",dimension=\"usec_per_other_op\"}[$__interval]))",
+          "expr": "avg(purefa_array_performance_latency_usec{instance=~\"^$instance\",env=~\"^$env\",dimension=\"usec_per_other_op\"})",
           "format": "time_series",
           "hide": false,
           "instant": false,
@@ -2387,6 +2401,7 @@
               "tooltip": false,
               "viz": false
             },
+            "insertNulls": false,
             "lineInterpolation": "smooth",
             "lineWidth": 1,
             "pointSize": 5,
@@ -2394,7 +2409,7 @@
               "type": "linear"
             },
             "showPoints": "never",
-            "spanNulls": 300000,
+            "spanNulls": true,
             "stacking": {
               "group": "A",
               "mode": "none"
@@ -2418,7 +2433,8 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "white"
+                "color": "white",
+                "value": null
               }
             ]
           },
@@ -2491,7 +2507,7 @@
         "h": 7,
         "w": 18,
         "x": 6,
-        "y": 52
+        "y": 53
       },
       "id": 192,
       "interval": "1m",
@@ -2604,6 +2620,7 @@
               "tooltip": false,
               "viz": false
             },
+            "insertNulls": false,
             "lineInterpolation": "smooth",
             "lineWidth": 1,
             "pointSize": 5,
@@ -2611,7 +2628,7 @@
               "type": "linear"
             },
             "showPoints": "never",
-            "spanNulls": 300000,
+            "spanNulls": true,
             "stacking": {
               "group": "A",
               "mode": "none"
@@ -2635,7 +2652,8 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "white"
+                "color": "white",
+                "value": null
               }
             ]
           },
@@ -2708,9 +2726,9 @@
         "h": 8,
         "w": 18,
         "x": 6,
-        "y": 59
+        "y": 60
       },
-      "id": 193,
+      "id": 194,
       "interval": "1m",
       "links": [],
       "maxDataPoints": 100,
@@ -2735,7 +2753,7 @@
           },
           "editorMode": "code",
           "exemplar": false,
-          "expr": "sum(avg_over_time(purefa_array_performance_bandwidth_bytes{instance=~\"^$instance\",env=~\"^$env\",dimension=\"read_bytes_per_sec\"}[$__interval]))",
+          "expr": "avg(purefa_array_performance_bandwidth_bytes{instance=~\"^$instance\",env=~\"^$env\",dimension=\"read_bytes_per_sec\"})",
           "format": "time_series",
           "instant": false,
           "interval": "",
@@ -2750,7 +2768,7 @@
           },
           "editorMode": "code",
           "exemplar": false,
-          "expr": "sum(avg_over_time(purefa_array_performance_bandwidth_bytes{instance=~\"^$instance\",env=~\"^$env\",dimension=\"write_bytes_per_sec\"}[$__interval]))",
+          "expr": "avg(purefa_array_performance_bandwidth_bytes{instance=~\"^$instance\",env=~\"^$env\",dimension=\"write_bytes_per_sec\"})",
           "format": "time_series",
           "hide": false,
           "instant": false,
@@ -2766,7 +2784,7 @@
           },
           "editorMode": "code",
           "exemplar": false,
-          "expr": "sum(avg_over_time(purefa_array_performance_bandwidth_bytes{instance=~\"^$instance\",env=~\"^$env\",dimension=\"mirrored_write_bytes_per_sec\"}[$__interval]))",
+          "expr": "avg(purefa_array_performance_bandwidth_bytes{instance=~\"^$instance\",env=~\"^$env\",dimension=\"mirrored_write_bytes_per_sec\"})",
           "format": "time_series",
           "hide": false,
           "instant": false,
@@ -2778,16 +2796,392 @@
       ],
       "title": "Average Total Bandwidth for $instance array(s)",
       "type": "timeseries"
+    },
+    {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "${DS_PROMETHEUS}"
+      },
+      "description": "* Recommended for single array only.\n\n* Panel will display \"No Data\" until there is at least 12 hours of data in the data source as this panel displays the last 90 days at 12 hour intervals.\n\n* purefa_array_space_bytes{space=total_provisioned, *_effective} metrics NOT available when a file system on the array has unlimited provisioned size.",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "fixedColor": "#fe7800",
+            "mode": "fixed"
+          },
+          "custom": {
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "axisSoftMin": 0,
+            "barAlignment": 0,
+            "drawStyle": "line",
+            "fillOpacity": 100,
+            "gradientMode": "opacity",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "insertNulls": false,
+            "lineInterpolation": "smooth",
+            "lineWidth": 1,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "never",
+            "spanNulls": false,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "mappings": [
+            {
+              "options": {
+                "match": "null",
+                "result": {
+                  "text": "N/A"
+                }
+              },
+              "type": "special"
+            }
+          ],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "white",
+                "value": null
+              }
+            ]
+          },
+          "unit": "bytes"
+        },
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "snapshots"
+            },
+            "properties": [
+              {
+                "id": "color",
+                "value": {
+                  "fixedColor": "#662e9c",
+                  "mode": "fixed"
+                }
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "capacity"
+            },
+            "properties": [
+              {
+                "id": "color",
+                "value": {
+                  "fixedColor": "#646464",
+                  "mode": "fixed"
+                }
+              },
+              {
+                "id": "custom.fillOpacity",
+                "value": 0
+              },
+              {
+                "id": "custom.hideFrom",
+                "value": {
+                  "legend": true,
+                  "tooltip": false,
+                  "viz": false
+                }
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "shared"
+            },
+            "properties": [
+              {
+                "id": "color",
+                "value": {
+                  "fixedColor": "#2ae5f2",
+                  "mode": "fixed"
+                }
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "system"
+            },
+            "properties": [
+              {
+                "id": "color",
+                "value": {
+                  "fixedColor": "#e05699",
+                  "mode": "fixed"
+                }
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "DRR"
+            },
+            "properties": [
+              {
+                "id": "custom.axisPlacement",
+                "value": "right"
+              },
+              {
+                "id": "custom.fillOpacity",
+                "value": 0
+              },
+              {
+                "id": "custom.lineStyle",
+                "value": {
+                  "dash": [
+                    0,
+                    10
+                  ],
+                  "fill": "dot"
+                }
+              },
+              {
+                "id": "unit",
+                "value": ":1"
+              },
+              {
+                "id": "color",
+                "value": {
+                  "fixedColor": "#00b89e",
+                  "mode": "fixed"
+                }
+              },
+              {
+                "id": "custom.lineWidth",
+                "value": 3
+              },
+              {
+                "id": "custom.axisLabel",
+                "value": "Data Reduction Ratio"
+              },
+              {
+                "id": "custom.axisSoftMin",
+                "value": 0
+              },
+              {
+                "id": "custom.axisColorMode",
+                "value": "series"
+              },
+              {
+                "id": "custom.axisSoftMax",
+                "value": 5
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "unique"
+            },
+            "properties": [
+              {
+                "id": "color",
+                "value": {
+                  "fixedColor": "#FA6400",
+                  "mode": "fixed"
+                }
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "replication"
+            },
+            "properties": [
+              {
+                "id": "color",
+                "value": {
+                  "fixedColor": "#feb804",
+                  "mode": "fixed"
+                }
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "total_provisioned"
+            },
+            "properties": [
+              {
+                "id": "custom.axisPlacement",
+                "value": "right"
+              },
+              {
+                "id": "color",
+                "value": {
+                  "fixedColor": "#662e9c",
+                  "mode": "fixed"
+                }
+              },
+              {
+                "id": "custom.lineStyle",
+                "value": {
+                  "dash": [
+                    0,
+                    10
+                  ],
+                  "fill": "dot"
+                }
+              },
+              {
+                "id": "custom.fillOpacity",
+                "value": 0
+              },
+              {
+                "id": "custom.lineWidth",
+                "value": 3
+              },
+              {
+                "id": "custom.axisColorMode",
+                "value": "series"
+              },
+              {
+                "id": "custom.axisLabel",
+                "value": "Provisioned for Hosts"
+              },
+              {
+                "id": "displayName",
+                "value": "Total Provisioned"
+              },
+              {
+                "id": "custom.axisSoftMin",
+                "value": 0
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Total Provisioned"
+            },
+            "properties": [
+              {
+                "id": "color",
+                "value": {
+                  "fixedColor": "#662e9c",
+                  "mode": "fixed"
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 18,
+        "x": 6,
+        "y": 68
+      },
+      "id": 200,
+      "interval": "12h",
+      "links": [],
+      "options": {
+        "legend": {
+          "calcs": [],
+          "displayMode": "list",
+          "placement": "bottom",
+          "showLegend": true
+        },
+        "tooltip": {
+          "mode": "single",
+          "sort": "none"
+        }
+      },
+      "pluginVersion": "9.2.6",
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${DS_PROMETHEUS}"
+          },
+          "editorMode": "code",
+          "exemplar": false,
+          "expr": "sum(purefa_array_space_bytes{instance=~\"^$instance\",env=~\"^$env\",space=~\"system|shared|snapshots|unique|replication|capacity\"}) by (space)",
+          "format": "time_series",
+          "hide": false,
+          "instant": false,
+          "interval": "",
+          "legendFormat": "{{space}}",
+          "range": true,
+          "refId": "Physical Used Capacity"
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${DS_PROMETHEUS}"
+          },
+          "editorMode": "code",
+          "exemplar": false,
+          "expr": "avg(purefa_array_space_data_reduction_ratio{instance=~\"^$instance\",env=~\"^$env\"})",
+          "format": "time_series",
+          "hide": false,
+          "instant": false,
+          "interval": "",
+          "legendFormat": "DRR",
+          "range": true,
+          "refId": "DDR"
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${DS_PROMETHEUS}"
+          },
+          "editorMode": "code",
+          "exemplar": false,
+          "expr": "sum(purefa_array_space_bytes{instance=~\"^$instance\",env=~\"^$env\",space=~\"total_provisioned\"}) by (space)\n#\"total_provisioned and *_effective metrics NOT available when a file system on the array has unlimited provisioned size.\"",
+          "format": "time_series",
+          "hide": false,
+          "instant": false,
+          "interval": "",
+          "legendFormat": "{{space}}",
+          "range": true,
+          "refId": "Provisioned for Hosts"
+        }
+      ],
+      "timeFrom": "90d",
+      "title": "Capacity Utilization by Type & $instance array(s)",
+      "transformations": [],
+      "type": "timeseries"
     }
   ],
   "refresh": "",
   "revision": 1,
-  "schemaVersion": 37,
+  "schemaVersion": 38,
   "style": "dark",
   "tags": [
-    "prometheus",
+    "pure",
+    "storage",
+    "purestorage",
     "flasharray",
-    "purestorage"
+    "fa",
+    "prometheus"
   ],
   "templating": {
     "list": [
@@ -2993,6 +3387,6 @@
   "timezone": "",
   "title": "Pure Storage FlashArray - Overview",
   "uid": "kq1L0kKVk",
-  "version": 3,
+  "version": 73,
   "weekStart": ""
 }

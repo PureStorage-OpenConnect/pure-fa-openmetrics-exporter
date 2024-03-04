@@ -17,7 +17,7 @@ import (
 func TestNetworkInterfacesPerformanceCollector(t *testing.T) {
 	res, _ := os.ReadFile("../../test/data/network_interfaces_performance.json")
 	vers, _ := os.ReadFile("../../test/data/versions.json")
-	var  nics client.NetworkInterfacesList
+	var  nics client.NetworkInterfacesPerformanceList
 	json.Unmarshal(res, &nics)
 	server := httptest.NewTLSServer(http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
                 valid := regexp.MustCompile(`^/api/([0-9]+.[0-9]+)?/network-interfaces/performance$`)

@@ -7,39 +7,40 @@ import (
 	"net/http/httptest"
 	"os"
 	"regexp"
+	"strconv"
 	"strings"
 	"testing"
 
 	client "purestorage/fa-openmetrics-exporter/internal/rest-client"
 )
 
-func TestHostConnectionsCollector(t *testing.T) {
+func TestNetworkInterfacesCollectorTest(t *testing.T) {
 
-	res, _ := os.ReadFile("../../test/data/connections.json")
+	rhw, _ := os.ReadFile("../../test/data/network_interfaces.json")
 	vers, _ := os.ReadFile("../../test/data/versions.json")
-	var conn client.ConnectionsList
-	json.Unmarshal(res, &conn)
+	var hwl client.NetworkInterfacesList
+	json.Unmarshal(rhw, &hwl)
 	server := httptest.NewTLSServer(http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
-		valid := regexp.MustCompile(`^/api/([0-9]+.[0-9]+)?/connections$`)
+		url := regexp.MustCompile(`^/api/([0-9]+.[0-9]+)?/network-interfaces$`)
 		if r.URL.Path == "/api/api_version" {
 			w.Header().Set("Content-Type", "application/json")
 			w.WriteHeader(http.StatusOK)
 			w.Write([]byte(vers))
-		} else if valid.MatchString(r.URL.Path) {
+		} else if url.MatchString(r.URL.Path) {
 			w.Header().Set("x-auth-token", "faketoken")
 			w.Header().Set("Content-Type", "application/json")
 			w.WriteHeader(http.StatusOK)
-			w.Write([]byte(res))
+			w.Write([]byte(rhw))
 		}
 	}))
 	endp := strings.Split(server.URL, "/")
 	e := endp[len(endp)-1]
 	want := make(map[string]bool)
-	for _, hc := range conn.Items {
-		want[fmt.Sprintf("label:{name:\"host\" value:\"%s\"} label:{name:\"hostgroup\" value:\"%s\"} label:{name:\"volume\" value:\"%s\"} gauge:{value:1}", hc.Host.Name, hc.HostGroup.Name, hc.Volume.Name)] = true
+	for _, h := range hwl.Items {
+		want[fmt.Sprintf("label:{name:\"enabled\"  value:\"%s\"}  label:{name:\"ethsubtype\"  value:\"%s\"}  label:{name:\"name\"  value:\"%s\"}  label:{name:\"services\"  value:\"%s\"}  label:{name:\"type\"  value:\"%s\"}  gauge:{value:%g}", strconv.FormatBool(h.Enabled), h.Eth.Subtype, h.Name, strings.Join(h.Services, ", "), h.InterfaceType, float64(h.Speed))] = true
 	}
 	c := client.NewRestClient(e, "fake-api-token", "latest", false)
-	hc := NewHostConnectionsCollector(c)
-	metricsCheck(t, hc, want)
+	nc := NewNetworkInterfacesCollector(c)
+	metricsCheck(t, nc, want)
 	server.Close()
 }

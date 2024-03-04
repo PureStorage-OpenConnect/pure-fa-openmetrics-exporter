@@ -1,17 +1,16 @@
 package collectors
 
-
 import (
+	"encoding/json"
 	"fmt"
-	"testing"
-	"regexp"
-	"strings"
 	"net/http"
 	"net/http/httptest"
-	"encoding/json"
 	"os"
+	"regexp"
+	"strings"
+	"testing"
 
-	"purestorage/fa-openmetrics-exporter/internal/rest-client"
+	client "purestorage/fa-openmetrics-exporter/internal/rest-client"
 )
 
 func TestHostsSpaceCollector(t *testing.T) {
@@ -23,16 +22,16 @@ func TestHostsSpaceCollector(t *testing.T) {
 	server := httptest.NewTLSServer(http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 		valid := regexp.MustCompile(`^/api/([0-9]+.[0-9]+)?/hosts$`)
 		if r.URL.Path == "/api/api_version" {
-                        w.Header().Set("Content-Type", "application/json")
-                        w.WriteHeader(http.StatusOK)
-                        w.Write([]byte(vers))
+			w.Header().Set("Content-Type", "application/json")
+			w.WriteHeader(http.StatusOK)
+			w.Write([]byte(vers))
 		} else if valid.MatchString(r.URL.Path) {
-                        w.Header().Set("x-auth-token", "faketoken")
-                        w.Header().Set("Content-Type", "application/json")
-                        w.WriteHeader(http.StatusOK)
-                        w.Write([]byte(res))
+			w.Header().Set("x-auth-token", "faketoken")
+			w.Header().Set("Content-Type", "application/json")
+			w.WriteHeader(http.StatusOK)
+			w.Write([]byte(res))
 		}
-	    }))
+	}))
 	endp := strings.Split(server.URL, "/")
 	e := endp[len(endp)-1]
 	want := make(map[string]bool)
@@ -52,6 +51,7 @@ func TestHostsSpaceCollector(t *testing.T) {
 		want[fmt.Sprintf("label:{name:\"host\" value:\"%s\"} label:{name:\"space\" value:\"snapshots_effective\"} gauge:{value:%g}", h.Name, h.Space.SnapshotsEffective)] = true
 		want[fmt.Sprintf("label:{name:\"host\" value:\"%s\"} label:{name:\"space\" value:\"unique_effective\"} gauge:{value:%g}", h.Name, h.Space.UniqueEffective)] = true
 		want[fmt.Sprintf("label:{name:\"host\" value:\"%s\"} label:{name:\"space\" value:\"total_effective\"} gauge:{value:%g}", h.Name, h.Space.TotalEffective)] = true
+		want[fmt.Sprintf("label:{name:\"host\" value:\"%s\"} label:{name:\"details\" value:\"%s\"} label:{name:\"status\" value:\"%s\"} gauge:{value:1}", h.Name, h.PortConnectivity.Details, h.PortConnectivity.Status)] = true
 	}
 	defer server.Close()
 	c := client.NewRestClient(e, "fake-api-token", "latest", false)

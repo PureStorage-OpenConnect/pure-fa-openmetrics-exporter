@@ -7,9 +7,10 @@ import (
 )
 
 type HostsSpaceCollector struct {
-	ReductionDesc *prometheus.Desc
-	SpaceDesc     *prometheus.Desc
-	Client        *client.FAClient
+	ReductionDesc    *prometheus.Desc
+	SpaceDesc        *prometheus.Desc
+	ConnectivityDesc *prometheus.Desc
+	Client           *client.FAClient
 }
 
 func (c *HostsSpaceCollector) Describe(ch chan<- *prometheus.Desc) {
@@ -112,6 +113,12 @@ func (c *HostsSpaceCollector) Collect(ch chan<- prometheus.Metric) {
 			h.Space.TotalEffective,
 			h.Name, "total_effective",
 		)
+		ch <- prometheus.MustNewConstMetric(
+			c.ConnectivityDesc,
+			prometheus.GaugeValue,
+			1.0,
+			h.Name, h.PortConnectivity.Details, h.PortConnectivity.Status,
+		)
 	}
 }
 
@@ -127,6 +134,12 @@ func NewHostsSpaceCollector(fa *client.FAClient) *HostsSpaceCollector {
 			"purefa_host_space_bytes",
 			"FlashArray host space in bytes",
 			[]string{"host", "space"},
+			prometheus.Labels{},
+		),
+		ConnectivityDesc: prometheus.NewDesc(
+			"purefa_host_connectivity_info",
+			"FlashArray host connectivity information",
+			[]string{"host", "details", "status"},
 			prometheus.Labels{},
 		),
 		Client: fa,

@@ -21,6 +21,8 @@ To monitor your Pure Storage appliances, you will need to create a new dedicated
 
 The exporter is a Go application based on the Prometheus Go client library and [Resty](https://github.com/go-resty/resty), a simple but reliable HTTP and REST client library for Go . It is preferably built and launched via Docker. You can also scale the exporter deployment to multiple containers on Kubernetes thanks to the stateless nature of the application.
 
+Detailed examples of how to deploy several configurations either using Docker or an executable binary can be in [docs/deployment-examples.md](docs/deployment-examples.md).
+
 ---
 
 #### The official docker images are available at Quay.io
@@ -49,7 +51,7 @@ git clone git@github.com:PureStorage-OpenConnect/pure-fa-openmetrics-exporter.gi
 # modify the code and build the package
 cd pure-fa-openmetrics-exporter
 ...
-make build
+make build .
 ```
 
 The newly built exporter executable can be found in the <kbd>./out/bin</kbd> directory.

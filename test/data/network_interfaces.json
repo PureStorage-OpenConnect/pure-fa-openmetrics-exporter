@@ -1,0 +1,1420 @@
+{
+    "continuation_token": null,
+    "items": [
+        {
+            "fc": {
+                "wwn": null
+            },
+            "eth": {
+                "subtype": "vif",
+                "subinterfaces": [
+                    {
+                        "name": "ct0.eth3"
+                    },
+                    {
+                        "name": "ct1.eth3"
+                    }
+                ],
+                "address": "192.168.29.173",
+                "vlan": null,
+                "mac_address": "52:54:30:80:14:a2",
+                "netmask": "255.255.254.0",
+                "gateway": "192.168.29.1",
+                "mtu": 9000,
+                "subnet": {
+                    "name": null
+                }
+            },
+            "services": [
+                "app"
+            ],
+            "name": "@offload.data0",
+            "enabled": true,
+            "interface_type": "eth",
+            "speed": 25000000000
+        },
+        {
+            "fc": {
+                "wwn": null
+            },
+            "eth": {
+                "subtype": "vif",
+                "subinterfaces": [
+                    {
+                        "name": "ct0.eth4"
+                    },
+                    {
+                        "name": "ct1.eth4"
+                    },
+                    {
+                        "name": "ct0.eth5"
+                    },
+                    {
+                        "name": "ct1.eth5"
+                    }
+                ],
+                "address": "192.168.29.218",
+                "vlan": null,
+                "mac_address": "52:65:98:bc:ae:70",
+                "netmask": "255.255.254.0",
+                "gateway": "192.168.29.1",
+                "mtu": 1500,
+                "subnet": {
+                    "name": null
+                }
+            },
+            "services": [
+                "file"
+            ],
+            "name": "coevifgs01",
+            "enabled": true,
+            "interface_type": "eth",
+            "speed": 25000000000
+        },
+        {
+            "fc": {
+                "wwn": null
+            },
+            "eth": {
+                "subtype": "physical",
+                "subinterfaces": [],
+                "address": "172.29.10.72",
+                "vlan": null,
+                "mac_address": "24:a9:37:0d:e8:ba",
+                "netmask": "255.255.255.0",
+                "gateway": "172.29.10.1",
+                "mtu": 1500,
+                "subnet": {
+                    "name": null
+                }
+            },
+            "services": [
+                "management"
+            ],
+            "name": "ct0.eth0",
+            "enabled": true,
+            "interface_type": "eth",
+            "speed": 1000000000
+        },
+        {
+            "fc": {
+                "wwn": null
+            },
+            "eth": {
+                "subtype": "physical",
+                "subinterfaces": [],
+                "address": null,
+                "vlan": null,
+                "mac_address": "24:a9:37:0d:e8:bb",
+                "netmask": null,
+                "gateway": null,
+                "mtu": 1500,
+                "subnet": {
+                    "name": null
+                }
+            },
+            "services": [
+                "management"
+            ],
+            "name": "ct0.eth1",
+            "enabled": false,
+            "interface_type": "eth",
+            "speed": 1000000000
+        },
+        {
+            "fc": {
+                "wwn": null
+            },
+            "eth": {
+                "subtype": "physical",
+                "subinterfaces": [],
+                "address": "192.168.27.140",
+                "vlan": null,
+                "mac_address": "b8:3f:d2:b0:d9:a9",
+                "netmask": "255.255.255.0",
+                "gateway": "192.168.27.1",
+                "mtu": 9000,
+                "subnet": {
+                    "name": null
+                }
+            },
+            "services": [
+                "nvme-tcp"
+            ],
+            "name": "ct0.eth14",
+            "enabled": true,
+            "interface_type": "eth",
+            "speed": 100000000000
+        },
+        {
+            "fc": {
+                "wwn": null
+            },
+            "eth": {
+                "subtype": "physical",
+                "subinterfaces": [],
+                "address": "192.168.27.141",
+                "vlan": null,
+                "mac_address": "b8:3f:d2:b0:d9:a8",
+                "netmask": "255.255.255.0",
+                "gateway": "192.168.27.1",
+                "mtu": 9000,
+                "subnet": {
+                    "name": null
+                }
+            },
+            "services": [
+                "nvme-tcp"
+            ],
+            "name": "ct0.eth15",
+            "enabled": true,
+            "interface_type": "eth",
+            "speed": 100000000000
+        },
+        {
+            "fc": {
+                "wwn": null
+            },
+            "eth": {
+                "subtype": "physical",
+                "subinterfaces": [],
+                "address": "192.168.29.154",
+                "vlan": null,
+                "mac_address": "24:a9:37:0d:e8:bd",
+                "netmask": "255.255.254.0",
+                "gateway": null,
+                "mtu": 9000,
+                "subnet": {
+                    "name": null
+                }
+            },
+            "services": [
+                "replication"
+            ],
+            "name": "ct0.eth2",
+            "enabled": true,
+            "interface_type": "eth",
+            "speed": 25000000000
+        },
+        {
+            "fc": {
+                "wwn": null
+            },
+            "eth": {
+                "subtype": "physical",
+                "subinterfaces": [],
+                "address": "192.168.29.155",
+                "vlan": null,
+                "mac_address": "24:a9:37:0d:e8:bc",
+                "netmask": "255.255.254.0",
+                "gateway": null,
+                "mtu": 9000,
+                "subnet": {
+                    "name": null
+                }
+            },
+            "services": [
+                "replication"
+            ],
+            "name": "ct0.eth3",
+            "enabled": true,
+            "interface_type": "eth",
+            "speed": 25000000000
+        },
+        {
+            "fc": {
+                "wwn": null
+            },
+            "eth": {
+                "subtype": "physical",
+                "subinterfaces": [],
+                "address": "192.168.29.133",
+                "vlan": null,
+                "mac_address": "24:a9:37:0d:e8:bf",
+                "netmask": "255.255.254.0",
+                "gateway": null,
+                "mtu": 9000,
+                "subnet": {
+                    "name": null
+                }
+            },
+            "services": [
+                "iscsi"
+            ],
+            "name": "ct0.eth4",
+            "enabled": true,
+            "interface_type": "eth",
+            "speed": 25000000000
+        },
+        {
+            "fc": {
+                "wwn": null
+            },
+            "eth": {
+                "subtype": "vif",
+                "subinterfaces": [],
+                "address": null,
+                "vlan": 222,
+                "mac_address": "24:a9:37:0d:e8:bf",
+                "netmask": "255.255.255.0",
+                "gateway": "192.168.222.1",
+                "mtu": 1500,
+                "subnet": {
+                    "name": "vlan222"
+                }
+            },
+            "services": [
+                "iscsi"
+            ],
+            "name": "ct0.eth4.222",
+            "enabled": true,
+            "interface_type": "eth",
+            "speed": 25000000000
+        },
+        {
+            "fc": {
+                "wwn": null
+            },
+            "eth": {
+                "subtype": "vif",
+                "subinterfaces": [],
+                "address": null,
+                "vlan": 799,
+                "mac_address": "24:a9:37:0d:e8:bf",
+                "netmask": "255.255.255.0",
+                "gateway": "192.168.99.1",
+                "mtu": 1500,
+                "subnet": {
+                    "name": "vlan799"
+                }
+            },
+            "services": [
+                "iscsi"
+            ],
+            "name": "ct0.eth4.799",
+            "enabled": true,
+            "interface_type": "eth",
+            "speed": 25000000000
+        },
+        {
+            "fc": {
+                "wwn": null
+            },
+            "eth": {
+                "subtype": "physical",
+                "subinterfaces": [],
+                "address": "192.168.29.134",
+                "vlan": null,
+                "mac_address": "24:a9:37:0d:e8:be",
+                "netmask": "255.255.254.0",
+                "gateway": null,
+                "mtu": 9000,
+                "subnet": {
+                    "name": null
+                }
+            },
+            "services": [
+                "iscsi"
+            ],
+            "name": "ct0.eth5",
+            "enabled": true,
+            "interface_type": "eth",
+            "speed": 25000000000
+        },
+        {
+            "fc": {
+                "wwn": null
+            },
+            "eth": {
+                "subtype": "vif",
+                "subinterfaces": [],
+                "address": null,
+                "vlan": 222,
+                "mac_address": "24:a9:37:0d:e8:be",
+                "netmask": "255.255.255.0",
+                "gateway": "192.168.222.1",
+                "mtu": 1500,
+                "subnet": {
+                    "name": "vlan222"
+                }
+            },
+            "services": [
+                "iscsi"
+            ],
+            "name": "ct0.eth5.222",
+            "enabled": true,
+            "interface_type": "eth",
+            "speed": 25000000000
+        },
+        {
+            "fc": {
+                "wwn": null
+            },
+            "eth": {
+                "subtype": "physical",
+                "subinterfaces": [],
+                "address": null,
+                "vlan": null,
+                "mac_address": "24:a9:37:0e:4b:11",
+                "netmask": null,
+                "gateway": null,
+                "mtu": 1500,
+                "subnet": {
+                    "name": null
+                }
+            },
+            "services": [],
+            "name": "ct0.eth6",
+            "enabled": false,
+            "interface_type": "eth",
+            "speed": 50000000000
+        },
+        {
+            "fc": {
+                "wwn": null
+            },
+            "eth": {
+                "subtype": "physical",
+                "subinterfaces": [],
+                "address": null,
+                "vlan": null,
+                "mac_address": "24:a9:37:0e:4b:10",
+                "netmask": null,
+                "gateway": null,
+                "mtu": 1500,
+                "subnet": {
+                    "name": null
+                }
+            },
+            "services": [],
+            "name": "ct0.eth7",
+            "enabled": false,
+            "interface_type": "eth",
+            "speed": 50000000000
+        },
+        {
+            "fc": {
+                "wwn": null
+            },
+            "eth": {
+                "subtype": "physical",
+                "subinterfaces": [],
+                "address": null,
+                "vlan": null,
+                "mac_address": "24:a9:37:0e:4b:13",
+                "netmask": null,
+                "gateway": null,
+                "mtu": 1500,
+                "subnet": {
+                    "name": null
+                }
+            },
+            "services": [],
+            "name": "ct0.eth8",
+            "enabled": false,
+            "interface_type": "eth",
+            "speed": 50000000000
+        },
+        {
+            "fc": {
+                "wwn": null
+            },
+            "eth": {
+                "subtype": "physical",
+                "subinterfaces": [],
+                "address": null,
+                "vlan": null,
+                "mac_address": "24:a9:37:0e:4b:12",
+                "netmask": null,
+                "gateway": null,
+                "mtu": 1500,
+                "subnet": {
+                    "name": null
+                }
+            },
+            "services": [],
+            "name": "ct0.eth9",
+            "enabled": false,
+            "interface_type": "eth",
+            "speed": 50000000000
+        },
+        {
+            "fc": {
+                "wwn": "52:4A:93:71:AF:4E:82:00"
+            },
+            "eth": {
+                "subtype": null,
+                "subinterfaces": null,
+                "address": null,
+                "vlan": null,
+                "mac_address": null,
+                "netmask": null,
+                "gateway": null,
+                "mtu": null,
+                "subnet": {
+                    "name": null
+                }
+            },
+            "services": [
+                "scsi-fc"
+            ],
+            "name": "CT0.FC0",
+            "enabled": true,
+            "interface_type": "fc",
+            "speed": 16000000000
+        },
+        {
+            "fc": {
+                "wwn": "52:4A:93:71:AF:4E:82:01"
+            },
+            "eth": {
+                "subtype": null,
+                "subinterfaces": null,
+                "address": null,
+                "vlan": null,
+                "mac_address": null,
+                "netmask": null,
+                "gateway": null,
+                "mtu": null,
+                "subnet": {
+                    "name": null
+                }
+            },
+            "services": [
+                "scsi-fc"
+            ],
+            "name": "CT0.FC1",
+            "enabled": true,
+            "interface_type": "fc",
+            "speed": 16000000000
+        },
+        {
+            "fc": {
+                "wwn": "52:4A:93:71:AF:4E:82:02"
+            },
+            "eth": {
+                "subtype": null,
+                "subinterfaces": null,
+                "address": null,
+                "vlan": null,
+                "mac_address": null,
+                "netmask": null,
+                "gateway": null,
+                "mtu": null,
+                "subnet": {
+                    "name": null
+                }
+            },
+            "services": [
+                "scsi-fc"
+            ],
+            "name": "CT0.FC2",
+            "enabled": true,
+            "interface_type": "fc",
+            "speed": 16000000000
+        },
+        {
+            "fc": {
+                "wwn": "52:4A:93:71:AF:4E:82:03"
+            },
+            "eth": {
+                "subtype": null,
+                "subinterfaces": null,
+                "address": null,
+                "vlan": null,
+                "mac_address": null,
+                "netmask": null,
+                "gateway": null,
+                "mtu": null,
+                "subnet": {
+                    "name": null
+                }
+            },
+            "services": [
+                "scsi-fc"
+            ],
+            "name": "CT0.FC3",
+            "enabled": true,
+            "interface_type": "fc",
+            "speed": 16000000000
+        },
+        {
+            "fc": {
+                "wwn": "52:4A:93:71:AF:4E:82:08"
+            },
+            "eth": {
+                "subtype": null,
+                "subinterfaces": null,
+                "address": null,
+                "vlan": null,
+                "mac_address": null,
+                "netmask": null,
+                "gateway": null,
+                "mtu": null,
+                "subnet": {
+                    "name": null
+                }
+            },
+            "services": [
+                "scsi-fc"
+            ],
+            "name": "CT0.FC8",
+            "enabled": true,
+            "interface_type": "fc",
+            "speed": 16000000000
+        },
+        {
+            "fc": {
+                "wwn": "52:4A:93:71:AF:4E:82:09"
+            },
+            "eth": {
+                "subtype": null,
+                "subinterfaces": null,
+                "address": null,
+                "vlan": null,
+                "mac_address": null,
+                "netmask": null,
+                "gateway": null,
+                "mtu": null,
+                "subnet": {
+                    "name": null
+                }
+            },
+            "services": [
+                "scsi-fc"
+            ],
+            "name": "CT0.FC9",
+            "enabled": true,
+            "interface_type": "fc",
+            "speed": 16000000000
+        },
+        {
+            "fc": {
+                "wwn": null
+            },
+            "eth": {
+                "subtype": "physical",
+                "subinterfaces": [],
+                "address": "172.29.10.71",
+                "vlan": null,
+                "mac_address": "24:a9:37:0e:2e:de",
+                "netmask": "255.255.255.0",
+                "gateway": "172.29.10.1",
+                "mtu": 1500,
+                "subnet": {
+                    "name": null
+                }
+            },
+            "services": [
+                "management"
+            ],
+            "name": "ct1.eth0",
+            "enabled": true,
+            "interface_type": "eth",
+            "speed": 1000000000
+        },
+        {
+            "fc": {
+                "wwn": null
+            },
+            "eth": {
+                "subtype": "physical",
+                "subinterfaces": [],
+                "address": null,
+                "vlan": null,
+                "mac_address": "24:a9:37:0e:2e:df",
+                "netmask": null,
+                "gateway": null,
+                "mtu": 1500,
+                "subnet": {
+                    "name": null
+                }
+            },
+            "services": [
+                "management"
+            ],
+            "name": "ct1.eth1",
+            "enabled": false,
+            "interface_type": "eth",
+            "speed": 1000000000
+        },
+        {
+            "fc": {
+                "wwn": null
+            },
+            "eth": {
+                "subtype": "physical",
+                "subinterfaces": [],
+                "address": "192.168.27.142",
+                "vlan": null,
+                "mac_address": "b8:3f:d2:b0:ff:29",
+                "netmask": "255.255.255.0",
+                "gateway": "192.168.27.1",
+                "mtu": 9000,
+                "subnet": {
+                    "name": null
+                }
+            },
+            "services": [
+                "nvme-tcp"
+            ],
+            "name": "ct1.eth14",
+            "enabled": true,
+            "interface_type": "eth",
+            "speed": 100000000000
+        },
+        {
+            "fc": {
+                "wwn": null
+            },
+            "eth": {
+                "subtype": "physical",
+                "subinterfaces": [],
+                "address": "192.168.27.143",
+                "vlan": null,
+                "mac_address": "b8:3f:d2:b0:ff:28",
+                "netmask": "255.255.255.0",
+                "gateway": "192.168.27.1",
+                "mtu": 9000,
+                "subnet": {
+                    "name": null
+                }
+            },
+            "services": [
+                "nvme-tcp"
+            ],
+            "name": "ct1.eth15",
+            "enabled": true,
+            "interface_type": "eth",
+            "speed": 100000000000
+        },
+        {
+            "fc": {
+                "wwn": null
+            },
+            "eth": {
+                "subtype": "physical",
+                "subinterfaces": [],
+                "address": "192.168.29.156",
+                "vlan": null,
+                "mac_address": "24:a9:37:0e:2e:e1",
+                "netmask": "255.255.254.0",
+                "gateway": null,
+                "mtu": 9000,
+                "subnet": {
+                    "name": null
+                }
+            },
+            "services": [
+                "replication"
+            ],
+            "name": "ct1.eth2",
+            "enabled": true,
+            "interface_type": "eth",
+            "speed": 25000000000
+        },
+        {
+            "fc": {
+                "wwn": null
+            },
+            "eth": {
+                "subtype": "physical",
+                "subinterfaces": [],
+                "address": "192.168.29.157",
+                "vlan": null,
+                "mac_address": "24:a9:37:0e:2e:e0",
+                "netmask": "255.255.254.0",
+                "gateway": null,
+                "mtu": 9000,
+                "subnet": {
+                    "name": null
+                }
+            },
+            "services": [
+                "replication"
+            ],
+            "name": "ct1.eth3",
+            "enabled": true,
+            "interface_type": "eth",
+            "speed": 25000000000
+        },
+        {
+            "fc": {
+                "wwn": null
+            },
+            "eth": {
+                "subtype": "physical",
+                "subinterfaces": [],
+                "address": "192.168.29.135",
+                "vlan": null,
+                "mac_address": "24:a9:37:0e:2e:e3",
+                "netmask": "255.255.254.0",
+                "gateway": null,
+                "mtu": 9000,
+                "subnet": {
+                    "name": null
+                }
+            },
+            "services": [
+                "iscsi"
+            ],
+            "name": "ct1.eth4",
+            "enabled": true,
+            "interface_type": "eth",
+            "speed": 25000000000
+        },
+        {
+            "fc": {
+                "wwn": null
+            },
+            "eth": {
+                "subtype": "vif",
+                "subinterfaces": [],
+                "address": null,
+                "vlan": 222,
+                "mac_address": "24:a9:37:0e:2e:e3",
+                "netmask": "255.255.255.0",
+                "gateway": "192.168.222.1",
+                "mtu": 1500,
+                "subnet": {
+                    "name": "vlan222"
+                }
+            },
+            "services": [
+                "iscsi"
+            ],
+            "name": "ct1.eth4.222",
+            "enabled": true,
+            "interface_type": "eth",
+            "speed": 25000000000
+        },
+        {
+            "fc": {
+                "wwn": null
+            },
+            "eth": {
+                "subtype": "vif",
+                "subinterfaces": [],
+                "address": null,
+                "vlan": 799,
+                "mac_address": "24:a9:37:0e:2e:e3",
+                "netmask": "255.255.255.0",
+                "gateway": "192.168.99.1",
+                "mtu": 1500,
+                "subnet": {
+                    "name": "vlan799"
+                }
+            },
+            "services": [
+                "iscsi"
+            ],
+            "name": "ct1.eth4.799",
+            "enabled": true,
+            "interface_type": "eth",
+            "speed": 25000000000
+        },
+        {
+            "fc": {
+                "wwn": null
+            },
+            "eth": {
+                "subtype": "physical",
+                "subinterfaces": [],
+                "address": "192.168.29.136",
+                "vlan": null,
+                "mac_address": "24:a9:37:0e:2e:e2",
+                "netmask": "255.255.254.0",
+                "gateway": null,
+                "mtu": 9000,
+                "subnet": {
+                    "name": null
+                }
+            },
+            "services": [
+                "iscsi"
+            ],
+            "name": "ct1.eth5",
+            "enabled": true,
+            "interface_type": "eth",
+            "speed": 25000000000
+        },
+        {
+            "fc": {
+                "wwn": null
+            },
+            "eth": {
+                "subtype": "vif",
+                "subinterfaces": [],
+                "address": null,
+                "vlan": 222,
+                "mac_address": "24:a9:37:0e:2e:e2",
+                "netmask": "255.255.255.0",
+                "gateway": "192.168.222.1",
+                "mtu": 1500,
+                "subnet": {
+                    "name": "vlan222"
+                }
+            },
+            "services": [
+                "iscsi"
+            ],
+            "name": "ct1.eth5.222",
+            "enabled": true,
+            "interface_type": "eth",
+            "speed": 25000000000
+        },
+        {
+            "fc": {
+                "wwn": null
+            },
+            "eth": {
+                "subtype": "physical",
+                "subinterfaces": [],
+                "address": null,
+                "vlan": null,
+                "mac_address": "24:a9:37:0e:4a:dd",
+                "netmask": null,
+                "gateway": null,
+                "mtu": 1500,
+                "subnet": {
+                    "name": null
+                }
+            },
+            "services": [],
+            "name": "ct1.eth6",
+            "enabled": false,
+            "interface_type": "eth",
+            "speed": 50000000000
+        },
+        {
+            "fc": {
+                "wwn": null
+            },
+            "eth": {
+                "subtype": "physical",
+                "subinterfaces": [],
+                "address": null,
+                "vlan": null,
+                "mac_address": "24:a9:37:0e:4a:dc",
+                "netmask": null,
+                "gateway": null,
+                "mtu": 1500,
+                "subnet": {
+                    "name": null
+                }
+            },
+            "services": [],
+            "name": "ct1.eth7",
+            "enabled": false,
+            "interface_type": "eth",
+            "speed": 50000000000
+        },
+        {
+            "fc": {
+                "wwn": null
+            },
+            "eth": {
+                "subtype": "physical",
+                "subinterfaces": [],
+                "address": null,
+                "vlan": null,
+                "mac_address": "24:a9:37:0e:4a:df",
+                "netmask": null,
+                "gateway": null,
+                "mtu": 1500,
+                "subnet": {
+                    "name": null
+                }
+            },
+            "services": [],
+            "name": "ct1.eth8",
+            "enabled": false,
+            "interface_type": "eth",
+            "speed": 50000000000
+        },
+        {
+            "fc": {
+                "wwn": null
+            },
+            "eth": {
+                "subtype": "physical",
+                "subinterfaces": [],
+                "address": null,
+                "vlan": null,
+                "mac_address": "24:a9:37:0e:4a:de",
+                "netmask": null,
+                "gateway": null,
+                "mtu": 1500,
+                "subnet": {
+                    "name": null
+                }
+            },
+            "services": [],
+            "name": "ct1.eth9",
+            "enabled": false,
+            "interface_type": "eth",
+            "speed": 50000000000
+        },
+        {
+            "fc": {
+                "wwn": "52:4A:93:71:AF:4E:82:10"
+            },
+            "eth": {
+                "subtype": null,
+                "subinterfaces": null,
+                "address": null,
+                "vlan": null,
+                "mac_address": null,
+                "netmask": null,
+                "gateway": null,
+                "mtu": null,
+                "subnet": {
+                    "name": null
+                }
+            },
+            "services": [
+                "scsi-fc"
+            ],
+            "name": "CT1.FC0",
+            "enabled": true,
+            "interface_type": "fc",
+            "speed": 16000000000
+        },
+        {
+            "fc": {
+                "wwn": "52:4A:93:71:AF:4E:82:11"
+            },
+            "eth": {
+                "subtype": null,
+                "subinterfaces": null,
+                "address": null,
+                "vlan": null,
+                "mac_address": null,
+                "netmask": null,
+                "gateway": null,
+                "mtu": null,
+                "subnet": {
+                    "name": null
+                }
+            },
+            "services": [
+                "scsi-fc"
+            ],
+            "name": "CT1.FC1",
+            "enabled": true,
+            "interface_type": "fc",
+            "speed": 16000000000
+        },
+        {
+            "fc": {
+                "wwn": "52:4A:93:71:AF:4E:82:12"
+            },
+            "eth": {
+                "subtype": null,
+                "subinterfaces": null,
+                "address": null,
+                "vlan": null,
+                "mac_address": null,
+                "netmask": null,
+                "gateway": null,
+                "mtu": null,
+                "subnet": {
+                    "name": null
+                }
+            },
+            "services": [
+                "scsi-fc"
+            ],
+            "name": "CT1.FC2",
+            "enabled": true,
+            "interface_type": "fc",
+            "speed": 16000000000
+        },
+        {
+            "fc": {
+                "wwn": "52:4A:93:71:AF:4E:82:13"
+            },
+            "eth": {
+                "subtype": null,
+                "subinterfaces": null,
+                "address": null,
+                "vlan": null,
+                "mac_address": null,
+                "netmask": null,
+                "gateway": null,
+                "mtu": null,
+                "subnet": {
+                    "name": null
+                }
+            },
+            "services": [
+                "scsi-fc"
+            ],
+            "name": "CT1.FC3",
+            "enabled": true,
+            "interface_type": "fc",
+            "speed": 16000000000
+        },
+        {
+            "fc": {
+                "wwn": "52:4A:93:71:AF:4E:82:18"
+            },
+            "eth": {
+                "subtype": null,
+                "subinterfaces": null,
+                "address": null,
+                "vlan": null,
+                "mac_address": null,
+                "netmask": null,
+                "gateway": null,
+                "mtu": null,
+                "subnet": {
+                    "name": null
+                }
+            },
+            "services": [
+                "scsi-fc"
+            ],
+            "name": "CT1.FC8",
+            "enabled": true,
+            "interface_type": "fc",
+            "speed": 16000000000
+        },
+        {
+            "fc": {
+                "wwn": "52:4A:93:71:AF:4E:82:19"
+            },
+            "eth": {
+                "subtype": null,
+                "subinterfaces": null,
+                "address": null,
+                "vlan": null,
+                "mac_address": null,
+                "netmask": null,
+                "gateway": null,
+                "mtu": null,
+                "subnet": {
+                    "name": null
+                }
+            },
+            "services": [
+                "scsi-fc"
+            ],
+            "name": "CT1.FC9",
+            "enabled": true,
+            "interface_type": "fc",
+            "speed": 16000000000
+        },
+        {
+            "fc": {
+                "wwn": null
+            },
+            "eth": {
+                "subtype": "vif",
+                "subinterfaces": [
+                    {
+                        "name": "ct0.eth4"
+                    },
+                    {
+                        "name": "ct1.eth4"
+                    },
+                    {
+                        "name": "ct0.eth5"
+                    },
+                    {
+                        "name": "ct1.eth5"
+                    }
+                ],
+                "address": "192.168.29.137",
+                "vlan": null,
+                "mac_address": "22:99:6f:38:9d:bc",
+                "netmask": "255.255.254.0",
+                "gateway": "192.168.29.1",
+                "mtu": 9000,
+                "subnet": {
+                    "name": null
+                }
+            },
+            "services": [
+                "file"
+            ],
+            "name": "filevip",
+            "enabled": true,
+            "interface_type": "eth",
+            "speed": 25000000000
+        },
+        {
+            "fc": {
+                "wwn": null
+            },
+            "eth": {
+                "subtype": "vif",
+                "subinterfaces": [],
+                "address": null,
+                "vlan": null,
+                "mac_address": "0e:bf:aa:18:c1:e9",
+                "netmask": null,
+                "gateway": null,
+                "mtu": 9000,
+                "subnet": {
+                    "name": null
+                }
+            },
+            "services": [
+                "file"
+            ],
+            "name": "filevipcoe",
+            "enabled": false,
+            "interface_type": "eth",
+            "speed": 25000000000
+        },
+        {
+            "fc": {
+                "wwn": null
+            },
+            "eth": {
+                "subtype": "vif",
+                "subinterfaces": [],
+                "address": "192.168.29.178",
+                "vlan": null,
+                "mac_address": "92:01:42:e4:59:69",
+                "netmask": "255.255.254.0",
+                "gateway": "192.168.29.1",
+                "mtu": 9000,
+                "subnet": {
+                    "name": null
+                }
+            },
+            "services": [
+                "file"
+            ],
+            "name": "fileviptcs",
+            "enabled": true,
+            "interface_type": "eth",
+            "speed": 25000000000
+        },
+        {
+            "fc": {
+                "wwn": null
+            },
+            "eth": {
+                "subtype": "bond",
+                "subinterfaces": [],
+                "address": null,
+                "vlan": null,
+                "mac_address": "a6:68:20:b6:82:cd",
+                "netmask": null,
+                "gateway": null,
+                "mtu": 1500,
+                "subnet": {
+                    "name": null
+                }
+            },
+            "services": [
+                "replication"
+            ],
+            "name": "replbond",
+            "enabled": false,
+            "interface_type": "eth",
+            "speed": 0
+        },
+        {
+            "fc": {
+                "wwn": null
+            },
+            "eth": {
+                "subtype": "vif",
+                "subinterfaces": [
+                    {
+                        "name": "ct0.eth4"
+                    },
+                    {
+                        "name": "ct1.eth4"
+                    },
+                    {
+                        "name": "ct0.eth5"
+                    },
+                    {
+                        "name": "ct1.eth5"
+                    }
+                ],
+                "address": null,
+                "vlan": null,
+                "mac_address": "da:94:05:c7:04:49",
+                "netmask": null,
+                "gateway": null,
+                "mtu": 9000,
+                "subnet": {
+                    "name": null
+                }
+            },
+            "services": [
+                "file"
+            ],
+            "name": "test1",
+            "enabled": false,
+            "interface_type": "eth",
+            "speed": 25000000000
+        },
+        {
+            "fc": {
+                "wwn": null
+            },
+            "eth": {
+                "subtype": "vif",
+                "subinterfaces": [
+                    {
+                        "name": "ct0.eth4"
+                    },
+                    {
+                        "name": "ct1.eth4"
+                    },
+                    {
+                        "name": "ct0.eth5"
+                    },
+                    {
+                        "name": "ct1.eth5"
+                    }
+                ],
+                "address": "192.168.200.200",
+                "vlan": null,
+                "mac_address": "32:eb:1c:80:b6:b2",
+                "netmask": "255.255.255.0",
+                "gateway": null,
+                "mtu": 9000,
+                "subnet": {
+                    "name": null
+                }
+            },
+            "services": [
+                "file"
+            ],
+            "name": "testvif01",
+            "enabled": false,
+            "interface_type": "eth",
+            "speed": 25000000000
+        },
+        {
+            "fc": {
+                "wwn": null
+            },
+            "eth": {
+                "subtype": "vif",
+                "subinterfaces": [
+                    {
+                        "name": "ct0.eth4.222"
+                    },
+                    {
+                        "name": "ct1.eth4.222"
+                    },
+                    {
+                        "name": "ct0.eth5.222"
+                    },
+                    {
+                        "name": "ct1.eth5.222"
+                    }
+                ],
+                "address": "192.168.222.200",
+                "vlan": null,
+                "mac_address": "7a:ef:16:87:66:ee",
+                "netmask": "255.255.255.0",
+                "gateway": null,
+                "mtu": 1500,
+                "subnet": {
+                    "name": null
+                }
+            },
+            "services": [
+                "file"
+            ],
+            "name": "vif222",
+            "enabled": false,
+            "interface_type": "eth",
+            "speed": 25000000000
+        },
+        {
+            "fc": {
+                "wwn": null
+            },
+            "eth": {
+                "subtype": "vif",
+                "subinterfaces": [
+                    {
+                        "name": "ct0.eth4.799"
+                    },
+                    {
+                        "name": "ct1.eth4.799"
+                    }
+                ],
+                "address": "192.168.99.200",
+                "vlan": null,
+                "mac_address": "02:ec:d8:7c:95:29",
+                "netmask": "255.255.255.0",
+                "gateway": null,
+                "mtu": 1500,
+                "subnet": {
+                    "name": null
+                }
+            },
+            "services": [
+                "file"
+            ],
+            "name": "vif799",
+            "enabled": false,
+            "interface_type": "eth",
+            "speed": 25000000000
+        },
+        {
+            "fc": {
+                "wwn": null
+            },
+            "eth": {
+                "subtype": "vif",
+                "subinterfaces": [],
+                "address": "172.29.10.70",
+                "vlan": null,
+                "mac_address": "e6:75:fb:08:9b:32",
+                "netmask": "255.255.255.0",
+                "gateway": "172.29.10.1",
+                "mtu": 1500,
+                "subnet": {
+                    "name": null
+                }
+            },
+            "services": [
+                "management"
+            ],
+            "name": "vir0",
+            "enabled": true,
+            "interface_type": "eth",
+            "speed": 1000000000
+        },
+        {
+            "fc": {
+                "wwn": null
+            },
+            "eth": {
+                "subtype": "vif",
+                "subinterfaces": [],
+                "address": null,
+                "vlan": null,
+                "mac_address": "d6:db:ce:d2:83:99",
+                "netmask": null,
+                "gateway": null,
+                "mtu": 1500,
+                "subnet": {
+                    "name": null
+                }
+            },
+            "services": [
+                "management"
+            ],
+            "name": "vir1",
+            "enabled": false,
+            "interface_type": "eth",
+            "speed": 1000000000
+        }
+    ],
+    "more_items_remaining": false,
+    "total_item_count": null
+}

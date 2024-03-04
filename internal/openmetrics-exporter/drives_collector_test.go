@@ -13,33 +13,34 @@ import (
 	client "purestorage/fa-openmetrics-exporter/internal/rest-client"
 )
 
-func TestHostConnectionsCollector(t *testing.T) {
+func TestDriveCollector(t *testing.T) {
 
-	res, _ := os.ReadFile("../../test/data/connections.json")
+	rdr, _ := os.ReadFile("../../test/data/drives.json")
 	vers, _ := os.ReadFile("../../test/data/versions.json")
-	var conn client.ConnectionsList
-	json.Unmarshal(res, &conn)
+	var drl client.DriveList
+	json.Unmarshal(rdr, &drl)
 	server := httptest.NewTLSServer(http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
-		valid := regexp.MustCompile(`^/api/([0-9]+.[0-9]+)?/connections$`)
+		url := regexp.MustCompile(`^/api/([0-9]+.[0-9]+)?/drive$`)
 		if r.URL.Path == "/api/api_version" {
 			w.Header().Set("Content-Type", "application/json")
 			w.WriteHeader(http.StatusOK)
 			w.Write([]byte(vers))
-		} else if valid.MatchString(r.URL.Path) {
+		} else if url.MatchString(r.URL.Path) {
 			w.Header().Set("x-auth-token", "faketoken")
 			w.Header().Set("Content-Type", "application/json")
 			w.WriteHeader(http.StatusOK)
-			w.Write([]byte(res))
+			w.Write([]byte(rdr))
 		}
 	}))
 	endp := strings.Split(server.URL, "/")
 	e := endp[len(endp)-1]
 	want := make(map[string]bool)
-	for _, hc := range conn.Items {
-		want[fmt.Sprintf("label:{name:\"host\" value:\"%s\"} label:{name:\"hostgroup\" value:\"%s\"} label:{name:\"volume\" value:\"%s\"} gauge:{value:1}", hc.Host.Name, hc.HostGroup.Name, hc.Volume.Name)] = true
+	for _, d := range drl.Items {
+		want[fmt.Sprintf("label:{name:\"component_name\" value:\"%s\"} label:{name:\"component_status\" value:\"%s\"} label:{name:\"component_type\" value:\"%s\"} label:{name:\"component_type\" value:\"%s\"} gauge:{value:\"%g\"}", d.Name, d.Type, d.Status, d.Protocol, d.Capacity)] = true
 	}
+
 	c := client.NewRestClient(e, "fake-api-token", "latest", false)
-	hc := NewHostConnectionsCollector(c)
-	metricsCheck(t, hc, want)
+	dc := NewDriveCollector(c)
+	metricsCheck(t, dc, want)
 	server.Close()
 }

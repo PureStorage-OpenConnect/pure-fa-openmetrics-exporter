@@ -2,9 +2,10 @@ package collectors
 
 import (
 	"context"
+	client "purestorage/fa-openmetrics-exporter/internal/rest-client"
+
 	"github.com/prometheus/client_golang/prometheus"
 	"github.com/prometheus/client_golang/prometheus/collectors"
-	"purestorage/fa-openmetrics-exporter/internal/rest-client"
 )
 
 func Collector(ctx context.Context, metrics string, registry *prometheus.Registry, faclient *client.FAClient) bool {
@@ -20,32 +21,38 @@ func Collector(ctx context.Context, metrics string, registry *prometheus.Registr
 		arrayperfcoll := NewArraysPerformanceCollector(faclient)
 		arrayspacecoll := NewArraySpaceCollector(faclient)
 		hwcoll := NewHardwareCollector(faclient)
+		drcoll := NewDriveCollector(faclient)
 		nicsperfcoll := NewNetworkInterfacesPerformanceCollector(faclient)
+		portscoll := NewPortsCollector(faclient)
+		interfacecoll := NewNetworkInterfacesCollector(faclient)
 		registry.MustRegister(
-		           alertscoll,
-		           arrayperfcoll,
-		           arrayspacecoll,
-		           hwcoll,
-		           nicsperfcoll,
-		         )
+			alertscoll,
+			arrayperfcoll,
+			arrayspacecoll,
+			hwcoll,
+			drcoll,
+			nicsperfcoll,
+			portscoll,
+			interfacecoll,
+		)
 	}
 	if metrics == "all" || metrics == "directories" {
 		dirperfcoll := NewDirectoriesPerformanceCollector(faclient)
 		dirspacecoll := NewDirectoriesSpaceCollector(faclient)
 		registry.MustRegister(
-		           dirperfcoll,
-		           dirspacecoll,
-		         )
+			dirperfcoll,
+			dirspacecoll,
+		)
 	}
 	if metrics == "all" || metrics == "hosts" {
 		hostperfcoll := NewHostsPerformanceCollector(faclient)
 		hostspacecoll := NewHostsSpaceCollector(faclient)
 		hostconncoll := NewHostConnectionsCollector(faclient)
 		registry.MustRegister(
-		           hostconncoll,
-		           hostperfcoll,
-		           hostspacecoll,
-		         )
+			hostconncoll,
+			hostperfcoll,
+			hostspacecoll,
+		)
 	}
 	if metrics == "all" || metrics == "pods" {
 		podsperfcoll := NewPodsPerformanceCollector(faclient)
@@ -54,21 +61,21 @@ func Collector(ctx context.Context, metrics string, registry *prometheus.Registr
 		podreplinkperfcoll := NewPodReplicaLinksPerformanceCollector(faclient)
 		podreplinklagcoll := NewPodReplicaLinksLagCollector(faclient)
 		registry.MustRegister(
-		           podsperfcoll,
-		           podsspacecoll,
-		           podsperfrepl,
-		           podreplinkperfcoll,
-		           podreplinklagcoll,
-		         )
+			podsperfcoll,
+			podsspacecoll,
+			podsperfrepl,
+			podreplinkperfcoll,
+			podreplinklagcoll,
+		)
 	}
 	if metrics == "all" || metrics == "volumes" {
 		vols := faclient.GetVolumes()
 		volperfcoll := NewVolumesPerformanceCollector(faclient, vols)
 		volspacecoll := NewVolumesSpaceCollector(vols)
 		registry.MustRegister(
-		           volperfcoll,
-		           volspacecoll,
-		         )
+			volperfcoll,
+			volspacecoll,
+		)
 	}
 	return true
 }

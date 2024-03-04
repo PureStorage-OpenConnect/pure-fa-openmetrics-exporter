@@ -12,14 +12,14 @@ import (
 	"github.com/google/go-cmp/cmp"
 )
 
-func TestNetworkInterfacesPerformance(t *testing.T) {
+func TestPorts(t *testing.T) {
 
-	res, _ := os.ReadFile("../../test/data/network_interfaces_performance.json")
+	res, _ := os.ReadFile("../../test/data/ports.json")
 	vers, _ := os.ReadFile("../../test/data/versions.json")
-	var nw NetworkInterfacesPerformanceList
-	json.Unmarshal(res, &nw)
+	var ports PortsList
+	json.Unmarshal(res, &ports)
 	server := httptest.NewTLSServer(http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
-		valid := regexp.MustCompile(`^/api/([0-9]+.[0-9]+)?/network-interfaces/performance$`)
+		valid := regexp.MustCompile(`^/api/([0-9]+.[0-9]+)?/ports$`)
 		if r.URL.Path == "/api/api_version" {
 			w.Header().Set("Content-Type", "application/json")
 			w.WriteHeader(http.StatusOK)
@@ -33,11 +33,11 @@ func TestNetworkInterfacesPerformance(t *testing.T) {
 	}))
 	endp := strings.Split(server.URL, "/")
 	e := endp[len(endp)-1]
-	t.Run("network_interfaces_performance_1", func(t *testing.T) {
+	t.Run("ports_1", func(t *testing.T) {
 		defer server.Close()
 		c := NewRestClient(e, "fake-api-token", "latest", false)
-		nl := c.GetNetworkInterfacesPerformance()
-		if diff := cmp.Diff(nl.Items, nw.Items); diff != "" {
+		pl := c.GetPorts()
+		if diff := cmp.Diff(pl.Items, ports.Items); diff != "" {
 			t.Errorf("Mismatch (-want +got):\n%s", diff)
 		}
 	})
