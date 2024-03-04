@@ -150,8 +150,9 @@ func metricsHandler(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
+	uagent := r.Header.Get("User-Agent")
 	registry := prometheus.NewRegistry()
-	faclient := client.NewRestClient(address, apitoken, apiver, debug)
+	faclient := client.NewRestClient(address, apitoken, apiver, uagent, debug)
 	if faclient.Error != nil {
 		http.Error(w, "Error connecting to FlashArray. Check your management endpoint and/or api token are correct.", http.StatusBadRequest)
 		return
