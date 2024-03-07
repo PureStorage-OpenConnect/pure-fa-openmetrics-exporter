@@ -1,0 +1,12 @@
+# This example are for demonstration purposes only, ensure configurations are adjusted to meet the requirements of your solution.
+groups:
+   # purefa_alerts_open fires an alert on any open FlashArray alert
+   - name: purefa_alerts_open
+     interval: 60s
+     rules:
+       - alert: purefa_alerts_open
+         expr: purefa_alerts_open
+         annotations:
+           title: "Pure Storage //FA Alert {{ $labels.code }} / {{ $labels.instance }} / {{ $labels.issue }}"
+           summary: "{{ $labels.summary }}"
+           description: "Array `{{ $labels.instance }}` has reported a `{{ $labels.severity }}` alert for `{{ $labels.category }} {{ $labels.component_type }}` {{ $labels.issue }}`. For more details, lookup alert code `{{ $labels.code }}` at https://support.purestorage.com/FlashArray/PurityFA/PurityFA_Alerts/FlashArray_Alert_Information/List_of_Available_Alerts"
