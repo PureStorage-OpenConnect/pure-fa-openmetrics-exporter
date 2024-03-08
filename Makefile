@@ -26,8 +26,11 @@ init:
 
 build: ## Build project and put the output binary in out/bin/
 	mkdir -p out/bin
-	CGO_ENABLED=0 GO111MODULE=on $(GOCMD) build -a -tags 'netgo osusergo static_build' -ldflags='-X main.version=v$(VERSION)' -o out/bin/$(BINARY_NAME) cmd/fa-om-exporter/main.go
-#	CGO_ENABLED=1 GO111MODULE=on $(GOCMD) build -o out/bin/$(BINARY_NAME) cmd/fa-om-exporter/main.go
+	CGO_ENABLED=0 GO111MODULE=on $(GOCMD) build -a -mod=readonly -tags 'netgo osusergo static_build' -ldflags='-X main.version=v$(VERSION)' -o out/bin/$(BINARY_NAME) cmd/fa-om-exporter/main.go
+
+build-with-vendor: ## Build project using the vendor directory and put the output binary in out/bin/
+	mkdir -p out/bin
+	CGO_ENABLED=0 GO111MODULE=on $(GOCMD) build -a -mod=vendor -tags 'netgo osusergo static_build' -ldflags='-X main.version=v$(VERSION)' -o out/bin/$(BINARY_NAME) cmd/fa-om-exporter/main.go
 
 clean: ## Remove build related file
 	rm -fr ./bin
@@ -37,6 +40,17 @@ clean: ## Remove build related file
 watch: ## Run the code with cosmtrek/air to have automatic reload on changes
 	$(eval PACKAGE_NAME=$(shell head -n 1 go.mod | cut -d ' ' -f2))
 	docker run -it --rm -w /go/src/$(PACKAGE_NAME) -v $(shell pwd):/go/src/$(PACKAGE_NAME) -p $(SERVICE_PORT):$(SERVICE_PORT) cosmtrek/air
+
+update-go-deps:
+	@echo ">> updating Go dependencies"
+	@for m in $$(go list -u -mod=readonly -m -f '{{ if and (not .Indirect) (not .Main)}}{{.Path}}{{end}}' all); do \
+		go get -u $$m; \
+		go get -u all; \
+	done
+	go mod tidy
+ifneq (,$(wildcard vendor))
+	go mod vendor
+endif
 
 ## Test:
 test: ## Run the tests of the project
