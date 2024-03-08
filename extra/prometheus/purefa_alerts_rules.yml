@@ -9,4 +9,4 @@ groups:
          annotations:
            title: "Pure Storage //FA Alert {{ $labels.code }} / {{ $labels.instance }} / {{ $labels.issue }}"
            summary: "{{ $labels.summary }}"
-           description: "Array `{{ $labels.instance }}` has reported a `{{ $labels.severity }}` alert for `{{ $labels.category }} {{ $labels.component_type }}` {{ $labels.issue }}`. For more details, lookup alert code `{{ $labels.code }}` at https://support.purestorage.com/FlashArray/PurityFA/PurityFA_Alerts/FlashArray_Alert_Information/List_of_Available_Alerts"
+           description: "Array `{{ $labels.instance }}` reported `{{ $labels.severity }}` alert for `{{ $labels.category }} {{ $labels.component_type }}` {{ $labels.issue }}`. For more details, lookup alert code `{{ $labels.code }}` at https://support.purestorage.com/FlashArray/PurityFA/PurityFA_Alerts/FlashArray_Alert_Information/List_of_Available_Alerts"
