@@ -52,7 +52,7 @@ func TestAlerts(t *testing.T) {
             }
         })
         t.Run("alerts_all", func(t *testing.T) {
-            c := NewRestClient(e, "fake-api-token", "latest", false)
+            c := NewRestClient(e, "fake-api-token", "latest", "test-user-agent-string", false)
 	    al := c.GetAlerts("")
 	    if diff := cmp.Diff(al.Items, aall.Items); diff != "" {
                 t.Errorf("Mismatch (-want +got):\n%s", diff)
