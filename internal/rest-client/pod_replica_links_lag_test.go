@@ -36,7 +36,7 @@ func TestPodReplicaLinksLag(t *testing.T) {
         e := endp[len(endp)-1]
         t.Run("pod_replica_links_lag_1", func(t *testing.T) {
             defer server.Close()
-            c := NewRestClient(e, "fake-api-token", "latest", false)
+            c := NewRestClient(e, "fake-api-token", "latest", "test-user-agent-string", false)
 	    prll := c.GetPodReplicaLinksLag()
 	    if diff := cmp.Diff(prll.Items, podrll.Items); diff != "" {
                 t.Errorf("Mismatch (-want +got):\n%s", diff)
