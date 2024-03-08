@@ -65,7 +65,7 @@ func TestArrayPerformanceCollector(t *testing.T) {
 	want[fmt.Sprintf("label:{name:\"dimension\" value:\"bytes_per_read\"} gauge:{value:%g}", p.BytesPerRead)] = true
 	want[fmt.Sprintf("label:{name:\"dimension\" value:\"bytes_per_write\"} gauge:{value:%g}", p.BytesPerWrite)] = true
 	want[fmt.Sprintf("gauge:{value:%g}", p.QueueDepth)] = true
-	c := client.NewRestClient(e, "fake-api-token", "latest", false)
+	c := client.NewRestClient(e, "fake-api-token", "latest", "test-user-agent-string", false)
 	pc := NewArraysPerformanceCollector(c)
 	metricsCheck(t, pc, want)
 }
