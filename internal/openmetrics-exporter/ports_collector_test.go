@@ -38,7 +38,7 @@ func TestPortsCollector(t *testing.T) {
 	for _, h := range hwl.Items {
 		want[fmt.Sprintf("label:{name:\"iqn\"  value:\"%s\"}  label:{name:\"name\"  value:\"%s\"}  label:{name:\"nqn\"  value:\"%s\"}  label:{name:\"portal\"  value:\"%s\"}  label:{name:\"wwn\"  value:\"%s\"}  gauge:{value:1}", h.Iqn, h.Name, h.Nqn, h.Portal, h.Wwn)] = true
 	}
-	c := client.NewRestClient(e, "fake-api-token", "latest", false)
+	c := client.NewRestClient(e, "fake-api-token", "latest", "test-user-agent-string", false)
 	pc := NewPortsCollector(c)
 	metricsCheck(t, pc, want)
 	server.Close()

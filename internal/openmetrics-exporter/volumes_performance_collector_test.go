@@ -75,7 +75,7 @@ func TestVolumesPerformanceCollector(t *testing.T) {
 		want[fmt.Sprintf("label:{name:\"dimension\" value:\"bytes_per_read\"} label:{name:\"naa_id\" value:\"%s\"} label:{name:\"name\" value:\"%s\"} gauge:{value:%g}", naaid[p.Name], p.Name, p.BytesPerRead)] = true
 		want[fmt.Sprintf("label:{name:\"dimension\" value:\"bytes_per_write\"} label:{name:\"naa_id\" value:\"%s\"} label:{name:\"name\" value:\"%s\"} gauge:{value:%g}", naaid[p.Name], p.Name, p.BytesPerWrite)] = true
 	}
-	c := client.NewRestClient(e, "fake-api-token", "latest", false)
+	c := client.NewRestClient(e, "fake-api-token", "latest", "test-user-agent-string", false)
 	vl := c.GetVolumes()
 	pc := NewVolumesPerformanceCollector(c, vl)
 	metricsCheck(t, pc, want)

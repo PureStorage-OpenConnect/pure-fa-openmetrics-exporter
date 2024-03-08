@@ -36,7 +36,7 @@ func TestHosts(t *testing.T) {
         e := endp[len(endp)-1]
         t.Run("hosts_1", func(t *testing.T) {
             defer server.Close()
-            c := NewRestClient(e, "fake-api-token", "latest", false)
+            c := NewRestClient(e, "fake-api-token", "latest", "test-user-agent-string", false)
 	    hl := c.GetHosts()
 	    if diff := cmp.Diff(hl.Items, hosts.Items); diff != "" {
                 t.Errorf("Mismatch (-want +got):\n%s", diff)

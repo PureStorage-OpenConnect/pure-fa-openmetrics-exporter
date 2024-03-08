@@ -36,7 +36,7 @@ func TestPodReplicaLinksPerformance(t *testing.T) {
         e := endp[len(endp)-1]
         t.Run("pod_replica_links_performance_1", func(t *testing.T) {
             defer server.Close()
-            c := NewRestClient(e, "fake-api-token", "latest", false)
+            c := NewRestClient(e, "fake-api-token", "latest", "test-user-agent-string", false)
 	    prlpl := c.GetPodReplicaLinksPerformance()
 	    if diff := cmp.Diff(prlpl.Items, podrlp.Items); diff != "" {
                 t.Errorf("Mismatch (-want +got):\n%s", diff)

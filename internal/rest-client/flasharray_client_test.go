@@ -30,7 +30,7 @@ func TestNewRestClient(t *testing.T) {
         e := endp[len(endp)-1]
         t.Run("login", func(t *testing.T) {
             defer server.Close()
-            c := NewRestClient(e, "fake-api-token", "latest", false)
+            c := NewRestClient(e, "fake-api-token", "latest", "test-user-agent-string", false)
             if c.EndPoint != e || c.ApiToken != "fake-api-token" || c.XAuthToken != "faketoken" {
                 t.Errorf("expected (%s, fake-api-token, faketoken), got (%s %s %s)", e, c.EndPoint, c.ApiToken, c.XAuthToken)
             }

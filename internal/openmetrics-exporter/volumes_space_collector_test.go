@@ -54,7 +54,7 @@ func TestVolumesSpaceCollector(t *testing.T) {
 		want[fmt.Sprintf("label:{name:\"naa_id\" value:\"%s\"} label:{name:\"name\" value:\"%s\"} label:{name:\"pod\" value:\"%s\"} label:{name:\"space\" value:\"total_effective\"} label:{name:\"volume_group\" value:\"%s\"} gauge:{value:%g}", purenaa + v.Serial, v.Name, v.Pod.Name, v.VolumeGroup.Name, v.Space.TotalEffective)] = true
 	}
 	defer server.Close()
-	c := client.NewRestClient(e, "fake-api-token", "latest", false)
+	c := client.NewRestClient(e, "fake-api-token", "latest", "test-user-agent-string", false)
 	vl := c.GetVolumes()
 	pc := NewVolumesSpaceCollector(vl)
 	metricsCheck(t, pc, want)
