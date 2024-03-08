@@ -4,10 +4,10 @@ global:
 
 route:
   # Group Alerts by
-  group_by: ['alertname']
+  group_by: ['job']
   group_wait: 30s
   group_interval: 5m
-  repeat_interval: 1h
+  repeat_interval: 4h
   receiver: 'slack-notifications'
 
 receivers:
@@ -21,7 +21,7 @@ receivers:
       title: '[{{ .Status | toUpper }}{{ if eq .Status "firing" }}:{{ .Alerts.Firing | len }}{{ end }}] {{ .CommonAnnotations.title }}'
       text: >-
         {{ range .Alerts }}
-           *Alert:* {{ .Annotations.summary }} - `{{ .Labels.severity }}`
+          *Alert:* `{{ .Labels.severity }}` {{ .Annotations.summary }}
           *Description:* {{ .Annotations.description }}
           *Graph:* <{{ .GeneratorURL }}|:chart_with_upwards_trend:>
           *Details:*
