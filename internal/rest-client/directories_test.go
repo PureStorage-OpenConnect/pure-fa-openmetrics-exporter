@@ -36,7 +36,7 @@ func TestDirectories(t *testing.T) {
         e := endp[len(endp)-1]
         t.Run("directories_1", func(t *testing.T) {
             defer server.Close()
-            c := NewRestClient(e, "fake-api-token", "latest", false)
+            c := NewRestClient(e, "fake-api-token", "latest", "test-user-agent-string", false)
 	    dl := c.GetDirectories()
 	    if diff := cmp.Diff(dl.Items, dirs.Items); diff != "" {
                 t.Errorf("Mismatch (-want +got):\n%s", diff)
