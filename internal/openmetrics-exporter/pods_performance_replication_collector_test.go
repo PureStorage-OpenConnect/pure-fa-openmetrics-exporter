@@ -50,7 +50,7 @@ func TestPodsPerformanceReplicationCollector(t *testing.T) {
 		want[fmt.Sprintf("label:{name:\"dimension\" value:\"sync\"} label:{name:\"direction\" value:\"total\"} label:{name:\"name\" value:\"%s\"} gauge:{value:%g}", p.Pod.Name, p.SyncBytesPerSec.TotalBytesPerSec)] = true
 		want[fmt.Sprintf("label:{name:\"dimension\" value:\"periodic\"} label:{name:\"direction\" value:\"total\"} label:{name:\"name\" value:\"%s\"} gauge:{value:%g}", p.Pod.Name, p.PeriodicBytesPerSec.TotalBytesPerSec)] = true
 	}
-	c := client.NewRestClient(e, "fake-api-token", "latest", false)
+	c := client.NewRestClient(e, "fake-api-token", "latest", "test-user-agent-string", false)
 	pc := NewPodsPerformanceReplicationCollector(c)
 	metricsCheck(t, pc, want)
 }
