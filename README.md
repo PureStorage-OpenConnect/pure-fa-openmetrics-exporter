@@ -44,7 +44,6 @@ Binary downloads of the exporter can be found on the [Releases](https://github.c
 
 The following commands describe how to run a typical build :
 ```shell
-
 # clone the repository
 git clone git@github.com:PureStorage-OpenConnect/pure-fa-openmetrics-exporter.git
 
@@ -54,7 +53,13 @@ cd pure-fa-openmetrics-exporter
 make build .
 ```
 
-The newly built exporter executable can be found in the <kbd>./out/bin</kbd> directory.
+The newly built exporter binary can be found in the <kbd>./out/bin</kbd> directory.
+
+Optionally, to build the binary with the vendor cache, you may use
+
+````
+make build-with-vendor
+````
 
 ### Docker Image
 
