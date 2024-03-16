@@ -24,18 +24,25 @@ func (c *ArraysCollector) Collect(ch chan<- prometheus.Metric) {
 
 	subscriptions := c.Client.GetSubscriptions()
 	if len(subscriptions.Items) == 0 {
-		return
+
+		ch <- prometheus.MustNewConstMetric(
+			c.ArraysDesc,
+			prometheus.GaugeValue,
+			1.0,
+			array.Name, array.Os, "", array.Id, array.Version,
+		)
+
+	} else {
+		subscription := subscriptions.Items[0]
+
+		ch <- prometheus.MustNewConstMetric(
+			c.ArraysDesc,
+			prometheus.GaugeValue,
+			1.0,
+			array.Name, array.Os, subscription.Service, array.Id, array.Version,
+		)
 	}
-	subscription := subscriptions.Items[0]
-
-	ch <- prometheus.MustNewConstMetric(
-		c.ArraysDesc,
-		prometheus.GaugeValue,
-		1.0,
-		array.Name, array.Os, subscription.Service, array.Id, array.Version,
-	)
 }
-
 func NewArraysCollector(fa *client.FAClient) *ArraysCollector {
 	return &ArraysCollector{
 		ArraysDesc: prometheus.NewDesc(
