@@ -1,0 +1,11 @@
+{
+    "continuation_token": null,
+    "items": [
+        {
+            "service": "FlashArray",
+            "id": "aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee"
+        }
+    ],
+    "more_items_remaining": false,
+    "total_item_count": null
+}

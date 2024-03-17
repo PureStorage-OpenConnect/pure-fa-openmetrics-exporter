@@ -1,8 +1,9 @@
 package collectors
 
 import (
+	client "purestorage/fa-openmetrics-exporter/internal/rest-client"
+
 	"github.com/prometheus/client_golang/prometheus"
-	"purestorage/fa-openmetrics-exporter/internal/rest-client"
 )
 
 type ArraysCollector struct {
@@ -21,20 +22,33 @@ func (c *ArraysCollector) Collect(ch chan<- prometheus.Metric) {
 	}
 	array := arrays.Items[0]
 
-	ch <- prometheus.MustNewConstMetric(
-		c.ArraysDesc,
-		prometheus.GaugeValue,
-		1.0,
-		array.Name, array.Id, array.Os, array.Version,
-	)
-}
+	subscriptions := c.Client.GetSubscriptions()
+	if len(subscriptions.Items) == 0 {
 
+		ch <- prometheus.MustNewConstMetric(
+			c.ArraysDesc,
+			prometheus.GaugeValue,
+			1.0,
+			array.Name, array.Os, "", array.Id, array.Version,
+		)
+
+	} else {
+		subscription := subscriptions.Items[0]
+
+		ch <- prometheus.MustNewConstMetric(
+			c.ArraysDesc,
+			prometheus.GaugeValue,
+			1.0,
+			array.Name, array.Os, subscription.Service, array.Id, array.Version,
+		)
+	}
+}
 func NewArraysCollector(fa *client.FAClient) *ArraysCollector {
 	return &ArraysCollector{
 		ArraysDesc: prometheus.NewDesc(
 			"purefa_info",
 			"FlashArray system information",
-			[]string{"array_name", "system_id", "os", "version"},
+			[]string{"array_name", "os", "subscription_type", "system_id", "version"},
 			prometheus.Labels{},
 		),
 		Client: fa,
