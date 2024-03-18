@@ -21,14 +21,15 @@ func (fa *FAClient) GetSubscriptions() *SubscriptionsList {
 	if err != nil {
 		fa.Error = err
 	}
+
 	if res.StatusCode() == 401 {
 		fa.RefreshSession()
-	}
-	res, err = fa.RestClient.R().
-		SetResult(&result).
-		Get(uri)
-	if err != nil {
-		fa.Error = err
+		_, err = fa.RestClient.R().
+			SetResult(&result).
+			Get(uri)
+		if err != nil {
+			fa.Error = err
+		}
 	}
 
 	return result

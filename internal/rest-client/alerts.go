@@ -40,12 +40,13 @@ func (fa *FAClient) GetAlerts(filter string) *AlertsList {
 	if err != nil {
 		fa.Error = err
 	}
+
 	if res.StatusCode() == 401 {
 		fa.RefreshSession()
-	}
-	res, err = req.Get(uri)
-	if err != nil {
-		fa.Error = err
+		_, err = req.Get(uri)
+		if err != nil {
+			fa.Error = err
+		}
 	}
 
 	return result
