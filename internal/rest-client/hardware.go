@@ -36,7 +36,6 @@ func (fa *FAClient) GetHardware() *HardwareList {
 		fa.RestClient.R().
 			SetResult(&result).
 			Get(uri)
-
 	}
 
 	return result

@@ -30,7 +30,6 @@ func (fa *FAClient) GetPorts() *PortsList {
 		fa.RestClient.R().
 			SetResult(&result).
 			Get(uri)
-
 	}
 
 	return result

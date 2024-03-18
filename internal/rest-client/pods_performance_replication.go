@@ -38,7 +38,6 @@ func (fa *FAClient) GetPodsPerformanceReplication() *PodsPerformanceReplicationL
 		fa.RestClient.R().
 			SetResult(&result).
 			Get(uri)
-
 	}
 
 	return result

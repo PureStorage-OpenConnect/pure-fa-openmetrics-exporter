@@ -47,7 +47,6 @@ func (fa *FAClient) GetPods() *PodsList {
 		fa.RestClient.R().
 			SetResult(&result).
 			Get(uri)
-
 	}
 
 	return result

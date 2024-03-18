@@ -68,7 +68,6 @@ func (fa *FAClient) GetArrays() *ArraysList {
 		fa.RestClient.R().
 			SetResult(&result).
 			Get(uri)
-
 	}
 
 	return result

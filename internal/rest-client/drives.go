@@ -30,7 +30,6 @@ func (fa *FAClient) GetDrives() *DriveList {
 		fa.RestClient.R().
 			SetResult(&result).
 			Get(uri)
-
 	}
 
 	return result

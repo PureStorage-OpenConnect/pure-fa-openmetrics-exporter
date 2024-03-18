@@ -34,7 +34,6 @@ func (fa *FAClient) GetPodReplicaLinksPerformance() *PodReplicaLinksPerformanceL
 		fa.RestClient.R().
 			SetResult(&result).
 			Get(uri)
-
 	}
 
 	return result

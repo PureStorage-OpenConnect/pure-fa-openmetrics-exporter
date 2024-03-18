@@ -39,7 +39,6 @@ func (fa *FAClient) GetDirectoriesPerformance() *DirectoriesPerformanceList {
 		fa.RestClient.R().
 			SetResult(&result).
 			Get(uri)
-
 	}
 
 	return result

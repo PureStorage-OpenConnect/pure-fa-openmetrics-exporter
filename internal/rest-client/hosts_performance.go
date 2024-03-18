@@ -53,7 +53,6 @@ func (fa *FAClient) GetHostsPerformance() *HostsPerformanceList {
 		fa.RestClient.R().
 			SetResult(&result).
 			Get(uri)
-
 	}
 
 	return result

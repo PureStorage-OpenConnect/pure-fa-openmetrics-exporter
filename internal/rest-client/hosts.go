@@ -48,7 +48,6 @@ func (fa *FAClient) GetHosts() *HostsList {
 		fa.RestClient.R().
 			SetResult(&result).
 			Get(uri)
-
 	}
 	return result
 }

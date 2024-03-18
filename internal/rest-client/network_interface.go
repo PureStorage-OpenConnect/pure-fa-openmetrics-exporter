@@ -55,7 +55,6 @@ func (fa *FAClient) GetNetworkInterfaces() *NetworkInterfacesList {
 		fa.RestClient.R().
 			SetResult(&result).
 			Get(uri)
-
 	}
 
 	return result

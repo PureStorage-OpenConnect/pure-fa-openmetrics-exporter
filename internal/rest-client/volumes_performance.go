@@ -54,7 +54,6 @@ func (fa *FAClient) GetVolumesPerformance() *VolumesPerformanceList {
 		fa.RestClient.R().
 			SetResult(&result).
 			Get(uri)
-
 	}
 
 	return result

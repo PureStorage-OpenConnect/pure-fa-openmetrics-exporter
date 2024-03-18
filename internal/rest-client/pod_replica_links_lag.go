@@ -38,7 +38,6 @@ func (fa *FAClient) GetPodReplicaLinksLag() *PodReplicaLinksLagList {
 		fa.RestClient.R().
 			SetResult(&result).
 			Get(uri)
-
 	}
 
 	return result

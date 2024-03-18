@@ -57,7 +57,6 @@ func (fa *FAClient) GetArraysPerformance() *ArraysPerformanceList {
 		fa.RestClient.R().
 			SetResult(&result).
 			Get(uri)
-
 	}
 
 	return result

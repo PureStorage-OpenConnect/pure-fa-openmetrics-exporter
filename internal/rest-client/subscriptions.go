@@ -26,7 +26,6 @@ func (fa *FAClient) GetSubscriptions() *SubscriptionsList {
 		fa.RestClient.R().
 			SetResult(&result).
 			Get(uri)
-
 	}
 
 	return result

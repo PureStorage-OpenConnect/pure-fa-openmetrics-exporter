@@ -47,7 +47,6 @@ func (fa *FAClient) GetConnections() *ConnectionsList {
 		fa.RestClient.R().
 			SetResult(&result).
 			Get(uri)
-
 	}
 
 	return result

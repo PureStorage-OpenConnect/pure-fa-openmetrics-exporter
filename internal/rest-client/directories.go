@@ -58,7 +58,6 @@ func (fa *FAClient) GetDirectories() *DirectoriesList {
 		fa.RestClient.R().
 			SetResult(&result).
 			Get(uri)
-
 	}
 
 	return result

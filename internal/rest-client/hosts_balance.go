@@ -46,7 +46,6 @@ func (fa *FAClient) GetHostsBalance() *HostsBalanceList {
 		fa.RestClient.R().
 			SetResult(&result).
 			Get(uri)
-
 	}
 
 	return result

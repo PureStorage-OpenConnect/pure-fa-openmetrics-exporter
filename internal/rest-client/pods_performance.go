@@ -56,7 +56,6 @@ func (fa *FAClient) GetPodsPerformance() *PodsPerformanceList {
 		fa.RestClient.R().
 			SetResult(&result).
 			Get(uri)
-
 	}
 
 	return result
