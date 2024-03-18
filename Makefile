@@ -4,7 +4,7 @@ GOTEST=$(GOCMD) test
 GOVET=$(GOCMD) vet
 BINARY_NAME=pure-fa-om-exporter
 MODULE_NAME=purestorage/fa-openmetrics-exporter
-VERSION?=1.0.16
+VERSION?=1.0.17
 SERVICE_PORT?=9490
 DOCKER_REGISTRY?= quay.io/purestorage/
 EXPORT_RESULT?=false # for CI please set EXPORT_RESULT to true
@@ -26,11 +26,11 @@ init:
 
 build: ## Build project and put the output binary in out/bin/
 	mkdir -p out/bin
-	CGO_ENABLED=0 GO111MODULE=on $(GOCMD) build -a -mod=readonly -tags 'netgo osusergo static_build' -ldflags='-X main.version=v$(VERSION)' -o out/bin/$(BINARY_NAME) cmd/fa-om-exporter/main.go
+	CGO_ENABLED=0 GO111MODULE=on $(GOCMD) build -a -mod=readonly -tags 'netgo osusergo static_build' -ldflags="-X 'main.version=v$(VERSION)' -X 'purestorage/fa-openmetrics-exporter/internal/rest-client.version=$(VERSION)'" -o out/bin/$(BINARY_NAME) cmd/fa-om-exporter/main.go
 
 build-with-vendor: ## Build project using the vendor directory and put the output binary in out/bin/
 	mkdir -p out/bin
-	CGO_ENABLED=0 GO111MODULE=on $(GOCMD) build -a -mod=vendor -tags 'netgo osusergo static_build' -ldflags='-X main.version=v$(VERSION)' -o out/bin/$(BINARY_NAME) cmd/fa-om-exporter/main.go
+	CGO_ENABLED=0 GO111MODULE=on $(GOCMD) build -a -mod=vendor -tags 'netgo osusergo static_build' -ldflags="-X 'main.version=v$(VERSION)' -X 'purestorage/fa-openmetrics-exporter/internal/rest-client.version=$(VERSION)'" -o out/bin/$(BINARY_NAME) cmd/fa-om-exporter/main.go
 
 clean: ## Remove build related file
 	rm -fr ./bin

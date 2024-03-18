@@ -1,14 +1,15 @@
 package client
 
 import (
-	//	"log"
 	"crypto/tls"
 	"errors"
 
 	"github.com/go-resty/resty/v2"
 )
 
-const FARestUserAgent = "Pure_FA_OpenMetrics_exporter/1.0"
+var version string = "development"
+
+var FARestUserAgent string = "Pure_FA_OpenMetrics_exporter/" + version
 
 type Client interface {
 	GetAlerts(filter string) *AlertsList
@@ -92,7 +93,7 @@ func NewRestClient(endpoint string, apitoken string, apiversion string, uagent s
 	}
 	fa.XAuthToken = res.Header().Get("x-auth-token")
 	fa.RestClient.SetHeader("x-auth-token", fa.XAuthToken)
-	fa.RestClient.SetHeader("User-Agent", FARestUserAgent + " (" + uagent + ")")
+	fa.RestClient.SetHeader("User-Agent", FARestUserAgent+" ("+uagent+")")
 	return fa
 }
 
