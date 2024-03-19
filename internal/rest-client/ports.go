@@ -19,22 +19,14 @@ type PortsList struct {
 func (fa *FAClient) GetPorts() *PortsList {
 	uri := "/ports"
 	result := new(PortsList)
-	res, err := fa.RestClient.R().
+	res, _ := fa.RestClient.R().
 		SetResult(&result).
 		Get(uri)
-
-	if err != nil {
-		fa.Error = err
-	}
 	if res.StatusCode() == 401 {
 		fa.RefreshSession()
+		fa.RestClient.R().
+			SetResult(&result).
+			Get(uri)
 	}
-	res, err = fa.RestClient.R().
-		SetResult(&result).
-		Get(uri)
-	if err != nil {
-		fa.Error = err
-	}
-
 	return result
 }
