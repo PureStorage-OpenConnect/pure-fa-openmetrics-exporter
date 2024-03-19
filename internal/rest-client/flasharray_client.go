@@ -1,14 +1,15 @@
 package client
 
 import (
-	//	"log"
 	"crypto/tls"
 	"errors"
 
 	"github.com/go-resty/resty/v2"
 )
 
-const FARestUserAgent = "Pure_FA_OpenMetrics_exporter/1.0"
+var UserAgentVersion string = "development"
+
+var FARestUserAgent string = "Pure_FA_OpenMetrics_exporter/" + UserAgentVersion
 
 type Client interface {
 	GetAlerts(filter string) *AlertsList
