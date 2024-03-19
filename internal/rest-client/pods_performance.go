@@ -45,18 +45,14 @@ type PodsPerformanceList struct {
 func (fa *FAClient) GetPodsPerformance() *PodsPerformanceList {
 	uri := "/pods/performance"
 	result := new(PodsPerformanceList)
-	res, err := fa.RestClient.R().
+	res, _ := fa.RestClient.R().
 		SetResult(&result).
 		Get(uri)
-	if err != nil {
-		fa.Error = err
-	}
 	if res.StatusCode() == 401 {
 		fa.RefreshSession()
 		fa.RestClient.R().
 			SetResult(&result).
 			Get(uri)
 	}
-
 	return result
 }

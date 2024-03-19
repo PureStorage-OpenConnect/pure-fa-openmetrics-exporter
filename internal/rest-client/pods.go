@@ -36,18 +36,14 @@ type PodShort struct {
 func (fa *FAClient) GetPods() *PodsList {
 	uri := "/pods"
 	result := new(PodsList)
-	res, err := fa.RestClient.R().
+	res, _ := fa.RestClient.R().
 		SetResult(&result).
 		Get(uri)
-	if err != nil {
-		fa.Error = err
-	}
 	if res.StatusCode() == 401 {
 		fa.RefreshSession()
 		fa.RestClient.R().
 			SetResult(&result).
 			Get(uri)
 	}
-
 	return result
 }
