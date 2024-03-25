@@ -266,54 +266,56 @@ purefa_info{array_name="arrayname",os="Purity//FA",system_id="xxxxxxxx-xxxx-xxxx
 
 Please refer to the [purefa metrics specification](specification/metrics/purefa-metrics.md) for full details about all metrics.
 
-| Metric Name                                          | Description                                                    |
-| ---------------------------------------------------- | -------------------------------------------------------------- |
-| purefa_info                                          | FlashArray system information                                  |
-| purefa_alerts_open                                   | FlashArray open alert events                                   |
-| purefa_array_performance_average_bytes               | FlashArray array average operations size in bytes              |
-| purefa_array_performance_bandwidth_bytes             | FlashArray array throughput in bytes per second                |
-| purefa_array_performance_latency_usec                | FlashArray array latency in microseconds                       |
-| purefa_array_performance_queue_depth_ops             | FlashArray array queue depth size                              |
-| purefa_array_performance_throughput_iops             | FlashArray array throughput in iops                            |
-| purefa_array_space_bytes                             | FlashArray array space in bytes                                |
-| purefa_array_space_data_reduction_ratio              | FlashArray array space data reduction                          |
-| purefa_array_space_utilization                       | FlashArray array space utilization in percent                  |
-| purefa_directory_performance_average_bytes           | FlashArray directory average operations size in bytes          |
-| purefa_directory_performance_bandwidth_bytes         | FlashArray directory throughput in bytes per second            |
-| purefa_directory_performance_latency_usec            | FlashArray directory latency in microseconds                   |
-| purefa_directory_performance_throughput_iops         | FlashArray directory throughput in iops                        |
-| purefa_directory_space_bytes                         | FlashArray directory space in bytes                            |
-| purefa_directory_space_data_reduction_ratio          | FlashArray directory space data reduction                      |
-| purefa_host_connections_info                         | FlashArray host volumes connections                            |
-| purefa_host_performance_average_bytes                | FlashArray host average operations size in bytes               |
-| purefa_host_performance_bandwidth_bytes              | FlashArray host bandwidth in bytes per second                  |
-| purefa_host_performance_latency_usec                 | FlashArray host latency in microseconds                        |
-| purefa_host_performance_throughput_iops              | FlashArray host throughput in iops                             |
-| purefa_host_space_bytes                              | FlashArray host space in bytes                                 |
-| purefa_host_space_data_reduction_ratio               | FlashArray host space data reduction                           |
-| purefa_host_space_size_bytes                         | FlashArray host volumes size                                   |
-| purefa_hw_component_status                           | FlashArray hardware component status                           |
-| purefa_hw_component_temperature_celsius              | FlashArray hardware component temperature in C                 |
-| purefa_hw_component_voltage_volt                     | FlashArray hardware component voltage                          |
-| purefa_network_interface_performance_bandwidth_bytes | network interfaces bandwidth in bytes per second               |
-| purefa_network_interface_performance_throughput_pkts | FlashArray network interfaces throughput in packets per second |
-| purefa_network_interface_performance_errors          | FlashArray network interfaces errors per second                |
-| purefa_pod_performance_average_bytes                 | FlashArray pod average operations size                         |
-| purefa_pod_performance_bandwidth_bytes               | FlashArray pod throughput in bytes per second                  |
-| purefa_pod_performance_latency_usec                  | FlashArray pod latency in microseconds                         |
-| purefa_pod_performance_throughput_iops               | FlashArray pod throughput in iops                              |
-| purefa_pod_space_bytes                               | FlashArray pod space in bytes                                  |
-| purefa_pod_space_data_reduction_ratio                | FlashArray pod space data reduction                            |
-| purefa_pod_performance_replication_bandwidth_bytes   | FlashArray pod replication bandwidth in bytes per second       |
-| purefa_pod_replica_links_performance_bandwidth_bytes | FlashArray pod replica links throughput in bytes per second    |
-| purefa_pod_replica_links_lag_average_sec             | FlashArray pod replica links average lag in seconds            |
-| purefa_pod_replica_links_lag_max_sec                 | FlashArray pod replica links maximum lag in seconds            |
-| purefa_volume_performance_average_bytes              | FlashArray volume average operations size in bytes             |
-| purefa_volume_performance_bandwidth_bytes            | FlashArray volume throughput in bytes per second               |
-| purefa_volume_performance_latency_usec               | FlashArray volume latency in microseconds                      |
-| purefa_volume_performance_throughput_iops            | FlashArray volume throughput in iops                           |
-| purefa_volume_space_bytes                            | FlashArray volume space in bytes                               |
-| purefa_volume_space_data_reduction_ratio             | FlashArray volume space data reduction                         |
+| Metric Name                                          | Description                                                                                                                 |
+| ---------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------- |
+| purefa_info                                          | FlashArray system information                                                                                               |
+| purefa_alerts_open                                   | FlashArray open alert events                                                                                                |
+| purefa_array_performance_average_bytes               | FlashArray array average operations size in bytes                                                                           |
+| purefa_array_performance_bandwidth_bytes             | FlashArray array throughput in bytes per second                                                                             |
+| purefa_array_performance_latency_usec                | FlashArray array latency in microseconds                                                                                    |
+| purefa_array_performance_queue_depth_ops             | FlashArray array queue depth size                                                                                           |
+| purefa_array_performance_throughput_iops             | FlashArray array throughput in iops                                                                                         |
+| purefa_array_space_bytes                             | FlashArray array space in bytes                                                                                             |
+| purefa_array_space_data_reduction_ratio              | FlashArray array space data reduction                                                                                       |
+| purefa_array_space_utilization                       | FlashArray array space utilization in percent                                                                               |
+| purefa_directory_performance_average_bytes           | FlashArray directory average operations size in bytes                                                                       |
+| purefa_directory_performance_bandwidth_bytes         | FlashArray directory throughput in bytes per second                                                                         |
+| purefa_directory_performance_latency_usec            | FlashArray directory latency in microseconds                                                                                |
+| purefa_directory_performance_throughput_iops         | FlashArray directory throughput in iops                                                                                     |
+| purefa_directory_space_bytes                         | FlashArray directory space in bytes                                                                                         |
+| purefa_directory_space_data_reduction_ratio          | FlashArray directory space data reduction                                                                                   |
+| purefa_host_connections_info                         | FlashArray host volumes connections                                                                                         |
+| purefa_host_performance_average_bytes                | FlashArray host average operations size in bytes                                                                            |
+| purefa_host_performance_bandwidth_bytes              | FlashArray host bandwidth in bytes per second                                                                               |
+| purefa_host_performance_latency_usec                 | FlashArray host latency in microseconds                                                                                     |
+| purefa_host_performance_throughput_iops              | FlashArray host throughput in iops                                                                                          |
+| purefa_host_space_bytes                              | FlashArray host space in bytes                                                                                              |
+| purefa_host_space_data_reduction_ratio               | FlashArray host space data reduction                                                                                        |
+| purefa_host_space_size_bytes                         | FlashArray host volumes size                                                                                                |
+| purefa_hw_component_status                           | FlashArray hardware component status                                                                                        |
+| purefa_hw_component_temperature_celsius              | FlashArray hardware component temperature in C                                                                              |
+| purefa_hw_component_voltage_volt                     | FlashArray hardware component voltage                                                                                       |
+| purefa_network_interface_performance_bandwidth_bytes | network interfaces bandwidth in bytes per second                                                                            |
+| purefa_network_interface_performance_throughput_pkts | FlashArray network interfaces throughput in packets per second                                                              |
+| purefa_network_interface_performance_errors          | FlashArray network interfaces errors per second                                                                             |
+| purefa_pod_performance_average_bytes                 | FlashArray pod average operations size                                                                                      |
+| purefa_pod_performance_bandwidth_bytes               | FlashArray pod throughput in bytes per second                                                                               |
+| purefa_pod_performance_latency_usec                  | FlashArray pod latency in microseconds                                                                                      |
+| purefa_pod_performance_throughput_iops               | FlashArray pod throughput in iops                                                                                           |
+| purefa_pod_space_bytes                               | FlashArray pod space in bytes                                                                                               |
+| purefa_pod_space_data_reduction_ratio                | FlashArray pod space data reduction                                                                                         |
+| purefa_pod_performance_replication_bandwidth_bytes   | FlashArray pod replication bandwidth in bytes per second                                                                    |
+| purefa_pod_replica_links_performance_bandwidth_bytes | FlashArray pod replica links throughput in bytes per second                                                                 |
+| purefa_pod_replica_links_lag_average_sec             | FlashArray pod replica links average lag in milliseconds (deprecated, please use purefa_pod_replica_links_lag_average_msec) |
+| purefa_pod_replica_links_lag_max_sec                 | FlashArray pod replica links maximum lag in milliseconds (deprecated, please use purefa_pod_replica_links_lag_average_msec) |
+| purefa_pod_replica_links_lag_average_msec            | FlashArray pod replica links average lag in milliseconds                                                                    |
+| purefa_pod_replica_links_lag_max_msec                | FlashArray pod replica links maximum lag in in milliseconds                                                                 |
+| purefa_volume_performance_average_bytes              | FlashArray volume average operations size in bytes                                                                          |
+| purefa_volume_performance_bandwidth_bytes            | FlashArray volume throughput in bytes per second                                                                            |
+| purefa_volume_performance_latency_usec               | FlashArray volume latency in microseconds                                                                                   |
+| purefa_volume_performance_throughput_iops            | FlashArray volume throughput in iops                                                                                        |
+| purefa_volume_space_bytes                            | FlashArray volume space in bytes                                                                                            |
+| purefa_volume_space_data_reduction_ratio             | FlashArray volume space data reduction                                                                                      |
 
 
 ## Integrating with Observability Platforms
