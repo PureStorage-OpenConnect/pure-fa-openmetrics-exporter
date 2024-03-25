@@ -7,8 +7,9 @@ import (
 )
 
 type ControllersCollector struct {
-	ControllersDesc *prometheus.Desc
-	Client          *client.FAClient
+	ControllersModeSinceDesc *prometheus.Desc
+	ControllersInfoDesc      *prometheus.Desc
+	Client                   *client.FAClient
 }
 
 func (c *ControllersCollector) Describe(ch chan<- *prometheus.Desc) {
@@ -20,22 +21,37 @@ func (c *ControllersCollector) Collect(ch chan<- prometheus.Metric) {
 	if len(cl.Items) == 0 {
 		return
 	}
-	for _, d := range cl.Items {
+	for _, ctl := range cl.Items {
+		if ctl.ModeSince != 0 {
+			ch <- prometheus.MustNewConstMetric(
+				c.ControllersModeSinceDesc,
+				prometheus.GaugeValue,
+				// OpenMetrics timestamps MUST be in seconds, divide as an float64 to keep precision
+				(float64(ctl.ModeSince) / 1000),
+				ctl.Mode, ctl.Model, ctl.Name, ctl.Status, ctl.Type, ctl.Version,
+			)
+		}
 		ch <- prometheus.MustNewConstMetric(
-			c.ControllersDesc,
+			c.ControllersInfoDesc,
 			prometheus.GaugeValue,
-			// OpenMetrics timestamps MUST be in seconds, divide as an float64 to keep precision
-			(float64(d.ModeSince) / 1000),
-			d.Mode, d.Model, d.Name, d.Status, d.Type, d.Version,
+			1,
+			ctl.Mode, ctl.Model, ctl.Name, ctl.Status, ctl.Type, ctl.Version,
 		)
+
 	}
 }
 
 func NewControllersCollector(fa *client.FAClient) *ControllersCollector {
 	return &ControllersCollector{
-		ControllersDesc: prometheus.NewDesc(
+		ControllersModeSinceDesc: prometheus.NewDesc(
 			"purefa_hw_controller_mode_since_timestamp_seconds",
-			"FlashArray controller mode since",
+			"FlashArray controller mode since status change timestamp in seconds since UNIX epoch",
+			[]string{"mode", "model", "name", "status", "type", "version"},
+			prometheus.Labels{},
+		),
+		ControllersInfoDesc: prometheus.NewDesc(
+			"purefa_hw_controller_info",
+			"FlashArray controller info",
 			[]string{"mode", "model", "name", "status", "type", "version"},
 			prometheus.Labels{},
 		),
