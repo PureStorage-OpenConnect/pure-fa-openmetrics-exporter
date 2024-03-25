@@ -1,14 +1,15 @@
 package client
 
 import (
-	//	"log"
 	"crypto/tls"
 	"errors"
 
 	"github.com/go-resty/resty/v2"
 )
 
-const FARestUserAgent = "Pure_FA_OpenMetrics_exporter/1.0"
+var UserAgentVersion string = "development"
+
+var FARestUserAgent string = "Pure_FA_OpenMetrics_exporter/" + UserAgentVersion
 
 type Client interface {
 	GetAlerts(filter string) *AlertsList
@@ -90,9 +91,13 @@ func NewRestClient(endpoint string, apitoken string, apiversion string, uagent s
 		fa.Error = err
 		return fa
 	}
+	if res.StatusCode() != 200 {
+		fa.Error = errors.New("failed to login to FlashArray, check API Token")
+		return fa
+	}
 	fa.XAuthToken = res.Header().Get("x-auth-token")
 	fa.RestClient.SetHeader("x-auth-token", fa.XAuthToken)
-	fa.RestClient.SetHeader("User-Agent", FARestUserAgent + " (" + uagent + ")")
+	fa.RestClient.SetHeader("User-Agent", FARestUserAgent+" ("+uagent+")")
 	return fa
 }
 
