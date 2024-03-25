@@ -5,15 +5,15 @@ import (
 	client "purestorage/fa-openmetrics-exporter/internal/rest-client"
 
 	"github.com/prometheus/client_golang/prometheus"
-	"github.com/prometheus/client_golang/prometheus/collectors"
+	//"github.com/prometheus/client_golang/prometheus/collectors"
 )
 
 func Collector(ctx context.Context, metrics string, registry *prometheus.Registry, faclient *client.FAClient) bool {
 
 	arrayscoll := NewArraysCollector(faclient)
 	registry.MustRegister(
-		collectors.NewProcessCollector(collectors.ProcessCollectorOpts{}),
-		collectors.NewGoCollector(),
+		//collectors.NewProcessCollector(collectors.ProcessCollectorOpts{}),
+		//collectors.NewGoCollector(),
 		arrayscoll,
 	)
 	if metrics == "all" || metrics == "array" {
@@ -21,11 +21,13 @@ func Collector(ctx context.Context, metrics string, registry *prometheus.Registr
 		arrayperfcoll := NewArraysPerformanceCollector(faclient)
 		arrayspacecoll := NewArraySpaceCollector(faclient)
 		hwcoll := NewHardwareCollector(faclient)
+		controllercol := NewControllersCollector(faclient)
 		drcoll := NewDriveCollector(faclient)
 		nicsperfcoll := NewNetworkInterfacesPerformanceCollector(faclient)
 		portscoll := NewPortsCollector(faclient)
 		interfacecoll := NewNetworkInterfacesCollector(faclient)
 		registry.MustRegister(
+			controllercol,
 			alertscoll,
 			arrayperfcoll,
 			arrayspacecoll,
