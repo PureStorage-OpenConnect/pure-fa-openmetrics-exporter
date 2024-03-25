@@ -1,5 +1,5 @@
 #SHELL := /bin/bash
-GOCMD=go
+GOCMD?=go
 GOTEST=$(GOCMD) test
 GOVET=$(GOCMD) vet
 BINARY_NAME=pure-fa-om-exporter
