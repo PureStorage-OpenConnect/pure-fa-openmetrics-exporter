@@ -45,7 +45,7 @@ func NewControllersCollector(fa *client.FAClient) *ControllersCollector {
 	return &ControllersCollector{
 		ControllersModeSinceDesc: prometheus.NewDesc(
 			"purefa_hw_controller_mode_since_timestamp_seconds",
-			"FlashArray controller mode since status change timestamp in seconds since UNIX epoch",
+			"FlashArray controller mode since change timestamp in seconds since UNIX epoch",
 			[]string{"mode", "model", "name", "status", "type", "version"},
 			prometheus.Labels{},
 		),
