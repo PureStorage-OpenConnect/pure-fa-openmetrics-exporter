@@ -150,7 +150,7 @@ func metricsHandler(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-  uagent := r.Header.Get("User-Agent")
+        uagent := r.Header.Get("User-Agent")
 	registry := prometheus.NewRegistry()
 	faclient := client.NewRestClient(address, apitoken, apiver, uagent, debug)
 	if faclient.Error != nil {
