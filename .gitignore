@@ -23,4 +23,3 @@ out/
 # Ignore macos DS_Store ghost files
 .DS_Store
 bin/
-examples/config/docker/prometheus/prometheus.yml
