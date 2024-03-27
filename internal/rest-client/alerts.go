@@ -36,16 +36,10 @@ func (fa *FAClient) GetAlerts(filter string) *AlertsList {
 	if filter != "" {
 		req = req.SetQueryParam("filter", filter)
 	}
-	res, err := req.Get(uri)
-	if err != nil {
-		fa.Error = err
-	}
+	res, _ := req.Get(uri)
 	if res.StatusCode() == 401 {
 		fa.RefreshSession()
-	}
-	res, err = req.Get(uri)
-	if err != nil {
-		fa.Error = err
+		req.Get(uri)
 	}
 
 	return result

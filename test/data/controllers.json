@@ -1,0 +1,25 @@
+{
+    "continuation_token": null,
+    "items": [
+        {
+            "name": "CT0",
+            "type": "array_controller",
+            "status": "ready",
+            "mode": "primary",
+            "model": "FA-X70R3",
+            "version": "6.6.3",
+            "mode_since": 1706828892476
+        },
+        {
+            "name": "CT1",
+            "type": "array_controller",
+            "status": "ready",
+            "mode": "secondary",
+            "model": "FA-X70R3",
+            "version": "6.6.3",
+            "mode_since": 1706829816708
+        }
+    ],
+    "more_items_remaining": false,
+    "total_item_count": null
+}

@@ -62,7 +62,7 @@ func TestNetworkInterfacesPerformanceCollector(t *testing.T) {
 			want[fmt.Sprintf("label:{name:\"dimension\" value:\"%s\"} label:{name:\"name\" value:\"%s\"} label:{name:\"type\" value:\"%s\"} gauge:{value:%g}", "transmitted_invalid_words_per_sec", n.Name, n.InterfaceType, n.Fc.TransmittedInvalidWordsPerSec)] = true
 		}
 	}
-	c := client.NewRestClient(e, "fake-api-token", "latest", false)
+	c := client.NewRestClient(e, "fake-api-token", "latest", "test-user-agent-string", false)
 	pc := NewNetworkInterfacesPerformanceCollector(c)
 	metricsCheck(t, pc, want)
 }

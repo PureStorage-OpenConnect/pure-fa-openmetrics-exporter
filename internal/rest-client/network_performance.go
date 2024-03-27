@@ -44,21 +44,14 @@ type NetworkInterfacesPerformanceList struct {
 func (fa *FAClient) GetNetworkInterfacesPerformance() *NetworkInterfacesPerformanceList {
 	uri := "/network-interfaces/performance"
 	result := new(NetworkInterfacesPerformanceList)
-	res, err := fa.RestClient.R().
+	res, _ := fa.RestClient.R().
 		SetResult(&result).
 		Get(uri)
-	if err != nil {
-		fa.Error = err
-	}
 	if res.StatusCode() == 401 {
 		fa.RefreshSession()
+		fa.RestClient.R().
+			SetResult(&result).
+			Get(uri)
 	}
-	res, err = fa.RestClient.R().
-		SetResult(&result).
-		Get(uri)
-	if err != nil {
-		fa.Error = err
-	}
-
 	return result
 }

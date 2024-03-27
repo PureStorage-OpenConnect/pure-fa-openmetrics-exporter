@@ -35,7 +35,7 @@ func TestNetworkInterfacesPerformance(t *testing.T) {
 	e := endp[len(endp)-1]
 	t.Run("network_interfaces_performance_1", func(t *testing.T) {
 		defer server.Close()
-		c := NewRestClient(e, "fake-api-token", "latest", false)
+		c := NewRestClient(e, "fake-api-token", "latest", "test-user-agent-string", false)
 		nl := c.GetNetworkInterfacesPerformance()
 		if diff := cmp.Diff(nl.Items, nw.Items); diff != "" {
 			t.Errorf("Mismatch (-want +got):\n%s", diff)

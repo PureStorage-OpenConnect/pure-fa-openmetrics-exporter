@@ -63,7 +63,7 @@ func TestPodsPerformanceCollector(t *testing.T) {
 		want[fmt.Sprintf("label:{name:\"dimension\" value:\"bytes_per_read\"} label:{name:\"name\" value:\"%s\"} gauge:{value:%g}", p.Name, p.BytesPerRead)] = true
 		want[fmt.Sprintf("label:{name:\"dimension\" value:\"bytes_per_write\"} label:{name:\"name\" value:\"%s\"} gauge:{value:%g}", p.Name, p.BytesPerWrite)] = true
 	}
-	c := client.NewRestClient(e, "fake-api-token", "latest", false)
+	c := client.NewRestClient(e, "fake-api-token", "latest", "test-user-agent-string", false)
 	pc := NewPodsPerformanceCollector(c)
 	metricsCheck(t, pc, want)
 }

@@ -18,20 +18,19 @@ type Array struct {
 }
 
 type ArrayShort struct {
-        Id                string     `json:"id"`
-        Name              string     `json:"name"`
-        FrozenAt          int        `json:"frozen_at"`
-        MediatorStatus    string     `json:"mediator_status"`
-        PreElected        bool       `json:"pre_elected"`
-        Progress          float64    `json:"progress"`
-        Status            string     `json:"status"`
+	Id             string  `json:"id"`
+	Name           string  `json:"name"`
+	FrozenAt       int     `json:"frozen_at"`
+	MediatorStatus string  `json:"mediator_status"`
+	PreElected     bool    `json:"pre_elected"`
+	Progress       float64 `json:"progress"`
+	Status         string  `json:"status"`
 }
 
 type ArrayTiny struct {
-        Id      string     `json:"id"`
-        Name    string     `json:"name"`
+	Id   string `json:"id"`
+	Name string `json:"name"`
 }
-
 
 type Encryption struct {
 	DataAtRest    DataAtRest `json:"data_at_rest"`
@@ -58,21 +57,14 @@ type ArraysList struct {
 func (fa *FAClient) GetArrays() *ArraysList {
 	uri := "/arrays"
 	result := new(ArraysList)
-	res, err := fa.RestClient.R().
+	res, _ := fa.RestClient.R().
 		SetResult(&result).
 		Get(uri)
-	if err != nil {
-		fa.Error = err
-	}
 	if res.StatusCode() == 401 {
 		fa.RefreshSession()
+		fa.RestClient.R().
+			SetResult(&result).
+			Get(uri)
 	}
-	res, err = fa.RestClient.R().
-		SetResult(&result).
-		Get(uri)
-	if err != nil {
-		fa.Error = err
-	}
-
 	return result
 }

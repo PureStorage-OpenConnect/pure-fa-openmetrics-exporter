@@ -3,6 +3,18 @@ global:
   scrape_timeout:      30s # Set the scrape timeout to shorter than or equal to scrape_interval. Default is every 1 minute.
   # evaluation_interval: 60s # is set to the default every 1 minute.
 
+# Alertmanager configuration (optional)
+#alerting:
+#  alertmanagers:
+#  - static_configs:
+#    - targets:
+#       - alertmanager:9093
+
+# Load rules once and periodically evaluate them according to the global 'evaluation_interval'. (optional)
+#rule_files:
+#  - "purefa_alerts_rules.yml"
+#  - "purefa_pods_rules.yml"
+
 # A scrape configuration containing exactly one endpoint to scrape:
 # Here it's Prometheus itself
 scrape_configs:

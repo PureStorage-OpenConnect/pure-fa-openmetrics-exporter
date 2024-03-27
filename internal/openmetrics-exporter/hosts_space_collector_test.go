@@ -54,7 +54,7 @@ func TestHostsSpaceCollector(t *testing.T) {
 		want[fmt.Sprintf("label:{name:\"host\" value:\"%s\"} label:{name:\"details\" value:\"%s\"} label:{name:\"status\" value:\"%s\"} gauge:{value:1}", h.Name, h.PortConnectivity.Details, h.PortConnectivity.Status)] = true
 	}
 	defer server.Close()
-	c := client.NewRestClient(e, "fake-api-token", "latest", false)
+	c := client.NewRestClient(e, "fake-api-token", "latest", "test-user-agent-string", false)
 	hc := NewHostsSpaceCollector(c)
 	metricsCheck(t, hc, want)
 }
