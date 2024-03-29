@@ -23,96 +23,126 @@ func (c *HostsSpaceCollector) Collect(ch chan<- prometheus.Metric) {
 		return
 	}
 	for _, h := range hosts.Items {
-		ch <- prometheus.MustNewConstMetric(
-			c.ReductionDesc,
-			prometheus.GaugeValue,
-			h.Space.DataReduction,
-			h.Name,
-		)
-		ch <- prometheus.MustNewConstMetric(
-			c.SpaceDesc,
-			prometheus.GaugeValue,
-			h.Space.Shared,
-			h.Name, "shared",
-		)
-		ch <- prometheus.MustNewConstMetric(
-			c.SpaceDesc,
-			prometheus.GaugeValue,
-			h.Space.Snapshots,
-			h.Name, "snapshots",
-		)
-		ch <- prometheus.MustNewConstMetric(
-			c.SpaceDesc,
-			prometheus.GaugeValue,
-			h.Space.System,
-			h.Name, "system",
-		)
-		ch <- prometheus.MustNewConstMetric(
-			c.SpaceDesc,
-			prometheus.GaugeValue,
-			h.Space.ThinProvisioning,
-			h.Name, "thin_provisioning",
-		)
-		ch <- prometheus.MustNewConstMetric(
-			c.SpaceDesc,
-			prometheus.GaugeValue,
-			h.Space.TotalPhysical,
-			h.Name, "total_physical",
-		)
-		ch <- prometheus.MustNewConstMetric(
-			c.SpaceDesc,
-			prometheus.GaugeValue,
-			h.Space.TotalProvisioned,
-			h.Name, "total_provisioned",
-		)
-		ch <- prometheus.MustNewConstMetric(
-			c.SpaceDesc,
-			prometheus.GaugeValue,
-			h.Space.TotalReduction,
-			h.Name, "total_reduction",
-		)
-		ch <- prometheus.MustNewConstMetric(
-			c.SpaceDesc,
-			prometheus.GaugeValue,
-			h.Space.Unique,
-			h.Name, "unique",
-		)
-		ch <- prometheus.MustNewConstMetric(
-			c.SpaceDesc,
-			prometheus.GaugeValue,
-			h.Space.Virtual,
-			h.Name, "virtual",
-		)
-		ch <- prometheus.MustNewConstMetric(
-			c.SpaceDesc,
-			prometheus.GaugeValue,
-			h.Space.Replication,
-			h.Name, "replication",
-		)
-		ch <- prometheus.MustNewConstMetric(
-			c.SpaceDesc,
-			prometheus.GaugeValue,
-			h.Space.SharedEffective,
-			h.Name, "shared_effective",
-		)
-		ch <- prometheus.MustNewConstMetric(
-			c.SpaceDesc,
-			prometheus.GaugeValue,
-			h.Space.SnapshotsEffective,
-			h.Name, "snapshots_effective",
-		)
-		ch <- prometheus.MustNewConstMetric(
-			c.SpaceDesc,
-			prometheus.GaugeValue,
-			h.Space.UniqueEffective,
-			h.Name, "unique_effective",
-		)
-		ch <- prometheus.MustNewConstMetric(
-			c.SpaceDesc,
-			prometheus.GaugeValue,
-			h.Space.TotalEffective,
-			h.Name, "total_effective",
-		)
+		if h.Space.DataReduction != nil {
+			ch <- prometheus.MustNewConstMetric(
+				c.ReductionDesc,
+				prometheus.GaugeValue,
+				*h.Space.DataReduction,
+				h.Name,
+			)
+		}
+		if h.Space.Shared != nil {
+			ch <- prometheus.MustNewConstMetric(
+				c.SpaceDesc,
+				prometheus.GaugeValue,
+				float64(*h.Space.Shared),
+				h.Name, "shared",
+			)
+		}
+		if h.Space.Snapshots != nil {
+			ch <- prometheus.MustNewConstMetric(
+				c.SpaceDesc,
+				prometheus.GaugeValue,
+				float64(*h.Space.Snapshots),
+				h.Name, "snapshots",
+			)
+		}
+		if h.Space.System != nil {
+			ch <- prometheus.MustNewConstMetric(
+				c.SpaceDesc,
+				prometheus.GaugeValue,
+				float64(*h.Space.System),
+				h.Name, "system",
+			)
+		}
+		if h.Space.ThinProvisioning != nil {
+			ch <- prometheus.MustNewConstMetric(
+				c.SpaceDesc,
+				prometheus.GaugeValue,
+				*h.Space.ThinProvisioning,
+				h.Name, "thin_provisioning",
+			)
+		}
+		if h.Space.TotalPhysical != nil {
+			ch <- prometheus.MustNewConstMetric(
+				c.SpaceDesc,
+				prometheus.GaugeValue,
+				float64(*h.Space.TotalPhysical),
+				h.Name, "total_physical",
+			)
+		}
+		if h.Space.TotalProvisioned != nil {
+			ch <- prometheus.MustNewConstMetric(
+				c.SpaceDesc,
+				prometheus.GaugeValue,
+				float64(*h.Space.TotalProvisioned),
+				h.Name, "total_provisioned",
+			)
+		}
+		if h.Space.TotalReduction != nil {
+			ch <- prometheus.MustNewConstMetric(
+				c.SpaceDesc,
+				prometheus.GaugeValue,
+				*h.Space.TotalReduction,
+				h.Name, "total_reduction",
+			)
+		}
+		if h.Space.Unique != nil {
+			ch <- prometheus.MustNewConstMetric(
+				c.SpaceDesc,
+				prometheus.GaugeValue,
+				float64(*h.Space.Unique),
+				h.Name, "unique",
+			)
+		}
+		if h.Space.Virtual != nil {
+			ch <- prometheus.MustNewConstMetric(
+				c.SpaceDesc,
+				prometheus.GaugeValue,
+				float64(*h.Space.Virtual),
+				h.Name, "virtual",
+			)
+		}
+		if h.Space.Replication != nil {
+			ch <- prometheus.MustNewConstMetric(
+				c.SpaceDesc,
+				prometheus.GaugeValue,
+				float64(*h.Space.Replication),
+				h.Name, "replication",
+			)
+		}
+		if h.Space.SharedEffective != nil {
+			ch <- prometheus.MustNewConstMetric(
+				c.SpaceDesc,
+				prometheus.GaugeValue,
+				float64(*h.Space.SharedEffective),
+				h.Name, "shared_effective",
+			)
+		}
+		if h.Space.SnapshotsEffective != nil {
+			ch <- prometheus.MustNewConstMetric(
+				c.SpaceDesc,
+				prometheus.GaugeValue,
+				float64(*h.Space.SnapshotsEffective),
+				h.Name, "snapshots_effective",
+			)
+		}
+		if h.Space.UniqueEffective != nil {
+			ch <- prometheus.MustNewConstMetric(
+				c.SpaceDesc,
+				prometheus.GaugeValue,
+				float64(*h.Space.UniqueEffective),
+				h.Name, "unique_effective",
+			)
+		}
+		if h.Space.TotalEffective != nil {
+			ch <- prometheus.MustNewConstMetric(
+				c.SpaceDesc,
+				prometheus.GaugeValue,
+				float64(*h.Space.TotalEffective),
+				h.Name, "total_effective",
+			)
+		}
 		ch <- prometheus.MustNewConstMetric(
 			c.ConnectivityDesc,
 			prometheus.GaugeValue,
