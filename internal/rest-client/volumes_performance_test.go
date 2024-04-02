@@ -36,7 +36,6 @@ func TestVolumesPerformance(t *testing.T) {
 	t.Run("volumes_performance_1", func(t *testing.T) {
 		defer server.Close()
 		c := NewRestClient(e, "fake-api-token", "latest", "test-user-agent-string", "test-X-Request-Id-string", false)
-
 		vpl := c.GetVolumesPerformance()
 		if diff := cmp.Diff(vpl.Items, volsp.Items); diff != "" {
 			t.Errorf("Mismatch (-want +got):\n%s", diff)

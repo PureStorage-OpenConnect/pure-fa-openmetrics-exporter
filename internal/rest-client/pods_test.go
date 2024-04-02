@@ -36,7 +36,6 @@ func TestPods(t *testing.T) {
 	t.Run("pods_1", func(t *testing.T) {
 		defer server.Close()
 		c := NewRestClient(e, "fake-api-token", "latest", "test-user-agent-string", "test-X-Request-Id-string", false)
-
 		pl := c.GetPods()
 		if diff := cmp.Diff(pl.Items, pods.Items); diff != "" {
 			t.Errorf("Mismatch (-want +got):\n%s", diff)
