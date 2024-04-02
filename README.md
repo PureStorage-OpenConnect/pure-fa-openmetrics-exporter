@@ -77,7 +77,6 @@ make docker-build
 ```
 
 
-
 ### Authentication
 
 Authentication is used by the exporter as the mechanism to cross authenticate to the scraped appliance, therefore for each array it is required to provide the REST API token for an account that has a 'readonly' role. The api-token can be provided in two ways
