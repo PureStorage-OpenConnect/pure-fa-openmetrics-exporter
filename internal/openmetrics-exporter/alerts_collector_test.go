@@ -52,7 +52,8 @@ func TestAlertsCollector(t *testing.T) {
 
 		want[fmt.Sprintf("label:{name:\"category\" value:\"%s\"} label:{name:\"code\" value:\"%s\"} label:{name:\"component_type\" value:\"%s\"} label:{name:\"created\" value:\"%s\"} label:{name:\"issue\" value:\"%s\"} label:{name:\"name\" value:\"%s\"} label:{name:\"severity\" value:\"%s\"} label:{name:\"summary\" value:\"%s\"} gauge:{value:%g}", alert[0], alert[1], alert[2], alert[3], alert[4], alert[5], alert[6], alert[7], n)] = true
 	}
-	c := client.NewRestClient(e, "fake-api-token", "latest", "test-user-agent-string", false)
+	c := client.NewRestClient(e, "fake-api-token", "latest", "test-user-agent-string", "test-X-Request-Id-string", false)
+
 	ac := NewAlertsCollector(c)
 	metricsCheck(t, ac, want)
 	server.Close()

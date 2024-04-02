@@ -1,17 +1,16 @@
 package collectors
 
-
 import (
+	"encoding/json"
 	"fmt"
-	"testing"
-	"regexp"
-	"strings"
 	"net/http"
 	"net/http/httptest"
-	"encoding/json"
 	"os"
+	"regexp"
+	"strings"
+	"testing"
 
-	"purestorage/fa-openmetrics-exporter/internal/rest-client"
+	client "purestorage/fa-openmetrics-exporter/internal/rest-client"
 )
 
 func TestArrayPerformanceCollector(t *testing.T) {
@@ -23,16 +22,16 @@ func TestArrayPerformanceCollector(t *testing.T) {
 	server := httptest.NewTLSServer(http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 		valid := regexp.MustCompile(`^/api/([0-9]+.[0-9]+)?/arrays/performance$`)
 		if r.URL.Path == "/api/api_version" {
-                        w.Header().Set("Content-Type", "application/json")
-                        w.WriteHeader(http.StatusOK)
-                        w.Write([]byte(vers))
+			w.Header().Set("Content-Type", "application/json")
+			w.WriteHeader(http.StatusOK)
+			w.Write([]byte(vers))
 		} else if valid.MatchString(r.URL.Path) {
-                        w.Header().Set("x-auth-token", "faketoken")
-                        w.Header().Set("Content-Type", "application/json")
-                        w.WriteHeader(http.StatusOK)
-                        w.Write([]byte(res))
+			w.Header().Set("x-auth-token", "faketoken")
+			w.Header().Set("Content-Type", "application/json")
+			w.WriteHeader(http.StatusOK)
+			w.Write([]byte(res))
 		}
-	   }))
+	}))
 	endp := strings.Split(server.URL, "/")
 	e := endp[len(endp)-1]
 	defer server.Close()
@@ -65,7 +64,8 @@ func TestArrayPerformanceCollector(t *testing.T) {
 	want[fmt.Sprintf("label:{name:\"dimension\" value:\"bytes_per_read\"} gauge:{value:%g}", p.BytesPerRead)] = true
 	want[fmt.Sprintf("label:{name:\"dimension\" value:\"bytes_per_write\"} gauge:{value:%g}", p.BytesPerWrite)] = true
 	want[fmt.Sprintf("gauge:{value:%g}", p.QueueDepth)] = true
-	c := client.NewRestClient(e, "fake-api-token", "latest", "test-user-agent-string", false)
+	c := client.NewRestClient(e, "fake-api-token", "latest", "test-user-agent-string", "test-X-Request-Id-string", false)
+
 	pc := NewArraysPerformanceCollector(c)
 	metricsCheck(t, pc, want)
 }

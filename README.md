@@ -77,6 +77,7 @@ make docker-build
 ```
 
 
+
 ### Authentication
 
 Authentication is used by the exporter as the mechanism to cross authenticate to the scraped appliance, therefore for each array it is required to provide the REST API token for an account that has a 'readonly' role. The api-token can be provided in two ways
@@ -90,6 +91,12 @@ The second option provides the FlashArray/api-token key-pair map for a list of a
 ### TLS Support
 
 The exporter can be started in TLS mode (HTTPS, mutually exclusive with the HTTP mode) by providing the X.509 certificate and key files in the command parameters. Self-signed certificates are also accepted.
+
+### Supported Headers
+
+#### X-Request-ID (Optional)
+
+The `X-Request-ID` Header, as used in the Purity API, may be used when calling the OpenMetrics exporter by using the HTTP Header `X-Request-ID`. It will then be passed and used when requesting metrics from the Purity API.
 
 ### Usage
 

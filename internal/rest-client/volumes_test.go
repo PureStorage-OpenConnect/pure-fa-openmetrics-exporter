@@ -35,7 +35,8 @@ func TestVolumes(t *testing.T) {
 	e := endp[len(endp)-1]
 	t.Run("volumes_1", func(t *testing.T) {
 		defer server.Close()
-		c := NewRestClient(e, "fake-api-token", "latest", "test-user-agent-string", false)
+		c := NewRestClient(e, "fake-api-token", "latest", "test-user-agent-string", "test-X-Request-Id-string", false)
+
 		vl := c.GetVolumes()
 		if diff := cmp.Diff(vl.Items, vols.Items); diff != "" {
 			t.Errorf("Mismatch (-want +got):\n%s", diff)

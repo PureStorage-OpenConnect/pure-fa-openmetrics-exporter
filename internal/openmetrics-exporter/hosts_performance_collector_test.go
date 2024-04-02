@@ -1,17 +1,16 @@
 package collectors
 
-
 import (
+	"encoding/json"
 	"fmt"
-	"testing"
-	"regexp"
-	"strings"
 	"net/http"
 	"net/http/httptest"
-	"encoding/json"
 	"os"
+	"regexp"
+	"strings"
+	"testing"
 
-	"purestorage/fa-openmetrics-exporter/internal/rest-client"
+	client "purestorage/fa-openmetrics-exporter/internal/rest-client"
 )
 
 func TestHostsPerformanceCollector(t *testing.T) {
@@ -20,18 +19,18 @@ func TestHostsPerformanceCollector(t *testing.T) {
 	var hosts client.HostsPerformanceList
 	json.Unmarshal(res, &hosts)
 	server := httptest.NewTLSServer(http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
-                valid := regexp.MustCompile(`^/api/([0-9]+.[0-9]+)?/hosts/performance$`)
-                if r.URL.Path == "/api/api_version" {
-                        w.Header().Set("Content-Type", "application/json")
-                        w.WriteHeader(http.StatusOK)
-                        w.Write([]byte(vers))
-                } else if valid.MatchString(r.URL.Path) {
-                        w.Header().Set("x-auth-token", "faketoken")
-                        w.Header().Set("Content-Type", "application/json")
-                        w.WriteHeader(http.StatusOK)
-                        w.Write([]byte(res))
-                }
-           }))
+		valid := regexp.MustCompile(`^/api/([0-9]+.[0-9]+)?/hosts/performance$`)
+		if r.URL.Path == "/api/api_version" {
+			w.Header().Set("Content-Type", "application/json")
+			w.WriteHeader(http.StatusOK)
+			w.Write([]byte(vers))
+		} else if valid.MatchString(r.URL.Path) {
+			w.Header().Set("x-auth-token", "faketoken")
+			w.Header().Set("Content-Type", "application/json")
+			w.WriteHeader(http.StatusOK)
+			w.Write([]byte(res))
+		}
+	}))
 	endp := strings.Split(server.URL, "/")
 	e := endp[len(endp)-1]
 	defer server.Close()
@@ -61,7 +60,8 @@ func TestHostsPerformanceCollector(t *testing.T) {
 		want[fmt.Sprintf("label:{name:\"dimension\" value:\"bytes_per_read\"} label:{name:\"host\" value:\"%s\"} gauge:{value:%g}", p.Name, p.BytesPerRead)] = true
 		want[fmt.Sprintf("label:{name:\"dimension\" value:\"bytes_per_write\"} label:{name:\"host\" value:\"%s\"} gauge:{value:%g}", p.Name, p.BytesPerWrite)] = true
 	}
-	c := client.NewRestClient(e, "fake-api-token", "latest", "test-user-agent-string", false)
+	c := client.NewRestClient(e, "fake-api-token", "latest", "test-user-agent-string", "test-X-Request-Id-string", false)
+
 	pc := NewHostsPerformanceCollector(c)
 	metricsCheck(t, pc, want)
 }

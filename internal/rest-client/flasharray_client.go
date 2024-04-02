@@ -35,16 +35,18 @@ type FAClient struct {
 	RestClient *resty.Client
 	ApiVersion string
 	XAuthToken string
+	XRequestID string
 	Error      error
 }
 
-func NewRestClient(endpoint string, apitoken string, apiversion string, uagent string, debug bool) *FAClient {
+func NewRestClient(endpoint string, apitoken string, apiversion string, uagent string, rid string, debug bool) *FAClient {
 	type ApiVersions struct {
 		Versions []string `json:"version"`
 	}
 	fa := &FAClient{
 		EndPoint:   endpoint,
 		ApiToken:   apitoken,
+		XRequestID: "",
 		RestClient: resty.New(),
 		XAuthToken: "",
 	}
@@ -53,6 +55,7 @@ func NewRestClient(endpoint string, apitoken string, apiversion string, uagent s
 	fa.RestClient.SetHeaders(map[string]string{
 		"Content-Type": "application/json",
 		"Accept":       "application/json",
+		"X-Request-ID": rid,
 	})
 	if debug {
 		fa.RestClient.SetDebug(true)
@@ -96,8 +99,10 @@ func NewRestClient(endpoint string, apitoken string, apiversion string, uagent s
 		return fa
 	}
 	fa.XAuthToken = res.Header().Get("x-auth-token")
+	fa.XRequestID = res.Header().Get("X-Request-ID")
 	fa.RestClient.SetHeader("x-auth-token", fa.XAuthToken)
 	fa.RestClient.SetHeader("User-Agent", FARestUserAgent+" ("+uagent+")")
+	fa.RestClient.SetHeader("X-Request-ID", fa.XRequestID)
 	return fa
 }
 
@@ -123,6 +128,8 @@ func (fa *FAClient) RefreshSession() *FAClient {
 		return fa
 	}
 	fa.XAuthToken = res.Header().Get("x-auth-token")
+	fa.XRequestID = res.Header().Get("X-Request-ID")
 	fa.RestClient.SetHeader("x-auth-token", fa.XAuthToken)
+	fa.RestClient.SetHeader("X-Request-ID", fa.XRequestID)
 	return fa
 }
