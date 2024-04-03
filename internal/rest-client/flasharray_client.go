@@ -46,7 +46,7 @@ func NewRestClient(endpoint string, apitoken string, apiversion string, uagent s
 	fa := &FAClient{
 		EndPoint:   endpoint,
 		ApiToken:   apitoken,
-		XRequestID: "",
+		XRequestID: rid,
 		RestClient: resty.New(),
 		XAuthToken: "",
 	}
@@ -55,7 +55,7 @@ func NewRestClient(endpoint string, apitoken string, apiversion string, uagent s
 	fa.RestClient.SetHeaders(map[string]string{
 		"Content-Type": "application/json",
 		"Accept":       "application/json",
-		"X-Request-ID": rid,
+		"X-Request-ID": fa.XRequestID,
 	})
 	if debug {
 		fa.RestClient.SetDebug(true)
@@ -98,10 +98,12 @@ func NewRestClient(endpoint string, apitoken string, apiversion string, uagent s
 		fa.Error = errors.New("failed to login to FlashArray, check API Token")
 		return fa
 	}
+	//Get the X-Auth-Token and the X-Request-ID from the HTTP Response Headers (FA will reply with the same X-Request-ID, if provided, otherwise it will generate one.)
 	fa.XAuthToken = res.Header().Get("x-auth-token")
 	fa.XRequestID = res.Header().Get("X-Request-ID")
-	fa.RestClient.SetHeader("x-auth-token", fa.XAuthToken)
 	fa.RestClient.SetHeader("User-Agent", FARestUserAgent+" ("+uagent+")")
+	//Set the X-Auth-Token and the X-Request-ID from the HTTP Response Headers
+	fa.RestClient.SetHeader("x-auth-token", fa.XAuthToken)
 	fa.RestClient.SetHeader("X-Request-ID", fa.XRequestID)
 	return fa
 }
@@ -112,6 +114,7 @@ func (fa *FAClient) Close() *FAClient {
 	}
 	_, err := fa.RestClient.R().
 		SetHeader("x-auth-token", fa.XAuthToken).
+		SetHeader("X-Request-ID", fa.XRequestID).
 		Post("/logout")
 	if err != nil {
 		fa.Error = err
@@ -122,14 +125,13 @@ func (fa *FAClient) Close() *FAClient {
 func (fa *FAClient) RefreshSession() *FAClient {
 	res, err := fa.RestClient.R().
 		SetHeader("api-token", fa.ApiToken).
+		SetHeader("X-Request-ID", fa.XRequestID).
 		Post("/login")
 	if err != nil {
 		fa.Error = err
 		return fa
 	}
 	fa.XAuthToken = res.Header().Get("x-auth-token")
-	fa.XRequestID = res.Header().Get("X-Request-ID")
 	fa.RestClient.SetHeader("x-auth-token", fa.XAuthToken)
-	fa.RestClient.SetHeader("X-Request-ID", fa.XRequestID)
 	return fa
 }
