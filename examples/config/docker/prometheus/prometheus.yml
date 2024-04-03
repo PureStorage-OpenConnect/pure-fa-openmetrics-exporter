@@ -111,7 +111,7 @@ scrape_configs:
       labels:
         location: US
         site: PureTEC
-        instance: sn1-m70-f06-33
+        instance: sn1-x90r2-f06-33
         env: 'FSA Lab'
 
   - job_name: 'purestorage-fa_volumes'
@@ -127,7 +127,7 @@ scrape_configs:
       labels:
         location: US
         site: PureTEC
-        instance: sn1-m70-f06-33
+        instance: sn1-x90r2-f06-33
         env: 'FSA Lab'
 
   - job_name: 'purestorage-fa_hosts'
@@ -143,7 +143,7 @@ scrape_configs:
       labels:
         location: US
         site: PureTEC
-        instance: sn1-m70-f06-33
+        instance: sn1-x90r2-f06-33
         env: 'FSA Lab'
 
   - job_name: 'purestorage-fa_pods'
@@ -159,7 +159,7 @@ scrape_configs:
       labels:
         location: US
         site: PureTEC
-        instance: sn1-m70-f06-33
+        instance: sn1-x90r2-f06-33
         env: 'FSA Lab'
 
   - job_name: 'purestorage-fa_directories'
@@ -175,7 +175,7 @@ scrape_configs:
       labels:
         location: US
         site: PureTEC
-        instance: sn1-m70-f06-33
+        instance: sn1-x90r2-f06-33
         env: 'FSA Lab'
 
   - job_name: 'purestorage-fa2'
@@ -191,7 +191,7 @@ scrape_configs:
       labels:
         location: US
         site: PureTEC
-        instance: sn1-x70-f06-27
+        instance: sn1-x90r2-f06-27
         env: 'FSA Lab'
 
   - job_name: 'purestorage-fa2_volumes'
@@ -207,7 +207,7 @@ scrape_configs:
       labels:
         location: US
         site: PureTEC
-        instance: sn1-x70-f06-27
+        instance: sn1-x90r2-f06-27
         env: 'FSA Lab'
 
   - job_name: 'purestorage-fa2_hosts'
@@ -223,7 +223,7 @@ scrape_configs:
       labels:
         location: US
         site: PureTEC
-        instance: sn1-x70-f06-27
+        instance: sn1-x90r2-f06-27
         env: 'FSA Lab'
 
   - job_name: 'purestorage-fa2_pods'
@@ -239,7 +239,7 @@ scrape_configs:
       labels:
         location: US
         site: PureTEC
-        instance: sn1-x70-f06-27
+        instance: sn1-x90r2-f06-27
         env: 'FSA Lab'
 
   - job_name: 'purestorage-fa2_directories'
@@ -255,7 +255,7 @@ scrape_configs:
       labels:
         location: US
         site: PureTEC
-        instance: sn1-x70-f06-27
+        instance: sn1-x90r2-f06-27
         env: 'FSA Lab'
 
   - job_name: 'purestorage-fa4'
@@ -351,7 +351,7 @@ scrape_configs:
       labels:
         location: US
         site: PureTEC
-        instance: sn1-m70r-f07-27
+        instance: sn1-x90r2-f07-27
         env: 'FSA Lab'
 
   - job_name: 'purestorage-fa5_volumes'
@@ -367,7 +367,7 @@ scrape_configs:
       labels:
         location: US
         site: PureTEC
-        instance: sn1-m70r-f07-27
+        instance: sn1-x90r2-f07-27
         env: 'FSA Lab'
 
   - job_name: 'purestorage-fa5_hosts'
@@ -383,7 +383,7 @@ scrape_configs:
       labels:
         location: US
         site: PureTEC
-        instance: sn1-m70r-f07-27
+        instance: sn1-x90r2-f07-27
         env: 'FSA Lab'
 
   - job_name: 'purestorage-fa5_pods'
@@ -399,7 +399,7 @@ scrape_configs:
       labels:
         location: US
         site: PureTEC
-        instance: sn1-m70r-f07-27
+        instance: sn1-x90r2-f07-27
         env: 'FSA Lab'
 
   - job_name: 'purestorage-fa5_directories'
@@ -415,7 +415,7 @@ scrape_configs:
       labels:
         location: US
         site: PureTEC
-        instance: sn1-m70r-f07-27
+        instance: sn1-x90r2-f07-27
         env: 'FSA Lab'
 
   - job_name: 'purestorage-fa6'
@@ -511,7 +511,7 @@ scrape_configs:
       labels:
         location: US
         site: PureTEC
-        instance: sn1-x70-f05-27
+        instance: sn1-x90r2-f05-27
         env: 'FSA Lab'
 
   - job_name: 'purestorage-fa7_volumes'
@@ -527,7 +527,7 @@ scrape_configs:
       labels:
         location: US
         site: PureTEC
-        instance: sn1-x70-f05-27
+        instance: sn1-x90r2-f05-27
         env: 'FSA Lab'
 
   - job_name: 'purestorage-fa7_hosts'
@@ -543,7 +543,7 @@ scrape_configs:
       labels:
         location: US
         site: PureTEC
-        instance: sn1-x70-f05-27
+        instance: sn1-x90r2-f05-27
         env: 'FSA Lab'
 
   - job_name: 'purestorage-fa7_pods'
@@ -559,7 +559,7 @@ scrape_configs:
       labels:
         location: US
         site: PureTEC
-        instance: sn1-x70-f05-27
+        instance: sn1-x90r2-f05-27
         env: 'FSA Lab'
 
   - job_name: 'purestorage-fa7_directories'
@@ -575,7 +575,7 @@ scrape_configs:
       labels:
         location: US
         site: PureTEC
-        instance: sn1-x70-f05-27
+        instance: sn1-x90r2-f05-27
         env: 'FSA Lab'
 
   - job_name: 'purestorage-fa8'
@@ -591,7 +591,7 @@ scrape_configs:
       labels:
         location: US
         site: PureTEC
-        instance: sn1-x70-f05-33
+        instance: sn1-x90r2-f05-33
         env: 'FSA Lab'
 
   - job_name: 'purestorage-fa8_volumes'
@@ -607,7 +607,7 @@ scrape_configs:
       labels:
         location: US
         site: PureTEC
-        instance: sn1-x70-f05-33
+        instance: sn1-x90r2-f05-33
         env: 'FSA Lab'
 
   - job_name: 'purestorage-fa8_hosts'
@@ -623,7 +623,7 @@ scrape_configs:
       labels:
         location: US
         site: PureTEC
-        instance: sn1-x70-f05-33
+        instance: sn1-x90r2-f05-33
         env: 'FSA Lab'
 
   - job_name: 'purestorage-fa8_pods'
@@ -639,7 +639,7 @@ scrape_configs:
       labels:
         location: US
         site: PureTEC
-        instance: sn1-x70-f05-33
+        instance: sn1-x90r2-f05-33
         env: 'FSA Lab'
 
   - job_name: 'purestorage-fa8_directories'
@@ -655,6 +655,6 @@ scrape_configs:
       labels:
         location: US
         site: PureTEC
-        instance: sn1-x70-f05-33
+        instance: sn1-x90r2-f05-33
         env: 'FSA Lab'
  
