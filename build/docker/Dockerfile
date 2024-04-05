@@ -1,5 +1,6 @@
 FROM golang:alpine as build
 ARG VERSION=1.0.18
+ARG UserAgentBase=Pure_FA_OpenMetrics_exporter
 
 WORKDIR /usr/src/app
 
@@ -9,7 +10,7 @@ RUN go mod download && go mod verify
 
 COPY . .
 
-RUN CGO_ENABLED=1 go build -mod=readonly -a -tags 'netgo osusergo static_build' -ldflags="-X 'main.version=v$VERSION' -X 'purestorage/fa-openmetrics-exporter/internal/rest-client.UserAgentVersion=$VERSION'" -v -o /usr/local/bin/pure-fa-om-exporter cmd/fa-om-exporter/main.go
+RUN CGO_ENABLED=1 go build -mod=readonly -a -tags 'netgo osusergo static_build' -ldflags="-X 'main.version=v$VERSION' -X 'purestorage/fa-openmetrics-exporter/internal/rest-client.FARestUserAgentBase=$UserAgentBase' -X 'purestorage/fa-openmetrics-exporter/internal/rest-client.UserAgentVersion=$VERSION'" -v -o /usr/local/bin/pure-fa-om-exporter cmd/fa-om-exporter/main.go
 
 
 # alpine is used here as it seems to be the minimal image that passes quay.io vulnerability scan

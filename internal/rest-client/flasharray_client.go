@@ -9,7 +9,9 @@ import (
 
 var UserAgentVersion string = "development"
 
-var FARestUserAgent string = "Pure_FA_OpenMetrics_exporter/" + UserAgentVersion
+var FARestUserAgentBase string = "Dev_Pure_FA_OpenMetrics_exporter"
+
+var FARestUserAgent string = FARestUserAgentBase + "/" + UserAgentVersion
 
 type Client interface {
 	GetAlerts(filter string) *AlertsList
@@ -56,6 +58,7 @@ func NewRestClient(endpoint string, apitoken string, apiversion string, uagent s
 		"Content-Type": "application/json",
 		"Accept":       "application/json",
 		"X-Request-ID": fa.XRequestID,
+		"User-Agent":   FARestUserAgent + " (" + uagent + ")",
 	})
 	if debug {
 		fa.RestClient.SetDebug(true)
@@ -86,7 +89,9 @@ func NewRestClient(endpoint string, apitoken string, apiversion string, uagent s
 	} else {
 		fa.ApiVersion = apiversion
 	}
+	fa.XRequestID = res.Header().Get("X-Request-ID")
 	fa.RestClient.SetBaseURL("https://" + endpoint + "/api/" + fa.ApiVersion)
+	fa.RestClient.SetHeader("X-Request-ID", fa.XRequestID)
 	res, err = fa.RestClient.R().
 		SetHeader("api-token", apitoken).
 		Post("/login")
@@ -98,13 +103,8 @@ func NewRestClient(endpoint string, apitoken string, apiversion string, uagent s
 		fa.Error = errors.New("failed to login to FlashArray, check API Token")
 		return fa
 	}
-	//Get the X-Auth-Token and the X-Request-ID from the HTTP Response Headers (FA will reply with the same X-Request-ID, if provided, otherwise it will generate one.)
 	fa.XAuthToken = res.Header().Get("x-auth-token")
-	fa.XRequestID = res.Header().Get("X-Request-ID")
-	fa.RestClient.SetHeader("User-Agent", FARestUserAgent+" ("+uagent+")")
-	//Set the X-Auth-Token and the X-Request-ID from the HTTP Response Headers
 	fa.RestClient.SetHeader("x-auth-token", fa.XAuthToken)
-	fa.RestClient.SetHeader("X-Request-ID", fa.XRequestID)
 	return fa
 }
 
