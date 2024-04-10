@@ -28,11 +28,11 @@ func fileExists(args []string) error {
 }
 
 func isFile(filename string) bool {
-   info, err := os.Stat(filename)
-   if os.IsNotExist(err) {
-      return false
-   }
-   return !info.IsDir()
+	info, err := os.Stat(filename)
+	if os.IsNotExist(err) {
+		return false
+	}
+	return !info.IsDir()
 }
 
 func main() {
@@ -72,14 +72,14 @@ func main() {
 	}
 	if (len(*cert) > 0 && len(*key) == 0) || (len(*cert) == 0 && len(*key) > 0) {
 		log.Fatal("Both certificate and key must be specified to enable TLS")
-        }
-	if (len(*cert) > 0 && len(*key) > 0) {
+	}
+	if len(*cert) > 0 && len(*key) > 0 {
 		if !isFile(*cert) {
 			log.Fatal("TLS cert file not found")
-        	} else if !isFile (*key) {
+		} else if !isFile(*key) {
 			log.Fatal("TLS key file not found")
 		}
-        }
+	}
 	debug = *d
 	addr := fmt.Sprintf("%s:%d", *host, *port)
 	log.Printf("Start Pure FlashArray exporter %s on %s", version, addr)
@@ -143,16 +143,18 @@ func metricsHandler(w http.ResponseWriter, r *http.Request) {
 	address, apitoken := arraytokens.GetArrayParams(endpoint)
 	if len(authFields) == 2 && strings.ToLower(authFields[0]) == "bearer" {
 		apitoken = authFields[1]
-                address = endpoint
+		address = endpoint
 	}
 	if apitoken == "" {
 		http.Error(w, "Target authorization token is missing", http.StatusBadRequest)
 		return
 	}
 
-        uagent := r.Header.Get("User-Agent")
+	uagent := r.Header.Get("User-Agent")
+	rid := r.Header.Get("X-Request-ID")
+
 	registry := prometheus.NewRegistry()
-	faclient := client.NewRestClient(address, apitoken, apiver, uagent, debug)
+	faclient := client.NewRestClient(address, apitoken, apiver, uagent, rid, debug)
 	if faclient.Error != nil {
 		http.Error(w, "Error connecting to FlashArray. Check your management endpoint and/or api token are correct.", http.StatusBadRequest)
 		return

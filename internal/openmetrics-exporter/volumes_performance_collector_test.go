@@ -1,17 +1,16 @@
 package collectors
 
-
 import (
+	"encoding/json"
 	"fmt"
-	"testing"
-	"regexp"
-	"strings"
 	"net/http"
 	"net/http/httptest"
-	"encoding/json"
 	"os"
+	"regexp"
+	"strings"
+	"testing"
 
-	"purestorage/fa-openmetrics-exporter/internal/rest-client"
+	client "purestorage/fa-openmetrics-exporter/internal/rest-client"
 )
 
 func TestVolumesPerformanceCollector(t *testing.T) {
@@ -24,24 +23,24 @@ func TestVolumesPerformanceCollector(t *testing.T) {
 	json.Unmarshal(volsperf, &volumesperf)
 	json.Unmarshal(vols, &volumes)
 	server := httptest.NewTLSServer(http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
-	        vperfu := regexp.MustCompile(`^/api/([0-9]+.[0-9]+)?/volumes/performance$`)
-	        vu := regexp.MustCompile(`^/api/([0-9]+.[0-9]+)?/volumes$`)
-	        if r.URL.Path == "/api/api_version" {
-	                w.Header().Set("Content-Type", "application/json")
-	                w.WriteHeader(http.StatusOK)
-	                w.Write([]byte(vers))
-	        } else if vperfu.MatchString(r.URL.Path) {
-	                w.Header().Set("x-auth-token", "faketoken")
-	                w.Header().Set("Content-Type", "application/json")
-	                w.WriteHeader(http.StatusOK)
-	                w.Write([]byte(volsperf))
-	        } else if vu.MatchString(r.URL.Path) {
-	                w.Header().Set("x-auth-token", "faketoken")
-	                w.Header().Set("Content-Type", "application/json")
-	                w.WriteHeader(http.StatusOK)
-	                w.Write([]byte(vols))
-	        }
-	   }))
+		vperfu := regexp.MustCompile(`^/api/([0-9]+.[0-9]+)?/volumes/performance$`)
+		vu := regexp.MustCompile(`^/api/([0-9]+.[0-9]+)?/volumes$`)
+		if r.URL.Path == "/api/api_version" {
+			w.Header().Set("Content-Type", "application/json")
+			w.WriteHeader(http.StatusOK)
+			w.Write([]byte(vers))
+		} else if vperfu.MatchString(r.URL.Path) {
+			w.Header().Set("x-auth-token", "faketoken")
+			w.Header().Set("Content-Type", "application/json")
+			w.WriteHeader(http.StatusOK)
+			w.Write([]byte(volsperf))
+		} else if vu.MatchString(r.URL.Path) {
+			w.Header().Set("x-auth-token", "faketoken")
+			w.Header().Set("Content-Type", "application/json")
+			w.WriteHeader(http.StatusOK)
+			w.Write([]byte(vols))
+		}
+	}))
 	endp := strings.Split(server.URL, "/")
 	e := endp[len(endp)-1]
 	defer server.Close()
@@ -75,7 +74,8 @@ func TestVolumesPerformanceCollector(t *testing.T) {
 		want[fmt.Sprintf("label:{name:\"dimension\" value:\"bytes_per_read\"} label:{name:\"naa_id\" value:\"%s\"} label:{name:\"name\" value:\"%s\"} gauge:{value:%g}", naaid[p.Name], p.Name, p.BytesPerRead)] = true
 		want[fmt.Sprintf("label:{name:\"dimension\" value:\"bytes_per_write\"} label:{name:\"naa_id\" value:\"%s\"} label:{name:\"name\" value:\"%s\"} gauge:{value:%g}", naaid[p.Name], p.Name, p.BytesPerWrite)] = true
 	}
-	c := client.NewRestClient(e, "fake-api-token", "latest", "test-user-agent-string", false)
+	c := client.NewRestClient(e, "fake-api-token", "latest", "test-user-agent-string", "test-X-Request-Id-string", false)
+
 	vl := c.GetVolumes()
 	pc := NewVolumesPerformanceCollector(c, vl)
 	metricsCheck(t, pc, want)

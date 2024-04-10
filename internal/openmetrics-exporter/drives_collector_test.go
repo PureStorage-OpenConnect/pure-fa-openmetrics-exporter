@@ -39,7 +39,8 @@ func TestDriveCollector(t *testing.T) {
 		want[fmt.Sprintf("label:{name:\"component_name\" value:\"%s\"} label:{name:\"component_status\" value:\"%s\"} label:{name:\"component_type\" value:\"%s\"} label:{name:\"component_type\" value:\"%s\"} gauge:{value:\"%g\"}", d.Name, d.Type, d.Status, d.Protocol, d.Capacity)] = true
 	}
 
-	c := client.NewRestClient(e, "fake-api-token", "latest", "test-user-agent-string", false)
+	c := client.NewRestClient(e, "fake-api-token", "latest", "test-user-agent-string", "test-X-Request-Id-string", false)
+
 	dc := NewDriveCollector(c)
 	metricsCheck(t, dc, want)
 	server.Close()
