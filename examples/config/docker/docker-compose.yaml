@@ -9,7 +9,7 @@ services:
       - prometheus
     ports:
       - 9490:9490
-    restart: on-failure
+    restart: unless-stopped
   prometheus:
     image: prom/prometheus:latest
     command:
@@ -21,7 +21,7 @@ services:
       - ./prometheus/prometheus.yml:/etc/prometheus/prometheus.yml
     ports:
       - 9090:9090
-    restart: on-failure
+    restart: unless-stopped
   grafana:
     image: grafana/grafana:latest
     environment:
@@ -42,7 +42,7 @@ services:
         target: /etc/grafana/provisioning/datasources/datasource.yaml
       - source: dashboards_examples
         target: /etc/grafana/provisioning/dashboards/json/grafana-purefa-flasharray-overview.json
-    restart: on-failure
+    restart: unless-stopped
 configs:
   dashboard_config:
     file: ./grafana/dashboards/default.yaml
