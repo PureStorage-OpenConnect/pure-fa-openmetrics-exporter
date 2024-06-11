@@ -36,25 +36,56 @@ func TestHostsSpaceCollector(t *testing.T) {
 	e := endp[len(endp)-1]
 	want := make(map[string]bool)
 	for _, h := range hosts.Items {
-		want[fmt.Sprintf("label:{name:\"host\" value:\"%s\"} gauge:{value:%g}", h.Name, h.Space.DataReduction)] = true
-		want[fmt.Sprintf("label:{name:\"host\" value:\"%s\"} label:{name:\"space\" value:\"shared\"} gauge:{value:%g}", h.Name, h.Space.Shared)] = true
-		want[fmt.Sprintf("label:{name:\"host\" value:\"%s\"} label:{name:\"space\" value:\"snapshots\"} gauge:{value:%g}", h.Name, h.Space.Snapshots)] = true
-		want[fmt.Sprintf("label:{name:\"host\" value:\"%s\"} label:{name:\"space\" value:\"system\"} gauge:{value:%g}", h.Name, h.Space.System)] = true
-		want[fmt.Sprintf("label:{name:\"host\" value:\"%s\"} label:{name:\"space\" value:\"thin_provisioning\"} gauge:{value:%g}", h.Name, h.Space.ThinProvisioning)] = true
-		want[fmt.Sprintf("label:{name:\"host\" value:\"%s\"} label:{name:\"space\" value:\"total_physical\"} gauge:{value:%g}", h.Name, h.Space.TotalPhysical)] = true
-		want[fmt.Sprintf("label:{name:\"host\" value:\"%s\"} label:{name:\"space\" value:\"total_provisioned\"} gauge:{value:%g}", h.Name, h.Space.TotalProvisioned)] = true
-		want[fmt.Sprintf("label:{name:\"host\" value:\"%s\"} label:{name:\"space\" value:\"total_reduction\"} gauge:{value:%g}", h.Name, h.Space.TotalReduction)] = true
-		want[fmt.Sprintf("label:{name:\"host\" value:\"%s\"} label:{name:\"space\" value:\"unique\"} gauge:{value:%g}", h.Name, h.Space.Unique)] = true
-		want[fmt.Sprintf("label:{name:\"host\" value:\"%s\"} label:{name:\"space\" value:\"virtual\"} gauge:{value:%g}", h.Name, h.Space.Virtual)] = true
-		want[fmt.Sprintf("label:{name:\"host\" value:\"%s\"} label:{name:\"space\" value:\"replication\"} gauge:{value:%g}", h.Name, h.Space.Replication)] = true
-		want[fmt.Sprintf("label:{name:\"host\" value:\"%s\"} label:{name:\"space\" value:\"shared_effective\"} gauge:{value:%g}", h.Name, h.Space.SharedEffective)] = true
-		want[fmt.Sprintf("label:{name:\"host\" value:\"%s\"} label:{name:\"space\" value:\"snapshots_effective\"} gauge:{value:%g}", h.Name, h.Space.SnapshotsEffective)] = true
-		want[fmt.Sprintf("label:{name:\"host\" value:\"%s\"} label:{name:\"space\" value:\"unique_effective\"} gauge:{value:%g}", h.Name, h.Space.UniqueEffective)] = true
-		want[fmt.Sprintf("label:{name:\"host\" value:\"%s\"} label:{name:\"space\" value:\"total_effective\"} gauge:{value:%g}", h.Name, h.Space.TotalEffective)] = true
+		if h.Space.DataReduction != nil {
+			want[fmt.Sprintf("label:{name:\"host\" value:\"%s\"} gauge:{value:%g}", h.Name, *h.Space.DataReduction)] = true
+		}
+		if h.Space.Shared != nil {
+			want[fmt.Sprintf("label:{name:\"host\" value:\"%s\"} label:{name:\"space\" value:\"shared\"} gauge:{value:%g}", h.Name, float64(*h.Space.Shared))] = true
+		}
+		if h.Space.Snapshots != nil {
+			want[fmt.Sprintf("label:{name:\"host\" value:\"%s\"} label:{name:\"space\" value:\"snapshots\"} gauge:{value:%g}", h.Name, float64(*h.Space.Snapshots))] = true
+		}
+		if h.Space.System != nil {
+			want[fmt.Sprintf("label:{name:\"host\" value:\"%s\"} label:{name:\"space\" value:\"system\"} gauge:{value:%g}", h.Name, float64(*h.Space.System))] = true
+		}
+		if h.Space.ThinProvisioning != nil {
+			want[fmt.Sprintf("label:{name:\"host\" value:\"%s\"} label:{name:\"space\" value:\"thin_provisioning\"} gauge:{value:%g}", h.Name, *h.Space.ThinProvisioning)] = true
+		}
+		if h.Space.TotalPhysical != nil {
+			want[fmt.Sprintf("label:{name:\"host\" value:\"%s\"} label:{name:\"space\" value:\"total_physical\"} gauge:{value:%g}", h.Name, float64(*h.Space.TotalPhysical))] = true
+		}
+		if h.Space.TotalProvisioned != nil {
+			want[fmt.Sprintf("label:{name:\"host\" value:\"%s\"} label:{name:\"space\" value:\"total_provisioned\"} gauge:{value:%g}", h.Name, float64(*h.Space.TotalProvisioned))] = true
+		}
+		if h.Space.TotalReduction != nil {
+			want[fmt.Sprintf("label:{name:\"host\" value:\"%s\"} label:{name:\"space\" value:\"total_reduction\"} gauge:{value:%g}", h.Name, *h.Space.TotalReduction)] = true
+		}
+		if h.Space.Unique != nil {
+			want[fmt.Sprintf("label:{name:\"host\" value:\"%s\"} label:{name:\"space\" value:\"unique\"} gauge:{value:%g}", h.Name, float64(*h.Space.Unique))] = true
+		}
+		if h.Space.Virtual != nil {
+			want[fmt.Sprintf("label:{name:\"host\" value:\"%s\"} label:{name:\"space\" value:\"virtual\"} gauge:{value:%g}", h.Name, float64(*h.Space.Virtual))] = true
+		}
+		if h.Space.Replication != nil {
+			want[fmt.Sprintf("label:{name:\"host\" value:\"%s\"} label:{name:\"space\" value:\"replication\"} gauge:{value:%g}", h.Name, float64(*h.Space.Replication))] = true
+		}
+		if h.Space.SharedEffective != nil {
+			want[fmt.Sprintf("label:{name:\"host\" value:\"%s\"} label:{name:\"space\" value:\"shared_effective\"} gauge:{value:%g}", h.Name, float64(*h.Space.SharedEffective))] = true
+		}
+		if h.Space.SnapshotsEffective != nil {
+			want[fmt.Sprintf("label:{name:\"host\" value:\"%s\"} label:{name:\"space\" value:\"snapshots_effective\"} gauge:{value:%g}", h.Name, float64(*h.Space.SnapshotsEffective))] = true
+		}
+		if h.Space.UniqueEffective != nil {
+			want[fmt.Sprintf("label:{name:\"host\" value:\"%s\"} label:{name:\"space\" value:\"unique_effective\"} gauge:{value:%g}", h.Name, float64(*h.Space.UniqueEffective))] = true
+		}
+		if h.Space.TotalEffective != nil {
+			want[fmt.Sprintf("label:{name:\"host\" value:\"%s\"} label:{name:\"space\" value:\"total_effective\"} gauge:{value:%g}", h.Name, float64(*h.Space.TotalEffective))] = true
+		}
 		want[fmt.Sprintf("label:{name:\"host\" value:\"%s\"} label:{name:\"details\" value:\"%s\"} label:{name:\"status\" value:\"%s\"} gauge:{value:1}", h.Name, h.PortConnectivity.Details, h.PortConnectivity.Status)] = true
 	}
 	defer server.Close()
-	c := client.NewRestClient(e, "fake-api-token", "latest", "test-user-agent-string", false)
+	c := client.NewRestClient(e, "fake-api-token", "latest", "test-user-agent-string", "test-X-Request-Id-string", false)
+
 	hc := NewHostsSpaceCollector(c)
 	metricsCheck(t, hc, want)
 }

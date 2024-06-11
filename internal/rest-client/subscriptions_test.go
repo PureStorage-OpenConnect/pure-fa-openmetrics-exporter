@@ -35,7 +35,7 @@ func TestSubscriptions(t *testing.T) {
 	e := endp[len(endp)-1]
 	t.Run("subscriptions_1", func(t *testing.T) {
 		defer server.Close()
-		c := NewRestClient(e, "fake-api-token", "latest", "test-user-agent-string", false)
+		c := NewRestClient(e, "fake-api-token", "latest", "test-user-agent-string", "test-X-Request-Id-string", false)
 		vpl := c.GetSubscriptions()
 		if diff := cmp.Diff(vpl.Items, subs.Items); diff != "" {
 			t.Errorf("Mismatch (-want +got):\n%s", diff)

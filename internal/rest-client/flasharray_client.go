@@ -9,7 +9,9 @@ import (
 
 var UserAgentVersion string = "development"
 
-var FARestUserAgent string = "Pure_FA_OpenMetrics_exporter/" + UserAgentVersion
+var FARestUserAgentBase string = "Dev_Pure_FA_OpenMetrics_exporter"
+
+var FARestUserAgent string = FARestUserAgentBase + "/" + UserAgentVersion
 
 type Client interface {
 	GetAlerts(filter string) *AlertsList
@@ -35,16 +37,18 @@ type FAClient struct {
 	RestClient *resty.Client
 	ApiVersion string
 	XAuthToken string
+	XRequestID string
 	Error      error
 }
 
-func NewRestClient(endpoint string, apitoken string, apiversion string, uagent string, debug bool) *FAClient {
+func NewRestClient(endpoint string, apitoken string, apiversion string, uagent string, rid string, debug bool) *FAClient {
 	type ApiVersions struct {
 		Versions []string `json:"version"`
 	}
 	fa := &FAClient{
 		EndPoint:   endpoint,
 		ApiToken:   apitoken,
+		XRequestID: rid,
 		RestClient: resty.New(),
 		XAuthToken: "",
 	}
@@ -53,6 +57,8 @@ func NewRestClient(endpoint string, apitoken string, apiversion string, uagent s
 	fa.RestClient.SetHeaders(map[string]string{
 		"Content-Type": "application/json",
 		"Accept":       "application/json",
+		"X-Request-ID": fa.XRequestID,
+		"User-Agent":   FARestUserAgent + " (" + uagent + ")",
 	})
 	if debug {
 		fa.RestClient.SetDebug(true)
@@ -83,7 +89,9 @@ func NewRestClient(endpoint string, apitoken string, apiversion string, uagent s
 	} else {
 		fa.ApiVersion = apiversion
 	}
+	fa.XRequestID = res.Header().Get("X-Request-ID")
 	fa.RestClient.SetBaseURL("https://" + endpoint + "/api/" + fa.ApiVersion)
+	fa.RestClient.SetHeader("X-Request-ID", fa.XRequestID)
 	res, err = fa.RestClient.R().
 		SetHeader("api-token", apitoken).
 		Post("/login")
@@ -97,7 +105,6 @@ func NewRestClient(endpoint string, apitoken string, apiversion string, uagent s
 	}
 	fa.XAuthToken = res.Header().Get("x-auth-token")
 	fa.RestClient.SetHeader("x-auth-token", fa.XAuthToken)
-	fa.RestClient.SetHeader("User-Agent", FARestUserAgent+" ("+uagent+")")
 	return fa
 }
 
@@ -107,6 +114,7 @@ func (fa *FAClient) Close() *FAClient {
 	}
 	_, err := fa.RestClient.R().
 		SetHeader("x-auth-token", fa.XAuthToken).
+		SetHeader("X-Request-ID", fa.XRequestID).
 		Post("/logout")
 	if err != nil {
 		fa.Error = err
@@ -117,6 +125,7 @@ func (fa *FAClient) Close() *FAClient {
 func (fa *FAClient) RefreshSession() *FAClient {
 	res, err := fa.RestClient.R().
 		SetHeader("api-token", fa.ApiToken).
+		SetHeader("X-Request-ID", fa.XRequestID).
 		Post("/login")
 	if err != nil {
 		fa.Error = err

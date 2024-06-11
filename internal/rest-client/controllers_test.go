@@ -35,7 +35,7 @@ func TestControllers(t *testing.T) {
 	e := endp[len(endp)-1]
 	t.Run("controllers_1", func(t *testing.T) {
 		defer server.Close()
-		c := NewRestClient(e, "fake-api-token", "latest", "test-user-agent-string", false)
+		c := NewRestClient(e, "fake-api-token", "latest", "test-user-agent-string", "test-X-Request-Id-string", false)
 		cl := c.GetControllers()
 		if diff := cmp.Diff(cl.Items, cont.Items); diff != "" {
 			t.Errorf("Mismatch (-want +got):\n%s", diff)
