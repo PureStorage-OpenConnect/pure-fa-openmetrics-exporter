@@ -1,5 +1,3 @@
-version: '3.8'
-
 services:
   pure-fa-om-exporter:
     image: quay.io/purestorage/pure-fa-om-exporter:latest
