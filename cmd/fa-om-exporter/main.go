@@ -128,7 +128,7 @@ func metricsHandler(w http.ResponseWriter, r *http.Request) {
 			metrics = "all"
 		}
 	}
-	
+
 	endpoint := params.Get("endpoint")
 	address := params.Get("address")
 	apitoken := ""
