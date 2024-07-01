@@ -128,26 +128,41 @@ func metricsHandler(w http.ResponseWriter, r *http.Request) {
 			metrics = "all"
 		}
 	}
+	
 	endpoint := params.Get("endpoint")
-	if endpoint == "" {
-		http.Error(w, "Endpoint parameter is missing", http.StatusBadRequest)
+	address := params.Get("address")
+	apitoken := ""
+
+	if address != "" && endpoint != "" {
+		http.Error(w, "Both address and endpoint parameters are provided. Use only one.", http.StatusBadRequest)
+		return
+	} else if address != "" {
+		authHeader := r.Header.Get("Authorization")
+		authFields := strings.Fields(authHeader)
+
+		if len(authFields) == 2 && strings.ToLower(authFields[0]) == "bearer" {
+			apitoken = authFields[1]
+		}
+	} else if endpoint != "" {
+		address, apitoken = arraytokens.GetArrayParams(endpoint)
+
+		if address == "" && apitoken == "" {
+			http.Error(w, fmt.Sprintf("Endpoint '%s' not found in token file", endpoint), http.StatusBadRequest)
+			return
+		}
+	} else {
+		http.Error(w, "Address or endpoint parameter is missing", http.StatusBadRequest)
 		return
 	}
-	apiver := params.Get("api-version")
-	if apiver == "" {
-		apiver = "latest"
-	}
-	authHeader := r.Header.Get("Authorization")
-	authFields := strings.Fields(authHeader)
 
-	address, apitoken := arraytokens.GetArrayParams(endpoint)
-	if len(authFields) == 2 && strings.ToLower(authFields[0]) == "bearer" {
-		apitoken = authFields[1]
-		address = endpoint
-	}
 	if apitoken == "" {
 		http.Error(w, "Target authorization token is missing", http.StatusBadRequest)
 		return
+	}
+
+	apiver := params.Get("api-version")
+	if apiver == "" {
+		apiver = "latest"
 	}
 
 	uagent := r.Header.Get("User-Agent")
