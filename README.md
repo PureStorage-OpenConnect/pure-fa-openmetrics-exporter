@@ -312,8 +312,6 @@ Please refer to the [purefa metrics specification](specification/metrics/purefa-
 | purefa_pod_space_data_reduction_ratio                | FlashArray pod space data reduction                                                                                         |
 | purefa_pod_performance_replication_bandwidth_bytes   | FlashArray pod replication bandwidth in bytes per second                                                                    |
 | purefa_pod_replica_links_performance_bandwidth_bytes | FlashArray pod replica links throughput in bytes per second                                                                 |
-| purefa_pod_replica_links_lag_average_sec             | FlashArray pod replica links average lag in milliseconds (deprecated, please use purefa_pod_replica_links_lag_average_msec) |
-| purefa_pod_replica_links_lag_max_sec                 | FlashArray pod replica links maximum lag in milliseconds (deprecated, please use purefa_pod_replica_links_lag_average_msec) |
 | purefa_pod_replica_links_lag_average_msec            | FlashArray pod replica links average lag in milliseconds                                                                    |
 | purefa_pod_replica_links_lag_max_msec                | FlashArray pod replica links maximum lag in in milliseconds                                                                 |
 | purefa_volume_performance_average_bytes              | FlashArray volume average operations size in bytes                                                                          |
