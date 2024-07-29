@@ -134,16 +134,30 @@ func (c *ArraySpaceCollector) Collect(ch chan<- prometheus.Metric) {
 			float64(*a.Space.TotalEffective), "total_effective",
 		)
 	}
-	ch <- prometheus.MustNewConstMetric(
-		c.SpaceDesc,
-		prometheus.GaugeValue,
-		a.Capacity-(float64(*a.Space.System)+float64(*a.Space.Replication)+float64(*a.Space.Shared)+float64(*a.Space.Snapshots)+float64(*a.Space.Unique)), "empty",
-	)
-	ch <- prometheus.MustNewConstMetric(
-		c.UtilizationDesc,
-		prometheus.GaugeValue,
-		(float64(*a.Space.System)+float64(*a.Space.Replication)+float64(*a.Space.Shared)+float64(*a.Space.Snapshots)+float64(*a.Space.Unique))/a.Capacity*100,
-	)
+	if a.Space.System != nil {
+		ch <- prometheus.MustNewConstMetric(
+			c.SpaceDesc,
+			prometheus.GaugeValue,
+			a.Capacity-(float64(*a.Space.System)+float64(*a.Space.Replication)+float64(*a.Space.Shared)+float64(*a.Space.Snapshots)+float64(*a.Space.Unique)), "empty",
+		)
+		ch <- prometheus.MustNewConstMetric(
+			c.UtilizationDesc,
+			prometheus.GaugeValue,
+			(float64(*a.Space.System)+float64(*a.Space.Replication)+float64(*a.Space.Shared)+float64(*a.Space.Snapshots)+float64(*a.Space.Unique))/a.Capacity*100,
+		)
+	} else {
+		ch <- prometheus.MustNewConstMetric(
+			c.SpaceDesc,
+			prometheus.GaugeValue,
+			a.Capacity-(float64(*a.Space.Replication)+float64(*a.Space.Shared)+float64(*a.Space.Snapshots)+float64(*a.Space.Unique)), "empty",
+		)
+		ch <- prometheus.MustNewConstMetric(
+			c.UtilizationDesc,
+			prometheus.GaugeValue,
+			(float64(*a.Space.Replication)+float64(*a.Space.Shared)+float64(*a.Space.Snapshots)+float64(*a.Space.Unique))/a.Capacity*100,
+		)
+	}
+
 }
 
 func NewArraySpaceCollector(fa *client.FAClient) *ArraySpaceCollector {
