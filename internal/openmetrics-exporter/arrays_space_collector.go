@@ -157,7 +157,6 @@ func (c *ArraySpaceCollector) Collect(ch chan<- prometheus.Metric) {
 			(float64(*a.Space.Replication)+float64(*a.Space.Shared)+float64(*a.Space.Snapshots)+float64(*a.Space.Unique))/a.Capacity*100,
 		)
 	}
-
 }
 
 func NewArraySpaceCollector(fa *client.FAClient) *ArraySpaceCollector {
