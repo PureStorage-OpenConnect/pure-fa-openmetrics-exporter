@@ -20,6 +20,7 @@ import (
 
 var version string = "development"
 var debug bool = false
+var secure bool = false
 var arraytokens config.FlashArrayList
 
 func fileExists(args []string) error {
@@ -41,9 +42,10 @@ func main() {
 	host := parser.String("a", "address", &argparse.Options{Required: false, Help: "IP address for this exporter to bind to", Default: "0.0.0.0"})
 	port := parser.Int("p", "port", &argparse.Options{Required: false, Help: "Port for this exporter to listen", Default: 9490})
 	d := parser.Flag("d", "debug", &argparse.Options{Required: false, Help: "Enable debug", Default: false})
+	s := parser.Flag("s", "secure", &argparse.Options{Required: false, Help: "Enable TLS verification when connecting to array", Default: false})
 	at := parser.File("t", "tokens", os.O_RDONLY, 0600, &argparse.Options{Required: false, Validate: fileExists, Help: "API token(s) map file"})
-	cert := parser.String("c", "cert", &argparse.Options{Required: false, Help: "SSL/TLS certificate file. Required only for TLS"})
-	key := parser.String("k", "key", &argparse.Options{Required: false, Help: "SSL/TLS private key file. Required only for TLS"})
+	cert := parser.String("c", "cert", &argparse.Options{Required: false, Help: "SSL/TLS certificate file. Required only for Exporter TLS"})
+	key := parser.String("k", "key", &argparse.Options{Required: false, Help: "SSL/TLS private key file. Required only for Exporter TLS"})
 	err := parser.Parse(os.Args)
 	if err != nil {
 		log.Fatalf("Error in token file: %v", err)
@@ -81,6 +83,7 @@ func main() {
 		}
 	}
 	debug = *d
+	secure = *s
 	addr := fmt.Sprintf("%s:%d", *host, *port)
 	log.Printf("Start Pure FlashArray exporter %s on %s", version, addr)
 
@@ -154,7 +157,7 @@ func metricsHandler(w http.ResponseWriter, r *http.Request) {
 	rid := r.Header.Get("X-Request-ID")
 
 	registry := prometheus.NewRegistry()
-	faclient := client.NewRestClient(address, apitoken, apiver, uagent, rid, debug)
+	faclient := client.NewRestClient(address, apitoken, apiver, uagent, rid, debug, secure)
 	if faclient.Error != nil {
 		http.Error(w, "Error connecting to FlashArray. Check your management endpoint and/or api token are correct.", http.StatusBadRequest)
 		return

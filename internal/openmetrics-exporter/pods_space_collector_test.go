@@ -92,7 +92,7 @@ func TestPodsSpaceCollector(t *testing.T) {
 		}
 	}
 	defer server.Close()
-	c := client.NewRestClient(e, "fake-api-token", "latest", "test-user-agent-string", "test-X-Request-Id-string", false)
+	c := client.NewRestClient(e, "fake-api-token", "latest", "test-user-agent-string", "test-X-Request-Id-string", false, false)
 
 	pc := NewPodsSpaceCollector(c)
 	metricsCheck(t, pc, want)

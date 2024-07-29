@@ -40,7 +40,7 @@ func TestPodReplicaLinksLagCollector(t *testing.T) {
 		want[fmt.Sprintf("label:{name:\"direction\" value:\"%s\"} label:{name:\"local_pod\" value:\"%s\"} label:{name:\"remote\" value:\"%s\"} label:{name:\"remote_pod\" value:\"%s\"} label:{name:\"status\" value:\"%s\"} gauge:{value:%g}", p.Direction, p.LocalPod.Name, p.Remotes[0].Name, p.RemotePod.Name, p.Status, p.Lag.Max)] = true
 
 	}
-	c := client.NewRestClient(e, "fake-api-token", "latest", "test-user-agent-string", "test-X-Request-Id-string", false)
+	c := client.NewRestClient(e, "fake-api-token", "latest", "test-user-agent-string", "test-X-Request-Id-string", false, false)
 
 	pc := NewPodReplicaLinksLagCollector(c)
 	metricsCheck(t, pc, want)

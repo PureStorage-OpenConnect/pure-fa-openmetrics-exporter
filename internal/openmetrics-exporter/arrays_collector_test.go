@@ -49,7 +49,7 @@ func TestArraysCollector(t *testing.T) {
 
 	want[fmt.Sprintf("label:{name:\"array_name\" value:\"%s\"} label:{name:\"os\" value:\"%s\"} label:{name:\"subscription_type\" value:\"%s\"} label:{name:\"system_id\" value:\"%s\"} label:{name:\"version\" value:\"%s\"} gauge:{value:1}", a.Name, a.Os, s.Service, a.Id, a.Version)] = true
 
-	c := client.NewRestClient(e, "fake-api-token", "latest", "test-user-agent-string", "test-X-Request-Id-string", false)
+	c := client.NewRestClient(e, "fake-api-token", "latest", "test-user-agent-string", "test-X-Request-Id-string", false, false)
 	ac := NewArraysCollector(c)
 	metricsCheck(t, ac, want)
 	server.Close()

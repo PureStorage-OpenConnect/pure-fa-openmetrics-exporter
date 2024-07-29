@@ -41,7 +41,7 @@ type FAClient struct {
 	Error      error
 }
 
-func NewRestClient(endpoint string, apitoken string, apiversion string, uagent string, rid string, debug bool) *FAClient {
+func NewRestClient(endpoint string, apitoken string, apiversion string, uagent string, rid string, debug bool, secure bool) *FAClient {
 	type ApiVersions struct {
 		Versions []string `json:"version"`
 	}
@@ -53,7 +53,9 @@ func NewRestClient(endpoint string, apitoken string, apiversion string, uagent s
 		XAuthToken: "",
 	}
 	fa.RestClient.SetBaseURL("https://" + endpoint + "/api")
-	fa.RestClient.SetTLSClientConfig(&tls.Config{InsecureSkipVerify: true})
+	if !secure {
+		fa.RestClient.SetTLSClientConfig(&tls.Config{InsecureSkipVerify: true})
+	}
 	fa.RestClient.SetHeaders(map[string]string{
 		"Content-Type": "application/json",
 		"Accept":       "application/json",

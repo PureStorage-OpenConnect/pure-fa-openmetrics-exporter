@@ -35,7 +35,7 @@ func TestArrays(t *testing.T) {
 	e := endp[len(endp)-1]
 	t.Run("arrays_1", func(t *testing.T) {
 		defer server.Close()
-		c := NewRestClient(e, "fake-api-token", "latest", "test-user-agent-string", "test-X-Request-Id-string", false)
+		c := NewRestClient(e, "fake-api-token", "latest", "test-user-agent-string", "test-X-Request-Id-string", false, false)
 		al := c.GetArrays()
 		if diff := cmp.Diff(al.Items[0], arrs.Items[0]); diff != "" {
 			t.Errorf("Mismatch (-want +got):\n%s", diff)

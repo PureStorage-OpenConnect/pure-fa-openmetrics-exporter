@@ -60,7 +60,7 @@ func TestHostsPerformanceCollector(t *testing.T) {
 		want[fmt.Sprintf("label:{name:\"dimension\" value:\"bytes_per_read\"} label:{name:\"host\" value:\"%s\"} gauge:{value:%g}", p.Name, p.BytesPerRead)] = true
 		want[fmt.Sprintf("label:{name:\"dimension\" value:\"bytes_per_write\"} label:{name:\"host\" value:\"%s\"} gauge:{value:%g}", p.Name, p.BytesPerWrite)] = true
 	}
-	c := client.NewRestClient(e, "fake-api-token", "latest", "test-user-agent-string", "test-X-Request-Id-string", false)
+	c := client.NewRestClient(e, "fake-api-token", "latest", "test-user-agent-string", "test-X-Request-Id-string", false, false)
 
 	pc := NewHostsPerformanceCollector(c)
 	metricsCheck(t, pc, want)

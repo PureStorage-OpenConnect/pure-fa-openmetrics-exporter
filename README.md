@@ -101,9 +101,9 @@ The `X-Request-ID` Header, as used in the Purity API, may be used when calling t
 
 ```shell
 
-usage: pure-fa-om-exporter [-h|--help] [-a|--address "<value>"] [-p|--port <integer>] [-d|--debug] [-t|--tokens <file>] [-k|--key <file>] [-c|--cert <file>]
+usage: pure-fa-om-exporter [-h|--help] [-a|--address "<value>"] [-p|--port <integer>] [-d|--debug] [-s|--secure] [-t|--tokens <file>] [-c|--cert "<value>"] [-k|--key "<value>"]
 
-                           Pure Storage FA OpenMetrics exporter
+Pure Storage FA OpenMetrics exporter
 
 Arguments:
 
@@ -111,9 +111,10 @@ Arguments:
   -a  --address  IP address for this exporter to bind to. Default: 0.0.0.0
   -p  --port     Port for this exporter to listen. Default: 9490
   -d  --debug    Enable debug. Default: false
+  -s  --secure   Enable TLS verification when connecting to array. Default: false
   -t  --tokens   API token(s) map file
-  -c  --cert     SSL/TLS certificate file. Required only for TLS
-  -k  --key      SSL/TLS private key file. Required only for TLS
+  -c  --cert     SSL/TLS certificate file. Required only for Exporter TLS
+  -k  --key      SSL/TLS private key file. Required only for Exporter TLS
 ```
 
 The array token configuration file must have to following syntax:
