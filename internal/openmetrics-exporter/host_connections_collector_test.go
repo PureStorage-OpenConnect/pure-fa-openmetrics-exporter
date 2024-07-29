@@ -38,7 +38,7 @@ func TestHostConnectionsCollector(t *testing.T) {
 	for _, hc := range conn.Items {
 		want[fmt.Sprintf("label:{name:\"host\" value:\"%s\"} label:{name:\"hostgroup\" value:\"%s\"} label:{name:\"volume\" value:\"%s\"} gauge:{value:1}", hc.Host.Name, hc.HostGroup.Name, hc.Volume.Name)] = true
 	}
-	c := client.NewRestClient(e, "fake-api-token", "latest", "test-user-agent-string", "test-X-Request-Id-string", false)
+	c := client.NewRestClient(e, "fake-api-token", "latest", "test-user-agent-string", "test-X-Request-Id-string", false, false)
 
 	hc := NewHostConnectionsCollector(c)
 	metricsCheck(t, hc, want)

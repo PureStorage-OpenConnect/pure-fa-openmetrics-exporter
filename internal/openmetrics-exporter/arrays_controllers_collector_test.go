@@ -39,7 +39,7 @@ func TestArrayControllersCollector(t *testing.T) {
 		want[fmt.Sprintf("label:{name:\"mode\" value:\"%s\"} label:{name:\"model\"value:\"%s\"} label:{name:\"name\" value:\"%s\"} label:{name:\"status\" value:\"%s\"} label:{name:\"type\" value:\"%s\"} label:{name:\"version\" value:\"%s\"} gauge:{value:\"%g\"}", ctl.Mode, ctl.Model, ctl.Name, ctl.Status, ctl.Type, ctl.Version, (float64(ctl.ModeSince)/1000))] = true
 	}
 
-	c := client.NewRestClient(e, "fake-api-token", "latest", "test-user-agent-string", "test-X-Request-Id-string", false)
+	c := client.NewRestClient(e, "fake-api-token", "latest", "test-user-agent-string", "test-X-Request-Id-string", false, false)
 
 	dc := NewControllersCollector(c)
 	metricsCheck(t, dc, want)

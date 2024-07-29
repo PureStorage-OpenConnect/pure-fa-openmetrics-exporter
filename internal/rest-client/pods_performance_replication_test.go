@@ -35,7 +35,7 @@ func TestPodsPerformanceReplication(t *testing.T) {
 	e := endp[len(endp)-1]
 	t.Run("pods_performance_replcation_1", func(t *testing.T) {
 		defer server.Close()
-		c := NewRestClient(e, "fake-api-token", "latest", "test-user-agent-string", "test-X-Request-Id-string", false)
+		c := NewRestClient(e, "fake-api-token", "latest", "test-user-agent-string", "test-X-Request-Id-string", false, false)
 		ppl := c.GetPodsPerformanceReplication()
 		if diff := cmp.Diff(ppl.Items, podsp.Items); diff != "" {
 			t.Errorf("Mismatch (-want +got):\n%s", diff)

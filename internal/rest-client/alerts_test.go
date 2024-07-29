@@ -43,7 +43,7 @@ func TestAlerts(t *testing.T) {
 	endp := strings.Split(server.URL, "/")
 	e := endp[len(endp)-1]
 	t.Run("alerts_open", func(t *testing.T) {
-		c := NewRestClient(e, "fake-api-token", "latest", "test-user-agent-string", "test-X-Request-Id-string", false)
+		c := NewRestClient(e, "fake-api-token", "latest", "test-user-agent-string", "test-X-Request-Id-string", false, false)
 		al := c.GetAlerts("state='open'")
 		if diff := cmp.Diff(al.Items, aopen.Items); diff != "" {
 			t.Errorf("Mismatch (-want +got):\n%s", diff)
@@ -51,7 +51,7 @@ func TestAlerts(t *testing.T) {
 		}
 	})
 	t.Run("alerts_all", func(t *testing.T) {
-		c := NewRestClient(e, "fake-api-token", "latest", "test-user-agent-string", "test-X-Request-Id-string", false)
+		c := NewRestClient(e, "fake-api-token", "latest", "test-user-agent-string", "test-X-Request-Id-string", false, false)
 		al := c.GetAlerts("")
 		if diff := cmp.Diff(al.Items, aall.Items); diff != "" {
 			t.Errorf("Mismatch (-want +got):\n%s", diff)

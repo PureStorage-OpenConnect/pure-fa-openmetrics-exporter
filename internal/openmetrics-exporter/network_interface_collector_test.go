@@ -39,7 +39,7 @@ func TestNetworkInterfacesCollectorTest(t *testing.T) {
 	for _, h := range hwl.Items {
 		want[fmt.Sprintf("label:{name:\"enabled\"  value:\"%s\"}  label:{name:\"ethsubtype\"  value:\"%s\"}  label:{name:\"name\"  value:\"%s\"}  label:{name:\"services\"  value:\"%s\"}  label:{name:\"type\"  value:\"%s\"}  gauge:{value:%g}", strconv.FormatBool(h.Enabled), h.Eth.Subtype, h.Name, strings.Join(h.Services, ", "), h.InterfaceType, float64(h.Speed))] = true
 	}
-	c := client.NewRestClient(e, "fake-api-token", "latest", "test-user-agent-string", "test-X-Request-Id-string", false)
+	c := client.NewRestClient(e, "fake-api-token", "latest", "test-user-agent-string", "test-X-Request-Id-string", false, false)
 
 	nc := NewNetworkInterfacesCollector(c)
 	metricsCheck(t, nc, want)

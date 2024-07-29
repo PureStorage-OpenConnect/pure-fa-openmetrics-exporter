@@ -44,7 +44,7 @@ func TestHardwareCollector(t *testing.T) {
 			want[fmt.Sprintf("label:{name:\"component_name\" value:\"%s\"} label:{name:\"component_type\" value:\"%s\"} gauge:{value:%g}", h.Name, h.Type, float64(h.Voltage))] = true
 		}
 	}
-	c := client.NewRestClient(e, "fake-api-token", "latest", "test-user-agent-string", "test-X-Request-Id-string", false)
+	c := client.NewRestClient(e, "fake-api-token", "latest", "test-user-agent-string", "test-X-Request-Id-string", false, false)
 
 	hc := NewHardwareCollector(c)
 	metricsCheck(t, hc, want)

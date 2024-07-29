@@ -86,7 +86,7 @@ func TestArraySpaceCollector(t *testing.T) {
 	want[fmt.Sprintf("label:{name:\"space\" value:\"empty\"} gauge:{value:%g}", a.Capacity-(float64(*a.Space.System)+float64(*a.Space.Replication)+float64(*a.Space.Shared)+float64(*a.Space.Snapshots)+float64(*a.Space.Unique)))] = true
 	want[fmt.Sprintf("gauge:{value:%g}", (float64(*a.Space.System)+float64(*a.Space.Replication)+float64(*a.Space.Shared)+float64(*a.Space.Snapshots)+float64(*a.Space.Unique))/a.Capacity*100)] = true
 	defer server.Close()
-	c := client.NewRestClient(e, "fake-api-token", "latest", "test-user-agent-string", "test-X-Request-Id-string", false)
+	c := client.NewRestClient(e, "fake-api-token", "latest", "test-user-agent-string", "test-X-Request-Id-string", false, false)
 
 	ac := NewArraySpaceCollector(c)
 	metricsCheck(t, ac, want)
