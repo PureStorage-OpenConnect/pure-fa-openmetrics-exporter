@@ -18,6 +18,14 @@ You can monitor multiple FlashArrays and aggregate these into a single dashboard
 <img src="images/purefa_datadog_integration.png" width="50%" height="50%">
 <br>
 
+### Local Wheel Install:
+In [extra/datadog](extra/datadog) we have a copy of the PureFA Datadog wheel install file available for download if you are unable to connect to Datadog's repository.
+
+Please use the [Datadog docs](https://docs.datadoghq.com/developers/integrations/agent_integration/?tab=buildanoutoftheboxintegration#install-the-wheel) for assistance installing this to your Datadog agent. 
+
+All other guidance listed in the [main integration documentation](https://app.datadoghq.com/integrations/purefa) remains the same.
+
+
 ## Dynatrace
 
 https://www.dynatrace.com/hub/detail/pure-storage-flasharray
