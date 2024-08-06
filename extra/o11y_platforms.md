@@ -6,7 +6,7 @@ Pure Storage are working with observability platform vendors to ensure products 
 
 ## Datadog
 
-https://app.datadoghq.com/integrations/purefa
+https://docs.datadoghq.com/integrations/purefa/
 
 This check monitors the Pure Storage FlashArray through the Datadog Agent and the Pure Storage OpenMetrics exporter.
 
@@ -19,7 +19,7 @@ You can monitor multiple FlashArrays and aggregate these into a single dashboard
 <br>
 
 ### Local Wheel Install:
-In [extra/datadog](extra/datadog) we have a copy of the PureFA Datadog wheel install file available for download if you are unable to connect to Datadog's repository.
+In [extra/datadog](datadog) we have a copy of the PureFA Datadog wheel install file available for download if you are unable to connect to Datadog's repository.
 
 Please use the [Datadog docs](https://docs.datadoghq.com/developers/integrations/agent_integration/?tab=buildanoutoftheboxintegration#install-the-wheel) for assistance installing this to your Datadog agent. 
 
