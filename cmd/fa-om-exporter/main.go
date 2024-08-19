@@ -2,6 +2,7 @@ package main
 
 import (
 	"context"
+	"crypto/tls"
 	"fmt"
 	"io"
 	"log"
@@ -107,7 +108,25 @@ func main() {
 		metricsHandler(w, r)
 	})
 	if isFile(*cert) && isFile(*key) {
-		log.Fatal(http.ListenAndServeTLS(addr, *cert, *key, nil))
+
+		cfg := &tls.Config{
+			MinVersion: tls.VersionTLS12,
+			CipherSuites: []uint16{
+				tls.TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256,
+				tls.TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256,
+				tls.TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384,
+				tls.TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384,
+				tls.TLS_ECDHE_ECDSA_WITH_CHACHA20_POLY1305,
+				tls.TLS_ECDHE_RSA_WITH_CHACHA20_POLY1305,
+			},
+		}
+
+		srv := &http.Server{
+			TLSConfig: cfg,
+			Addr:      addr,
+		}
+
+		log.Fatal(srv.ListenAndServeTLS(*cert, *key))
 	} else {
 		log.Fatal(http.ListenAndServe(addr, nil))
 	}
