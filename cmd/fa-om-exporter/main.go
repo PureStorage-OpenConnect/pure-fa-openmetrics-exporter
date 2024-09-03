@@ -106,6 +106,7 @@ func main() {
 			TLSConfig: cfg,
 			Addr:      addr,
 		}
+
 		http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
 			w.Header().Add("Strict-Transport-Security", "max-age=63072000; includeSubDomains")
 			index(w, r)
