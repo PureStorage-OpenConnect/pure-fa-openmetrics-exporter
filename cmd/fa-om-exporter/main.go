@@ -88,25 +88,6 @@ func main() {
 	addr := fmt.Sprintf("%s:%d", *host, *port)
 	log.Printf("Start Pure FlashArray exporter %s on %s", version, addr)
 
-	http.HandleFunc("/", index)
-	http.HandleFunc("/metrics/volumes", func(w http.ResponseWriter, r *http.Request) {
-		metricsHandler(w, r)
-	})
-	http.HandleFunc("/metrics/hosts", func(w http.ResponseWriter, r *http.Request) {
-		metricsHandler(w, r)
-	})
-	http.HandleFunc("/metrics/pods", func(w http.ResponseWriter, r *http.Request) {
-		metricsHandler(w, r)
-	})
-	http.HandleFunc("/metrics/directories", func(w http.ResponseWriter, r *http.Request) {
-		metricsHandler(w, r)
-	})
-	http.HandleFunc("/metrics/array", func(w http.ResponseWriter, r *http.Request) {
-		metricsHandler(w, r)
-	})
-	http.HandleFunc("/metrics", func(w http.ResponseWriter, r *http.Request) {
-		metricsHandler(w, r)
-	})
 	if isFile(*cert) && isFile(*key) {
 
 		cfg := &tls.Config{
@@ -126,8 +107,55 @@ func main() {
 			Addr:      addr,
 		}
 
+		http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
+			w.Header().Add("Strict-Transport-Security", "max-age=63072000; includeSubDomains")
+			index(w, r)
+		})
+		http.HandleFunc("/metrics/volumes", func(w http.ResponseWriter, r *http.Request) {
+			w.Header().Add("Strict-Transport-Security", "max-age=63072000; includeSubDomains")
+			metricsHandler(w, r)
+		})
+		http.HandleFunc("/metrics/hosts", func(w http.ResponseWriter, r *http.Request) {
+			w.Header().Add("Strict-Transport-Security", "max-age=63072000; includeSubDomains")
+			metricsHandler(w, r)
+		})
+		http.HandleFunc("/metrics/pods", func(w http.ResponseWriter, r *http.Request) {
+			w.Header().Add("Strict-Transport-Security", "max-age=63072000; includeSubDomains")
+			metricsHandler(w, r)
+		})
+		http.HandleFunc("/metrics/directories", func(w http.ResponseWriter, r *http.Request) {
+			w.Header().Add("Strict-Transport-Security", "max-age=63072000; includeSubDomains")
+			metricsHandler(w, r)
+		})
+		http.HandleFunc("/metrics/array", func(w http.ResponseWriter, r *http.Request) {
+			w.Header().Add("Strict-Transport-Security", "max-age=63072000; includeSubDomains")
+			metricsHandler(w, r)
+		})
+		http.HandleFunc("/metrics", func(w http.ResponseWriter, r *http.Request) {
+			w.Header().Add("Strict-Transport-Security", "max-age=63072000; includeSubDomains")
+			metricsHandler(w, r)
+		})
 		log.Fatal(srv.ListenAndServeTLS(*cert, *key))
 	} else {
+		http.HandleFunc("/", index)
+		http.HandleFunc("/metrics/volumes", func(w http.ResponseWriter, r *http.Request) {
+			metricsHandler(w, r)
+		})
+		http.HandleFunc("/metrics/hosts", func(w http.ResponseWriter, r *http.Request) {
+			metricsHandler(w, r)
+		})
+		http.HandleFunc("/metrics/pods", func(w http.ResponseWriter, r *http.Request) {
+			metricsHandler(w, r)
+		})
+		http.HandleFunc("/metrics/directories", func(w http.ResponseWriter, r *http.Request) {
+			metricsHandler(w, r)
+		})
+		http.HandleFunc("/metrics/array", func(w http.ResponseWriter, r *http.Request) {
+			metricsHandler(w, r)
+		})
+		http.HandleFunc("/metrics", func(w http.ResponseWriter, r *http.Request) {
+			metricsHandler(w, r)
+		})
 		log.Fatal(http.ListenAndServe(addr, nil))
 	}
 }
