@@ -1,5 +1,5 @@
 FROM golang:alpine as build
-ARG VERSION=1.0.22
+ARG VERSION=1.0.23
 ARG UserAgentBase=Pure_FA_OpenMetrics_exporter
 
 WORKDIR /usr/src/app
