@@ -1,5 +1,13 @@
 ![Current version](https://img.shields.io/github/v/tag/PureStorage-OpenConnect/pure-fa-openmetrics-exporter?label=current%20version)
 
+# The Pure Storage FlashArray OpenMetrics exporter has been deprecated in favor of the native exporter avaible in Purity//FA 6.6.11+
+
+## EOL/EOS Dates
+The Pure Storage FlashArray OpenMetrics exporter is EOL effective 9/30/2024 (version 1.0.23). No new features or metrics will be released within this exporter, however it will be supported with bug fixes until EOS.
+
+The Pure Storage FlashArray OpenMetrics exporter is EOS effective once 6.9.x is certified for enterprise release. 
+
+
 # Pure Storage FlashArray OpenMetrics exporter
 OpenMetrics exporter for Pure Storage FlashArray.
 
