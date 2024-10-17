@@ -1,6 +1,6 @@
 ![Current version](https://img.shields.io/github/v/tag/PureStorage-OpenConnect/pure-fa-openmetrics-exporter?label=current%20version)
 
-# The Pure Storage FlashArray OpenMetrics exporter has been deprecated in favor of the native exporter avaible in Purity//FA 6.6.11+.
+# The Pure Storage FlashArray OpenMetrics exporter has been deprecated in favor of the native exporter available in Purity//FA 6.6.11+.
 The semantic conventions remains the same on both versions of the exporter, thus it will allow for an easy migration. Further integration documentation on how to migrate, as well as updated integrations will be coming soon. Please reach out to pure-observability@purestorage.com if you require assistance. 
 
 ## Native Exporter Information
