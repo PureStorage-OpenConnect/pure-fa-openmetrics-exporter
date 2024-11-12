@@ -145,10 +145,6 @@ type ResponseLog struct {
 	Body   string
 }
 
-//‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
-// Package Unexported methods
-//_______________________________________________________________________
-
 // way to disable the HTML escape as opt-in
 func jsonMarshal(c *Client, r *Request, d interface{}) (*bytes.Buffer, error) {
 	if !r.jsonEscapeHTML || !c.jsonEscapeHTML {
@@ -359,6 +355,32 @@ func copyHeaders(hdrs http.Header) http.Header {
 		nh[k] = v
 	}
 	return nh
+}
+
+func wrapErrors(n error, inner error) error {
+	if inner == nil {
+		return n
+	}
+	if n == nil {
+		return inner
+	}
+	return &restyError{
+		err:   n,
+		inner: inner,
+	}
+}
+
+type restyError struct {
+	err   error
+	inner error
+}
+
+func (e *restyError) Error() string {
+	return e.err.Error()
+}
+
+func (e *restyError) Unwrap() error {
+	return e.inner
 }
 
 type noRetryErr struct {
