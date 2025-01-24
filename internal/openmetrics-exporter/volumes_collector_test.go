@@ -35,6 +35,12 @@ func TestVolumesSpaceCollector(t *testing.T) {
 	e := endp[len(endp)-1]
 	want := make(map[string]bool)
 	for _, v := range volumes.Items {
+		if v.QoS.BandwidthLimit != nil {
+			want[fmt.Sprintf("label:{name:\"naa_id\" value:\"%s\"} label:{name:\"name\" value:\"%s\"} label:{name:\"pod\" value:\"%s\"} label:{name:\"volume_group\" value:\"%s\"} gauge:{value:%g}", purenaa+v.Serial, v.Name, v.Pod.Name, v.VolumeGroup.Name, float64(*v.QoS.BandwidthLimit))] = true
+		}
+		if v.QoS.IopsLimit != nil {
+			want[fmt.Sprintf("label:{name:\"naa_id\" value:\"%s\"} label:{name:\"name\" value:\"%s\"} label:{name:\"pod\" value:\"%s\"} label:{name:\"volume_group\" value:\"%s\"} gauge:{value:%g}", purenaa+v.Serial, v.Name, v.Pod.Name, v.VolumeGroup.Name, float64(*v.QoS.IopsLimit))] = true
+		}
 		if v.Space.DataReduction != nil {
 			want[fmt.Sprintf("label:{name:\"naa_id\" value:\"%s\"} label:{name:\"name\" value:\"%s\"} label:{name:\"pod\" value:\"%s\"} label:{name:\"volume_group\" value:\"%s\"} gauge:{value:%g}", purenaa+v.Serial, v.Name, v.Pod.Name, v.VolumeGroup.Name, *v.Space.DataReduction)] = true
 		}
@@ -84,6 +90,6 @@ func TestVolumesSpaceCollector(t *testing.T) {
 	defer server.Close()
 	c := client.NewRestClient(e, "fake-api-token", "latest", "test-user-agent-string", "test-X-Request-Id-string", false, false)
 	vl := c.GetVolumes()
-	pc := NewVolumesSpaceCollector(vl)
+	pc := NewVolumesCollector(vl)
 	metricsCheck(t, pc, want)
 }

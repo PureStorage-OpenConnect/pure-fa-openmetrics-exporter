@@ -6,23 +6,41 @@ import (
 	"github.com/prometheus/client_golang/prometheus"
 )
 
-type VolumesSpaceCollector struct {
-	ReductionDesc *prometheus.Desc
-	SpaceDesc     *prometheus.Desc
-	Volumes       *client.VolumesList
+type VolumesCollector struct {
+	QoSBandwidthLimitDesc *prometheus.Desc
+	QoSIPOSLimitDesc      *prometheus.Desc
+	ReductionDesc         *prometheus.Desc
+	SpaceDesc             *prometheus.Desc
+	Volumes               *client.VolumesList
 }
 
-func (c *VolumesSpaceCollector) Describe(ch chan<- *prometheus.Desc) {
+func (c *VolumesCollector) Describe(ch chan<- *prometheus.Desc) {
 	prometheus.DescribeByCollect(c, ch)
 }
 
-func (c *VolumesSpaceCollector) Collect(ch chan<- prometheus.Metric) {
+func (c *VolumesCollector) Collect(ch chan<- prometheus.Metric) {
 	purenaa := "naa.624a9370"
 	volumes := c.Volumes
 	if len(volumes.Items) == 0 {
 		return
 	}
 	for _, v := range volumes.Items {
+		if v.QoS.BandwidthLimit != nil {
+			ch <- prometheus.MustNewConstMetric(
+				c.QoSBandwidthLimitDesc,
+				prometheus.GaugeValue,
+				float64(*v.QoS.BandwidthLimit),
+				purenaa+v.Serial, v.Name, v.Pod.Name, v.VolumeGroup.Name,
+			)
+		}
+		if v.QoS.IopsLimit != nil {
+			ch <- prometheus.MustNewConstMetric(
+				c.QoSIPOSLimitDesc,
+				prometheus.GaugeValue,
+				float64(*v.QoS.IopsLimit),
+				purenaa+v.Serial, v.Name, v.Pod.Name, v.VolumeGroup.Name,
+			)
+		}
 		if v.Space.DataReduction != nil {
 			ch <- prometheus.MustNewConstMetric(
 				c.ReductionDesc,
@@ -146,8 +164,20 @@ func (c *VolumesSpaceCollector) Collect(ch chan<- prometheus.Metric) {
 	}
 }
 
-func NewVolumesSpaceCollector(volumes *client.VolumesList) *VolumesSpaceCollector {
-	return &VolumesSpaceCollector{
+func NewVolumesCollector(volumes *client.VolumesList) *VolumesCollector {
+	return &VolumesCollector{
+		QoSBandwidthLimitDesc: prometheus.NewDesc(
+			"purefa_volume_qos_bandwidth_bytes_per_sec_limit",
+			"FlashArray volume maximum QoS bandwidth limit in bytes per second",
+			[]string{"naa_id", "name", "pod", "volume_group"},
+			prometheus.Labels{},
+		),
+		QoSIPOSLimitDesc: prometheus.NewDesc(
+			"purefa_volume_qos_iops_limit",
+			"FlashArray volume QoS IOPs limit",
+			[]string{"naa_id", "name", "pod", "volume_group"},
+			prometheus.Labels{},
+		),
 		ReductionDesc: prometheus.NewDesc(
 			"purefa_volume_space_data_reduction_ratio",
 			"FlashArray volume space data reduction",

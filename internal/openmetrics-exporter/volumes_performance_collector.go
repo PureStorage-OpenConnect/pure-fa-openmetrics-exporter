@@ -1,9 +1,9 @@
 package collectors
 
-
 import (
+	client "purestorage/fa-openmetrics-exporter/internal/rest-client"
+
 	"github.com/prometheus/client_golang/prometheus"
-	"purestorage/fa-openmetrics-exporter/internal/rest-client"
 )
 
 type VolumesPerformanceCollector struct {
@@ -102,6 +102,24 @@ func (c *VolumesPerformanceCollector) Collect(ch chan<- prometheus.Metric) {
 			prometheus.GaugeValue,
 			vp.ServiceUsecPerReadOpCacheReduction,
 			c.NAAids[vp.Name], vp.Name, "service_usec_per_read_op_cache_reduction",
+		)
+		ch <- prometheus.MustNewConstMetric(
+			c.LatencyDesc,
+			prometheus.GaugeValue,
+			float64(*vp.QosRateLimitUsecPerMirroredWriteOp),
+			c.NAAids[vp.Name], vp.Name, "qos_rate_limit_usec_per_mirrored_write_op",
+		)
+		ch <- prometheus.MustNewConstMetric(
+			c.LatencyDesc,
+			prometheus.GaugeValue,
+			float64(*vp.QosRateLimitUsecPerReadOp),
+			c.NAAids[vp.Name], vp.Name, "qos_rate_limit_usec_per_read_op",
+		)
+		ch <- prometheus.MustNewConstMetric(
+			c.LatencyDesc,
+			prometheus.GaugeValue,
+			float64(*vp.QosRateLimitUsecPerWriteOp),
+			c.NAAids[vp.Name], vp.Name, "qos_rate_limit_usec_per_write_op",
 		)
 		ch <- prometheus.MustNewConstMetric(
 			c.BandwidthDesc,

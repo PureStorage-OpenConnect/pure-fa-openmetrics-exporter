@@ -9,9 +9,9 @@ type VolumePerformance struct {
 	BytesPerWrite                      float64 `json:"bytes_per_write"`
 	MirroredWriteBytesPerSec           float64 `json:"mirrored_write_bytes_per_sec"`
 	MirroredWritesPerSec               float64 `json:"mirrored_writes_per_sec"`
-	QosRateLimitUsecPerMirroredWriteOp float64 `json:"qos_rate_limit_usec_per_mirrored_write_op"`
-	QosRateLimitUsecPerReadOp          float64 `json:"qos_rate_limit_usec_per_read_op"`
-	QosRateLimitUsecPerWriteOp         float64 `json:"qos_rate_limit_usec_per_write_op"`
+	QosRateLimitUsecPerMirroredWriteOp *int64  `json:"qos_rate_limit_usec_per_mirrored_write_op"`
+	QosRateLimitUsecPerReadOp          *int64  `json:"qos_rate_limit_usec_per_read_op"`
+	QosRateLimitUsecPerWriteOp         *int64  `json:"qos_rate_limit_usec_per_write_op"`
 	QueueUsecPerMirroredWriteOp        float64 `json:"queue_usec_per_mirrored_write_op"`
 	QueueUsecPerReadOp                 float64 `json:"queue_usec_per_read_op"`
 	QueueUsecPerWriteOp                float64 `json:"queue_usec_per_write_op"`
