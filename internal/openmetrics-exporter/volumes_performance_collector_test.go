@@ -50,6 +50,9 @@ func TestVolumesPerformanceCollector(t *testing.T) {
 	}
 	want := make(map[string]bool)
 	for _, p := range volumesperf.Items {
+		want[fmt.Sprintf("label:{name:\"dimension\" value:\"qos_rate_limit_usec_per_mirrored_write_op\"} label:{name:\"naa_id\" value:\"%s\"} label:{name:\"name\" value:\"%s\"} gauge:{value:%g}", naaid[p.Name], p.Name, float64(*p.QosRateLimitUsecPerMirroredWriteOp))] = true
+		want[fmt.Sprintf("label:{name:\"dimension\" value:\"qos_rate_limit_usec_per_read_op\"} label:{name:\"naa_id\" value:\"%s\"} label:{name:\"name\" value:\"%s\"} gauge:{value:%g}", naaid[p.Name], p.Name, float64(*p.QosRateLimitUsecPerReadOp))] = true
+		want[fmt.Sprintf("label:{name:\"dimension\" value:\"qos_rate_limit_usec_per_write_op\"} label:{name:\"naa_id\" value:\"%s\"} label:{name:\"name\" value:\"%s\"} gauge:{value:%g}", naaid[p.Name], p.Name, float64(*p.QosRateLimitUsecPerWriteOp))] = true
 		want[fmt.Sprintf("label:{name:\"dimension\" value:\"queue_usec_per_mirrored_write_op\"} label:{name:\"naa_id\" value:\"%s\"} label:{name:\"name\" value:\"%s\"} gauge:{value:%g}", naaid[p.Name], p.Name, p.QueueUsecPerMirroredWriteOp)] = true
 		want[fmt.Sprintf("label:{name:\"dimension\" value:\"queue_usec_per_read_op\"} label:{name:\"naa_id\" value:\"%s\"} label:{name:\"name\" value:\"%s\"} gauge:{value:%g}", naaid[p.Name], p.Name, p.QueueUsecPerReadOp)] = true
 		want[fmt.Sprintf("label:{name:\"dimension\" value:\"queue_usec_per_write_op\"} label:{name:\"naa_id\" value:\"%s\"} label:{name:\"name\" value:\"%s\"} gauge:{value:%g}", naaid[p.Name], p.Name, p.QueueUsecPerWriteOp)] = true

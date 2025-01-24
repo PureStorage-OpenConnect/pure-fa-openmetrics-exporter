@@ -1,8 +1,8 @@
 package client
 
 type Qos struct {
-	BandwidthLimit int `json:"bandwidth_limit"`
-	IopsLimit      int `json:"iops_limit"`
+	BandwidthLimit *int64 `json:"bandwidth_limit"`
+	IopsLimit      *int64 `json:"iops_limit"`
 }
 
 type PriorityAdjustment struct {
@@ -29,6 +29,7 @@ type Volume struct {
 	HostEncryptionKeyStatus string             `json:"host_encryption_key_status"`
 	PriorityAdjustment      PriorityAdjustment `json:"priority_adjustment"`
 	Provisioned             int                `json:"provisioned"`
+	QoS                     Qos                `json:"qos"`
 	Serial                  string             `json:"serial"`
 	Space                   Space              `json:"space"`
 	TimeRemaining           int                `json:"time_remaining"`
