@@ -154,6 +154,15 @@ func parseRequestURL(c *Client, r *Request) error {
 		}
 	}
 
+	// GH#797 Unescape query parameters
+	if r.unescapeQueryParams && len(reqURL.RawQuery) > 0 {
+		// at this point, all errors caught up in the above operations
+		// so ignore the return error on query unescape; I realized
+		// while writing the unit test
+		unescapedQuery, _ := url.QueryUnescape(reqURL.RawQuery)
+		reqURL.RawQuery = strings.ReplaceAll(unescapedQuery, " ", "+") // otherwise request becomes bad request
+	}
+
 	r.URL = reqURL.String()
 
 	return nil
@@ -254,17 +263,19 @@ func createHTTPRequest(c *Client, r *Request) (err error) {
 		r.RawRequest = r.RawRequest.WithContext(r.ctx)
 	}
 
-	bodyCopy, err := getBodyCopy(r)
-	if err != nil {
-		return err
-	}
-
 	// assign get body func for the underlying raw request instance
-	r.RawRequest.GetBody = func() (io.ReadCloser, error) {
-		if bodyCopy != nil {
-			return io.NopCloser(bytes.NewReader(bodyCopy.Bytes())), nil
+	if r.RawRequest.GetBody == nil {
+		bodyCopy, err := getBodyCopy(r)
+		if err != nil {
+			return err
 		}
-		return nil, nil
+		if bodyCopy != nil {
+			buf := bodyCopy.Bytes()
+			r.RawRequest.GetBody = func() (io.ReadCloser, error) {
+				b := bytes.NewReader(buf)
+				return io.NopCloser(b), nil
+			}
+		}
 	}
 
 	return
@@ -287,21 +298,11 @@ func addCredentials(c *Client, r *Request) error {
 		}
 	}
 
-	// Set the Authorization Header Scheme
-	var authScheme string
-	if !IsStringEmpty(r.AuthScheme) {
-		authScheme = r.AuthScheme
-	} else if !IsStringEmpty(c.AuthScheme) {
-		authScheme = c.AuthScheme
-	} else {
-		authScheme = "Bearer"
-	}
-
-	// Build the Token Auth header
-	if !IsStringEmpty(r.Token) { // takes precedence
-		r.RawRequest.Header.Set(c.HeaderAuthorizationKey, authScheme+" "+r.Token)
+	// Build the token Auth header
+	if !IsStringEmpty(r.Token) {
+		r.RawRequest.Header.Set(c.HeaderAuthorizationKey, strings.TrimSpace(r.AuthScheme+" "+r.Token))
 	} else if !IsStringEmpty(c.Token) {
-		r.RawRequest.Header.Set(c.HeaderAuthorizationKey, authScheme+" "+c.Token)
+		r.RawRequest.Header.Set(c.HeaderAuthorizationKey, strings.TrimSpace(r.AuthScheme+" "+c.Token))
 	}
 
 	return nil
