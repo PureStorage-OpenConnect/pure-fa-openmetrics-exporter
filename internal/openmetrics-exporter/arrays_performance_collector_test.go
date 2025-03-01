@@ -37,6 +37,9 @@ func TestArrayPerformanceCollector(t *testing.T) {
 	defer server.Close()
 	p := arrs.Items[0]
 	want := make(map[string]bool)
+	want[fmt.Sprintf("label:{name:\"dimension\" value:\"qos_rate_limit_usec_per_mirrored_write_op\"} gauge:{value:%g}", p.QosRateLimitUsecPerMirroredWriteOp)] = true
+	want[fmt.Sprintf("label:{name:\"dimension\" value:\"qos_rate_limit_usec_per_read_op\"} gauge:{value:%g}", p.QosRateLimitUsecPerReadOp)] = true
+	want[fmt.Sprintf("label:{name:\"dimension\" value:\"qos_rate_limit_usec_per_write_op\"} gauge:{value:%g}", p.QosRateLimitUsecPerWriteOp)] = true
 	want[fmt.Sprintf("label:{name:\"dimension\" value:\"queue_usec_per_mirrored_write_op\"} gauge:{value:%g}", p.QueueUsecPerMirroredWriteOp)] = true
 	want[fmt.Sprintf("label:{name:\"dimension\" value:\"queue_usec_per_read_op\"} gauge:{value:%g}", p.QueueUsecPerReadOp)] = true
 	want[fmt.Sprintf("label:{name:\"dimension\" value:\"queue_usec_per_write_op\"} gauge:{value:%g}", p.QueueUsecPerWriteOp)] = true

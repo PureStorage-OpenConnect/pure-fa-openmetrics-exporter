@@ -1,0 +1,161 @@
+{
+  "items": [
+    {
+      "context": {
+        "name": "vm-hkan",
+        "id": null
+      },
+      "name": "vg3",
+      "id": "8671b77b-f115-99e5-8cf9-91eb36c03fb2",
+      "destroyed": false,
+      "pod": {
+        "name": null,
+        "id": null
+      },
+      "time_remaining": null,
+      "qos": {
+        "bandwidth_limit": null,
+        "iops_limit": null
+      },
+      "space": {
+        "data_reduction": 1.0,
+        "shared": null,
+        "snapshots": 0,
+        "system": null,
+        "thin_provisioning": 0.0,
+        "total_physical": 0,
+        "total_used": 0,
+        "total_provisioned": 0,
+        "total_reduction": 1.0,
+        "unique": 0,
+        "virtual": 0,
+        "used_provisioned": 0,
+        "footprint": null
+      },
+      "volume_count": 0,
+      "workload": null,
+      "priority_adjustment": {
+        "priority_adjustment_operator": "+",
+        "priority_adjustment_value": 0
+      }
+    },
+    {
+      "context": {
+        "name": "vm-hkan",
+        "id": null
+      },
+      "name": "pod1::vg1",
+      "id": "63acc60a-1c8c-f530-c323-250eea4b6534",
+      "destroyed": false,
+      "pod": {
+        "name": "pod1",
+        "id": "9bbf2865-f400-5c72-a159-dcf1ce2fc4e7"
+      },
+      "time_remaining": null,
+      "qos": {
+        "bandwidth_limit": null,
+        "iops_limit": null
+      },
+      "space": {
+        "data_reduction": 1.0,
+        "shared": null,
+        "snapshots": 0,
+        "system": null,
+        "thin_provisioning": 0.0,
+        "total_physical": 0,
+        "total_used": 0,
+        "total_provisioned": 0,
+        "total_reduction": 1.0,
+        "unique": 0,
+        "virtual": 0,
+        "used_provisioned": 0,
+        "footprint": null
+      },
+      "volume_count": 0,
+      "workload": null,
+      "priority_adjustment": {
+        "priority_adjustment_operator": "+",
+        "priority_adjustment_value": 0
+      }
+    },
+    {
+      "context": {
+        "name": "vm-hkan",
+        "id": null
+      },
+      "name": "pod2::vg2",
+      "id": "bf2dad8e-7178-d798-8bce-42374ded6b90",
+      "destroyed": false,
+      "pod": {
+        "name": "pod2",
+        "id": "376ca4f3-f49b-0095-59e3-a6b964be8224"
+      },
+      "time_remaining": null,
+      "qos": {
+        "bandwidth_limit": null,
+        "iops_limit": null
+      },
+      "space": {
+        "data_reduction": 1.0,
+        "shared": null,
+        "snapshots": 0,
+        "system": null,
+        "thin_provisioning": 0.0,
+        "total_physical": 0,
+        "total_used": 0,
+        "total_provisioned": 0,
+        "total_reduction": 1.0,
+        "unique": 0,
+        "virtual": 0,
+        "used_provisioned": 0,
+        "footprint": null
+      },
+      "volume_count": 0,
+      "workload": null,
+      "priority_adjustment": {
+        "priority_adjustment_operator": "+",
+        "priority_adjustment_value": 0
+      }
+    }
+  ],
+  "total": [
+    {
+      "name": null,
+      "id": null,
+      "destroyed": null,
+      "pod": {
+        "name": null,
+        "id": null
+      },
+      "time_remaining": null,
+      "qos": {
+        "bandwidth_limit": null,
+        "iops_limit": null
+      },
+      "space": {
+        "data_reduction": 1.0,
+        "shared": null,
+        "snapshots": null,
+        "system": null,
+        "thin_provisioning": 0.0,
+        "total_physical": null,
+        "total_used": null,
+        "total_provisioned": 0,
+        "total_reduction": 1.0,
+        "unique": 0,
+        "virtual": 0,
+        "used_provisioned": 0,
+        "footprint": null
+      },
+      "volume_count": null,
+      "workload": null,
+      "priority_adjustment": {
+        "priority_adjustment_operator": null,
+        "priority_adjustment_value": null
+      }
+    }
+  ],
+  "continuation_token": null,
+  "more_items_remaining": false,
+  "total_item_count": null
+}
