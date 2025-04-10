@@ -13,7 +13,7 @@ import (
 	client "purestorage/fa-openmetrics-exporter/internal/rest-client"
 )
 
-func TestVolumesPerformanceCollector(t *testing.T) {
+func TestVolumesGroupPerformanceCollector(t *testing.T) {
 	ref, _ := os.ReadFile("../../test/data/volume_groups_performance.json")
 	vers, _ := os.ReadFile("../../test/data/versions.json")
 	var volumegroupsperf client.VolumeGroupsPerformanceList
@@ -24,10 +24,10 @@ func TestVolumesPerformanceCollector(t *testing.T) {
 			w.Header().Set("Content-Type", "application/json")
 			w.WriteHeader(http.StatusOK)
 			w.Write([]byte(vers))
-		} else if vperfu.MatchString(r.URL.Path) {
+		} else if vgperfu.MatchString(r.URL.Path) {
 			w.Header().Set("Content-Type", "application/json")
 			w.WriteHeader(http.StatusOK)
-			w.Write([]byte(volsperf))
+			w.Write([]byte(ref))
 		}
 	}))
 	endp := strings.Split(server.URL, "/")
@@ -62,8 +62,8 @@ func TestVolumesPerformanceCollector(t *testing.T) {
 		want[fmt.Sprintf("label:{name:\"dimension\" value:\"bytes_per_read\"} label:{name:\"name\" value:\"%s\"} gauge:{value:%g}", p.Name, p.BytesPerRead)] = true
 		want[fmt.Sprintf("label:{name:\"dimension\" value:\"bytes_per_write\"} label:{name:\"name\" value:\"%s\"} gauge:{value:%g}", p.Name, p.BytesPerWrite)] = true
 	}
-	c := client.NewRestClient(e, "fake-api-token", "latest", "test-user-agent-string", "test-X-Request-Id-string", false)
+	c := client.NewRestClient(e, "fake-api-token", "latest", "test-user-agent-string", "test-X-Request-Id-string", false, false)
 
-	vgpc := NewVolumeGroupsPerformanceCollector(c, vl)
+	vgpc := NewVolumeGroupsPerformanceCollector(c)
 	metricsCheck(t, vgpc, want)
 }

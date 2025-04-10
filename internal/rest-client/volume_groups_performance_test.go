@@ -34,7 +34,7 @@ func TestVolumeGroupsPerformance(t *testing.T) {
 	e := endp[len(endp)-1]
 	t.Run("volume_groups_performance_1", func(t *testing.T) {
 		defer server.Close()
-		c := NewRestClient(e, "fake-api-token", "latest", "test-user-agent-string", "test-X-Request-Id-string", false)
+		c := NewRestClient(e, "fake-api-token", "latest", "test-user-agent-string", "test-X-Request-Id-string", false, false)
 		vgpl := c.GetVolumeGroupsPerformance()
 		if diff := cmp.Diff(vgpl.Items, vgroupsp.Items); diff != "" {
 			t.Errorf("Mismatch (-want +got):\n%s", diff)

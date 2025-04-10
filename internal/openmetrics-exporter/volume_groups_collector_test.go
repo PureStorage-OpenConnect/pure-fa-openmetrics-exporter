@@ -12,7 +12,7 @@ import (
 	"testing"
 )
 
-func TestVolumesSpaceCollector(t *testing.T) {
+func TestVolumesGroupSpaceCollector(t *testing.T) {
 	res, _ := os.ReadFile("../../test/data/volume_groups.json")
 	vers, _ := os.ReadFile("../../test/data/versions.json")
 	var volumeGroups client.VolumeGroupsList
@@ -34,14 +34,14 @@ func TestVolumesSpaceCollector(t *testing.T) {
 	want := make(map[string]bool)
 	for _, vg := range volumeGroups.Items {
 		if vg.QoS.BandwidthLimit != nil {
-			want[fmt.Sprintf("label:{name:\"name\" value:\"%s\"} gauge:{value:%g}", vg.Name, float64(*v.QoS.BandwidthLimit))] = true
+			want[fmt.Sprintf("label:{name:\"name\" value:\"%s\"} gauge:{value:%g}", vg.Name, float64(*vg.QoS.BandwidthLimit))] = true
 		}
 		if vg.QoS.IopsLimit != nil {
-			want[fmt.Sprintf("label:{name:\"name\" value:\"%s\"} gauge:{value:%g}", vg.Name, float64(*v.QoS.IopsLimit))] = true
+			want[fmt.Sprintf("label:{name:\"name\" value:\"%s\"} gauge:{value:%g}", vg.Name, float64(*vg.QoS.IopsLimit))] = true
 		}
 	}
 	defer server.Close()
-	c := client.NewRestClient(e, "fake-api-token", "latest", "test-user-agent-string", "test-X-Request-Id-string", false)
+	c := client.NewRestClient(e, "fake-api-token", "latest", "test-user-agent-string", "test-X-Request-Id-string", false, false)
 	vgc := NewVolumeGroupsCollector(c)
 	metricsCheck(t, vgc, want)
 }
