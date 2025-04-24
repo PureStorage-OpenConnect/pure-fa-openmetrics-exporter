@@ -190,28 +190,41 @@ Check the data is accessible to each component in the stack. If at any on these 
 <img src="./images/prometheus_purefa_simple_query.png" width="40%" height="40%">
 <br>
 
-3. If the query does not return results, check the status of the targets for status errors.
+3. Make sure that in the query results from step 1 include the required labels `instance`, `location`, `site`, `env` for all targets.
+
+   If the labels are not being added, in [prometheus.yml](../prometheus/prometheus.yml), check that the required labels are being applied in accordance with the [sample configuration](../prometheus/prometheus.yml).
+    ```yaml
+          labels:
+            # Instance should be the device name and is used to correlate metrics between different endpoints in Prometheus and Grafana. Ensure this is the same for each endpoint for the same device.
+            instance: arrayname01
+            # location, site and env are specific to your environment. Feel free to add more labels but maintain these three to minimize changes to Grafana which is expecting to use location, site and env as filter variables. 
+            location: uk
+            site: London
+            env: production
+    ```
+
+4. If the query does not return results, check the status of the targets for status errors.
 <br>
 <img src="./images/prometheus_purefa_target_status.png" width="40%" height="40%">
 <br>
 
-4. Run prometheus.yml through the yaml checker. Check the configuration is correct and restart Prometheus.
+5. Run prometheus.yml through the yaml checker. Check the configuration is correct and restart Prometheus.
     ```console
     > promtool check config /etc/prometheus/prometheus.yml
     Checking prometheus.yml
     SUCCESS: prometheus.yml is valid prometheus config file syntax
     ```
 
-5. Check messages log for Prometheus errors.
+6. Check messages log for Prometheus errors.
 
 ### Check Grafana
-6. Perform a simple test for Grafana by navigating to 'Explore' and entering a simple query.
+7. Perform a simple test for Grafana by navigating to 'Explore' and entering a simple query.
 <br>
 <img src="./images/grafana_purefa_simple_query.png" width="40%" height="40%">
 <br>
 
 ### Check Docker container is running
-7. Ensure that the docker image is running, if for any reason the container is unexpectedly halting while running you may add `--restart unless-stopped` to the `docker run` command to ensure the container is restarted automatically on failure.
+8. Ensure that the docker image is running, if for any reason the container is unexpectedly halting while running you may add `--restart unless-stopped` to the `docker run` command to ensure the container is restarted automatically on failure.
    
 
 # Troubleshooting Specific Errors
