@@ -36,6 +36,9 @@ func TestHostsPerformanceCollector(t *testing.T) {
 	defer server.Close()
 	want := make(map[string]bool)
 	for _, p := range hosts.Items {
+		want[fmt.Sprintf("label:{name:\"dimension\" value:\"qos_rate_limit_usec_per_mirrored_write_op\"} label:{name:\"host\" value:\"%s\"} gauge:{value:%g}", p.Name, p.QosRateLimitUsecPerMirroredWriteOp)] = true
+		want[fmt.Sprintf("label:{name:\"dimension\" value:\"qos_rate_limit_usec_per_read_op\"} label:{name:\"host\" value:\"%s\"} gauge:{value:%g}", p.Name, p.QosRateLimitUsecPerReadOp)] = true
+		want[fmt.Sprintf("label:{name:\"dimension\" value:\"qos_rate_limit_usec_per_write_op\"} label:{name:\"host\" value:\"%s\"} gauge:{value:%g}", p.Name, p.QosRateLimitUsecPerWriteOp)] = true
 		want[fmt.Sprintf("label:{name:\"dimension\" value:\"queue_usec_per_mirrored_write_op\"} label:{name:\"host\" value:\"%s\"} gauge:{value:%g}", p.Name, p.QueueUsecPerMirroredWriteOp)] = true
 		want[fmt.Sprintf("label:{name:\"dimension\" value:\"queue_usec_per_read_op\"} label:{name:\"host\" value:\"%s\"} gauge:{value:%g}", p.Name, p.QueueUsecPerReadOp)] = true
 		want[fmt.Sprintf("label:{name:\"dimension\" value:\"queue_usec_per_write_op\"} label:{name:\"host\" value:\"%s\"} gauge:{value:%g}", p.Name, p.QueueUsecPerWriteOp)] = true

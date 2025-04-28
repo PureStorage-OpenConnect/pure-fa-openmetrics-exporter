@@ -103,6 +103,24 @@ func (c *HostsPerformanceCollector) Collect(ch chan<- prometheus.Metric) {
 			hp.Name, "service_usec_per_read_op_cache_reduction",
 		)
 		ch <- prometheus.MustNewConstMetric(
+			c.LatencyDesc,
+			prometheus.GaugeValue,
+			float64(hp.QosRateLimitUsecPerMirroredWriteOp),
+			hp.Name, "qos_rate_limit_usec_per_mirrored_write_op",
+		)
+		ch <- prometheus.MustNewConstMetric(
+			c.LatencyDesc,
+			prometheus.GaugeValue,
+			float64(hp.QosRateLimitUsecPerReadOp),
+			hp.Name, "qos_rate_limit_usec_per_read_op",
+		)
+		ch <- prometheus.MustNewConstMetric(
+			c.LatencyDesc,
+			prometheus.GaugeValue,
+			float64(hp.QosRateLimitUsecPerWriteOp),
+			hp.Name, "qos_rate_limit_usec_per_write_op",
+		)
+		ch <- prometheus.MustNewConstMetric(
 			c.BandwidthDesc,
 			prometheus.GaugeValue,
 			float64(hp.MirroredWriteBytesPerSec),

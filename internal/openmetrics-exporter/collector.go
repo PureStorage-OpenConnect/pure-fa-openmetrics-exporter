@@ -74,9 +74,13 @@ func Collector(ctx context.Context, metrics string, registry *prometheus.Registr
 		vols := faclient.GetVolumes()
 		volperfcoll := NewVolumesPerformanceCollector(faclient, vols)
 		volspacecoll := NewVolumesCollector(vols)
+		vgroupcoll := NewVolumeGroupsCollector(faclient)
+		vgroupperfcoll := NewVolumeGroupsPerformanceCollector(faclient)
 		registry.MustRegister(
 			volperfcoll,
 			volspacecoll,
+			vgroupcoll,
+			vgroupperfcoll,
 		)
 	}
 	return true

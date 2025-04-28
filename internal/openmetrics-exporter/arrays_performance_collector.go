@@ -81,6 +81,24 @@ func (c *ArrayPerformanceCollector) Collect(ch chan<- prometheus.Metric) {
 	ch <- prometheus.MustNewConstMetric(
 		c.LatencyDesc,
 		prometheus.GaugeValue,
+		ap.QosRateLimitUsecPerMirroredWriteOp,
+		"qos_rate_limit_usec_per_mirrored_write_op",
+	)
+	ch <- prometheus.MustNewConstMetric(
+		c.LatencyDesc,
+		prometheus.GaugeValue,
+		ap.QosRateLimitUsecPerReadOp,
+		"qos_rate_limit_usec_per_read_op",
+	)
+	ch <- prometheus.MustNewConstMetric(
+		c.LatencyDesc,
+		prometheus.GaugeValue,
+		ap.QosRateLimitUsecPerWriteOp,
+		"qos_rate_limit_usec_per_write_op",
+	)
+	ch <- prometheus.MustNewConstMetric(
+		c.LatencyDesc,
+		prometheus.GaugeValue,
 		ap.UsecPerMirroredWriteOp,
 		"usec_per_mirrored_write_op",
 	)
