@@ -11,7 +11,7 @@ services:
   prometheus:
     image: prom/prometheus:latest
     command:
-      - '--storage.tsdb.retention=60d'
+      - '--storage.tsdb.retention.time=60d'
       - '--storage.tsdb.path=/prometheus'
       - '--config.file=/etc/prometheus/prometheus.yml'
     volumes:
