@@ -31,12 +31,15 @@ scrape_configs:
 # It is NOT recommended to scrape the root /metrics endpoint as it can be an expensive query.
 # Scrape job for Pure Storage FlashArray 1 scraping /metrics/array
   - job_name: 'purefa_array_arrayname01'
-    metrics_path: /metrics/array?namespace=purefa
+    metrics_path: /metrics/array
+    scheme: https
+    tls_config:
+      insecure_skip_verify: true
     # Bearer authorization token
     authorization:
       credentials: 11111111-1111-1111-1111-111111111111
     params:
-      endpoint: ['arrayname01.fqdn.com']
+      namespace: purefa
 
     static_configs:
     # purefa openmetrics exporter
@@ -50,12 +53,15 @@ scrape_configs:
 
 # Scrape job for Pure Storage FlashArray 1 scraping /metrics/volumes
   - job_name: 'purefa_volumes_arrayname01'
-    metrics_path: /metrics/volumes?namespace=purefa
+    metrics_path: /metrics/volumes
+    scheme: https
+    tls_config:
+      insecure_skip_verify: true
     # Bearer authorization token
     authorization:
       credentials: 11111111-1111-1111-1111-111111111111
     params:
-      endpoint: ['arrayname01.fqdn.com']
+      namespace: purefa
 
     static_configs:
     # purefa openmetrics exporter
@@ -69,12 +75,15 @@ scrape_configs:
 
 # Scrape job for Pure Storage FlashArray 1 scraping /metrics/hosts
   - job_name: 'purefa_hosts_arrayname01'
-    metrics_path: /metrics/hosts?namespace=purefa
+    metrics_path: /metrics/hosts
+    scheme: https
+    tls_config:
+      insecure_skip_verify: true
     # Bearer authorization token
     authorization:
       credentials: 11111111-1111-1111-1111-111111111111
     params:
-      endpoint: ['arrayname01.fqdn.com']
+      namespace: purefa
 
     static_configs:
     # purefa openmetrics exporter
@@ -88,12 +97,15 @@ scrape_configs:
 
 # Scrape job for Pure Storage FlashArray 1 scraping /metrics/pods
   - job_name: 'purefa_pods_arrayname01'
-    metrics_path: /metrics/pods?namespace=purefa
+    metrics_path: /metrics/pods
+    scheme: https
+    tls_config:
+      insecure_skip_verify: true
     # Bearer authorization token
     authorization:
       credentials: 11111111-1111-1111-1111-111111111111
     params:
-      endpoint: ['arrayname01.fqdn.com']
+      namespace: purefa
 
     static_configs:
     # purefa openmetrics exporter
@@ -107,7 +119,10 @@ scrape_configs:
 
 # Scrape job for Pure Storage FlashArray 1 scraping /metrics/directories
   - job_name: 'purefa_directories_arrayname01'
-    metrics_path: /metrics/directories?namespace=purefa
+    metrics_path: /metrics/directories
+    scheme: https
+    tls_config:
+      insecure_skip_verify: true
     # It is recommended to collect expensive queries less frequently such as /metrics/directories.
     scrape_interval:     15m # Set the scrape interval to every 15min. Default is every 1 minute. This overrides the global setting.
     scrape_timeout:      15m # Set the scrape timeout to shorter than or equal to scrape_interval. Default is every 1 minute.
@@ -115,7 +130,7 @@ scrape_configs:
     authorization:
       credentials: 11111111-1111-1111-1111-111111111111
     params:
-      endpoint: ['arrayname01.fqdn.com']
+      namespace: purefa
 
     static_configs:
     # purefa openmetrics exporter
