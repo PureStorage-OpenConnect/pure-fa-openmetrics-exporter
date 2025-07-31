@@ -5,8 +5,23 @@ How to setup Prometheus to scrape metrics and display dashboards in Grafana usin
 This exporter is provided under Best Efforts support by the Pure Portfolio Solutions Group, Open Source Integrations team. For feature requests and bugs please use GitHub Issues. We will address these as soon as we can, but there are no specific SLAs.
 
 ## TL;DR
-1. Configure Pure Storage OpenMetrics Exporter ([pure-fa-openmetrics-exporter][1]).
-2. Deploy and configure Prometheus ([prometheus-docs][2]). [Example prometheus.yml here](../prometheus/prometheus.yml).
+
+1. Confirm Purity version.
+    <details>
+    <summary>Expand for Purity//FA ≥ 6.7.x (Native Exporter)</summary>
+
+      From 6.7.0 onwards the Pure Storage OpenMetrics exporter was integrated natively into Purity FA to allow agents to scrape FlashArray directly. [FlashArray Native Exporter](https://support.purestorage.com/bundle/m_purityfa_general_administration/page/FlashArray/PurityFA/PurityFA_General_Administration/topics/concept/t_prometheus.yml.html)
+
+    </details>
+
+    <details>
+    <summary>Expand for Purity//FA ≤ 6.6.x (Open Source Expoter)</summary>
+
+      Deploy Pure Storage OpenSource Exporter ([pure-fa-openmetrics-exporter][1])
+
+    </details>
+
+2. Deploy and configure Prometheus ([prometheus-docs][2]). Here is an example [prometheus.yml](../prometheus/prometheus.yml) file.
 3. Deploy and configure Grafana ([grafana-docs][3]).
 4. Import [grafana-purefa-flasharray-overview.json](grafana-purefa-flasharray-overview.json) into Grafana.
 
@@ -48,7 +63,7 @@ Grafana can be configured to query all of the metrics available in the Prometheu
 
 # Setup
 ## Prerequisites and Dependencies
-This deployment assumes the [Pure Storage FlashArray OpenMetrics Exporter][1] is previously setup and configured.
+This deployment assumes the Pure Storage FlashArray OpenMetrics Exporter is contactable.
 Prometheus and Grafana are open source platforms which are under constant development, therefore updates to our overview dashboard cannot be tested with every version. When new versions of the dashboard is released we endeavor to test between current and previous tested versions.
 We have tested our dashboard with the following versions:
 
@@ -95,43 +110,95 @@ Dashboards may have limited functionality with earlier versions and some modific
 
     Let's take a walkthrough an example of scraping the `/metrics/array` endpoint.
 
+    <details>
+    <summary>Expand for Purity//FA ≥ 6.7.x prometheus.yml example (Native Exporter)</summary>
+
     ```yaml
     # Scrape job for one Pure Storage FlashArray scraping /metrics/array
-    # Each Prometheus scrape requires a job name. In this example we have structures the name `exporter_endpoint_arrayname`
-      - job_name: 'purefa_array_arrayname01'
-        # Specify the array endpoint from /metrics/array
-        metrics_path: /metrics/array
-        # Provide FlashArray authorization API token
-        authorization:
-          credentials: 11111111-1111-1111-1111-111111111111
-        # Provide parameters to pass the exporter the device to connect to. Provide FQDN or IP address
-        params:
-          endpoint: ['arrayname01.fqdn.com']
+    # Each Prometheus scrape requires a job name. In this example we have structured the name `exporter_endpoint_arrayname`
 
-        static_configs:
-        # Tell Prometheus which exporter to make the request
-        - targets:
-          - 10.0.2.10:9490
+    # /metrics/array
+    # Specify the array endpoint from /metrics/array
+    - job_name: 'purefa_array_arrayname01'
+      metrics_path: '/metrics/array'
+      # Target port 443 https
+      scheme: 'https'
+      # Configure skip TLS verification unless required
+      tls_config:
+        insecure_skip_verify: true
+      # Provide FlashArray authorization API token
+      authorization:
+        credentials: '11111111-1111-1111-1111-111111111111'
+      # Provide parameters to pass the exporter the device to connect to. Provide FQDN or IP address
+      params:
+        namespace: ['purefa']
+
+      static_configs:
+      # Tell Prometheus which exporter to make the request
+      - targets:
+          - 'purefa-openmetrics-exporter.fqdn.com:9490'
           # Finally provide labels to the device.
           labels:
             # Instance should be the device name and is used to correlate metrics between different endpoints in Prometheus and Grafana. Ensure this is the same for each endpoint for the same device.
-            instance: arrayname01
+            instance: 'arrayname01'
             # location, site and env are specific to your environment. Feel free to add more labels but maintain these three to minimize changes to Grafana which is expecting to use location, site and env as filter variables. 
-            location: uk
-            site: London
-            env: production
+            env: 'production'
 
-      # Repeat for the above for end points:
-      # /metrics/volumes
-      # /metrics/hosts
-      # /metrics/pods
-      # /metrics/directories
-      # It is recommended to collect expensive queries less frequently such as /metrics/directories.
-      scrape_interval:     15m # Set the scrape interval to every 15min. Default is every 1 minute. This overrides the global setting.
-      scrape_timeout:      15m # Set the scrape timeout to shorter than or equal to scrape_interval. Default is every 1 minute.
+    # Repeat for the above for end points:
+    # /metrics/volumes
+    # /metrics/hosts
+    # /metrics/pods
+    # /metrics/directories
+    # It is recommended to collect expensive queries less frequently such as /metrics/directories.
+    scrape_interval: '30m'  # Set the scrape interval to every 30min. Default is every 1 minute. This overrides the global setting.
+    scrape_timeout:  '15m'  # Set the scrape timeout to shorter than or equal to scrape_interval. Default is every 1 minute.
 
-      # Repeat again for more Pure Storage FlashArrays
-      ```
+    # Repeat again for more Pure Storage FlashArrays
+    ```
+
+    </details>
+
+    <details>
+    <summary>Expand for Purity//FA ≤ 6.6.x prometheus.yml example (Open Source Exporter)</summary>
+
+    ```yaml
+    # Scrape job for one Pure Storage FlashArray scraping /metrics/array
+    # Each Prometheus scrape requires a job name. In this example we have structured the name `exporter_endpoint_arrayname`
+    
+    - job_name: 'purefa_array_arrayname01'
+      # Specify the array endpoint from /metrics/array
+      metrics_path: '/metrics/array'
+      # Provide FlashArray authorization API token
+      authorization:
+        credentials: '11111111-1111-1111-1111-111111111111'
+      # Provide parameters to pass the exporter the device to connect to. Provide FQDN or IP address
+      params:
+        endpoint: ['arrayname01.fqdn.com']
+
+      static_configs:
+      # Tell Prometheus which exporter to make the request
+      - targets:
+          - 'purefa-openmetrics-exporter.fqdn.com:9490'
+          # Finally provide labels to the device.
+          labels:
+            # Instance should be the device name and is used to correlate metrics between different endpoints in Prometheus and Grafana. Ensure this is the same for each endpoint for the same device.
+            instance: 'arrayname01'
+            # location, site and env are specific to your environment. Feel free to add more labels but maintain these three to minimize changes to Grafana which is expecting to use location, site and env as filter variables. 
+            env: 'production'
+
+    # Repeat for the above for end points:
+    # /metrics/volumes
+    # /metrics/hosts
+    # /metrics/pods
+    # /metrics/directories
+    # It is recommended to collect expensive queries less frequently such as /metrics/directories.
+    scrape_interval: '30m'  # Set the scrape interval to every 30min. Default is every 1 minute. This overrides the global setting.
+    scrape_timeout:  '15m'  # Set the scrape timeout to shorter than or equal to scrape_interval. Default is every 1 minute.
+
+    # Repeat again for more Pure Storage FlashArrays
+    ```
+
+</details>
 
 4. Test the prometheus.yml file is valid
 
@@ -147,7 +214,7 @@ Dashboards may have limited functionality with earlier versions and some modific
   -  Type `purefa_info` in the query box and hit return
   
 7. All going well, you will see your device listed:
-    ```
+    ```console
     purefa_info{array_name="ARRAYNAME01", env="production", instance="arrayname01", job="purefa_array_arrayname01", location="uk", os="Purity//FA", site="London", system_id="11111111-1111-1111-1111-111111111111", version="6.5.0"}
     ```
 
@@ -179,10 +246,29 @@ Check the data is accessible to each component in the stack. If at any on these 
   * Check Grafana
 
 ### Check Pure OpenMetrics Exporter
-1. Run cURL against the exporter and pass is the bearer token and endpoint. 
-    ```
-    curl -H 'Authorization: Bearer 11111111-1111-1111-1111-111111111111' -X GET 'http://<exporter_ip>:9490/metrics/array?endpoint=arrayname01.fqdn.com'
-    ```
+1. A great way to confirm the exporter is working is with a simple `cURL` command. The query to perform this test is slightly different between native and open source instances of the exporter.
+
+    <details>
+    <summary>Expand for Purity//FA ≥ 6.7.x example</summary>
+
+      Run cURL against the exporter and pass is the bearer token and endpoint. 
+
+      ```console
+      curl -k 'https://<array_address>/metrics/array?namespace=purefa' --header 'Authorization: Bearer <your-api-token>'
+      ```
+
+    </details>
+
+    <details>
+    <summary>Expand for Purity//FA ≤ 6.6.x example</summary>
+
+      Run cURL against the exporter and pass is the bearer token and endpoint.
+
+      ```console
+      curl -H 'Authorization: Bearer <your-api-token>' -X GET 'http://<exporter_ip>:9490/metrics/array?endpoint=<array_address>'
+      ```
+
+    </details>
 
 ### Check Prometheus
 2. Using the Prometheus UI, run a simple query to see if any results are returned.
@@ -198,8 +284,6 @@ Check the data is accessible to each component in the stack. If at any on these 
             # Instance should be the device name and is used to correlate metrics between different endpoints in Prometheus and Grafana. Ensure this is the same for each endpoint for the same device.
             instance: arrayname01
             # location, site and env are specific to your environment. Feel free to add more labels but maintain these three to minimize changes to Grafana which is expecting to use location, site and env as filter variables. 
-            location: uk
-            site: London
             env: production
     ```
 
